@@ -55,6 +55,20 @@
 
 如果只有 TTS 用的 70 张大图，未来应使用固定切图脚本生成单卡 PNG。这个流程还未固化。
 
+## 发布静态快照
+
+运行：
+
+```powershell
+& "C:\Users\biaaa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" scripts/export_static_site.py
+```
+
+生成：
+
+- `site_export/`
+
+这个目录是纯静态网站，可以拖到 Netlify，或同步到单独的静态发布 Git 仓库。
+
 ## 版本管理
 
 当前 Git 快照应该保存：

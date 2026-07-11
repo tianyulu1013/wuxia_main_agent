@@ -16,6 +16,7 @@ DB_PATH = ROOT / "data" / "cards.sqlite"
 UNIT_OVERRIDES_PATH = ROOT / "data" / "card_unit_overrides.json"
 CARD_REVIEWS_PATH = ROOT / "data" / "card_reviews.json"
 CHANGE_CANDIDATES_PATH = ROOT / "data" / "change_candidates.json"
+CARD_IMAGE_ALIASES_PATH = ROOT / "data" / "card_image_aliases.json"
 RELEASE_CARD_ROOT = ROOT / "data" / "release_images" / "cards"
 ALL_UNITS_GROUP = "__all_units__"
 CARD_IMAGE_INDEX: dict[str, Path] | None = None
@@ -60,6 +61,11 @@ def load_json_file(path: Path, fallback: object) -> object:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def load_card_image_aliases() -> dict[str, object]:
+    data = load_json_file(CARD_IMAGE_ALIASES_PATH, {})
+    return data if isinstance(data, dict) else {}
+
+
 def load_review_layers(title: object) -> dict[str, object]:
     card_title = str(title or "")
     reviews_data = load_json_file(CARD_REVIEWS_PATH, {})
@@ -102,11 +108,30 @@ def load_card_image_index() -> dict[str, Path]:
     return index
 
 
-def find_card_image(title: object) -> Path | None:
-    key = normalize_image_key(str(title or ""))
+def image_lookup_names(card_or_title: object) -> list[str]:
+    aliases = load_card_image_aliases()
+    by_title = aliases.get("by_title", {}) if isinstance(aliases.get("by_title"), dict) else {}
+    by_location = aliases.get("by_location", {}) if isinstance(aliases.get("by_location"), dict) else {}
+    if isinstance(card_or_title, dict):
+        title = str(card_or_title.get("title") or "")
+        location = f"{card_or_title.get('source_sheet')}!{card_or_title.get('source_row')}"
+        names = [str(by_location.get(location) or ""), str(by_title.get(title) or ""), title]
+    else:
+        title = str(card_or_title or "")
+        names = [str(by_title.get(title) or ""), title]
+    return [name for name in names if name]
+
+
+def find_card_image(card_or_title: object) -> Path | None:
+    keys = [normalize_image_key(name) for name in image_lookup_names(card_or_title)]
+    key = next((item for item in keys if item), "")
     if not key:
         return None
-    return load_card_image_index().get(key)
+    index = load_card_image_index()
+    for item in keys:
+        if item in index:
+            return index[item]
+    return None
 
 
 def text_matches(value: object, needle: str) -> bool:
@@ -497,17 +522,18 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         ]
         payload["units"] = build_card_units(payload, payload["abilities"])
         payload.update(load_review_layers(payload.get("title")))
-        if find_card_image(payload.get("title")):
+        if find_card_image(payload):
             payload["image_url"] = f"/api/card-image/{quote(str(payload['id']))}"
         self.send_json(payload)
 
     def handle_card_image(self, card_id: str) -> None:
         with connect() as conn:
-            row = conn.execute("SELECT title FROM cards WHERE id = ?", (card_id,)).fetchone()
+            row = conn.execute("SELECT * FROM cards WHERE id = ?", (card_id,)).fetchone()
         if row is None:
             self.send_error_json("未找到卡牌", HTTPStatus.NOT_FOUND)
             return
-        path = find_card_image(row["title"])
+        card = row_to_result(row)
+        path = find_card_image(card)
         if path is None or not path.exists():
             self.send_error_json("未找到卡面图片", HTTPStatus.NOT_FOUND)
             return

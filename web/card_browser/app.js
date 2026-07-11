@@ -21,6 +21,8 @@ const els = {
   detail: document.querySelector("#cardDetail"),
 };
 
+const STATIC_DATA = window.CARD_BROWSER_STATIC_DATA || null;
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -48,11 +50,139 @@ function compact(value, length = 140) {
 }
 
 async function getJson(url) {
+  if (STATIC_DATA) {
+    return getStaticJson(url);
+  }
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(await response.text());
   }
   return response.json();
+}
+
+function normalizeTitle(value) {
+  return String(value || "").replaceAll("（", "(").replaceAll("）", ")").replace(/\s+/g, "");
+}
+
+function contains(value, q) {
+  return String(value ?? "").includes(q);
+}
+
+function containsAny(values, q) {
+  return values.some((value) => {
+    if (Array.isArray(value)) return containsAny(value, q);
+    if (value && typeof value === "object") return containsAny(Object.values(value), q);
+    return contains(value, q);
+  });
+}
+
+function staticMatchesScope(card, q, scope) {
+  const nq = normalizeTitle(q);
+  const abilities = Array.isArray(card.abilities) ? card.abilities : [];
+  const units = Array.isArray(card.units) ? card.units : [];
+  if (!q) return true;
+  if (scope === "title") return contains(card.title, q) || contains(card.normalized_title, nq);
+  if (scope === "identity") {
+    return containsAny([card.identity, abilities.map((item) => item.owner_identity), units.map((unit) => [unit.identity, unit.entity_kind])], q);
+  }
+  if (scope === "weapons") {
+    return containsAny([card.weapons, abilities.map((item) => item.owner_weapons), units.map((unit) => unit.weapons)], q);
+  }
+  if (scope === "source_work") return contains(card.source_work, q);
+  if (scope === "relationships") return containsAny([card.relationships, units.map((unit) => unit.relationships)], q);
+  if (scope === "ability") {
+    return abilities.some((ability) => containsAny([ability.kind, ability.name, ability.raw_name, ability.type_prefix, ability.text], q));
+  }
+  return containsAny([
+    card.title,
+    card.normalized_title,
+    card.description,
+    card.relationships,
+    card.identity,
+    card.weapons,
+    card.source_work,
+    card.author_group,
+    card.all_text,
+    units,
+  ], q);
+}
+
+function staticSnippet(card, scope) {
+  if (scope === "identity") return card.identity || card.snippet;
+  if (scope === "weapons") return card.weapons || card.snippet;
+  if (scope === "source_work") return card.source_work || card.snippet;
+  if (scope === "relationships") return card.relationships || card.snippet;
+  return card.snippet || card.description || card.relationships || card.all_text || "";
+}
+
+function staticSummary(card, scope) {
+  return {
+    id: card.id,
+    title: card.title,
+    category: card.category,
+    category_label: card.category_label,
+    source_sheet: card.source_sheet,
+    source_row: card.source_row,
+    author_group: card.author_group,
+    source_work: card.source_work,
+    life: card.life,
+    identity: card.identity,
+    weapons: card.weapons,
+    description: card.description,
+    relationships: card.relationships,
+    snippet: staticSnippet(card, scope),
+  };
+}
+
+function compareStaticCards(a, b, sort, q) {
+  if (q) {
+    const nq = normalizeTitle(q);
+    const rank = (card) => {
+      if (card.title === q) return 0;
+      if (card.normalized_title === nq) return 1;
+      if (contains(card.title, q)) return 2;
+      return 3;
+    };
+    const byRank = rank(a) - rank(b);
+    if (byRank) return byRank;
+  }
+  if (sort === "title") return String(a.title || "").localeCompare(String(b.title || ""), "zh-Hans");
+  if (sort === "category") {
+    const byCategory = String(a.category || "").localeCompare(String(b.category || ""));
+    if (byCategory) return byCategory;
+  }
+  return String(a.source_sheet || "").localeCompare(String(b.source_sheet || ""), "zh-Hans")
+    || Number(a.source_row || 0) - Number(b.source_row || 0);
+}
+
+function getStaticJson(url) {
+  const parsed = new URL(url, window.location.href);
+  if (parsed.pathname.endsWith("/api/meta")) {
+    return Promise.resolve(STATIC_DATA.meta);
+  }
+  if (parsed.pathname.endsWith("/api/search")) {
+    const q = (parsed.searchParams.get("q") || "").trim();
+    const scope = parsed.searchParams.get("scope") || "all";
+    const category = parsed.searchParams.get("category") || "";
+    const author = parsed.searchParams.get("author") || "";
+    const sort = parsed.searchParams.get("sort") || "sheet";
+    const limit = Math.min(Math.max(Number(parsed.searchParams.get("limit") || 60), 1), 500);
+    const cards = Object.values(STATIC_DATA.cards)
+      .filter((card) => category ? card.category === category : card.category !== "deprecated")
+      .filter((card) => author ? card.author_group === author : true)
+      .filter((card) => staticMatchesScope(card, q, scope))
+      .sort((a, b) => compareStaticCards(a, b, sort, q))
+      .slice(0, limit)
+      .map((card) => staticSummary(card, scope));
+    return Promise.resolve({ results: cards });
+  }
+  const cardMatch = parsed.pathname.match(/\/api\/card\/([^/]+)$/);
+  if (cardMatch) {
+    const id = decodeURIComponent(cardMatch[1]);
+    if (!STATIC_DATA.cards[id]) return Promise.reject(new Error("未找到卡牌"));
+    return Promise.resolve(STATIC_DATA.cards[id]);
+  }
+  return Promise.reject(new Error(`静态快照不支持此接口：${url}`));
 }
 
 function option(label, value = label) {

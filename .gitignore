@@ -15,6 +15,7 @@ release_images/
 
 # Generated scratch output
 outputs/
+site_export/
 
 # Office/PDF source references are useful locally but can be stored separately if the repo is shared.
 *.docx

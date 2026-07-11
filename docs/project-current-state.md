@@ -85,9 +85,17 @@
 
 它依赖 Python 后端读取 SQLite、JSON 和本地图片，因此不能直接把 `web/card_browser/` 上传到普通静态托管就完整运行。
 
-未来可做一个静态导出版：
+已经提供静态导出脚本：
+
+- `scripts/export_static_site.py`
+
+运行后生成：
+
+- `site_export/`
+
+静态导出版会：
 
 - 把 SQLite 查询结果导出成 JSON。
 - 把卡面图片复制到静态目录。
 - 前端只读取静态 JSON 和图片。
-- 这样就可以部署到普通静态网站。
+- 可以部署到 Netlify 等普通静态网站。

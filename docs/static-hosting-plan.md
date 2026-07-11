@@ -48,14 +48,46 @@ site_export/
 
 ## 推荐路线
 
-暂时继续使用本地动态版。
+本地编辑和数据整理继续使用动态版。
 
-等查询体验稳定后，再做：
+对外查看使用静态快照。
 
-1. `scripts/export_static_site.py`
-2. 把 SQLite 和 JSON 层导出为前端可读 JSON。
-3. 复制当前卡面图片。
-4. 生成 `site_export/`。
-5. 上传到静态托管。
+## 当前导出流程
 
-这样可以在线查看，但核心编辑工作仍然留在本地。
+运行：
+
+```powershell
+& "C:\Users\biaaa\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" scripts/export_static_site.py
+```
+
+输出：
+
+- `site_export/`
+
+当前快照规模约 245 MB，其中绝大多数是单卡 PNG。
+
+`site_export/` 可以直接作为纯静态网站发布。
+
+## Netlify 发布
+
+可以用两种方式：
+
+1. 手动发布：在 Netlify 的 Deploys 页面拖拽 `site_export/`。
+2. Git 发布：另建一个静态快照仓库，把 `site_export/` 的内容提交到该仓库，Netlify 连接这个仓库自动部署。
+
+更推荐 Git 发布，因为以后只需要：
+
+1. 本地重新运行 `scripts/export_static_site.py`。
+2. 同步 `site_export/` 到静态快照仓库。
+3. 提交并 push。
+4. Netlify 自动更新线上站。
+
+## 注意
+
+不要把 `site_export/` 提交到本工作仓库。它是生成物，已经在 `.gitignore` 中忽略。
+
+如果静态快照仓库长期保留所有历史图片，仓库会逐渐变大。未来可考虑：
+
+- 静态仓库只保留当前版本。
+- 旧版卡面单独归档。
+- 或者用对象存储/CDN 管图片。
