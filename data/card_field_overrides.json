@@ -1,0 +1,18 @@
+{
+  "field_updates": [
+    {
+      "match": {
+        "source_sheet": "物品",
+        "source_row": 28,
+        "title": "汗血宝马"
+      },
+      "set": {
+        "author_group": "金庸"
+      },
+      "raw_set": {
+        "作者": "金庸"
+      },
+      "note": "作者字段原误写为出处“射雕英雄传”；卡面无此字段，数据库按作者裁定以金庸为准。"
+    }
+  ]
+}

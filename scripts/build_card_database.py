@@ -19,6 +19,7 @@ OUT_DIR = ROOT / "data" / "cards_current"
 DB_PATH = ROOT / "data" / "cards.sqlite"
 REPORT = ROOT / "docs" / "current-card-database-report.md"
 AUTHOR_OVERRIDES = ROOT / "data" / "author_ability_overrides.json"
+FIELD_OVERRIDES = ROOT / "data" / "card_field_overrides.json"
 
 
 SHEET_KEYS = {
@@ -81,6 +82,12 @@ def load_author_overrides() -> dict[str, Any]:
     if not AUTHOR_OVERRIDES.exists():
         return {}
     return json.loads(AUTHOR_OVERRIDES.read_text(encoding="utf-8"))
+
+
+def load_field_overrides() -> dict[str, Any]:
+    if not FIELD_OVERRIDES.exists():
+        return {}
+    return json.loads(FIELD_OVERRIDES.read_text(encoding="utf-8"))
 
 
 def clean_cell(value: Any) -> Any:
@@ -227,6 +234,29 @@ def override_matches(record: dict[str, Any], ability: dict[str, Any], match: dic
     if "ordinal" in match and int(ability["ordinal"]) != int(match["ordinal"]):
         return False
     return True
+
+
+def record_override_matches(record: dict[str, Any], match: dict[str, Any]) -> bool:
+    source = record["source"]
+    if "source_sheet" in match and source["sheet"] != match["source_sheet"]:
+        return False
+    if "source_row" in match and int(source["row"]) != int(match["source_row"]):
+        return False
+    if "title" in match and record.get("title") != match["title"]:
+        return False
+    return True
+
+
+def apply_field_overrides(record: dict[str, Any], overrides: dict[str, Any]) -> None:
+    if not overrides:
+        return
+    for update in overrides.get("field_updates", []):
+        if not record_override_matches(record, update.get("match", {})):
+            continue
+        for key, value in update.get("set", {}).items():
+            record["fields"][key] = value
+        for key, value in update.get("raw_set", {}).items():
+            record["raw_fields"][key] = value
 
 
 def normalize_ability_ids(record: dict[str, Any], abilities: list[dict[str, Any]]) -> None:
@@ -470,6 +500,7 @@ def parse_abilities(record: dict[str, Any]) -> list[dict[str, Any]]:
 
 def read_sheet(ws: openpyxl.worksheet.worksheet.Worksheet, source: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     author_overrides = load_author_overrides()
+    field_overrides = load_field_overrides()
     header_values = [clean_cell(cell.value) for cell in ws[1]]
     field_names: list[str] = []
     unnamed_count = 0
@@ -532,6 +563,7 @@ def read_sheet(ws: openpyxl.worksheet.worksheet.Worksheet, source: Path) -> tupl
             "extra_fields": extra_fields,
             "raw_fields": raw_fields,
         }
+        apply_field_overrides(record, field_overrides)
         record["all_text"] = card_all_text(record)
         record["abilities"] = apply_author_overrides(record, parse_abilities(record), author_overrides)
         records.append(record)
