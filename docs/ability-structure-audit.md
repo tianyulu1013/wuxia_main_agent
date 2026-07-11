@@ -2,15 +2,15 @@
 
 本报告来自当前数据库的 `description` 字段自动解析。它不会替代作者裁定，只用于把疑似结构问题集中列出来。
 
-- 导入时间 UTC：`2026-07-11T17:18:29.644458+00:00`
+- 导入时间 UTC：`2026-07-11T17:20:45.465519+00:00`
 - 卡牌数：536
-- 抽取特技/说明块数：1977
+- 抽取特技/说明块数：1969
 - 结构化特技表：`data/cards.sqlite` / `card_abilities`
 - JSONL：`data/cards_current/abilities.jsonl`
 
 ## 类型统计
 
-- `字`: 548
+- `字`: 540
 - `招式`: 446
 - `*`: 322
 - `武功`: 198
@@ -21,16 +21,16 @@
 
 ## 审计标记统计
 
-- `implicit_word`: 540
+- `implicit_word`: 532
 - `inherited_kind`: 338
 - `inherited_named_ability`: 334
 - `exclusive_word`: 253
 - `free_text`: 140
 - `missing_indent_for_inherited`: 112
-- `author_corrected`: 108
+- `author_corrected`: 109
 - `unit_specific_ability`: 101
 - `nested_continuation_line`: 57
-- `author_confirmed_structure`: 13
+- `author_confirmed_structure`: 14
 - `continuation_line`: 10
 - `nested_named_line`: 7
 - `nested_indented_line`: 5
@@ -1359,7 +1359,7 @@
 
 ## 无前缀且按字处理的特技
 
-- 数量：540
+- 数量：532
 
 ### 丁鹏 / 战斗人物!2:4
 
@@ -2210,8 +2210,8 @@
 ### 赤尊信 / 战斗人物!106:1
 
 - 当前判断：`字` / 名称：`【盗霸】`
-- 标记：`implicit_word, exclusive_word`
-- 原文：【盗霸】：每张自由切换武器，回合中每出现一种武器攻击倍数+1，不能连用同一武器；兵器物品与此特技共同作用（博）
+- 标记：`author_confirmed_structure, author_corrected, exclusive_word, implicit_word`
+- 原文：【盗霸】：每张自由切换武器，回合中每出现一种武器攻击倍数+1，不能连用同一武器；兵器物品与此特技共同作用（博） 剑：本张禁敌闪避，下张兵器效果*2 刀：本张破防，下张抢先攻击 枪：本回合攻击倍数+1 弓：本张无攻击力，非对阵一人-500 棍杖：本张处抵挡一不利效果（包括本张结束处施放的特技）；受攻击反击300 奇门（不享受剑*2）：本张封敌一特技（异常），下...
 
 ### 方夜羽 / 战斗人物!108:3
 

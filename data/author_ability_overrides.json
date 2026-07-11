@@ -85,6 +85,21 @@
     {
       "match": {
         "source_sheet": "战斗人物",
+        "source_row": 106,
+        "ordinal": 1
+      },
+      "set": {
+        "text": "【盗霸】：每张自由切换武器，回合中每出现一种武器攻击倍数+1，不能连用同一武器；兵器物品与此特技共同作用（博）\n剑：本张禁敌闪避，下张兵器效果*2\n刀：本张破防，下张抢先攻击\n枪：本回合攻击倍数+1\n弓：本张无攻击力，非对阵一人-500\n棍杖：本张处抵挡一不利效果（包括本张结束处施放的特技）；受攻击反击300\n奇门（不享受剑*2）：本张封敌一特技（异常），下张双持\n盾（不享受剑*2）：本张物理免疫，攻击倍数为1，震敌使之自-100\n鞭：无"
+      },
+      "add_flags": [
+        "author_corrected",
+        "author_confirmed_structure"
+      ],
+      "note": "赤尊信：剑/刀/枪/弓/棍杖/奇门/盾/鞭是【盗霸】子项目，不是真正独立特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
         "source_row": 148,
         "ordinal": 1
       },
@@ -2176,6 +2191,70 @@
     }
   ],
   "ability_deletes": [
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 106,
+        "ordinal": 2
+      },
+      "note": "赤尊信：剑是【盗霸】子项目，不是真正独立特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 106,
+        "ordinal": 3
+      },
+      "note": "赤尊信：刀是【盗霸】子项目，不是真正独立特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 106,
+        "ordinal": 4
+      },
+      "note": "赤尊信：枪是【盗霸】子项目，不是真正独立特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 106,
+        "ordinal": 5
+      },
+      "note": "赤尊信：弓是【盗霸】子项目，不是真正独立特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 106,
+        "ordinal": 6
+      },
+      "note": "赤尊信：棍杖是【盗霸】子项目，不是真正独立特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 106,
+        "ordinal": 7
+      },
+      "note": "赤尊信：奇门是【盗霸】子项目，不是真正独立特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 106,
+        "ordinal": 8
+      },
+      "note": "赤尊信：盾是【盗霸】子项目，不是真正独立特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 106,
+        "ordinal": 9
+      },
+      "note": "赤尊信：鞭是【盗霸】子项目，不是真正独立特技。"
+    },
     {
       "match": {
         "source_sheet": "物品",

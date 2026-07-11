@@ -1,10 +1,10 @@
 {
-  "ability_count": 1963,
+  "ability_count": 1955,
   "ability_count_per_card": {
     "histogram": {
       "0": 3,
       "1": 62,
-      "2": 97,
+      "2": 98,
       "3": 132,
       "4": 98,
       "5": 59,
@@ -12,7 +12,7 @@
       "7": 23,
       "8": 10,
       "9": 2,
-      "10": 6,
+      "10": 5,
       "11": 4,
       "13": 1,
       "14": 2,
@@ -20,7 +20,7 @@
       "16": 1
     },
     "max": 16,
-    "mean": 3.7,
+    "mean": 3.68,
     "median": 3,
     "min": 0
   },
@@ -32,7 +32,7 @@
     "战斗人物": {
       "*": 295,
       "内功": 124,
-      "字": 449,
+      "字": 441,
       "技能": 185,
       "招式": 430,
       "武功": 194,
@@ -64,14 +64,14 @@
   "ability_kind_counts": {
     "*": 317,
     "内功": 131,
-    "字": 545,
+    "字": 537,
     "技能": 196,
     "招式": 442,
     "武功": 198,
     "符卡": 3,
     "说明/自由文本": 131
   },
-  "all_ability_record_count": 1977,
+  "all_ability_record_count": 1969,
   "all_record_count": 536,
   "author_counts": {
     "其他": 73,
@@ -166,13 +166,6 @@
       "category": "战斗人物",
       "source_work": "说英雄谁是英雄",
       "title": "元十三限"
-    },
-    {
-      "ability_count": 10,
-      "author_group": "黄易",
-      "category": "战斗人物",
-      "source_work": "覆雨翻云",
-      "title": "赤尊信"
     },
     {
       "ability_count": 10,
@@ -306,6 +299,13 @@
       "category": "战斗人物",
       "source_work": "覆雨翻云",
       "title": "厉若海"
+    },
+    {
+      "ability_count": 7,
+      "author_group": "金庸",
+      "category": "战斗人物",
+      "source_work": "倚天屠龙记",
+      "title": "郭襄"
     }
   ],
   "high_text_cards": [
@@ -448,7 +448,7 @@
       "title": "韦亦玄"
     },
     {
-      "ability_count": 10,
+      "ability_count": 2,
       "category": "战斗人物",
       "text_length": 401,
       "title": "赤尊信"
@@ -2419,12 +2419,12 @@
   },
   "owner_unit_ability_count": 103,
   "review_flag_counts": {
-    "author_confirmed_structure": 13,
-    "author_corrected": 108,
+    "author_confirmed_structure": 14,
+    "author_corrected": 109,
     "continuation_line": 10,
     "exclusive_word": 250,
     "free_text": 139,
-    "implicit_word": 537,
+    "implicit_word": 529,
     "indented_implicit_word": 1,
     "inherited_kind": 337,
     "inherited_named_ability": 333,
@@ -2438,7 +2438,7 @@
     "unnamed_star_line": 5
   },
   "source_field_counts": {
-    "description": 1963
+    "description": 1955
   },
   "source_work_top30": {
     "七武器": 6,
