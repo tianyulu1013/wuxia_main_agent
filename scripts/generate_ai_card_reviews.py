@@ -195,6 +195,102 @@ ELECTRONICIZATION_PATTERNS = [
 ]
 
 
+RULE_CONCEPT_PATTERNS = {
+    "attack_damage_life_loss": {
+        "label": "攻击/伤害/生命流失",
+        "terms": ["攻击", "伤害", "生命流失", "流失", "失去生命", "受伤", "扣"],
+        "note": "规则书需区分攻击、伤害与生命流失；生命流失扣生命但不算攻击或伤害。",
+    },
+    "kill_death_life": {
+        "label": "杀死/死亡/生命",
+        "terms": ["杀死", "死亡", "彻底死亡", "灭杀", "生命", "血", "重生", "复活"],
+        "note": "杀死可能绕过生命扣减；无生命属性、多生命阶段和重生应独立判断。",
+    },
+    "leaving_presence": {
+        "label": "离场/不在场/找不到/无此人",
+        "terms": ["离场", "不在场", "找不到", "无此人", "消失", "破空", "退出"],
+        "note": "离场不等于死亡；找不到、无此人、不在场应保留独立状态。",
+    },
+    "clear_card_object": {
+        "label": "清除/卡与人物单元",
+        "terms": ["清除", "人物单元", "这张卡", "卡上", "附加人物", "称号", "物品"],
+        "note": "清除针对卡而不是单个人物单元，可能牵连卡上的其他对象。",
+    },
+    "turn_round_timing": {
+        "label": "回合/轮/时机",
+        "terms": ["回合", "下回合", "每回合", "轮", "下轮", "转轮", "任意时刻", "立即", "同时"],
+        "note": "回合与轮不同；任意时刻、立即、同时会提高结算顺序风险。",
+    },
+    "scene_location": {
+        "label": "场景/地点/空间",
+        "terms": ["场景", "地点", "位置", "到达", "寻找", "山庄", "空间"],
+        "note": "场景是全局环境，地点是位置概念；卡牌可制造多个地点或特殊空间。",
+    },
+    "deck_discard_zones": {
+        "label": "牌堆/弃牌/本局弃卡",
+        "terms": ["摸", "抽", "弃", "弃牌", "弃牌堆", "本局弃卡", "洗回", "补抽"],
+        "note": "抽牌堆、弃牌堆、本局弃卡堆是不同区域，随机弃和自己弃的去向不同。",
+    },
+    "ability_learning_copy": {
+        "label": "学习/复制/特技所有权",
+        "terms": ["学会", "学习", "复制", "模仿", "偷走", "获得特技", "失去特技", "特技失灵"],
+        "note": "学习、复制、屏蔽、失去特技需要区分特技名称、特技文本与所属人物。",
+    },
+    "exclusive_identity": {
+        "label": "专属/身份",
+        "terms": ["身份", "（身份）"],
+        "note": "专属以特技名两侧【】判断；身份描述与身份特技都可能产生身份属性。",
+    },
+    "faction_alliance_player_side": {
+        "label": "玩家/一方/阵营/结盟",
+        "terms": ["玩家", "一方", "阵营", "结盟", "盟主", "非己方", "己方"],
+        "note": "玩家、一方、阵营、结盟是不同层级，不应混同。",
+    },
+    "manual_text_ruling": {
+        "label": "文本修改/人工裁定",
+        "terms": ["删", "字", "文本", "抹去", "重新解释", "只剩", "控制几率"],
+        "note": "文本修改类效果短期应进入人工裁定层，不强求程序化。",
+    },
+    "multi_unit": {
+        "label": "多人一卡/共享生命",
+        "terms": ["七子", "二老", "四侠", "三人组", "两人", "各自", "共同", "共享", "全体"],
+        "note": "多人一卡需要区分物理卡、人物单元、共同特技和共享生命池。",
+    },
+}
+
+
+RULE_CONCEPT_WEIGHTS = {
+    "attack_damage_life_loss": 0.35,
+    "kill_death_life": 0.45,
+    "leaving_presence": 0.9,
+    "clear_card_object": 0.85,
+    "turn_round_timing": 0.55,
+    "scene_location": 0.75,
+    "deck_discard_zones": 0.65,
+    "ability_learning_copy": 0.7,
+    "exclusive_identity": 0.25,
+    "faction_alliance_player_side": 0.25,
+    "manual_text_ruling": 1.15,
+    "multi_unit": 1.0,
+}
+
+
+CONCEPT_TO_ROLES = {
+    "attack_damage_life_loss": None,
+    "kill_death_life": None,
+    "leaving_presence": "空间/离场裁定",
+    "clear_card_object": "对象清除裁定",
+    "turn_round_timing": None,
+    "scene_location": "位置/场景",
+    "deck_discard_zones": "资源/牌堆",
+    "ability_learning_copy": "资源/学习",
+    "exclusive_identity": None,
+    "faction_alliance_player_side": None,
+    "manual_text_ruling": "人工裁定",
+    "multi_unit": "多人一卡",
+}
+
+
 def load_jsonl(path: Path) -> list[dict]:
     records = []
     with path.open("r", encoding="utf-8") as f:
@@ -279,6 +375,53 @@ def classify_electronicization(text: str, ability_count: int) -> tuple[str, list
     return level, reasons[:8], raw
 
 
+def detect_rule_concepts(text: str, card: dict | None = None) -> list[dict]:
+    concepts = []
+    for key, cfg in RULE_CONCEPT_PATTERNS.items():
+        hits = {term: text.count(term) for term in cfg["terms"] if text.count(term)}
+        if key == "attack_damage_life_loss":
+            has_life_loss = any(term in text for term in ["生命流失", "流失", "失去生命"])
+            has_attack_damage_pair = "攻击" in text and "伤害" in text
+            if not (has_life_loss or has_attack_damage_pair):
+                hits = {}
+        elif key == "turn_round_timing":
+            timing_terms = ["轮", "任意时刻", "同时", "立即", "下轮", "转轮"]
+            has_specific_timing = any(term in text for term in timing_terms)
+            has_dense_turn_text = text.count("回合") >= 3
+            if not (has_specific_timing or has_dense_turn_text):
+                hits = {}
+        elif key == "exclusive_identity" and card is not None:
+            fields = card.get("fields") or {}
+            abilities = card.get("abilities") or []
+            hits = {}
+            identity_text = str(fields.get("identity") or fields.get("description_identity") or "")
+            if identity_text:
+                hits["身份字段"] = 1
+            identity_ability_count = sum(1 for ability in abilities if ability.get("is_identity"))
+            exclusive_ability_count = sum(1 for ability in abilities if ability.get("is_exclusive"))
+            if identity_ability_count:
+                hits["身份特技"] = identity_ability_count
+            if exclusive_ability_count:
+                hits["专属特技"] = exclusive_ability_count
+        if not hits:
+            continue
+        score = sum(hits.values())
+        concepts.append(
+            {
+                "key": key,
+                "label": cfg["label"],
+                "hits": hits,
+                "score": score,
+                "note": cfg["note"],
+            }
+        )
+    return sorted(concepts, key=lambda item: (-item["score"], item["label"]))
+
+
+def concept_keys(concepts: list[dict]) -> set[str]:
+    return {concept["key"] for concept in concepts}
+
+
 def category_baseline(category: str) -> float:
     return {
         "combat_characters": 1.75,
@@ -297,6 +440,7 @@ def first_pass(card: dict) -> dict:
     abilities = card.get("abilities") or []
     text = card.get("all_text") or "\n".join(str(v) for v in fields.values() if v is not None)
     num = number_features(text)
+    rule_concepts = detect_rule_concepts(text, card)
 
     dimension_scores = {}
     hit_breakdown = {}
@@ -364,6 +508,8 @@ def first_pass(card: dict) -> dict:
         evidence.append(f"最大显式数值约 {num['max_damage_number']}")
     if ability_count:
         evidence.append(f"解析特技 {ability_count} 条")
+    if rule_concepts:
+        evidence.append("规则概念：" + "、".join(concept["label"] for concept in rule_concepts[:3]))
     top_dims = sorted(dimension_scores.items(), key=lambda kv: kv[1], reverse=True)[:3]
     evidence.extend(f"{DIMENSION_KEYWORDS[k]['label']} {v}" for k, v in top_dims if v > 1.2)
 
@@ -379,6 +525,7 @@ def first_pass(card: dict) -> dict:
         "text_length": text_len,
         "roles": roles,
         "tags": roles,
+        "rule_concepts": rule_concepts,
         "scores": {
             "strength_raw": strength,
             "strength_stars": stars(strength),
@@ -486,6 +633,145 @@ def second_pass(reviews: list[dict]) -> list[dict]:
     return reviews
 
 
+def third_pass_rule_aware(reviews: list[dict]) -> list[dict]:
+    for review in reviews:
+        concepts = review.get("rule_concepts") or []
+        keys = concept_keys(concepts)
+        roles = list(review["roles"])
+        risks = list(review["risks"])
+        electronic_reasons = list(review["electronicization"]["reasons"])
+
+        for key in keys:
+            role = CONCEPT_TO_ROLES.get(key)
+            if role and role not in roles:
+                roles.append(role)
+
+        concept_text = json.dumps(concepts, ensure_ascii=False)
+        if "attack_damage_life_loss" in keys and any(term in concept_text for term in ["生命流失", "流失", "失去生命"]):
+            risks.append({"name": "攻击/伤害/生命流失概念边界", "level": "中", "hits": 1})
+        if "clear_card_object" in keys:
+            risks.append({"name": "卡对象与人物单元边界", "level": "中", "hits": 1})
+        if "turn_round_timing" in keys and any(term in concept_text for term in ["轮", "任意时刻", "同时"]):
+            risks.append({"name": "回合/轮/时机边界", "level": "中", "hits": 1})
+        if "leaving_presence" in keys:
+            risks.append({"name": "存在状态边界", "level": "中", "hits": 1})
+        if "manual_text_ruling" in keys:
+            risks.append({"name": "人工裁定边界", "level": "高", "hits": 1})
+        if "multi_unit" in keys:
+            risks.append({"name": "多人一卡结构边界", "level": "中", "hits": 1})
+
+        if "manual_text_ruling" in keys and "人工解释" not in electronic_reasons:
+            electronic_reasons.append("人工解释")
+        if {"leaving_presence", "scene_location"} & keys and "空间系统" not in electronic_reasons:
+            electronic_reasons.append("空间系统")
+        if "turn_round_timing" in keys and "动态目标/顺序" not in electronic_reasons:
+            electronic_reasons.append("动态目标/顺序")
+        if "multi_unit" in keys and "多人一卡" not in electronic_reasons:
+            electronic_reasons.append("多人一卡")
+        if "deck_discard_zones" in keys and "牌堆区域" not in electronic_reasons:
+            electronic_reasons.append("牌堆区域")
+
+        concept_load = sum(min(4, concept["score"]) for concept in concepts)
+        rule_boundary_score = 1.0 + sum(RULE_CONCEPT_WEIGHTS.get(concept["key"], 0.4) for concept in concepts)
+        rule_boundary_score += min(0.8, concept_load * 0.03)
+        if {"manual_text_ruling", "multi_unit", "leaving_presence"} & keys:
+            rule_boundary_score += 0.35
+        if {"turn_round_timing", "clear_card_object", "attack_damage_life_loss"} & keys:
+            rule_boundary_score += 0.18
+        rule_boundary_score = min(5.0, rule_boundary_score)
+
+        complexity_rule_adjusted = review["scores"]["complexity"]
+        if rule_boundary_score >= 4.2:
+            complexity_rule_adjusted = min(5.0, complexity_rule_adjusted + 0.25)
+        if "manual_text_ruling" in keys:
+            complexity_rule_adjusted = min(5.0, complexity_rule_adjusted + 0.25)
+
+        strength_rule_adjusted = review["scores"]["strength_adjusted"]
+        # 规则复杂不自动等于强。只有胜负、杀死、清除、稳定无敌类概念才轻微提高影响力估计。
+        if {"kill_death_life", "clear_card_object"} & keys:
+            strength_rule_adjusted = min(5.0, strength_rule_adjusted + 0.08)
+        if "special_victory" in review["feature_hits"] and review["feature_hits"]["special_victory"] >= 2:
+            strength_rule_adjusted = min(5.0, strength_rule_adjusted + 0.08)
+
+        deduped_risks = {}
+        for risk in risks:
+            existing = deduped_risks.get(risk["name"])
+            if existing is None or risk["hits"] > existing["hits"] or risk["level"] == "高":
+                deduped_risks[risk["name"]] = risk
+
+        review["roles"] = roles[:10]
+        review["tags"] = review["roles"]
+        review["risks"] = sorted(deduped_risks.values(), key=lambda item: (-item["hits"], item["name"]))[:12]
+        review["electronicization"]["reasons"] = electronic_reasons[:10]
+        review["scores"]["rule_boundary"] = round(rule_boundary_score, 2)
+        review["scores"]["complexity_rule_adjusted"] = round(complexity_rule_adjusted, 2)
+        review["scores"]["complexity_rule_adjusted_stars"] = stars(complexity_rule_adjusted)
+        review["scores"]["strength_rule_adjusted"] = round(strength_rule_adjusted, 2)
+        review["scores"]["strength_rule_adjusted_stars"] = stars(strength_rule_adjusted)
+        review["ai_review_round3"] = {
+            "round": 3,
+            "basis": "结合规则书审计和已确认规则素材，对规则概念边界进行标注；仍为评语层。",
+            "rule_concepts": [concept["label"] for concept in concepts],
+            "summary": build_round3_summary(review),
+        }
+    return reviews
+
+
+def build_round3_summary(review: dict) -> str:
+    concepts = [concept["label"] for concept in review.get("rule_concepts", [])[:4]]
+    if not concepts:
+        return "第三轮未发现需要特别规则概念校正的文本，沿用第二轮评价。"
+    return (
+        "第三轮识别到规则概念："
+        + "、".join(concepts)
+        + f"；规则边界复杂度 {review['scores']['rule_boundary']}。"
+    )
+
+
+def fourth_pass_converge(reviews: list[dict]) -> list[dict]:
+    by_category = defaultdict(list)
+    for review in reviews:
+        by_category[review["category"]].append(review)
+
+    for review in reviews:
+        category_reviews = by_category[review["category"]]
+        rule_values = [r["scores"].get("rule_boundary", 1.0) for r in category_reviews]
+        final_strength = review["scores"].get("strength_rule_adjusted", review["scores"]["strength_adjusted"])
+        final_complexity = review["scores"].get("complexity_rule_adjusted", review["scores"]["complexity"])
+        rule_pct = percentile_rank(rule_values, review["scores"].get("rule_boundary", 1.0))
+
+        final_watch_reasons = []
+        if review["electronicization"]["level"] in {"高", "极高"}:
+            final_watch_reasons.append("电子化/结算风险较高")
+        if review["scores"].get("rule_boundary", 1.0) >= 4.0:
+            final_watch_reasons.append("规则概念边界复杂")
+        if rule_pct >= 0.9:
+            final_watch_reasons.append("同类规则边界复杂度前 10%")
+        if review["relative_position"]["category_complexity_percentile"] >= 0.92:
+            final_watch_reasons.append("同类文本复杂度靠前")
+        if review["relative_position"]["category_strength_percentile"] >= 0.96:
+            final_watch_reasons.append("同类影响力靠前")
+        if "人工裁定边界" in [risk["name"] for risk in review["risks"]]:
+            final_watch_reasons.append("人工裁定边界")
+        if review["confidence"] == "低":
+            final_watch_reasons.append("自动理解置信度低")
+
+        review["scores"]["final_strength"] = round(final_strength, 2)
+        review["scores"]["final_strength_stars"] = stars(final_strength)
+        review["scores"]["final_complexity"] = round(final_complexity, 2)
+        review["scores"]["final_complexity_stars"] = stars(final_complexity)
+        review["relative_position"]["category_rule_boundary_percentile"] = round(rule_pct, 3)
+        review["ai_review_round4"] = {
+            "round": 4,
+            "summary": (
+                f"第四轮收敛：最终影响力 {stars(final_strength)}，最终复杂度 {stars(final_complexity)}；"
+                f"规则边界分位 {rule_pct:.0%}。"
+            ),
+            "watch_reasons": final_watch_reasons,
+        }
+    return reviews
+
+
 def write_jsonl(path: Path, records: list[dict]) -> None:
     with path.open("w", encoding="utf-8", newline="\n") as f:
         for record in records:
@@ -503,12 +789,14 @@ def write_csv(path: Path, reviews: list[dict]) -> None:
         "author_group",
         "source_work",
         "life",
-        "strength_adjusted",
+        "final_strength",
         "strength_stars",
-        "complexity",
+        "final_complexity",
         "complexity_stars",
+        "rule_boundary",
         "electronicization_level",
         "roles",
+        "rule_concepts",
         "risks",
         "needs_author_review",
         "summary",
@@ -524,15 +812,17 @@ def write_csv(path: Path, reviews: list[dict]) -> None:
                     "author_group": review.get("author_group") or "",
                     "source_work": review.get("source_work") or "",
                     "life": review.get("life") if review.get("life") is not None else "",
-                    "strength_adjusted": review["scores"]["strength_adjusted"],
-                    "strength_stars": review["scores"]["strength_adjusted_stars"],
-                    "complexity": review["scores"]["complexity"],
-                    "complexity_stars": review["scores"]["complexity_stars"],
+                    "final_strength": review["scores"].get("final_strength", review["scores"]["strength_adjusted"]),
+                    "strength_stars": review["scores"].get("final_strength_stars", review["scores"]["strength_adjusted_stars"]),
+                    "final_complexity": review["scores"].get("final_complexity", review["scores"]["complexity"]),
+                    "complexity_stars": review["scores"].get("final_complexity_stars", review["scores"]["complexity_stars"]),
+                    "rule_boundary": review["scores"].get("rule_boundary", ""),
                     "electronicization_level": review["electronicization"]["level"],
                     "roles": "、".join(review["roles"]),
+                    "rule_concepts": "、".join(concept["label"] for concept in review.get("rule_concepts", [])),
                     "risks": "、".join(risk["name"] for risk in review["risks"]),
-                    "needs_author_review": "、".join(review["ai_review_round2"]["needs_author_review"]),
-                    "summary": review["ai_review_round2"]["summary"],
+                    "needs_author_review": "、".join(review.get("ai_review_round4", {}).get("watch_reasons", review["ai_review_round2"]["needs_author_review"])),
+                    "summary": review.get("ai_review_round4", review["ai_review_round2"])["summary"],
                 }
             )
 
@@ -561,7 +851,8 @@ def build_summary(reviews: list[dict]) -> dict:
     role_counts = Counter(role for r in reviews for role in r["roles"])
     risk_counts = Counter(risk["name"] for r in reviews for risk in r["risks"])
     electronicization_counts = Counter(r["electronicization"]["level"] for r in reviews)
-    needs_review = [r for r in reviews if r["ai_review_round2"]["needs_author_review"]]
+    needs_review = [r for r in reviews if r.get("ai_review_round4", {}).get("watch_reasons", r["ai_review_round2"]["needs_author_review"])]
+    rule_concept_counts = Counter(concept["label"] for r in reviews for concept in r.get("rule_concepts", []))
 
     return {
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -570,12 +861,14 @@ def build_summary(reviews: list[dict]) -> dict:
         "category_counts": dict(category_counts),
         "role_counts": dict(role_counts.most_common()),
         "risk_counts": dict(risk_counts.most_common()),
+        "rule_concept_counts": dict(rule_concept_counts.most_common()),
         "electronicization_counts": dict(electronicization_counts),
-        "median_strength_adjusted": median(r["scores"]["strength_adjusted"] for r in reviews),
-        "median_complexity": median(r["scores"]["complexity"] for r in reviews),
+        "median_strength_adjusted": median(r["scores"].get("final_strength", r["scores"]["strength_adjusted"]) for r in reviews),
+        "median_complexity": median(r["scores"].get("final_complexity", r["scores"]["complexity"]) for r in reviews),
         "needs_author_review_count": len(needs_review),
-        "top_strength": top_cards(reviews, ("scores", "strength_adjusted")),
-        "top_complexity": top_cards(reviews, ("scores", "complexity")),
+        "top_strength": top_cards(reviews, ("scores", "final_strength")),
+        "top_complexity": top_cards(reviews, ("scores", "final_complexity")),
+        "top_rule_boundary": top_cards(reviews, ("scores", "rule_boundary")),
         "top_rule_disruption": top_cards(reviews, ("scores", "rule_disruption")),
         "highest_electronicization_risk": [
             {
@@ -613,12 +906,20 @@ def write_markdown(summary: dict, reviews: list[dict]) -> None:
     for name, count in list(summary["risk_counts"].items())[:20]:
         lines.append(f"- {name}: {count}")
 
-    lines.extend(["", "## 强度初评前 20", ""])
+    lines.extend(["", "## 规则概念分布", ""])
+    for name, count in list(summary["rule_concept_counts"].items())[:20]:
+        lines.append(f"- {name}: {count}")
+
+    lines.extend(["", "## 最终影响力前 20", ""])
     for item in summary["top_strength"]:
         lines.append(f"- {item['title']}（{item['category']}）: {item['value']}，{', '.join(item['roles'])}")
 
-    lines.extend(["", "## 复杂度前 20", ""])
+    lines.extend(["", "## 最终复杂度前 20", ""])
     for item in summary["top_complexity"]:
+        lines.append(f"- {item['title']}（{item['category']}）: {item['value']}，{', '.join(item['roles'])}")
+
+    lines.extend(["", "## 规则边界复杂度前 20", ""])
+    for item in summary["top_rule_boundary"]:
         lines.append(f"- {item['title']}（{item['category']}）: {item['value']}，{', '.join(item['roles'])}")
 
     lines.extend(["", "## 规则破坏/解释风险前 20", ""])
@@ -635,8 +936,8 @@ def write_markdown(summary: dict, reviews: list[dict]) -> None:
             "",
             "## 明天建议先看的内容",
             "",
-            "1. 先看 `data/review/ai_card_reviews_summary.json` 的 `top_strength`、`top_complexity`、`highest_electronicization_risk`。",
-            "2. 再抽查 `data/review/ai_card_reviews_round2.jsonl` 中 `ai_review_round2.needs_author_review` 非空的卡。",
+            "1. 先看 `data/review/ai_card_reviews_summary.json` 的 `top_strength`、`top_complexity`、`top_rule_boundary`、`highest_electronicization_risk`。",
+            "2. 再抽查 `data/review/ai_card_reviews_round4.jsonl` 中 `ai_review_round4.watch_reasons` 非空的卡。",
             "3. 如果某类判断偏差明显，直接修改评价脚本的关键词/权重后重跑；不要改源数据库。",
         ]
     )
@@ -678,8 +979,9 @@ def write_understanding_map(reviews: list[dict]) -> None:
                 f"### {author}",
                 "",
                 f"- 卡牌数：{len(items)}",
-                f"- 平均强度：{average([r['scores']['strength_adjusted'] for r in items]):.2f}",
-                f"- 平均复杂度：{average([r['scores']['complexity'] for r in items]):.2f}",
+                f"- 平均最终影响力：{average([r['scores'].get('final_strength', r['scores']['strength_adjusted']) for r in items]):.2f}",
+                f"- 平均最终复杂度：{average([r['scores'].get('final_complexity', r['scores']['complexity']) for r in items]):.2f}",
+                f"- 平均规则边界：{average([r['scores'].get('rule_boundary', 1.0) for r in items]):.2f}",
                 f"- 高/极高电子化风险：{electronic_high}",
                 f"- 主要定位：{', '.join(name for name, _ in role_counts.most_common(5)) or '无'}",
                 f"- 主要风险：{', '.join(name for name, _ in risk_counts.most_common(5)) or '无'}",
@@ -694,10 +996,11 @@ def write_understanding_map(reviews: list[dict]) -> None:
                 f"### {category}",
                 "",
                 f"- 数量：{len(items)}",
-                f"- 平均强度：{average([r['scores']['strength_adjusted'] for r in items]):.2f}",
-                f"- 平均复杂度：{average([r['scores']['complexity'] for r in items]):.2f}",
-                f"- 复杂度前五：{', '.join(r['title'] for r in sorted(items, key=lambda r: r['scores']['complexity'], reverse=True)[:5])}",
-                f"- 强度前五：{', '.join(r['title'] for r in sorted(items, key=lambda r: r['scores']['strength_adjusted'], reverse=True)[:5])}",
+                f"- 平均最终影响力：{average([r['scores'].get('final_strength', r['scores']['strength_adjusted']) for r in items]):.2f}",
+                f"- 平均最终复杂度：{average([r['scores'].get('final_complexity', r['scores']['complexity']) for r in items]):.2f}",
+                f"- 平均规则边界：{average([r['scores'].get('rule_boundary', 1.0) for r in items]):.2f}",
+                f"- 复杂度前五：{', '.join(r['title'] for r in sorted(items, key=lambda r: r['scores'].get('final_complexity', r['scores']['complexity']), reverse=True)[:5])}",
+                f"- 影响力前五：{', '.join(r['title'] for r in sorted(items, key=lambda r: r['scores'].get('final_strength', r['scores']['strength_adjusted']), reverse=True)[:5])}",
                 "",
             ]
         )
@@ -711,9 +1014,9 @@ def write_understanding_map(reviews: list[dict]) -> None:
                 f"### {role}",
                 "",
                 f"- 数量：{len(items)}",
-                f"- 平均强度：{average([r['scores']['strength_adjusted'] for r in items]):.2f}",
-                f"- 平均复杂度：{average([r['scores']['complexity'] for r in items]):.2f}",
-                f"- 代表性高强卡：{', '.join(r['title'] for r in sorted(items, key=lambda r: r['scores']['strength_adjusted'], reverse=True)[:8])}",
+                f"- 平均最终影响力：{average([r['scores'].get('final_strength', r['scores']['strength_adjusted']) for r in items]):.2f}",
+                f"- 平均最终复杂度：{average([r['scores'].get('final_complexity', r['scores']['complexity']) for r in items]):.2f}",
+                f"- 代表性高影响力卡：{', '.join(r['title'] for r in sorted(items, key=lambda r: r['scores'].get('final_strength', r['scores']['strength_adjusted']), reverse=True)[:8])}",
                 "",
             ]
         )
@@ -725,6 +1028,7 @@ def write_understanding_map(reviews: list[dict]) -> None:
             "- 强度不是平衡判断，只是从文本中估计“对局影响力”；你的游戏本身不追求单局平衡。",
             "- 复杂度和电子化风险比强度更值得优先看，因为它们更接近规则稳定性问题。",
             "- 规则解释高风险卡不等于坏卡，很多是这个游戏最有味道的卡；只是需要人工裁定边界。",
+            "- 第三轮开始引入规则书和已确认规则素材，重点修正攻击/伤害/生命流失、回合/轮、离场/清除、人物单元、场景/地点等概念边界。",
             "- 后续如果你纠正某张卡的定位，应该写入评语层，作为下一轮评价的人工样本。",
         ]
     )
@@ -733,12 +1037,13 @@ def write_understanding_map(reviews: list[dict]) -> None:
 
 
 def write_author_watchlist(reviews: list[dict]) -> None:
-    watchlist = [r for r in reviews if r["ai_review_round2"]["needs_author_review"]]
+    watchlist = [r for r in reviews if r.get("ai_review_round4", {}).get("watch_reasons")]
     watchlist.sort(
         key=lambda r: (
             r["electronicization"]["score_raw"],
-            r["scores"]["complexity"],
-            r["scores"]["strength_adjusted"],
+            r["scores"].get("rule_boundary", 1.0),
+            r["scores"].get("final_complexity", r["scores"]["complexity"]),
+            r["scores"].get("final_strength", r["scores"]["strength_adjusted"]),
         ),
         reverse=True,
     )
@@ -747,32 +1052,34 @@ def write_author_watchlist(reviews: list[dict]) -> None:
         "# AI 卡牌评价作者复核清单 v0.1",
         "",
         f"- 复核卡牌数：{len(watchlist)}",
-        "- 目的：列出 AI 第二轮后仍认为需要作者纠偏、确认或重点看的卡。",
+        "- 目的：列出 AI 第四轮后仍认为需要作者纠偏、确认或重点看的卡。",
         "- 注意：这是评语层清单，不是改卡建议，也不改源数据库。",
         "",
     ]
 
-    by_reason = Counter(reason for r in watchlist for reason in r["ai_review_round2"]["needs_author_review"])
+    by_reason = Counter(reason for r in watchlist for reason in r["ai_review_round4"]["watch_reasons"])
     lines.extend(["## 复核原因统计", ""])
     for reason, count in by_reason.most_common():
         lines.append(f"- {reason}: {count}")
 
     lines.extend(["", "## 复核列表", ""])
     for index, review in enumerate(watchlist, start=1):
-        reasons = "、".join(review["ai_review_round2"]["needs_author_review"])
+        reasons = "、".join(review["ai_review_round4"]["watch_reasons"])
         risks = "、".join(risk["name"] for risk in review["risks"][:4]) or "无显式风险标签"
         roles = "、".join(review["roles"][:5])
+        concepts = "、".join(concept["label"] for concept in review.get("rule_concepts", [])[:6]) or "无显式规则概念"
         lines.extend(
             [
                 f"### {index}. {review['title']}（{review['category_label']}）",
                 "",
                 f"- 作者/出处：{review.get('author_group') or '未标'} / {review.get('source_work') or '未标'}",
                 f"- 定位：{roles}",
-                f"- 强度：{review['scores']['strength_adjusted']} {review['scores']['strength_adjusted_stars']}；复杂度：{review['scores']['complexity']} {review['scores']['complexity_stars']}",
+                f"- 最终影响力：{review['scores']['final_strength']} {review['scores']['final_strength_stars']}；最终复杂度：{review['scores']['final_complexity']} {review['scores']['final_complexity_stars']}；规则边界：{review['scores']['rule_boundary']}",
                 f"- 电子化风险：{review['electronicization']['level']}（{', '.join(review['electronicization']['reasons']) or '无'}）",
+                f"- 规则概念：{concepts}",
                 f"- 复核原因：{reasons}",
                 f"- 风险标签：{risks}",
-                f"- AI 摘要：{review['ai_review']['summary']}",
+                f"- AI 摘要：{review['ai_review_round4']['summary']}",
                 "",
             ]
         )
@@ -785,17 +1092,22 @@ def main() -> None:
     cards = load_jsonl(CARDS_PATH)
     round1 = [first_pass(card) for card in cards]
     round2 = second_pass(json.loads(json.dumps(round1, ensure_ascii=False)))
-    summary = build_summary(round2)
+    round3 = third_pass_rule_aware(json.loads(json.dumps(round2, ensure_ascii=False)))
+    round4 = fourth_pass_converge(json.loads(json.dumps(round3, ensure_ascii=False)))
+    summary = build_summary(round4)
 
     write_jsonl(OUT_DIR / "ai_card_reviews_round1.jsonl", round1)
     write_jsonl(OUT_DIR / "ai_card_reviews_round2.jsonl", round2)
     write_csv(OUT_DIR / "ai_card_reviews_round2.csv", round2)
+    write_jsonl(OUT_DIR / "ai_card_reviews_round3.jsonl", round3)
+    write_jsonl(OUT_DIR / "ai_card_reviews_round4.jsonl", round4)
+    write_csv(OUT_DIR / "ai_card_reviews_round4.csv", round4)
     write_json(OUT_DIR / "ai_card_reviews_summary.json", summary)
-    write_markdown(summary, round2)
-    write_understanding_map(round2)
-    write_author_watchlist(round2)
+    write_markdown(summary, round4)
+    write_understanding_map(round4)
+    write_author_watchlist(round4)
 
-    print(f"reviewed={len(round2)}")
+    print(f"reviewed={len(round4)}")
     print(f"needs_author_review={summary['needs_author_review_count']}")
     print(f"outputs={OUT_DIR}")
 
