@@ -3,7 +3,7 @@
 - 来源 Excel：`outputs\2025-excel-sync-candidate\已制作_2025日志同步候选_PSD校准.xlsx`
 - SQLite：`data\cards.sqlite`
 - JSONL：`data\cards_current/all_cards.jsonl`
-- 导入时间 UTC：`2026-07-11T17:20:45.465519+00:00`
+- 导入时间 UTC：`2026-07-11T20:27:42.460596+00:00`
 - 总记录数：536
 
 ## Sheet 统计
@@ -29,7 +29,7 @@
 ## 作者统计
 
 - 金庸: 180
-- 古龙: 116
+- 古龙: 118
 - 温瑞安: 75
 - 其他: 74
 - 黄易: 73

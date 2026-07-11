@@ -3,11 +3,13 @@
     "units": [
       {
         "name": "凌退思",
-        "life": "2000"
+        "life": "2000",
+        "gender": "男"
       },
       {
         "name": "凌霜华",
         "life": "100",
+        "gender": "女",
         "relationships": "遇丁典则不论凌霜华因何而死均发生剧情。",
         "no_abilities_confirmed": true
       }
@@ -21,6 +23,7 @@
       {
         "name": "段延庆",
         "life": "2900",
+        "gender": "男",
         "identity": "【恶】 【残】",
         "weapons": [
           "【棍杖】"
@@ -29,6 +32,7 @@
       {
         "name": "叶二娘",
         "life": "2800",
+        "gender": "女",
         "identity": "【恶】",
         "weapons": [
           "【刀】"
@@ -37,6 +41,7 @@
       {
         "name": "岳老三",
         "life": "3400",
+        "gender": "男",
         "identity": "【恶】",
         "weapons": [
           "【奇门】"
@@ -45,6 +50,7 @@
       {
         "name": "云中鹤",
         "life": "2000",
+        "gender": "男",
         "identity": "【恶】",
         "weapons": [
           "【奇门】"
@@ -57,11 +63,13 @@
       {
         "name": "石中玉",
         "life": "1000",
+        "gender": "男",
         "identity": "【恶】 强制出战，不占名额，不参与对战"
       },
       {
         "name": "石清",
         "life": "3000",
+        "gender": "男",
         "weapons": [
           "【剑】"
         ]
@@ -69,6 +77,7 @@
       {
         "name": "闵柔",
         "life": "3000",
+        "gender": "女",
         "weapons": [
           "【剑】"
         ]
@@ -78,37 +87,48 @@
   "十大恶人": {
     "units": [
       {
-        "name": "杜杀"
+        "name": "杜杀",
+        "gender": "男"
       },
       {
-        "name": "哈哈儿"
+        "name": "哈哈儿",
+        "gender": "男"
       },
       {
-        "name": "萧咪咪"
+        "name": "萧咪咪",
+        "gender": "女"
       },
       {
-        "name": "李大嘴"
+        "name": "李大嘴",
+        "gender": "男"
       },
       {
-        "name": "屠娇娇"
+        "name": "屠娇娇",
+        "gender": "不男不女"
       },
       {
-        "name": "阴九幽"
+        "name": "阴九幽",
+        "gender": "男"
       },
       {
-        "name": "轩辕三光"
+        "name": "轩辕三光",
+        "gender": "男"
       },
       {
-        "name": "铁战"
+        "name": "铁战",
+        "gender": "男"
       },
       {
-        "name": "白开心"
+        "name": "白开心",
+        "gender": "男"
       },
       {
-        "name": "欧阳丁"
+        "name": "欧阳丁",
+        "gender": "男"
       },
       {
-        "name": "欧阳当"
+        "name": "欧阳当",
+        "gender": "男"
       }
     ]
   },
@@ -118,11 +138,13 @@
       {
         "name": "千手书生1",
         "life": "2000",
+        "gender": "男",
         "name_status": "作者确认可用"
       },
       {
         "name": "千手书生2",
         "life": "2000",
+        "gender": "男",
         "name_status": "作者确认可用"
       }
     ]
@@ -132,11 +154,13 @@
     "units": [
       {
         "name": "鹿杖客",
-        "life": "2500"
+        "life": "2500",
+        "gender": "男"
       },
       {
         "name": "鹤笔翁",
-        "life": "2500"
+        "life": "2500",
+        "gender": "男"
       }
     ]
   },
@@ -145,11 +169,13 @@
     "units": [
       {
         "name": "龙岛主",
-        "life": "6000"
+        "life": "6000",
+        "gender": "男"
       },
       {
         "name": "木岛主",
-        "life": "6000"
+        "life": "6000",
+        "gender": "男"
       }
     ]
   },
@@ -159,17 +185,20 @@
       {
         "name": "逍遥子",
         "life": "100",
+        "gender": "男",
         "weapons": [
           "【奇门】"
         ]
       },
       {
         "name": "常长风",
-        "life": "100"
+        "life": "100",
+        "gender": "男"
       },
       {
         "name": "花剑影",
         "life": "100",
+        "gender": "男",
         "weapons": [
           "【剑】"
         ]
@@ -177,6 +206,7 @@
       {
         "name": "盖一鸣",
         "life": "100",
+        "gender": "男",
         "weapons": [
           "【奇门】"
         ]
@@ -188,15 +218,18 @@
     "units": [
       {
         "name": "登雕梁",
-        "life": "1000"
+        "life": "1000",
+        "gender": "男"
       },
       {
         "name": "温艳阳",
-        "life": "1000"
+        "life": "1000",
+        "gender": "男"
       },
       {
         "name": "江秀音",
-        "life": "1000"
+        "life": "1000",
+        "gender": "女"
       }
     ]
   },
@@ -225,33 +258,40 @@
     },
     "units": [
       {
-        "name": "袁冠南"
+        "name": "袁冠南",
+        "gender": "男"
       },
       {
-        "name": "萧中慧"
+        "name": "萧中慧",
+        "gender": "女"
       }
     ]
   },
   "金坷垃三人组": {
     "units": [
       {
-        "name": "东仙"
+        "name": "东仙",
+        "gender": "男"
       },
       {
-        "name": "鬼子"
+        "name": "鬼子",
+        "gender": "男"
       },
       {
-        "name": "伯爵"
+        "name": "伯爵",
+        "gender": "男"
       }
     ]
   },
   "阿三阿四": {
     "units": [
       {
-        "name": "阿三"
+        "name": "阿三",
+        "gender": "男"
       },
       {
-        "name": "阿四"
+        "name": "阿四",
+        "gender": "男"
       }
     ],
     "shared": {
@@ -275,19 +315,23 @@
     "units": [
       {
         "name": "郭大路",
-        "life": "1000"
+        "life": "1000",
+        "gender": "男"
       },
       {
         "name": "王动",
-        "life": "1000"
+        "life": "1000",
+        "gender": "男"
       },
       {
         "name": "燕七",
-        "life": "1000"
+        "life": "1000",
+        "gender": "女"
       },
       {
         "name": "林太平",
-        "life": "1000"
+        "life": "1000",
+        "gender": "男"
       }
     ]
   },
@@ -296,31 +340,38 @@
     "units": [
       {
         "name": "柯镇恶",
-        "life": "100"
+        "life": "100",
+        "gender": "男"
       },
       {
         "name": "朱聪",
-        "life": "100"
+        "life": "100",
+        "gender": "男"
       },
       {
         "name": "韩宝驹",
-        "life": "100"
+        "life": "100",
+        "gender": "男"
       },
       {
         "name": "南希仁",
-        "life": "100"
+        "life": "100",
+        "gender": "男"
       },
       {
         "name": "张阿生",
-        "life": "100"
+        "life": "100",
+        "gender": "男"
       },
       {
         "name": "全金发",
-        "life": "100"
+        "life": "100",
+        "gender": "男"
       },
       {
         "name": "韩小莹",
-        "life": "100"
+        "life": "100",
+        "gender": "女"
       }
     ]
   },
@@ -329,6 +380,7 @@
       {
         "name": "马钰",
         "life": "2000",
+        "gender": "男",
         "weapons": [
           "【剑】"
         ]
@@ -336,6 +388,7 @@
       {
         "name": "丘处机",
         "life": "2200",
+        "gender": "男",
         "weapons": [
           "【剑】"
         ]
@@ -343,6 +396,7 @@
       {
         "name": "王处一",
         "life": "1900",
+        "gender": "男",
         "weapons": [
           "【剑】"
         ]
@@ -350,6 +404,7 @@
       {
         "name": "刘处玄",
         "life": "1500",
+        "gender": "男",
         "weapons": [
           "【剑】"
         ]
@@ -357,6 +412,7 @@
       {
         "name": "谭处端",
         "life": "1400",
+        "gender": "男",
         "weapons": [
           "【剑】"
         ]
@@ -364,6 +420,7 @@
       {
         "name": "郝大通",
         "life": "1000",
+        "gender": "男",
         "weapons": [
           "【剑】"
         ]
@@ -371,6 +428,7 @@
       {
         "name": "孙不二",
         "life": "800",
+        "gender": "女",
         "weapons": [
           "【剑】"
         ]
@@ -383,6 +441,7 @@
       {
         "name": "渡厄",
         "life": "2500",
+        "gender": "男",
         "identity": "【残】",
         "weapons": [
           "【金刚黑索】"
@@ -391,6 +450,7 @@
       {
         "name": "渡劫",
         "life": "2500",
+        "gender": "男",
         "identity": "【残】",
         "weapons": [
           "【金刚黑索】"
@@ -399,6 +459,7 @@
       {
         "name": "渡难",
         "life": "2500",
+        "gender": "男",
         "identity": "【残】",
         "weapons": [
           "【金刚黑索】"
@@ -409,10 +470,12 @@
   "胡青牛王难姑": {
     "units": [
       {
-        "name": "胡青牛"
+        "name": "胡青牛",
+        "gender": "男"
       },
       {
-        "name": "王难姑"
+        "name": "王难姑",
+        "gender": "女"
       }
     ]
   }

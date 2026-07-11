@@ -13,6 +13,175 @@
         "作者": "金庸"
       },
       "note": "作者字段原误写为出处“射雕英雄传”；卡面无此字段，数据库按作者裁定以金庸为准。"
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "龟孙子大老爷" },
+      "set": { "gender": "男" },
+      "raw_set": { "性别": "男" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "苏樱" },
+      "set": { "gender": "女" },
+      "raw_set": { "性别": "女" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "朱停" },
+      "set": { "gender": "男" },
+      "raw_set": { "性别": "男" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "十大恶人" },
+      "set": { "gender": "多人" },
+      "raw_set": { "性别": "多人" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "万春流" },
+      "set": { "gender": "男" },
+      "raw_set": { "性别": "男" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "朱泪儿" },
+      "set": { "gender": "女" },
+      "raw_set": { "性别": "女" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "割头小鬼" },
+      "set": { "gender": "男" },
+      "raw_set": { "性别": "男" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "霍青桐" },
+      "set": { "gender": "女" },
+      "raw_set": { "性别": "女" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "阿朱" },
+      "set": { "gender": "女" },
+      "raw_set": { "性别": "女" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "花铁干" },
+      "set": { "gender": "男" },
+      "raw_set": { "性别": "男" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "程英" },
+      "set": { "gender": "女" },
+      "raw_set": { "性别": "女" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "程灵素" },
+      "set": { "gender": "女" },
+      "raw_set": { "性别": "女" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "王语嫣" },
+      "set": { "gender": "女" },
+      "raw_set": { "性别": "女" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "夏青青" },
+      "set": { "gender": "女" },
+      "raw_set": { "性别": "女" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "无名老僧" },
+      "set": { "gender": "男" },
+      "raw_set": { "性别": "男" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "喀丝丽" },
+      "set": { "gender": "女" },
+      "raw_set": { "性别": "女" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "任盈盈" },
+      "set": { "gender": "女" },
+      "raw_set": { "性别": "女" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "神雕" },
+      "set": { "gender": "雄" },
+      "raw_set": { "性别": "雄" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "小昭" },
+      "set": { "gender": "女" },
+      "raw_set": { "性别": "女" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "胡青牛王难姑" },
+      "set": { "gender": "多人" },
+      "raw_set": { "性别": "多人" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "小丁" },
+      "set": { "gender": "女" },
+      "raw_set": { "性别": "女" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "陆殷龙" },
+      "set": { "gender": "男" },
+      "raw_set": { "性别": "男" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "许存舟" },
+      "set": { "gender": "男" },
+      "raw_set": { "性别": "男" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "计晓军" },
+      "set": { "gender": "女" },
+      "raw_set": { "性别": "女" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "梁硕" },
+      "set": { "gender": "男" },
+      "raw_set": { "性别": "男" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "张磊" },
+      "set": { "gender": "男" },
+      "raw_set": { "性别": "男" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "张愚" },
+      "set": { "gender": "男" },
+      "raw_set": { "性别": "男" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "卢天宇" },
+      "set": { "gender": "男" },
+      "raw_set": { "性别": "男" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "泥菩萨" },
+      "set": { "gender": "男" },
+      "raw_set": { "性别": "男" }
+    },
+    {
+      "match": { "source_sheet": "附加人物", "title": "江玉郎" },
+      "set": {
+        "gender": "男",
+        "author_group": "古龙",
+        "source_work": "绝代双骄"
+      },
+      "raw_set": {
+        "性别": "男",
+        "作者": "古龙",
+        "出处": "绝代双骄"
+      }
+    },
+    {
+      "match": { "source_sheet": "废弃", "source_row": 6, "title": "朱泪儿" },
+      "set": {
+        "author_group": "古龙",
+        "source_work": "名剑风流"
+      },
+      "raw_set": {
+        "作者": "古龙",
+        "出处": "名剑风流"
+      }
     }
   ]
 }

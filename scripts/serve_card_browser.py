@@ -214,6 +214,7 @@ def build_card_units(card: dict[str, object], abilities: list[dict[str, object]]
                 "name": name,
                 "life": None,
                 "life_pool": None,
+                "gender": None,
                 "entity_kind": None,
                 "identity": None,
                 "weapons": [],
@@ -226,6 +227,7 @@ def build_card_units(card: dict[str, object], abilities: list[dict[str, object]]
                 "display_name",
                 "life",
                 "life_pool",
+                "gender",
                 "counts_as_characters",
                 "entity_kind",
                 "identity",
@@ -373,6 +375,7 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
     def search_clauses(self, params: dict[str, list[str]]) -> tuple[list[str], list[object], dict[str, object]]:
         q = (params.get("q", [""])[0] or "").strip()
         scope = (params.get("scope", ["all"])[0] or "all").strip()
+        ability_type = (params.get("ability_type", [""])[0] or "").strip()
         category = (params.get("category", [""])[0] or "").strip()
         author = (params.get("author", [""])[0] or "").strip()
         clauses = []
@@ -428,19 +431,35 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
             elif scope == "relationships":
                 append_search_clause("relationships LIKE ?", [like])
             elif scope == "ability":
-                clauses.append(
-                    """
-                    EXISTS (
-                      SELECT 1 FROM card_abilities a
-                      WHERE a.card_id = cards.id
-                        AND (
-                          a.kind LIKE ? OR a.name LIKE ? OR a.raw_name LIKE ?
-                          OR a.type_prefix LIKE ? OR a.text LIKE ?
+                if ability_type:
+                    clauses.append(
+                        """
+                        EXISTS (
+                          SELECT 1 FROM card_abilities a
+                          WHERE a.card_id = cards.id
+                            AND a.kind = ?
+                            AND (
+                              a.name LIKE ? OR a.raw_name LIKE ?
+                              OR a.type_prefix LIKE ? OR a.text LIKE ?
+                            )
                         )
+                        """
                     )
-                    """
-                )
-                values.extend([like, like, like, like, like])
+                    values.extend([ability_type, like, like, like, like])
+                else:
+                    clauses.append(
+                        """
+                        EXISTS (
+                          SELECT 1 FROM card_abilities a
+                          WHERE a.card_id = cards.id
+                            AND (
+                              a.kind LIKE ? OR a.name LIKE ? OR a.raw_name LIKE ?
+                              OR a.type_prefix LIKE ? OR a.text LIKE ?
+                            )
+                        )
+                        """
+                    )
+                    values.extend([like, like, like, like, like])
             else:
                 append_search_clause(
                     """
@@ -451,6 +470,16 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
                     """,
                     [like, normalized_like, like, like, like, like, like, like, like],
                 )
+        if not q and scope == "ability" and ability_type:
+            clauses.append(
+                """
+                EXISTS (
+                  SELECT 1 FROM card_abilities a
+                  WHERE a.card_id = cards.id AND a.kind = ?
+                )
+                """
+            )
+            values.append(ability_type)
         if category:
             clauses.append("category = ?")
             values.append(category)
@@ -460,7 +489,7 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         if author:
             clauses.append("author_group = ?")
             values.append(author)
-        return clauses, values, {"q": q, "scope": scope, "category": category, "author": author}
+        return clauses, values, {"q": q, "scope": scope, "ability_type": ability_type, "category": category, "author": author}
 
     def handle_stat_query(self, query_string: str) -> None:
         params = parse_qs(query_string)
@@ -509,6 +538,7 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         params = parse_qs(query_string)
         q = (params.get("q", [""])[0] or "").strip()
         scope = (params.get("scope", ["all"])[0] or "all").strip()
+        ability_type = (params.get("ability_type", [""])[0] or "").strip()
         category = (params.get("category", [""])[0] or "").strip()
         author = (params.get("author", [""])[0] or "").strip()
         sort = (params.get("sort", ["sheet"])[0] or "sheet").strip()
@@ -570,19 +600,35 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
             elif scope == "relationships":
                 append_search_clause("relationships LIKE ?", [like])
             elif scope == "ability":
-                clauses.append(
-                    """
-                    EXISTS (
-                      SELECT 1 FROM card_abilities a
-                      WHERE a.card_id = cards.id
-                        AND (
-                          a.kind LIKE ? OR a.name LIKE ? OR a.raw_name LIKE ?
-                          OR a.type_prefix LIKE ? OR a.text LIKE ?
+                if ability_type:
+                    clauses.append(
+                        """
+                        EXISTS (
+                          SELECT 1 FROM card_abilities a
+                          WHERE a.card_id = cards.id
+                            AND a.kind = ?
+                            AND (
+                              a.name LIKE ? OR a.raw_name LIKE ?
+                              OR a.type_prefix LIKE ? OR a.text LIKE ?
+                            )
                         )
+                        """
                     )
-                    """
-                )
-                values.extend([like, like, like, like, like])
+                    values.extend([ability_type, like, like, like, like])
+                else:
+                    clauses.append(
+                        """
+                        EXISTS (
+                          SELECT 1 FROM card_abilities a
+                          WHERE a.card_id = cards.id
+                            AND (
+                              a.kind LIKE ? OR a.name LIKE ? OR a.raw_name LIKE ?
+                              OR a.type_prefix LIKE ? OR a.text LIKE ?
+                            )
+                        )
+                        """
+                    )
+                    values.extend([like, like, like, like, like])
             else:
                 append_search_clause(
                     """
@@ -593,6 +639,16 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
                     """,
                     [like, normalized_like, like, like, like, like, like, like, like],
                 )
+        if not q and scope == "ability" and ability_type:
+            clauses.append(
+                """
+                EXISTS (
+                  SELECT 1 FROM card_abilities a
+                  WHERE a.card_id = cards.id AND a.kind = ?
+                )
+                """
+            )
+            values.append(ability_type)
         if category:
             clauses.append("category = ?")
             values.append(category)
