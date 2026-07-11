@@ -62,8 +62,8 @@ CARD_COLUMNS = [
 ]
 
 
-ABILITY_KINDS = {"内功", "招式", "武功", "技能", "*", "字", "说明"}
-TYPED_ABILITY_KINDS = {"内功", "招式", "武功", "技能"}
+ABILITY_KINDS = {"内功", "招式", "武功", "技能", "符卡", "*", "字", "说明"}
+TYPED_ABILITY_KINDS = {"内功", "招式", "武功", "技能", "符卡"}
 ABILITY_AUDIT = ROOT / "docs" / "ability-structure-audit.md"
 NESTED_PARENT_HINTS = (
     "以下姿态",
@@ -134,7 +134,7 @@ def card_all_text(record: dict[str, Any]) -> str:
 
 def explicit_ability_kind(line: str) -> str:
     text = line.lstrip()
-    match = re.match(r"^(?:\d+[.．、]\s*)?(内功|招式|武功|技能)：", text)
+    match = re.match(r"^(?:\d+[.．、]\s*)?(内功|招式|武功|技能|符卡)：", text)
     if match:
         return match.group(1)
     if text.startswith("*"):
@@ -144,7 +144,7 @@ def explicit_ability_kind(line: str) -> str:
 
 def split_ability_name(line: str) -> tuple[str, str, str]:
     text = line or ""
-    heading = re.match(r"^(\s*)(?:\d+[.．、]\s*)?((?:内功|招式|武功|技能)：)", text)
+    heading = re.match(r"^(\s*)(?:\d+[.．、]\s*)?((?:内功|招式|武功|技能|符卡)：)", text)
     if heading:
         type_prefix = f"{heading.group(1)}{heading.group(2)}"
         rest = text[heading.end() :]
@@ -190,6 +190,14 @@ def line_has_ability_name(line: str) -> bool:
 
 def raw_name_has_colon(raw_name: str | None) -> bool:
     return bool(raw_name and (raw_name.rstrip().endswith(":") or raw_name.rstrip().endswith("：")))
+
+
+def ability_is_exclusive_name(name: object) -> bool:
+    return bool(name and "【" in str(name) and "】" in str(name))
+
+
+def ability_text_is_identity(text: object) -> bool:
+    return bool(re.search(r"[（(]身份[）)]\s*$", str(text or "").strip()))
 
 
 def infer_line_kind(line: str, inherited_kind: str) -> tuple[str, list[str]]:
@@ -263,6 +271,8 @@ def normalize_ability_ids(record: dict[str, Any], abilities: list[dict[str, Any]
     for ordinal, ability in enumerate(abilities, start=1):
         ability["ordinal"] = ordinal
         ability["id"] = f"{record['id']}::ability::{ordinal:03d}"
+        ability["is_exclusive"] = ability_is_exclusive_name(ability.get("name"))
+        ability["is_identity"] = ability_text_is_identity(ability.get("text"))
 
 
 def apply_author_overrides(
@@ -285,7 +295,7 @@ def apply_author_overrides(
             flags.update(update.get("add_flags", []))
             ability["review_flags"] = sorted(flags)
             if "name" in update.get("set", {}):
-                ability["is_exclusive"] = bool(ability.get("name") and str(ability["name"]).startswith("【") and "】" in str(ability["name"]))
+                ability["is_exclusive"] = ability_is_exclusive_name(ability.get("name"))
 
     deleted: set[tuple[str, int]] = set()
     for delete in overrides.get("ability_deletes", []):
@@ -325,7 +335,8 @@ def apply_author_overrides(
                     "text": entry.get("text", ""),
                     "start_line": base_start + offset,
                     "end_line": base_start + offset,
-                    "is_exclusive": bool(entry.get("name") and str(entry["name"]).startswith("【") and "】" in str(entry["name"])),
+                    "is_exclusive": ability_is_exclusive_name(entry.get("name")),
+                    "is_identity": ability_text_is_identity(entry.get("text")),
                     "owner_units": entry.get("owner_units"),
                     "owner_identity": entry.get("owner_identity"),
                     "owner_weapons": entry.get("owner_weapons"),
@@ -362,6 +373,7 @@ def parse_abilities(record: dict[str, Any]) -> list[dict[str, Any]]:
         if not current:
             return
         current["text"] = "\n".join(current.pop("lines")).strip()
+        current["is_identity"] = ability_text_is_identity(current["text"])
         current.pop("_nested_child_indent", None)
         abilities.append(current)
         current = None
@@ -477,8 +489,8 @@ def parse_abilities(record: dict[str, Any]) -> list[dict[str, Any]]:
                     "start_line": physical_line,
                     "end_line": physical_line,
                     "lines": [line],
-                    "is_exclusive": bool(name and name.startswith("【") and "】" in name),
-                    "is_identity": "（身份）" in line or "(身份)" in line,
+                    "is_exclusive": ability_is_exclusive_name(name),
+                    "is_identity": ability_text_is_identity(line),
                     "owner_units": None,
                     "owner_identity": None,
                     "owner_weapons": None,

@@ -32,10 +32,11 @@
     "战斗人物": {
       "*": 295,
       "内功": 124,
-      "字": 452,
+      "字": 449,
       "技能": 185,
       "招式": 430,
       "武功": 194,
+      "符卡": 3,
       "说明/自由文本": 11
     },
     "物品": {
@@ -63,10 +64,11 @@
   "ability_kind_counts": {
     "*": 317,
     "内功": 131,
-    "字": 548,
+    "字": 545,
     "技能": 196,
     "招式": 442,
     "武功": 198,
+    "符卡": 3,
     "说明/自由文本": 131
   },
   "all_ability_record_count": 1977,
@@ -488,7 +490,7 @@
       "title": "项少龙"
     }
   ],
-  "identity_ability_count": 68,
+  "identity_ability_count": 66,
   "keyword_group_card_counts": {
     "一定造成/不可闪避": 79,
     "不占名额/机会成本": 16,
@@ -2422,12 +2424,12 @@
     "continuation_line": 10,
     "exclusive_word": 250,
     "free_text": 139,
-    "implicit_word": 540,
+    "implicit_word": 537,
     "indented_implicit_word": 1,
-    "inherited_kind": 335,
-    "inherited_named_ability": 331,
+    "inherited_kind": 337,
+    "inherited_named_ability": 333,
     "known_unnamed_ability": 5,
-    "missing_indent_for_inherited": 110,
+    "missing_indent_for_inherited": 112,
     "nested_continuation_line": 57,
     "nested_indented_line": 5,
     "nested_named_line": 7,

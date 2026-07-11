@@ -261,13 +261,13 @@ function abilityClass(kind, line = "") {
       ? "ability-word ability-exclusive"
       : "ability-word";
   }
-  if (["内功", "招式", "武功", "技能"].includes(kind)) return `ability-${kind}`;
+  if (["内功", "招式", "武功", "技能", "符卡"].includes(kind)) return `ability-${kind}`;
   return "ability-free";
 }
 
 function explicitAbilityKind(line) {
   const text = String(line || "").trimStart();
-  const prefix = text.match(/^(?:\d+[.．、]\s*)?(内功|招式|武功|技能)：/);
+  const prefix = text.match(/^(?:\d+[.．、]\s*)?(内功|招式|武功|技能|符卡)：/);
   if (prefix) return prefix[1];
   if (text.startsWith("*")) return "*";
   return "";
@@ -286,7 +286,7 @@ function abilityLineMeta(line, inheritedKind = "") {
   const explicitKind = explicitAbilityKind(line);
   if (explicitKind) return { kind: explicitKind, className: abilityClass(explicitKind, line) };
   if (hasAbilityName(line)) {
-    const kind = ["内功", "招式", "武功", "技能"].includes(inheritedKind) ? inheritedKind : "字";
+    const kind = ["内功", "招式", "武功", "技能", "符卡"].includes(inheritedKind) ? inheritedKind : "字";
     return { kind, className: abilityClass(kind, line) };
   }
   if (inheritedKind) return { kind: inheritedKind, className: abilityClass(inheritedKind, line) };
@@ -295,7 +295,7 @@ function abilityLineMeta(line, inheritedKind = "") {
 
 function splitAbilityName(line) {
   const text = String(line || "");
-  const heading = text.match(/^(\s*)(?:\d+[.．、]\s*)?((?:内功|招式|武功|技能)：)/);
+  const heading = text.match(/^(\s*)(?:\d+[.．、]\s*)?((?:内功|招式|武功|技能|符卡)：)/);
   if (heading) {
     const typePrefix = `${heading[1]}${heading[2]}`;
     const rest = text.slice(heading[0].length);
@@ -608,6 +608,8 @@ async function showStatistics() {
     <div class="stats-grid">
       ${kv("当前牌库", `${stats.card_count || 0} 张`)}
       ${kv("特技/说明", `${stats.ability_count || 0} 条`)}
+      ${kv("专属特技", `${stats.exclusive_ability_count || 0} 条`)}
+      ${kv("身份特技", `${stats.identity_ability_count || 0} 条`)}
       ${kv("废弃记录", `${stats.deprecated_record_count || 0} 张`)}
       ${kv("所属人物特技", `${stats.owner_unit_ability_count || 0} 条`)}
     </div>

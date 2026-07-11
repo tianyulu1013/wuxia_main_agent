@@ -2,7 +2,7 @@
 
 本报告来自当前数据库的 `description` 字段自动解析。它不会替代作者裁定，只用于把疑似结构问题集中列出来。
 
-- 导入时间 UTC：`2026-07-11T17:13:16.072270+00:00`
+- 导入时间 UTC：`2026-07-11T17:18:29.644458+00:00`
 - 卡牌数：536
 - 抽取特技/说明块数：1977
 - 结构化特技表：`data/cards.sqlite` / `card_abilities`
@@ -10,22 +10,23 @@
 
 ## 类型统计
 
-- `字`: 551
+- `字`: 548
 - `招式`: 446
 - `*`: 322
 - `武功`: 198
 - `技能`: 197
 - `说明`: 132
 - `内功`: 131
+- `符卡`: 3
 
 ## 审计标记统计
 
-- `implicit_word`: 543
-- `inherited_kind`: 336
-- `inherited_named_ability`: 332
+- `implicit_word`: 540
+- `inherited_kind`: 338
+- `inherited_named_ability`: 334
 - `exclusive_word`: 253
 - `free_text`: 140
-- `missing_indent_for_inherited`: 110
+- `missing_indent_for_inherited`: 112
 - `author_corrected`: 108
 - `unit_specific_ability`: 101
 - `nested_continuation_line`: 57
@@ -40,7 +41,7 @@
 
 ## 无前缀但继承上一类型的特技
 
-- 数量：332
+- 数量：334
 
 ### 风四娘 / 战斗人物!5:2
 
@@ -646,7 +647,7 @@
 
 ## 继承上一类型但没有缩进
 
-- 数量：110
+- 数量：112
 
 ### 花满楼 / 战斗人物!32:2
 
@@ -1062,6 +1063,18 @@
 - 标记：`inherited_kind, inherited_named_ability, missing_indent_for_inherited`
 - 原文：风神腿：--100；雄霸每攻击一次可触发
 
+### 雾雨魔理沙 / 战斗人物!337:2
+
+- 当前判断：`符卡` / 名称：`究极火花`
+- 标记：`inherited_kind, inherited_named_ability, missing_indent_for_inherited`
+- 原文：究极火花：对阵敌每打一张及使用一特技1/6死亡（一次性）
+
+### 雾雨魔理沙 / 战斗人物!337:3
+
+- 当前判断：`符卡` / 名称：`慧星`
+- 标记：`inherited_kind, inherited_named_ability, missing_indent_for_inherited`
+- 原文：慧星：对阵每相关一次及每打一张场上所有敌-200（一次性）
+
 ### 任狂 / 战斗人物!348:3
 
 - 当前判断：`招式` / 名称：`从心所欲`
@@ -1346,7 +1359,7 @@
 
 ## 无前缀且按字处理的特技
 
-- 数量：543
+- 数量：540
 
 ### 丁鹏 / 战斗人物!2:4
 

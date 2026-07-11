@@ -66,6 +66,15 @@ def is_deprecated_card(card: dict) -> bool:
     return card.get("category") == "deprecated"
 
 
+def ability_is_exclusive(ability: dict) -> bool:
+    name = str(ability.get("name") or "")
+    return "【" in name and "】" in name
+
+
+def ability_is_identity(ability: dict) -> bool:
+    return bool(re.search(r"[（(]身份[）)]\s*$", str(ability.get("text") or "").strip()))
+
+
 def compact_counter(counter: Counter, limit: int | None = None) -> dict:
     items = counter.most_common(limit)
     return {key: value for key, value in items}
@@ -132,9 +141,9 @@ def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
     for ability in current_abilities:
         category = as_label(ability.get("card_category") or cards_by_id.get(ability["card_id"], {}).get("category", ""))
         ability_kind_by_category[category][ability_kind_label(ability.get("kind") or "未分类")] += 1
-        if ability.get("is_exclusive"):
+        if ability_is_exclusive(ability):
             exclusive_count += 1
-        if ability.get("is_identity"):
+        if ability_is_identity(ability):
             identity_ability_count += 1
         if ability.get("owner_units"):
             owner_unit_ability_count += 1
