@@ -421,6 +421,21 @@ button:hover {
   box-shadow: var(--shadow);
 }
 
+.identity-section h3 {
+  color: #4f3c2a;
+}
+
+.identity-rule-block {
+  border: 1px solid #dac7b0;
+  border-left: 4px solid #9b724b;
+  background: #fffaf4;
+  padding: 12px;
+  line-height: 1.66;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  box-shadow: var(--shadow);
+}
+
 .ability-list {
   display: flex;
   flex-direction: column;

@@ -543,6 +543,17 @@ function renderUnitGroups(card) {
   `;
 }
 
+function renderIdentityRules(card) {
+  const identity = String(card.identity || "").trim();
+  if (!identity) return "";
+  return `
+    <div class="section identity-section">
+      <h3>身份</h3>
+      <div class="identity-rule-block">${highlight(identity)}</div>
+    </div>
+  `;
+}
+
 function renderListItems(items) {
   if (!Array.isArray(items) || items.length === 0) return "";
   return `<ul class="note-list">${items.map((item) => `<li>${highlight(item)}</li>`).join("")}</ul>`;
@@ -743,7 +754,6 @@ async function loadCard(id) {
     </div>
     <div class="detail-grid">
       ${kv("生命", card.life)}
-      ${kv("身份", card.identity)}
       ${kv("兵器", card.weapons)}
       ${kv("出处", card.source_work)}
       ${kv("作者", card.author_group)}
@@ -756,6 +766,7 @@ async function loadCard(id) {
         <img src="${escapeHtml(card.image_url)}" alt="${escapeHtml(card.title)} 卡面">
       </figure>
     ` : ""}
+    ${renderIdentityRules(card)}
     <div class="section">
       <h3>描述</h3>
       ${renderUnitGroups(card)}
