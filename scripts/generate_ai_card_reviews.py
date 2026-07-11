@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import math
 import re
+import csv
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -495,6 +496,47 @@ def write_json(path: Path, data: dict) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
+def write_csv(path: Path, reviews: list[dict]) -> None:
+    columns = [
+        "title",
+        "category_label",
+        "author_group",
+        "source_work",
+        "life",
+        "strength_adjusted",
+        "strength_stars",
+        "complexity",
+        "complexity_stars",
+        "electronicization_level",
+        "roles",
+        "risks",
+        "needs_author_review",
+        "summary",
+    ]
+    with path.open("w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=columns)
+        writer.writeheader()
+        for review in reviews:
+            writer.writerow(
+                {
+                    "title": review["title"],
+                    "category_label": review["category_label"],
+                    "author_group": review.get("author_group") or "",
+                    "source_work": review.get("source_work") or "",
+                    "life": review.get("life") if review.get("life") is not None else "",
+                    "strength_adjusted": review["scores"]["strength_adjusted"],
+                    "strength_stars": review["scores"]["strength_adjusted_stars"],
+                    "complexity": review["scores"]["complexity"],
+                    "complexity_stars": review["scores"]["complexity_stars"],
+                    "electronicization_level": review["electronicization"]["level"],
+                    "roles": "、".join(review["roles"]),
+                    "risks": "、".join(risk["name"] for risk in review["risks"]),
+                    "needs_author_review": "、".join(review["ai_review_round2"]["needs_author_review"]),
+                    "summary": review["ai_review_round2"]["summary"],
+                }
+            )
+
+
 def top_cards(reviews: list[dict], key_path: tuple[str, ...], limit: int = 20) -> list[dict]:
     def get_value(record: dict) -> float:
         cur = record
@@ -690,6 +732,54 @@ def write_understanding_map(reviews: list[dict]) -> None:
     (DOCS_DIR / "ai-card-review-understanding-map.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def write_author_watchlist(reviews: list[dict]) -> None:
+    watchlist = [r for r in reviews if r["ai_review_round2"]["needs_author_review"]]
+    watchlist.sort(
+        key=lambda r: (
+            r["electronicization"]["score_raw"],
+            r["scores"]["complexity"],
+            r["scores"]["strength_adjusted"],
+        ),
+        reverse=True,
+    )
+
+    lines = [
+        "# AI 卡牌评价作者复核清单 v0.1",
+        "",
+        f"- 复核卡牌数：{len(watchlist)}",
+        "- 目的：列出 AI 第二轮后仍认为需要作者纠偏、确认或重点看的卡。",
+        "- 注意：这是评语层清单，不是改卡建议，也不改源数据库。",
+        "",
+    ]
+
+    by_reason = Counter(reason for r in watchlist for reason in r["ai_review_round2"]["needs_author_review"])
+    lines.extend(["## 复核原因统计", ""])
+    for reason, count in by_reason.most_common():
+        lines.append(f"- {reason}: {count}")
+
+    lines.extend(["", "## 复核列表", ""])
+    for index, review in enumerate(watchlist, start=1):
+        reasons = "、".join(review["ai_review_round2"]["needs_author_review"])
+        risks = "、".join(risk["name"] for risk in review["risks"][:4]) or "无显式风险标签"
+        roles = "、".join(review["roles"][:5])
+        lines.extend(
+            [
+                f"### {index}. {review['title']}（{review['category_label']}）",
+                "",
+                f"- 作者/出处：{review.get('author_group') or '未标'} / {review.get('source_work') or '未标'}",
+                f"- 定位：{roles}",
+                f"- 强度：{review['scores']['strength_adjusted']} {review['scores']['strength_adjusted_stars']}；复杂度：{review['scores']['complexity']} {review['scores']['complexity_stars']}",
+                f"- 电子化风险：{review['electronicization']['level']}（{', '.join(review['electronicization']['reasons']) or '无'}）",
+                f"- 复核原因：{reasons}",
+                f"- 风险标签：{risks}",
+                f"- AI 摘要：{review['ai_review']['summary']}",
+                "",
+            ]
+        )
+
+    (DOCS_DIR / "ai-card-review-author-watchlist.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     cards = load_jsonl(CARDS_PATH)
@@ -699,9 +789,11 @@ def main() -> None:
 
     write_jsonl(OUT_DIR / "ai_card_reviews_round1.jsonl", round1)
     write_jsonl(OUT_DIR / "ai_card_reviews_round2.jsonl", round2)
+    write_csv(OUT_DIR / "ai_card_reviews_round2.csv", round2)
     write_json(OUT_DIR / "ai_card_reviews_summary.json", summary)
     write_markdown(summary, round2)
     write_understanding_map(round2)
+    write_author_watchlist(round2)
 
     print(f"reviewed={len(round2)}")
     print(f"needs_author_review={summary['needs_author_review_count']}")
