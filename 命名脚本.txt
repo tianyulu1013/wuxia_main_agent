@@ -1,0 +1,91 @@
+-- Card Naming Tool v1.1
+
+-- This script was created by dzikakulka, and co-authored and published by Hiram Abiff.
+
+-- You can add or remove as many cards as you'd like.
+-- You may also use BB codes in both card names and
+-- descriptions. For more info on BB Codes you can
+-- visit the link provided on the workshop page for
+-- this mod. Even when drawing cards from the bottom,
+-- Names and descriptions in the tables will be assigned
+-- from top to bottom; so consider this while organizing them.
+
+-- Remember to every so often while filling in info
+-- to save and test your names to see if they are
+-- accurately assigned to the correct cards. This
+-- will allow you to catch mistakes early and
+-- help save a huge amount of time later on.
+-- Good Luck!
+
+deckGUID = "fbe232" -- Replace this with your decks GUID, make sure to keep the apostrophes
+numberOfCards = 70 -- set this to the exact number of cards to be named.
+takeFromTop = true -- Set this to false to draw cards from the bottom of the deck.(optional)
+fipCards = false -- This is used to flip cards on draw; it can be helpful to keep your deck in order.(optional)
+
+cardNames = {'东方不败', '丁典', '丁春秋', '九难', '九阳真经', '九阴真经', '令狐冲', '何足道', '公孙止', '冲虚','凌退思_凌霜华', '喀丝丽', '大黄', '李文秀', '李秋水', '李莫愁', '林平之', '林朝英', '林远图', '恶贯满盈', '成吉思汗', '成昆', '打狗棒', '方证', '段延庆', '段誉', '江南七怪', '汗血宝马', '洪七公', '洪安通', '渡厄渡劫渡难', '狄云', '独孤求败', '疯欧阳锋', '白猿', '白自在', '白马', '程灵素', '程英', '空见', '红衣大炮', '花铁干', '范遥', '胡一刀', '胡斐', '般剌密谛', '葵花宝典', '葵花老祖', '觉远', '豹胎易筋丸', '霍青桐', '郭襄（小）', '郭襄（峨眉祖师）', '郭靖', '金丝背心', '金蚕蛊毒', '金轮法王', '阿朱', '阿青', '陈家洛', '陈近南', '风清扬', '鸠摩智', '黛绮丝', '黄眉僧', '黄药师', '黄蓉', '黄裳', '黑玫瑰', '龙木二岛主'
+}
+
+cardDescriptions = {
+}
+
+-- Unless looking to troubleshoot, everything below this point should not need to be changed.
+
+function onLoad()
+    self.createButton({
+        label="Rename Cards", click_function="renameCards",
+        function_owner=self, position={0,0.1,0},
+        height=210, width=640, font_size=100,
+        })
+end
+
+function renameCards()
+    startLuaCoroutine(self, 'takeAndRename')
+end
+
+function takeAndRename()
+    local frameWait = 10        -- change if wait between cards is too short/long
+    local flipCard = false      -- Added as an alternative in helping keep the deck organized if desired. Not included above.
+    local deck = getObjectFromGUID(deckGUID)
+    if deck == nil then
+        print("\n[FF0000]-------- Deck GUID is incorrect or missing!! --------")
+        return 1
+    else
+        print("\n---------- Naming deck with GUID "..deck.getGUID().." ----------\n")
+    end
+    local heightStep = 2/((#deck.getObjects() < #cardNames) and #deck.getObjects() or #cardNames)
+    local nameKey = 1
+    watchCards = false
+    while deck ~= nil and cardNames[nameKey] ~= nil do
+        local targetPos = deck.positionToWorld({5, 0, 0})
+        targetPos.y = targetPos.y + (nameKey*heightStep)
+        local newCard = deck.takeObject({ position = targetPos, top = takeFromTop, flip = flipCards })
+        if nameKey == numberOfCards-1 then
+            watchCards = true
+            for i=1,5,1 do coroutine.yield(0) end
+            if deck == nil then
+				if flipCards == true then
+					cardRef.flip()
+				end
+                cardRef.setName(cardNames[numberOfCards])
+                cardRef.setDescription(cardDescriptions[numberOfCards])
+                local targetPos = cardRef.positionToWorld({5, 0, 0})
+                targetPos.y = targetPos.y + 5
+                cardRef.setPositionSmooth(targetPos)
+            end
+        end
+        newCard.setName(cardNames[nameKey])
+        newCard.setDescription(cardDescriptions[nameKey])
+        nameKey = nameKey+1
+        for i=1,frameWait,1 do coroutine.yield(0) end
+    end
+    watchCards = false
+    print("[FFbf00]--------- Cards Were Successfully Named! ---------\n--- Thank you for using the Card Naming Tool. ---")
+    return 1
+end
+
+function onObjectSpawn(obj)
+    if watchCards == true and obj.tag == "Card" then
+        cardGuid = obj.getGUID()
+        cardRef = getObjectFromGUID(cardGuid)
+    end
+end

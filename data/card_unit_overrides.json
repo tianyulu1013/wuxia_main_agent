@@ -1,0 +1,419 @@
+{
+  "凌退思": {
+    "units": [
+      {
+        "name": "凌退思",
+        "life": "2000"
+      },
+      {
+        "name": "凌霜华",
+        "life": "100",
+        "relationships": "遇丁典则不论凌霜华因何而死均发生剧情。",
+        "no_abilities_confirmed": true
+      }
+    ]
+  },
+  "四大恶人": {
+    "shared": {
+      "display_name": "四大恶人共同规则"
+    },
+    "units": [
+      {
+        "name": "段延庆",
+        "life": "2900",
+        "identity": "【恶】 【残】",
+        "weapons": [
+          "【棍杖】"
+        ]
+      },
+      {
+        "name": "叶二娘",
+        "life": "2800",
+        "identity": "【恶】",
+        "weapons": [
+          "【刀】"
+        ]
+      },
+      {
+        "name": "岳老三",
+        "life": "3400",
+        "identity": "【恶】",
+        "weapons": [
+          "【奇门】"
+        ]
+      },
+      {
+        "name": "云中鹤",
+        "life": "2000",
+        "identity": "【恶】",
+        "weapons": [
+          "【奇门】"
+        ]
+      }
+    ]
+  },
+  "石中玉": {
+    "units": [
+      {
+        "name": "石中玉",
+        "life": "1000",
+        "identity": "【恶】 强制出战，不占名额，不参与对战"
+      },
+      {
+        "name": "石清",
+        "life": "3000",
+        "weapons": [
+          "【剑】"
+        ]
+      },
+      {
+        "name": "闵柔",
+        "life": "3000",
+        "weapons": [
+          "【剑】"
+        ]
+      }
+    ]
+  },
+  "十大恶人": {
+    "units": [
+      {
+        "name": "杜杀"
+      },
+      {
+        "name": "哈哈儿"
+      },
+      {
+        "name": "萧咪咪"
+      },
+      {
+        "name": "李大嘴"
+      },
+      {
+        "name": "屠娇娇"
+      },
+      {
+        "name": "阴九幽"
+      },
+      {
+        "name": "轩辕三光"
+      },
+      {
+        "name": "铁战"
+      },
+      {
+        "name": "白开心"
+      },
+      {
+        "name": "欧阳丁"
+      },
+      {
+        "name": "欧阳当"
+      }
+    ]
+  },
+  "千手书生": {
+    "suppress_card_life": true,
+    "units": [
+      {
+        "name": "千手书生1",
+        "life": "2000",
+        "name_status": "作者确认可用"
+      },
+      {
+        "name": "千手书生2",
+        "life": "2000",
+        "name_status": "作者确认可用"
+      }
+    ]
+  },
+  "玄冥二老": {
+    "suppress_card_life": true,
+    "units": [
+      {
+        "name": "鹿杖客",
+        "life": "2500"
+      },
+      {
+        "name": "鹤笔翁",
+        "life": "2500"
+      }
+    ]
+  },
+  "龙木二岛主": {
+    "suppress_card_life": true,
+    "units": [
+      {
+        "name": "龙岛主",
+        "life": "6000"
+      },
+      {
+        "name": "木岛主",
+        "life": "6000"
+      }
+    ]
+  },
+  "太岳四侠": {
+    "suppress_card_life": true,
+    "units": [
+      {
+        "name": "逍遥子",
+        "life": "100",
+        "weapons": [
+          "【奇门】"
+        ]
+      },
+      {
+        "name": "常长风",
+        "life": "100"
+      },
+      {
+        "name": "花剑影",
+        "life": "100",
+        "weapons": [
+          "【剑】"
+        ]
+      },
+      {
+        "name": "盖一鸣",
+        "life": "100",
+        "weapons": [
+          "【奇门】"
+        ]
+      }
+    ]
+  },
+  "三才剑客": {
+    "suppress_card_life": true,
+    "units": [
+      {
+        "name": "登雕梁",
+        "life": "1000"
+      },
+      {
+        "name": "温艳阳",
+        "life": "1000"
+      },
+      {
+        "name": "江秀音",
+        "life": "1000"
+      }
+    ]
+  },
+  "血变": {
+    "suppress_card_life": true,
+    "units": [
+      {
+        "name": "血变1",
+        "life": "2000",
+        "entity_kind": "妖",
+        "name_status": "作者确认可用"
+      },
+      {
+        "name": "血变2",
+        "life": "2000",
+        "entity_kind": "妖",
+        "name_status": "作者确认可用"
+      }
+    ]
+  },
+  "袁冠南 萧中慧": {
+    "shared": {
+      "display_name": "共享生命",
+      "life_pool": "4500",
+      "note": "袁冠南与萧中慧共享一个生命池"
+    },
+    "units": [
+      {
+        "name": "袁冠南"
+      },
+      {
+        "name": "萧中慧"
+      }
+    ]
+  },
+  "金坷垃三人组": {
+    "units": [
+      {
+        "name": "东仙"
+      },
+      {
+        "name": "鬼子"
+      },
+      {
+        "name": "伯爵"
+      }
+    ]
+  },
+  "阿三阿四": {
+    "units": [
+      {
+        "name": "阿三"
+      },
+      {
+        "name": "阿四"
+      }
+    ],
+    "shared": {
+      "display_name": "共享生命",
+      "life_pool": "3400",
+      "note": "阿三与阿四共享一个生命池"
+    }
+  },
+  "五个人头": {
+    "units": [
+      {
+        "name": "五个人头",
+        "life": "2000",
+        "counts_as_characters": "5",
+        "note": "实际按一个人物处理；仅在计算人物数量时按五个计算"
+      }
+    ]
+  },
+  "欢乐英雄": {
+    "suppress_card_life": true,
+    "units": [
+      {
+        "name": "郭大路",
+        "life": "1000"
+      },
+      {
+        "name": "王动",
+        "life": "1000"
+      },
+      {
+        "name": "燕七",
+        "life": "1000"
+      },
+      {
+        "name": "林太平",
+        "life": "1000"
+      }
+    ]
+  },
+  "江南七怪": {
+    "suppress_card_life": true,
+    "units": [
+      {
+        "name": "柯镇恶",
+        "life": "100"
+      },
+      {
+        "name": "朱聪",
+        "life": "100"
+      },
+      {
+        "name": "韩宝驹",
+        "life": "100"
+      },
+      {
+        "name": "南希仁",
+        "life": "100"
+      },
+      {
+        "name": "张阿生",
+        "life": "100"
+      },
+      {
+        "name": "全金发",
+        "life": "100"
+      },
+      {
+        "name": "韩小莹",
+        "life": "100"
+      }
+    ]
+  },
+  "全真七子": {
+    "units": [
+      {
+        "name": "马钰",
+        "life": "2000",
+        "weapons": [
+          "【剑】"
+        ]
+      },
+      {
+        "name": "丘处机",
+        "life": "2200",
+        "weapons": [
+          "【剑】"
+        ]
+      },
+      {
+        "name": "王处一",
+        "life": "1900",
+        "weapons": [
+          "【剑】"
+        ]
+      },
+      {
+        "name": "刘处玄",
+        "life": "1500",
+        "weapons": [
+          "【剑】"
+        ]
+      },
+      {
+        "name": "谭处端",
+        "life": "1400",
+        "weapons": [
+          "【剑】"
+        ]
+      },
+      {
+        "name": "郝大通",
+        "life": "1000",
+        "weapons": [
+          "【剑】"
+        ]
+      },
+      {
+        "name": "孙不二",
+        "life": "800",
+        "weapons": [
+          "【剑】"
+        ]
+      }
+    ]
+  },
+  "渡厄 渡劫 渡难": {
+    "suppress_card_life": true,
+    "units": [
+      {
+        "name": "渡厄",
+        "life": "2500",
+        "identity": "【残】",
+        "weapons": [
+          "【金刚黑索】"
+        ]
+      },
+      {
+        "name": "渡劫",
+        "life": "2500",
+        "identity": "【残】",
+        "weapons": [
+          "【金刚黑索】"
+        ]
+      },
+      {
+        "name": "渡难",
+        "life": "2500",
+        "identity": "【残】",
+        "weapons": [
+          "【金刚黑索】"
+        ]
+      }
+    ]
+  },
+  "胡青牛王难姑": {
+    "units": [
+      {
+        "name": "胡青牛"
+      },
+      {
+        "name": "王难姑"
+      }
+    ]
+  }
+}

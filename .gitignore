@@ -1,0 +1,30 @@
+# Runtime and dependency folders
+node_modules/
+.tmp_psd_layers/
+server.out.log
+server.err.log
+
+# Large/manual source assets kept outside normal Git snapshots
+actual_psd/
+release_images/
+*.psd
+*.JPG
+*.jpg
+*.jpeg
+3.06*.png
+
+# Generated scratch output
+outputs/
+
+# Office/PDF source references are useful locally but can be stored separately if the repo is shared.
+*.docx
+*.pdf
+*.xlsx
+
+# Python cache
+__pycache__/
+*.pyc
+
+# SQLite runtime sidecar files
+*.sqlite-shm
+*.sqlite-wal

@@ -1,0 +1,2310 @@
+{
+  "ability_updates": [
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 237,
+        "ordinal": 1
+      },
+      "set": {
+        "name": "瑜伽密乘",
+        "raw_name": "瑜伽密乘",
+        "type_prefix": "内功："
+      },
+      "remove_flags": [
+        "typed_line_without_name"
+      ],
+      "add_flags": [
+        "author_corrected"
+      ],
+      "note": "卡面缺冒号；数据库按作者裁定识别为内功“瑜伽密乘”。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 268,
+        "ordinal": 2
+      },
+      "set": {
+        "name": "连城剑法",
+        "raw_name": "连城剑法",
+        "type_prefix": "招式："
+      },
+      "remove_flags": [
+        "typed_line_without_name"
+      ],
+      "add_flags": [
+        "author_corrected"
+      ],
+      "note": "卡面缺冒号；数据库按作者裁定识别为招式“连城剑法”。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 316,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "东仙"
+        ],
+        "name": "【东仙の手刀】",
+        "raw_name": "【东仙の手刀】",
+        "type_prefix": "武功：",
+        "is_exclusive": true,
+        "text": "敌-100，每张前释放n个（n为上场回合数），可支付生命，达成伯爵の思考"
+      },
+      "remove_flags": [
+        "typed_line_without_name"
+      ],
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "金坷垃三人组：【东仙の手刀】所属东仙。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 332,
+        "ordinal": 1
+      },
+      "set": {
+        "name": "杀拳",
+        "raw_name": "杀拳",
+        "type_prefix": "招式："
+      },
+      "remove_flags": [
+        "typed_name_without_colon"
+      ],
+      "add_flags": [
+        "author_corrected"
+      ],
+      "note": "卡面缺冒号；数据库按作者裁定识别为招式“杀拳”。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 148,
+        "ordinal": 1
+      },
+      "remove_flags": [
+        "typed_name_without_colon",
+        "nested_named_line_without_indent"
+      ],
+      "add_flags": [
+        "author_confirmed_structure"
+      ],
+      "note": "赵德言“归魂十八爪”及其姿态结构按作者裁定为正确数据库结构；卡面另记缺冒号/排版待修。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 7
+      },
+      "set": {
+        "name": "丹阳子",
+        "raw_name": "丹阳子",
+        "text": "不中异常；战斗后可从对方抽走1张卡，马钰下轮后归还",
+        "owner_units": [
+          "马钰"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "全真七子多人一卡：马钰 2000，特技名为丹阳子。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 8
+      },
+      "set": {
+        "name": "长春子",
+        "raw_name": "长春子",
+        "text": "非【恶】道士可与己结盟，丘处机为盟主；可离开所在地点寻找一不在场者，一转轮后到达该地（如寻找期间该地点人物已经不在本局中，丘处机仍然可到达）",
+        "owner_units": [
+          "丘处机"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "全真七子多人一卡：丘处机 2200，特技名为长春子。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 9
+      },
+      "set": {
+        "name": "铁脚仙",
+        "raw_name": "铁脚仙",
+        "owner_units": [
+          "王处一"
+        ]
+      },
+      "remove_flags": [
+        "nested_named_line"
+      ],
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "全真七子多人一卡：王处一 1900，第一条特技名为铁脚仙。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 10
+      },
+      "set": {
+        "name": "长生子",
+        "raw_name": "长生子",
+        "text": "+100/回合",
+        "owner_units": [
+          "刘处玄"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "全真七子多人一卡：刘处玄 1500，特技名为长生子。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 11
+      },
+      "set": {
+        "name": "长真子",
+        "raw_name": "长真子",
+        "text": "招式两平可放",
+        "owner_units": [
+          "谭处端"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "全真七子多人一卡：谭处端 1400，特技名为长真子。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 12
+      },
+      "set": {
+        "name": "广宁子",
+        "raw_name": "广宁子",
+        "text": "不会不响应",
+        "owner_units": [
+          "郝大通"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "全真七子多人一卡：郝大通 1000，特技名为广宁子。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 13
+      },
+      "set": {
+        "name": "清净散人",
+        "raw_name": "清净散人",
+        "text": "不会受到波及",
+        "owner_units": [
+          "孙不二"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "全真七子多人一卡：孙不二 800，特技名为清净散人。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 55,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "郭大路"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "欢乐英雄：#1 所属 郭大路。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 55,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "王动"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "欢乐英雄：#2 所属 王动。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 55,
+        "ordinal": 3
+      },
+      "set": {
+        "owner_units": [
+          "燕七"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "欢乐英雄：#3 所属 燕七。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 55,
+        "ordinal": 4
+      },
+      "set": {
+        "owner_units": [
+          "林太平"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "欢乐英雄：#4 所属 林太平。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 55,
+        "ordinal": 5
+      },
+      "set": {
+        "owner_units": [
+          "郭大路",
+          "王动",
+          "燕七",
+          "林太平"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "欢乐英雄：【欢乐英雄】属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 252,
+        "ordinal": 1
+      },
+      "set": {
+        "name": "飞天蝙蝠",
+        "raw_name": "飞天蝙蝠",
+        "text": "受暗器反击敌200毒，己闪开（暗）",
+        "owner_units": [
+          "柯镇恶"
+        ],
+        "owner_weapons": [
+          "【棍杖】",
+          "【暗】"
+        ],
+        "owner_identity": "【残】"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "江南七怪：#1 属于 柯镇恶，特技名为 飞天蝙蝠。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 252,
+        "ordinal": 2
+      },
+      "set": {
+        "name": "妙手书生",
+        "raw_name": "妙手书生",
+        "text": "偷来对阵敌所有宝物或一张基础卡，并将不属于自己的基础卡交给对方",
+        "owner_units": [
+          "朱聪"
+        ],
+        "owner_weapons": [
+          "【奇门】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "江南七怪：#2 属于 朱聪，特技名为 妙手书生。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 252,
+        "ordinal": 3
+      },
+      "set": {
+        "name": "马王神",
+        "raw_name": "马王神",
+        "text": "复制场上可见的动卡",
+        "owner_units": [
+          "韩宝驹"
+        ],
+        "owner_weapons": [
+          "【奇门】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "江南七怪：#3 属于 韩宝驹，特技名为 马王神。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 252,
+        "ordinal": 4
+      },
+      "set": {
+        "name": "南山樵子",
+        "raw_name": "南山樵子",
+        "text": "己输出＜对阵敌输出，本回合敌我双方不造成伤害",
+        "owner_units": [
+          "南希仁"
+        ],
+        "owner_weapons": [
+          "【奇门】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "江南七怪：#4 属于 南希仁，特技名为 南山樵子。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 252,
+        "ordinal": 5
+      },
+      "set": {
+        "name": "笑弥陀",
+        "raw_name": "笑弥陀",
+        "text": "招式攻+100；替韩小莹抵挡致命",
+        "owner_units": [
+          "张阿生"
+        ],
+        "owner_weapons": [
+          "【刀】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "江南七怪：#5 属于 张阿生，特技名为 笑弥陀。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 252,
+        "ordinal": 6
+      },
+      "set": {
+        "name": "闹市侠隐",
+        "raw_name": "闹市侠隐",
+        "text": "对阵者敌与己普攻及特技均可控",
+        "owner_units": [
+          "全金发"
+        ],
+        "owner_weapons": [
+          "【奇门】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "江南七怪：#6 属于 全金发，特技名为 闹市侠隐。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 252,
+        "ordinal": 7
+      },
+      "set": {
+        "name": "越女剑",
+        "raw_name": "越女剑",
+        "text": "一回合正好两克则清除敌；死亡视为自刎",
+        "owner_units": [
+          "韩小莹"
+        ],
+        "owner_weapons": [
+          "【剑】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "江南七怪：#7 属于 韩小莹，特技名为 越女剑。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 270,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "凌退思"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "凌退思：#1 属于凌退思；凌霜华无特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 270,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "凌退思"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "凌退思：#2 属于凌退思；凌霜华无特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 283,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "阿三",
+          "阿四"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "阿三阿四：#1 所属 阿三, 阿四。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 283,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "阿三"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "阿三阿四：#2 所属 阿三。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 283,
+        "ordinal": 3
+      },
+      "set": {
+        "owner_units": [
+          "阿四"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "阿三阿四：#3 所属 阿四。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 283,
+        "ordinal": 4
+      },
+      "set": {
+        "owner_units": [
+          "阿三"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "阿三阿四：#4 所属 阿三。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 283,
+        "ordinal": 5
+      },
+      "set": {
+        "owner_units": [
+          "阿四"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "阿三阿四：#5 所属 阿四。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 283,
+        "ordinal": 6
+      },
+      "set": {
+        "owner_units": [
+          "阿三",
+          "阿四"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "阿三阿四：#6 所属 阿三, 阿四。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 283,
+        "ordinal": 7
+      },
+      "set": {
+        "owner_units": [
+          "阿三",
+          "阿四"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "阿三阿四：#7 所属 阿三, 阿四。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 316,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "鬼子"
+        ],
+        "text": "伤害每次击中均取本回合最大值，可支付生命，达成伯爵の思考"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "金坷垃三人组：【鬼子の笑】所属鬼子。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 316,
+        "ordinal": 3
+      },
+      "set": {
+        "owner_units": [
+          "伯爵"
+        ],
+        "text": "预言另一人物在一回合中受伤，如果达到，则可用此数值使之再承受相同的伤害或减少此数额的受伤（自身不参战）"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "金坷垃三人组：【伯爵の思考】所属伯爵。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 316,
+        "ordinal": 4
+      },
+      "set": {
+        "owner_units": [
+          "东仙",
+          "鬼子",
+          "伯爵"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "金坷垃三人组：美国圣地亚哥属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 319,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "五个人头"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "五个人头：#1 属于五个人头本体。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 319,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "五个人头"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "五个人头：#2 属于五个人头本体。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 319,
+        "ordinal": 3
+      },
+      "set": {
+        "owner_units": [
+          "五个人头"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "五个人头：#3 属于五个人头本体。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 319,
+        "ordinal": 4
+      },
+      "set": {
+        "owner_units": [
+          "五个人头"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "五个人头：#4 属于五个人头本体。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 319,
+        "ordinal": 5
+      },
+      "set": {
+        "owner_units": [
+          "五个人头"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "五个人头：#5 属于五个人头本体。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 319,
+        "ordinal": 6
+      },
+      "set": {
+        "owner_units": [
+          "五个人头"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "五个人头：#6 属于五个人头本体。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 384,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "登雕梁",
+          "温艳阳",
+          "江秀音"
+        ],
+        "text": "-- 刷新此卡（不刷新给予忘情天书）且本回合无敌（三人同时存活）\n以下一人只能学会其中之一：\n天地君亲师：人物不必翻出，只需通知结算结果\n金木水火土：不会受到场景负面效果，免疫普攻\n日月风云我：有一次使本回合/次全部攻击、效果透至发出者外另一处的机会"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "三才剑客：忘情天书是一个特技，天地君亲师/金木水火土/日月风云我是其子项。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 384,
+        "ordinal": 5
+      },
+      "set": {
+        "owner_units": [
+          "登雕梁",
+          "温艳阳",
+          "江秀音"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "三才剑客：赠君一曲属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 21,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "胡青牛"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "胡青牛王难姑：#2 属于胡青牛。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 21,
+        "ordinal": 3
+      },
+      "set": {
+        "owner_units": [
+          "胡青牛"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "胡青牛王难姑：#3 属于胡青牛。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 21,
+        "ordinal": 4
+      },
+      "set": {
+        "owner_units": [
+          "胡青牛"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "胡青牛王难姑：#4 属于胡青牛。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 21,
+        "ordinal": 6
+      },
+      "set": {
+        "owner_units": [
+          "王难姑"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "胡青牛王难姑：#6 属于王难姑。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 21,
+        "ordinal": 7
+      },
+      "set": {
+        "owner_units": [
+          "王难姑"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "胡青牛王难姑：#7 属于王难姑。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 57,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "千手书生1",
+          "千手书生2"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "千手书生：#1 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 57,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "千手书生1",
+          "千手书生2"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "千手书生：#2 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 57,
+        "ordinal": 3
+      },
+      "set": {
+        "owner_units": [
+          "千手书生1",
+          "千手书生2"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "千手书生：#3 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 162,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "逍遥子",
+          "常长风",
+          "花剑影",
+          "盖一鸣"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "太岳四侠：#1 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 168,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "渡厄",
+          "渡劫",
+          "渡难"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "渡厄 渡劫 渡难：#1 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 168,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "渡厄",
+          "渡劫",
+          "渡难"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "渡厄 渡劫 渡难：#2 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 178,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "鹿杖客",
+          "鹤笔翁"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "玄冥二老：#1 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 178,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "鹿杖客",
+          "鹤笔翁"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "玄冥二老：#2 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 178,
+        "ordinal": 3
+      },
+      "set": {
+        "owner_units": [
+          "鹿杖客",
+          "鹤笔翁"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "玄冥二老：#3 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 178,
+        "ordinal": 4
+      },
+      "set": {
+        "owner_units": [
+          "鹿杖客",
+          "鹤笔翁"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "玄冥二老：#4 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 205,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "龙岛主",
+          "木岛主"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "龙木二岛主：#1 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 205,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "龙岛主",
+          "木岛主"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "龙木二岛主：#2 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 287,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "血变1",
+          "血变2"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "血变：#1 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 164,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "袁冠南",
+          "萧中慧"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "袁冠南 萧中慧：#1 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 164,
+        "ordinal": 3
+      },
+      "set": {
+        "owner_units": [
+          "袁冠南",
+          "萧中慧"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "袁冠南 萧中慧：#3 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 164,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "袁冠南"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "袁冠南 萧中慧：【狮官】所属袁冠南。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "马钰",
+          "丘处机",
+          "王处一",
+          "刘处玄",
+          "谭处端",
+          "郝大通",
+          "孙不二"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "全真七子：#1 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "马钰",
+          "丘处机",
+          "王处一",
+          "刘处玄",
+          "谭处端",
+          "郝大通",
+          "孙不二"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "全真七子：#2 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 3
+      },
+      "set": {
+        "owner_units": [
+          "马钰",
+          "丘处机",
+          "王处一",
+          "刘处玄",
+          "谭处端",
+          "郝大通",
+          "孙不二"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "全真七子：#3 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 4
+      },
+      "set": {
+        "owner_units": [
+          "马钰",
+          "丘处机",
+          "王处一",
+          "刘处玄",
+          "谭处端",
+          "郝大通",
+          "孙不二"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "全真七子：#4 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 5
+      },
+      "set": {
+        "owner_units": [
+          "马钰",
+          "丘处机",
+          "王处一",
+          "刘处玄",
+          "谭处端",
+          "郝大通",
+          "孙不二"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "全真七子：#5 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 6
+      },
+      "set": {
+        "owner_units": [
+          "马钰",
+          "丘处机",
+          "王处一",
+          "刘处玄",
+          "谭处端",
+          "郝大通",
+          "孙不二"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "全真七子：#6 属于全部 unit。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "段延庆",
+          "叶二娘",
+          "岳老三",
+          "云中鹤"
+        ],
+        "text": "四大恶人可以同时出战任意多个，同时攻击；起始不需要声明哪个恶人出战，直至本卡翻开"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "段延庆"
+        ],
+        "owner_identity": "【恶】 【残】",
+        "owner_weapons": [
+          "【棍杖】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 3
+      },
+      "set": {
+        "owner_units": [
+          "段延庆"
+        ],
+        "owner_identity": "【恶】 【残】",
+        "owner_weapons": [
+          "【棍杖】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 4
+      },
+      "set": {
+        "owner_units": [
+          "段延庆"
+        ],
+        "owner_identity": "【恶】 【残】",
+        "owner_weapons": [
+          "【棍杖】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 5
+      },
+      "set": {
+        "kind": "字",
+        "owner_units": [
+          "段延庆"
+        ],
+        "owner_identity": "【恶】 【残】",
+        "owner_weapons": [
+          "【棍杖】"
+        ],
+        "text": "【恶贯满盈】：可使用“恶贯满盈”特技各一次；起始不在场，如果其余三大恶人都至少出战过一回合则来到场上；最多出战两回合"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 6
+      },
+      "set": {
+        "owner_units": [
+          "叶二娘"
+        ],
+        "owner_identity": "【恶】",
+        "owner_weapons": [
+          "【刀】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 7
+      },
+      "set": {
+        "kind": "字",
+        "owner_units": [
+          "叶二娘"
+        ],
+        "owner_identity": "【恶】",
+        "owner_weapons": [
+          "【刀】"
+        ],
+        "text": "【无恶不作】：队友【恶】出战，且己不出战一轮则掳来一个婴儿；每消耗一个婴儿可以出战一回合（身份）"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 8
+      },
+      "set": {
+        "owner_units": [
+          "岳老三"
+        ],
+        "owner_identity": "【恶】",
+        "owner_weapons": [
+          "【奇门】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 9
+      },
+      "set": {
+        "owner_units": [
+          "岳老三"
+        ],
+        "owner_identity": "【恶】",
+        "owner_weapons": [
+          "【奇门】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 10
+      },
+      "set": {
+        "owner_units": [
+          "岳老三"
+        ],
+        "owner_identity": "【恶】",
+        "owner_weapons": [
+          "【奇门】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 11
+      },
+      "set": {
+        "owner_units": [
+          "岳老三"
+        ],
+        "owner_identity": "【恶】",
+        "owner_weapons": [
+          "【奇门】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 12
+      },
+      "set": {
+        "kind": "字",
+        "owner_units": [
+          "岳老三"
+        ],
+        "owner_identity": "【恶】",
+        "owner_weapons": [
+          "【奇门】"
+        ],
+        "text": "【凶神恶煞】：可要求对方成为自己的徒弟，如果对方同意则不交手（最多只有一个徒弟，需要徒弟死亡才可招收新的徒弟）；最多出战2回合（身份）"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 13
+      },
+      "set": {
+        "owner_units": [
+          "云中鹤"
+        ],
+        "owner_identity": "【恶】",
+        "owner_weapons": [
+          "【奇门】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 14
+      },
+      "set": {
+        "owner_units": [
+          "云中鹤"
+        ],
+        "owner_identity": "【恶】",
+        "owner_weapons": [
+          "【奇门】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 15
+      },
+      "set": {
+        "kind": "字",
+        "owner_units": [
+          "云中鹤"
+        ],
+        "owner_identity": "【恶】",
+        "owner_weapons": [
+          "【奇门】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "ordinal": 16
+      },
+      "set": {
+        "owner_units": [
+          "云中鹤"
+        ],
+        "owner_identity": "【恶】",
+        "owner_weapons": [
+          "【奇门】"
+        ],
+        "kind": "字"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：四大恶人中云中一鹤为字特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 577,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "石中玉"
+        ],
+        "text": "本方遗失一件物品，一个附加人物，一人物的一张基础卡牌，一个人物的一个特技失灵（均视为针对玩家的效果）\n玩家可以在石中玉不出战的一轮中选择己方某人物杀死石中玉或进行判定：1/2 石中玉逃走到另一方（石中玉不会重复逃回已经待过的一方），1/2无效\n杀死石中玉则石清闵柔与其死战，石中玉被迫出战时则可以请石清闵柔出战一回合（其余时候石清闵柔不出现在场上）"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 577,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "石清",
+          "闵柔"
+        ],
+        "owner_weapons": [
+          "【剑】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 577,
+        "ordinal": 3
+      },
+      "set": {
+        "owner_units": [
+          "石清",
+          "闵柔"
+        ],
+        "owner_weapons": [
+          "【剑】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 577,
+        "ordinal": 4
+      },
+      "set": {
+        "owner_units": [
+          "石清",
+          "闵柔"
+        ],
+        "owner_weapons": [
+          "【剑】"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 577,
+        "ordinal": 5
+      },
+      "set": {
+        "owner_units": [
+          "石清"
+        ],
+        "owner_weapons": [
+          "【剑】"
+        ],
+        "kind": "字"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 577,
+        "ordinal": 6
+      },
+      "set": {
+        "owner_units": [
+          "闵柔"
+        ],
+        "owner_weapons": [
+          "【剑】"
+        ],
+        "kind": "字"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 5,
+        "ordinal": 1
+      },
+      "set": {
+        "owner_units": [
+          "杜杀"
+        ],
+        "name": "血手",
+        "raw_name": "血手",
+        "text": "攻+300；攻击出血；每次对阵与敌死战，不可撤退、避战"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：十大恶人中杜杀为人物名，血手为特技名。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 5,
+        "ordinal": 2
+      },
+      "set": {
+        "name": "笑里藏刀",
+        "raw_name": "笑里藏刀",
+        "owner_units": [
+          "哈哈儿"
+        ],
+        "text": "去除被附加者自身特技；对阵敌此后受伤加倍，自身附加破、转；"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 5,
+        "ordinal": 3
+      },
+      "set": {
+        "owner_units": [
+          "哈哈儿"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 5,
+        "ordinal": 4
+      },
+      "set": {
+        "name": "情锁",
+        "raw_name": "情锁",
+        "owner_units": [
+          "萧咪咪"
+        ],
+        "text": "使己与另一人互相在场，无法对对方闪避动卡撤退，无法不中或削减对方波及的攻击和效果；一同出战且互相攻击",
+        "kind": "*"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：十大恶人中萧咪咪为人物名，情锁为*特技名，正文不重复特技名。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 5,
+        "ordinal": 5
+      },
+      "set": {
+        "name": "迷死人不赔命",
+        "raw_name": "迷死人不赔命",
+        "owner_units": [
+          "萧咪咪"
+        ],
+        "text": "出战时使一男子本轮加入己方（一次性），如为对阵者则跳过战斗"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 5,
+        "ordinal": 6
+      },
+      "set": {
+        "name": "不吃人头",
+        "raw_name": "不吃人头",
+        "owner_units": [
+          "李大嘴"
+        ],
+        "text": "对阵所有人均-200/张（自减），此伤害死亡彻底死亡"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 5,
+        "ordinal": 7
+      },
+      "set": {
+        "name": "不男不女",
+        "raw_name": "不男不女",
+        "owner_units": [
+          "屠娇娇"
+        ],
+        "text": "去除被附加者自身特技，易容技能、*、字；可以为己方其余人物易容；揭破其他易容"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 5,
+        "ordinal": 8
+      },
+      "set": {
+        "name": "半人半鬼",
+        "raw_name": "半人半鬼",
+        "owner_units": [
+          "阴九幽"
+        ],
+        "text": "内功、招式分别强制前提一张；有一次对阵吓退敌的机会"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 5,
+        "ordinal": 9
+      },
+      "set": {
+        "name": "恶赌鬼",
+        "raw_name": "恶赌鬼",
+        "owner_units": [
+          "轩辕三光"
+        ],
+        "text": "出场使随机一人与己拼点，直到轩辕三光输，损失骰差*100（自减）"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 5,
+        "ordinal": 10
+      },
+      "set": {
+        "owner_units": [
+          "铁战"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 5,
+        "ordinal": 11
+      },
+      "set": {
+        "owner_units": [
+          "白开心"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者裁定：多人一卡特技所属。"
+    }
+  ],
+  "ability_splits": [
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 261,
+        "ordinal": 9
+      },
+      "entries": [
+        {
+          "kind": "字",
+          "name": "铁脚仙",
+          "raw_name": "铁脚仙",
+          "text": "自身不会被他人动卡",
+          "owner_units": [
+            "王处一"
+          ],
+          "flags": [
+            "author_corrected",
+            "unit_specific_ability"
+          ]
+        },
+        {
+          "kind": "字",
+          "name": "玉阳子",
+          "raw_name": "玉阳子",
+          "text": "可以解除自身中的毒类效果",
+          "owner_units": [
+            "王处一"
+          ],
+          "flags": [
+            "author_corrected",
+            "unit_specific_ability"
+          ]
+        }
+      ],
+      "note": "全真七子多人一卡：王处一拥有铁脚仙、玉阳子两条特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 283,
+        "ordinal": 1
+      },
+      "entries": [
+        {
+          "kind": "招式",
+          "name": "大悲掌",
+          "raw_name": "大悲掌",
+          "type_prefix": "招式：",
+          "text": "木土 400永迟；可将自身所有招式融为1张，招式处只与敌战斗此张",
+          "owner_units": [
+            "阿三",
+            "阿四"
+          ],
+          "flags": [
+            "author_corrected"
+          ]
+        },
+        {
+          "kind": "招式",
+          "name": "反通吃馆招式",
+          "raw_name": "反通吃馆招式",
+          "text": "火金 200*3；可将敌所有招式融为1张，招式处只与己战斗此张",
+          "owner_units": [
+            "阿三",
+            "阿四"
+          ],
+          "flags": [
+            "author_corrected"
+          ]
+        }
+      ],
+      "note": "阿三阿四：大悲掌、反通吃馆招式是两个招式特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 284,
+        "ordinal": 2
+      },
+      "entries": [
+        {
+          "kind": "招式",
+          "name": "大悲掌",
+          "raw_name": "大悲掌",
+          "text": "大悲掌：可将自身所有卡融为1张，只与敌战斗此张",
+          "flags": [
+            "author_corrected"
+          ]
+        },
+        {
+          "kind": "招式",
+          "name": "孤星剑法",
+          "raw_name": "孤星剑法",
+          "text": "孤星剑法：回合开始选择是否使用，本回合不使用大悲掌，对阵敌我全部受伤*4，敌下回合迟惊（剑）",
+          "flags": [
+            "author_corrected"
+          ]
+        }
+      ],
+      "note": "欧阳不空：大悲掌、孤星剑法是两个招式特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 5,
+        "ordinal": 12
+      },
+      "entries": [
+        {
+          "kind": "字",
+          "name": "宁死不吃亏",
+          "raw_name": "宁死不吃亏",
+          "text": "打得差则继续战斗一回合（不连续触发）；敌-300/回合",
+          "owner_units": [
+            "欧阳丁"
+          ],
+          "flags": [
+            "author_corrected",
+            "unit_specific_ability"
+          ]
+        },
+        {
+          "kind": "字",
+          "name": "拼命占便宜",
+          "raw_name": "拼命占便宜",
+          "text": "打得好则继续战斗一回合（不连续触发）；生命+300/回合（破上限）",
+          "owner_units": [
+            "欧阳当"
+          ],
+          "flags": [
+            "author_corrected",
+            "unit_specific_ability"
+          ]
+        }
+      ],
+      "note": "作者裁定：多人一卡同一解析条目拆分为多名人物的特技。"
+    }
+  ],
+  "ability_deletes": [
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 28,
+        "ordinal": 2
+      },
+      "note": "张愚：*张氏绝学只是牌面分组提示，不是真正特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 316,
+        "ordinal": 5
+      },
+      "note": "金坷垃三人组死亡后使用金坷垃是人物关系/规则说明，不是特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 384,
+        "ordinal": 2
+      },
+      "note": "三才剑客：忘情天书子项，不是独立特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 384,
+        "ordinal": 3
+      },
+      "note": "三才剑客：忘情天书子项，不是独立特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 384,
+        "ordinal": 4
+      },
+      "note": "三才剑客：忘情天书子项，不是独立特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 21,
+        "ordinal": 1
+      },
+      "note": "胡青牛王难姑：胡青牛是人物名，不是特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "附加人物",
+        "source_row": 21,
+        "ordinal": 5
+      },
+      "note": "胡青牛王难姑：王难姑是人物名，不是特技。"
+    }
+  ],
+  "structure_confirmed": [
+    {
+      "source_sheet": "战斗人物",
+      "source_row": 9,
+      "ordinal": 1,
+      "note": "柴玉关“快乐四使”子项结构正确。"
+    },
+    {
+      "source_sheet": "战斗人物",
+      "source_row": 82,
+      "ordinal": 1,
+      "note": "楚留香“踏月留香”子项结构正确。"
+    },
+    {
+      "source_sheet": "战斗人物",
+      "source_row": 82,
+      "ordinal": 3,
+      "note": "楚留香“红颜”子项结构正确。"
+    },
+    {
+      "source_sheet": "战斗人物",
+      "source_row": 110,
+      "ordinal": 1,
+      "note": "风行烈“三道真气”子项结构正确。"
+    },
+    {
+      "source_sheet": "战斗人物",
+      "source_row": 179,
+      "ordinal": 4,
+      "note": "杨逍“五行旗”子项结构正确。"
+    },
+    {
+      "source_sheet": "战斗人物",
+      "source_row": 347,
+      "ordinal": 3,
+      "note": "方歌吟“天下四大绝招”子项结构正确。"
+    },
+    {
+      "source_sheet": "附加人物",
+      "source_row": 21,
+      "ordinal": 3,
+      "note": "胡青牛王难姑“蝶谷医仙”结构正确。"
+    },
+    {
+      "source_sheet": "附加人物",
+      "source_row": 23,
+      "ordinal": 1,
+      "note": "无名 * 特技，结构正确。"
+    },
+    {
+      "source_sheet": "附加人物",
+      "source_row": 24,
+      "ordinal": 1,
+      "note": "无名 * 特技，结构正确。"
+    },
+    {
+      "source_sheet": "附加人物",
+      "source_row": 26,
+      "ordinal": 1,
+      "note": "无名 * 特技，结构正确。"
+    },
+    {
+      "source_sheet": "附加人物",
+      "source_row": 28,
+      "ordinal": 1,
+      "note": "无名 * 特技，结构正确；张氏绝学不是一个真正特技。"
+    },
+    {
+      "source_sheet": "附加人物",
+      "source_row": 29,
+      "ordinal": 1,
+      "note": "无名 * 特技，结构正确。"
+    }
+  ]
+}

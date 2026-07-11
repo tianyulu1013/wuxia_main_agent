@@ -1,0 +1,25 @@
+{
+  "_schema": {
+    "version": 1,
+    "purpose": "改卡候选层：记录尚未确认或已确认的修改建议，用于生成新版文本、更新日志、Excel/PSD待办。不得直接视为源数据。",
+    "status_values": [
+      "draft",
+      "needs_author_review",
+      "approved",
+      "applied",
+      "rejected"
+    ],
+    "candidate_fields": {
+      "id": "稳定候选ID，例如 change_20260711_zhouzhiruo_001。",
+      "card_title": "目标卡名。",
+      "status": "候选状态。",
+      "request": "作者原始修改意图或问题。",
+      "rationale": "为什么这样改。",
+      "proposed_full_text": "候选新版完整文本；没有把握时留空。",
+      "patch_notes": "面向玩家的更新说明草稿。",
+      "source_tasks": "确认后需要做的事项，例如改PSD、更新Excel、重建数据库。",
+      "created_at": "创建日期。"
+    }
+  },
+  "candidates": []
+}

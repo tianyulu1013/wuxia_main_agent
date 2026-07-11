@@ -1,0 +1,143 @@
+{
+  "source_workbook": "已制作_2025日志同步候选_PSD校准.xlsx",
+  "source_path": "outputs\\2025-excel-sync-candidate\\已制作_2025日志同步候选_PSD校准.xlsx",
+  "imported_at_utc": "2026-07-11T08:46:47.066423+00:00",
+  "record_count": 536,
+  "ability_count": 1980,
+  "sheets": [
+    {
+      "sheet": "战斗人物",
+      "category": "combat_characters",
+      "max_row": 578,
+      "max_column": 9,
+      "header_values": [
+        "名称",
+        "血量",
+        "身份",
+        "描述",
+        "关系",
+        "兵器",
+        "出处",
+        "作者",
+        "性别"
+      ],
+      "record_count": 420,
+      "unnamed_header_count": 0,
+      "rows_with_extra_values": [],
+      "blank_name_rows": []
+    },
+    {
+      "sheet": "附加人物",
+      "category": "attached_characters",
+      "max_row": 200,
+      "max_column": 27,
+      "header_values": [
+        "名称",
+        "血量",
+        "身份",
+        "描述",
+        "关系",
+        "兵器",
+        "出处",
+        "作者",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "record_count": 30,
+      "unnamed_header_count": 19,
+      "rows_with_extra_values": [],
+      "blank_name_rows": []
+    },
+    {
+      "sheet": "物品",
+      "category": "items",
+      "max_row": 62,
+      "max_column": 7,
+      "header_values": [
+        "名称",
+        "描述",
+        "特性",
+        "出处",
+        "作者",
+        "类别",
+        null
+      ],
+      "record_count": 59,
+      "unnamed_header_count": 1,
+      "rows_with_extra_values": [],
+      "blank_name_rows": []
+    },
+    {
+      "sheet": "称号",
+      "category": "titles",
+      "max_row": 200,
+      "max_column": 4,
+      "header_values": [
+        "名称",
+        "描述",
+        "出处",
+        "作者"
+      ],
+      "record_count": 11,
+      "unnamed_header_count": 0,
+      "rows_with_extra_values": [],
+      "blank_name_rows": []
+    },
+    {
+      "sheet": "场景",
+      "category": "scenes",
+      "max_row": 200,
+      "max_column": 4,
+      "header_values": [
+        "名称",
+        "描述",
+        "出处",
+        "作者"
+      ],
+      "record_count": 11,
+      "unnamed_header_count": 0,
+      "rows_with_extra_values": [],
+      "blank_name_rows": [
+        13
+      ]
+    },
+    {
+      "sheet": "废弃",
+      "category": "deprecated",
+      "max_row": 6,
+      "max_column": 9,
+      "header_values": [
+        "名称",
+        "血量",
+        "身份",
+        "描述",
+        "关系",
+        "兵器",
+        "出处",
+        "作者",
+        "性别"
+      ],
+      "record_count": 5,
+      "unnamed_header_count": 0,
+      "rows_with_extra_values": [],
+      "blank_name_rows": []
+    }
+  ]
+}

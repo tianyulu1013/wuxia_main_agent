@@ -1,0 +1,62 @@
+{
+  "card_08c32687bef0::001": {
+    "code": "A001",
+    "decision": "false_positive",
+    "note": "作者裁定：牌面没问题。"
+  },
+  "card_c9d0a959e46f::002": {
+    "code": "A002",
+    "decision": "false_positive",
+    "note": "作者裁定：牌面没问题。"
+  },
+  "card_c9d0a959e46f::003": {
+    "code": "A003",
+    "decision": "false_positive",
+    "note": "作者裁定：牌面没问题。"
+  },
+  "card_0552d0e0a781::002": {
+    "code": "A004",
+    "decision": "confirmed",
+    "note": "作者裁定：需要修改。"
+  },
+  "card_f4ba3e86770e::002": {
+    "code": "A005",
+    "decision": "false_positive",
+    "note": "作者裁定：牌面没问题。"
+  },
+  "card_fd5738a99e61::002": {
+    "code": "A006",
+    "decision": "confirmed",
+    "note": "作者裁定：需要修改。"
+  },
+  "card_fd5738a99e61::003": {
+    "code": "A007",
+    "decision": "false_positive",
+    "note": "作者裁定：牌面没问题。"
+  },
+  "card_fd5738a99e61::004": {
+    "code": "A008",
+    "decision": "confirmed",
+    "note": "作者裁定：需要修改。"
+  },
+  "card_e7d4b65276e3::002": {
+    "code": "A009",
+    "decision": "false_positive",
+    "note": "作者裁定：牌面没问题。"
+  },
+  "card_8ab54944e845::002": {
+    "code": "A010",
+    "decision": "false_positive",
+    "note": "作者裁定：牌面没问题。"
+  },
+  "card_e30a4ddb1a47::001": {
+    "code": "A011",
+    "decision": "confirmed",
+    "note": "作者裁定：需要修改。"
+  },
+  "card_7ec397b61e11::003": {
+    "code": "A012",
+    "decision": "confirmed",
+    "note": "作者裁定：需要修改。"
+  }
+}
