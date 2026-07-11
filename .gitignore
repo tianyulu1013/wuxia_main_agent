@@ -16,6 +16,8 @@ release_images/
 # Generated scratch output
 outputs/
 site_export/
+static_publish_repo/
+site_export_netlify.zip
 
 # Office/PDF source references are useful locally but can be stored separately if the repo is shared.
 *.docx
