@@ -1,0 +1,2535 @@
+{
+  "ability_count": 1980,
+  "ability_count_per_card": {
+    "histogram": {
+      "0": 3,
+      "1": 63,
+      "2": 98,
+      "3": 133,
+      "4": 100,
+      "5": 59,
+      "6": 29,
+      "7": 23,
+      "8": 10,
+      "9": 2,
+      "10": 6,
+      "11": 4,
+      "13": 1,
+      "14": 1,
+      "15": 2,
+      "16": 1,
+      "17": 1
+    },
+    "max": 17,
+    "mean": 3.69,
+    "median": 3.0,
+    "min": 0
+  },
+  "ability_kind_by_category": {
+    "场景": {
+      "字": 1,
+      "说明": 19
+    },
+    "废弃": {
+      "*": 5,
+      "字": 3,
+      "技能": 1,
+      "招式": 4,
+      "说明": 1
+    },
+    "战斗人物": {
+      "*": 295,
+      "内功": 124,
+      "字": 452,
+      "技能": 185,
+      "招式": 430,
+      "武功": 194,
+      "说明": 11
+    },
+    "物品": {
+      "*": 4,
+      "内功": 4,
+      "字": 44,
+      "技能": 2,
+      "招式": 4,
+      "武功": 2,
+      "说明": 73
+    },
+    "称号": {
+      "字": 9,
+      "招式": 1,
+      "说明": 12
+    },
+    "附加人物": {
+      "*": 18,
+      "字": 54,
+      "技能": 9,
+      "招式": 3,
+      "说明": 16
+    }
+  },
+  "ability_kind_counts": {
+    "*": 322,
+    "内功": 128,
+    "字": 563,
+    "技能": 197,
+    "招式": 442,
+    "武功": 196,
+    "说明": 132
+  },
+  "author_counts": {
+    "其他": 74,
+    "古龙": 116,
+    "射雕英雄传": 1,
+    "未标作者": 2,
+    "李凉": 11,
+    "梁羽生": 3,
+    "温瑞安": 75,
+    "老舍": 1,
+    "金庸": 179,
+    "鲁迅": 1,
+    "黄易": 73
+  },
+  "card_count": 536,
+  "category_counts": {
+    "场景": 11,
+    "废弃": 5,
+    "战斗人物": 420,
+    "物品": 59,
+    "称号": 11,
+    "附加人物": 30
+  },
+  "exclusive_ability_count": 352,
+  "high_ability_cards": [
+    {
+      "ability_count": 17,
+      "author_group": "金庸",
+      "category": "物品",
+      "source_work": "射雕英雄传",
+      "title": "九阴真经"
+    },
+    {
+      "ability_count": 16,
+      "author_group": "金庸",
+      "category": "战斗人物",
+      "source_work": "天龙八部",
+      "title": "四大恶人"
+    },
+    {
+      "ability_count": 15,
+      "author_group": "金庸",
+      "category": "战斗人物",
+      "source_work": "神雕侠侣",
+      "title": "郭襄"
+    },
+    {
+      "ability_count": 15,
+      "author_group": "其他",
+      "category": "战斗人物",
+      "source_work": "仙剑奇侠传",
+      "title": "李逍遥"
+    },
+    {
+      "ability_count": 14,
+      "author_group": "金庸",
+      "category": "战斗人物",
+      "source_work": "射雕英雄传",
+      "title": "全真七子"
+    },
+    {
+      "ability_count": 13,
+      "author_group": "古龙",
+      "category": "附加人物",
+      "source_work": "绝代双骄",
+      "title": "十大恶人"
+    },
+    {
+      "ability_count": 11,
+      "author_group": "金庸",
+      "category": "战斗人物",
+      "source_work": "神雕侠侣",
+      "title": "杨过"
+    },
+    {
+      "ability_count": 11,
+      "author_group": "温瑞安",
+      "category": "战斗人物",
+      "source_work": "血河车",
+      "title": "方歌吟"
+    },
+    {
+      "ability_count": 11,
+      "author_group": "温瑞安",
+      "category": "战斗人物",
+      "source_work": "说英雄谁是英雄",
+      "title": "文雪岸"
+    },
+    {
+      "ability_count": 11,
+      "author_group": "温瑞安",
+      "category": "战斗人物",
+      "source_work": "说英雄谁是英雄",
+      "title": "元十三限"
+    },
+    {
+      "ability_count": 10,
+      "author_group": "黄易",
+      "category": "战斗人物",
+      "source_work": "覆雨翻云",
+      "title": "赤尊信"
+    },
+    {
+      "ability_count": 10,
+      "author_group": "金庸",
+      "category": "战斗人物",
+      "source_work": "鹿鼎记",
+      "title": "韦小宝"
+    },
+    {
+      "ability_count": 10,
+      "author_group": "金庸",
+      "category": "战斗人物",
+      "source_work": "碧血剑",
+      "title": "袁承志"
+    },
+    {
+      "ability_count": 10,
+      "author_group": "温瑞安",
+      "category": "战斗人物",
+      "source_work": "说英雄谁是英雄",
+      "title": "方应看"
+    },
+    {
+      "ability_count": 10,
+      "author_group": "温瑞安",
+      "category": "战斗人物",
+      "source_work": "请借夫人一用",
+      "title": "韦青青青"
+    },
+    {
+      "ability_count": 10,
+      "author_group": "其他",
+      "category": "附加人物",
+      "source_work": "其他",
+      "title": "张愚"
+    },
+    {
+      "ability_count": 9,
+      "author_group": "金庸",
+      "category": "战斗人物",
+      "source_work": "倚天屠龙记",
+      "title": "灭绝师太"
+    },
+    {
+      "ability_count": 9,
+      "author_group": "金庸",
+      "category": "战斗人物",
+      "source_work": "射雕英雄传",
+      "title": "黄药师"
+    },
+    {
+      "ability_count": 8,
+      "author_group": "古龙",
+      "category": "战斗人物",
+      "source_work": "绝代双骄",
+      "title": "魏无牙"
+    },
+    {
+      "ability_count": 8,
+      "author_group": "金庸",
+      "category": "战斗人物",
+      "source_work": "倚天屠龙记",
+      "title": "周芷若"
+    },
+    {
+      "ability_count": 8,
+      "author_group": "金庸",
+      "category": "战斗人物",
+      "source_work": "碧血剑",
+      "title": "穆人清"
+    },
+    {
+      "ability_count": 8,
+      "author_group": "其他",
+      "category": "战斗人物",
+      "source_work": "其他",
+      "title": "马保国"
+    },
+    {
+      "ability_count": 8,
+      "author_group": "温瑞安",
+      "category": "战斗人物",
+      "source_work": "说英雄谁是英雄",
+      "title": "天衣居士"
+    },
+    {
+      "ability_count": 8,
+      "author_group": "温瑞安",
+      "category": "战斗人物",
+      "source_work": "说英雄谁是英雄",
+      "title": "王小石"
+    },
+    {
+      "ability_count": 8,
+      "author_group": "温瑞安",
+      "category": "战斗人物",
+      "source_work": "逆水寒",
+      "title": "刘独峰"
+    },
+    {
+      "ability_count": 8,
+      "author_group": "温瑞安",
+      "category": "战斗人物",
+      "source_work": "白衣方振眉",
+      "title": "曾白水"
+    },
+    {
+      "ability_count": 8,
+      "author_group": "金庸",
+      "category": "战斗人物",
+      "source_work": "碧血剑",
+      "title": "归辛树"
+    },
+    {
+      "ability_count": 8,
+      "author_group": "金庸",
+      "category": "物品",
+      "source_work": "笑傲江湖",
+      "title": "葵花宝典"
+    },
+    {
+      "ability_count": 7,
+      "author_group": "古龙",
+      "category": "战斗人物",
+      "source_work": "大旗英雄传",
+      "title": "飧毒大师"
+    },
+    {
+      "ability_count": 7,
+      "author_group": "黄易",
+      "category": "战斗人物",
+      "source_work": "覆雨翻云",
+      "title": "厉若海"
+    }
+  ],
+  "high_text_cards": [
+    {
+      "ability_count": 16,
+      "category": "战斗人物",
+      "text_length": 935,
+      "title": "四大恶人"
+    },
+    {
+      "ability_count": 11,
+      "category": "战斗人物",
+      "text_length": 663,
+      "title": "方歌吟"
+    },
+    {
+      "ability_count": 13,
+      "category": "附加人物",
+      "text_length": 591,
+      "title": "十大恶人"
+    },
+    {
+      "ability_count": 14,
+      "category": "战斗人物",
+      "text_length": 585,
+      "title": "全真七子"
+    },
+    {
+      "ability_count": 11,
+      "category": "战斗人物",
+      "text_length": 578,
+      "title": "元十三限"
+    },
+    {
+      "ability_count": 15,
+      "category": "战斗人物",
+      "text_length": 539,
+      "title": "李逍遥"
+    },
+    {
+      "ability_count": 17,
+      "category": "物品",
+      "text_length": 537,
+      "title": "九阴真经"
+    },
+    {
+      "ability_count": 3,
+      "category": "场景",
+      "text_length": 520,
+      "title": "锁妖塔"
+    },
+    {
+      "ability_count": 3,
+      "category": "战斗人物",
+      "text_length": 507,
+      "title": "原随云"
+    },
+    {
+      "ability_count": 10,
+      "category": "战斗人物",
+      "text_length": 498,
+      "title": "方应看"
+    },
+    {
+      "ability_count": 4,
+      "category": "物品",
+      "text_length": 482,
+      "title": "圣帝舍利"
+    },
+    {
+      "ability_count": 9,
+      "category": "战斗人物",
+      "text_length": 476,
+      "title": "黄药师"
+    },
+    {
+      "ability_count": 4,
+      "category": "战斗人物",
+      "text_length": 443,
+      "title": "哥舒天"
+    },
+    {
+      "ability_count": 6,
+      "category": "战斗人物",
+      "text_length": 436,
+      "title": "张小凡"
+    },
+    {
+      "ability_count": 3,
+      "category": "战斗人物",
+      "text_length": 425,
+      "title": "眉间尺"
+    },
+    {
+      "ability_count": 4,
+      "category": "战斗人物",
+      "text_length": 422,
+      "title": "司空摘星"
+    },
+    {
+      "ability_count": 6,
+      "category": "战斗人物",
+      "text_length": 418,
+      "title": "朱藻"
+    },
+    {
+      "ability_count": 5,
+      "category": "战斗人物",
+      "text_length": 417,
+      "title": "卫宫切嗣"
+    },
+    {
+      "ability_count": 10,
+      "category": "战斗人物",
+      "text_length": 413,
+      "title": "韦青青青"
+    },
+    {
+      "ability_count": 5,
+      "category": "战斗人物",
+      "text_length": 408,
+      "title": "单玉如"
+    },
+    {
+      "ability_count": 6,
+      "category": "战斗人物",
+      "text_length": 406,
+      "title": "大风道长"
+    },
+    {
+      "ability_count": 3,
+      "category": "战斗人物",
+      "text_length": 405,
+      "title": "木道人"
+    },
+    {
+      "ability_count": 7,
+      "category": "战斗人物",
+      "text_length": 403,
+      "title": "韦亦玄"
+    },
+    {
+      "ability_count": 10,
+      "category": "战斗人物",
+      "text_length": 401,
+      "title": "赤尊信"
+    },
+    {
+      "ability_count": 6,
+      "category": "战斗人物",
+      "text_length": 399,
+      "title": "石中玉"
+    },
+    {
+      "ability_count": 5,
+      "category": "场景",
+      "text_length": 391,
+      "title": "昆仑神宫"
+    },
+    {
+      "ability_count": 7,
+      "category": "战斗人物",
+      "text_length": 388,
+      "title": "柳随风"
+    },
+    {
+      "ability_count": 7,
+      "category": "战斗人物",
+      "text_length": 387,
+      "title": "欧阳锋"
+    },
+    {
+      "ability_count": 6,
+      "category": "战斗人物",
+      "text_length": 381,
+      "title": "唐老太太"
+    },
+    {
+      "ability_count": 5,
+      "category": "战斗人物",
+      "text_length": 380,
+      "title": "项少龙"
+    }
+  ],
+  "identity_ability_count": 68,
+  "keyword_group_card_counts": {
+    "一定造成/不可闪避": 79,
+    "不占名额/机会成本": 16,
+    "不在场/找不到/无此人": 59,
+    "学习/复制": 47,
+    "抢先/优先": 30,
+    "文本修改/人工裁定": 53,
+    "清除/离场": 77,
+    "牌堆/弃牌": 28,
+    "生命流失": 31,
+    "禁响应/失灵": 51,
+    "胜负特判": 36,
+    "随机/掷骰": 96
+  },
+  "keyword_group_top_cards": {
+    "一定造成/不可闪避": [
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "高渐飞"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "萧十一郎"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "葵花老祖"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "方歌吟"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "沈虎禅"
+      },
+      {
+        "category": "物品",
+        "hits": 2,
+        "title": "葵花宝典"
+      },
+      {
+        "category": "物品",
+        "hits": 2,
+        "title": "泪痕剑"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "哥舒天"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "沈浪"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "傅红雪"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "宫锦弼"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "蓝天鎚"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "展梦白"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "杨铮"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "燕南天"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "邀月"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "李坏"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "荆无命"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "卓三娘"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "胡铁花"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "凌渡宇"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "封寒"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "风行烈"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "厉若海"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "庞斑"
+      }
+    ],
+    "不占名额/机会成本": [
+      {
+        "category": "场景",
+        "hits": 6,
+        "title": "活死人墓"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "风四娘"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "赤足汉"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "黑蜘蛛"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "花双霜"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "上官刃"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "阿紫"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "梅超风"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "裘千丈"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "大黄"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "李大娘"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "言峰绮礼"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "方恨少"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "邓玉函"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "石中玉"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "林月如"
+      }
+    ],
+    "不在场/找不到/无此人": [
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "黑蜘蛛"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "红日法王"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "云帅"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "疯张愚"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "胡八一"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "哥舒天"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "白飞飞"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "木道人"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "叶孤城"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "孟星魂"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "东海白衣人"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "紫衣侯"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "李坏"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "班察巴那"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "原随云"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "法明"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "传鹰"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "颜烈射"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "庞斑"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "李靖"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "曲傲"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "师妃暄"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "石之轩"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "婠婠"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "杨虚彦"
+      }
+    ],
+    "学习/复制": [
+      {
+        "category": "战斗人物",
+        "hits": 4,
+        "title": "黄裳"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "萧泪血"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "朱藻"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "白猿"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "无崖子"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "周伯通"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "眉间尺"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "马保国"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "关七"
+      },
+      {
+        "category": "附加人物",
+        "hits": 2,
+        "title": "任盈盈"
+      },
+      {
+        "category": "物品",
+        "hits": 2,
+        "title": "九阴真经"
+      },
+      {
+        "category": "物品",
+        "hits": 2,
+        "title": "葵花宝典"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "柴玉关"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "公孙大娘"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "叶开"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "芮伟"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "秦梦瑶"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "鲁妙子"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "赵德言"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "燕飞"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "袁冠南 萧中慧"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "张无忌"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "风清扬"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "令狐冲"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "鸠摩智"
+      }
+    ],
+    "抢先/优先": [
+      {
+        "category": "战斗人物",
+        "hits": 5,
+        "title": "方歌吟"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "里赤媚"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "虚若无"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "张小凡"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "八师巴"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "红日法王"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "庞斑"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "何足道"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "东方不败"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "葵花老祖"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "岳不群"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "纳斯尔丁·阿凡提"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "韦亦玄"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "卫宫切嗣"
+      },
+      {
+        "category": "物品",
+        "hits": 2,
+        "title": "葵花宝典"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "丁鹏"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "白飞飞"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "阿飞"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "花双霜"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "毕夜惊"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "赤尊信"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "跋锋寒"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "左冷禅"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "黄眉僧"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "全真七子"
+      }
+    ],
+    "文本修改/人工裁定": [
+      {
+        "category": "战斗人物",
+        "hits": 5,
+        "title": "朱藻"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 4,
+        "title": "高渐飞"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 4,
+        "title": "雷损"
+      },
+      {
+        "category": "物品",
+        "hits": 4,
+        "title": "燕南天藏宝图"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "黑蜘蛛"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "赵无忌"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "狄飞惊"
+      },
+      {
+        "category": "称号",
+        "hits": 3,
+        "title": "冢中枯骨"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "胡铁花"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "年怜丹"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "五个人头"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "皇太极"
+      },
+      {
+        "category": "附加人物",
+        "hits": 2,
+        "title": "朱泪儿"
+      },
+      {
+        "category": "附加人物",
+        "hits": 2,
+        "title": "胡青牛王难姑"
+      },
+      {
+        "category": "附加人物",
+        "hits": 2,
+        "title": "泥菩萨"
+      },
+      {
+        "category": "废弃",
+        "hits": 2,
+        "title": "孙青霞"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "王怜花"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "公孙大娘"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "月神"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "蒙赤行"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "乾罗"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "侯希白"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "寇仲"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "了空"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "李靖"
+      }
+    ],
+    "清除/离场": [
+      {
+        "category": "战斗人物",
+        "hits": 4,
+        "title": "向雨田"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "传鹰"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "白猿"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "岳飞"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "哥舒天"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "白飞飞"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "叶孤城"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "李坏"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "谢玄"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "燕飞"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "阿青"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "木桑道长"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "李文秀"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "罗格"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "心剑神尼"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "雪峰神尼"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "关七"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "唐老公公"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "唐老太太"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "田归农"
+      },
+      {
+        "category": "物品",
+        "hits": 2,
+        "title": "赏善罚恶令"
+      },
+      {
+        "category": "废弃",
+        "hits": 2,
+        "title": "济天下"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "傅红雪"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "高立"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "孟星魂"
+      }
+    ],
+    "牌堆/弃牌": [
+      {
+        "category": "场景",
+        "hits": 3,
+        "title": "锁妖塔"
+      },
+      {
+        "category": "场景",
+        "hits": 3,
+        "title": "昆仑神宫"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "赵德言"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "无崖子"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "林月如"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "胡八一"
+      },
+      {
+        "category": "物品",
+        "hits": 2,
+        "title": "怜花宝鉴"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "柴玉关"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "王怜花"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "公孙大娘"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "日后"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "八师巴"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "方夜羽"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "韩柏"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "侯希白"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "林平之"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "天山童姥"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "虚竹"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "黄裳"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "王重阳"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "全真七子"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "罗格"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "阿尔托莉雅"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "关七"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "公子襄"
+      }
+    ],
+    "生命流失": [
+      {
+        "category": "战斗人物",
+        "hits": 5,
+        "title": "任遥"
+      },
+      {
+        "category": "附加人物",
+        "hits": 4,
+        "title": "计晓军"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "卫宫切嗣"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "萧十一郎"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "凤三"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "疯·欧阳锋"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "罗格"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "无情"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "狄青麟"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "江小鱼"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "檀明"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "郭嵩阳"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "铁中棠"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "阴姬"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "传鹰"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "蒙赤行"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "风行烈"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "秦梦瑶"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "了空"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "孙恩"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "郭襄"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "方证"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "慕容博"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "裘千尺"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "张小凡"
+      }
+    ],
+    "禁响应/失灵": [
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "原随云"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "方夜羽"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "太岳四侠"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "韦一笑"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "游坦之"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "左加明"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "狄飞惊"
+      },
+      {
+        "category": "附加人物",
+        "hits": 2,
+        "title": "张愚"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "丁鹏"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "傅红雪"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "孟星魂"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "欢乐英雄"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "林仙儿"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "云铮"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "上官刃"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "曹秋道"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "颜烈射"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "浪翻云"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "厉若海"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "毕玄"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "傅采林"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "寇仲"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "徐子陵"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "杨虚彦"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "竺法庆"
+      }
+    ],
+    "胜负特判": [
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "孟星魂"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "光神"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "谢玄"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "苗人凤"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "眉间尺"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "天野源五郎"
+      },
+      {
+        "category": "物品",
+        "hits": 2,
+        "title": "天下英雄令"
+      },
+      {
+        "category": "场景",
+        "hits": 2,
+        "title": "锁妖塔"
+      },
+      {
+        "category": "场景",
+        "hits": 2,
+        "title": "昆仑神宫"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "白飞飞"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "燕十三"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "萧少英"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "木道人"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "司空摘星"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "叶孤城"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "李坏"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "赤尊信"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "单玉如"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "鹰飞"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "傅采林"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "萧半和"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "郭襄"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "黄眉僧"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "裘千仞"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 1,
+        "title": "韦小宝"
+      }
+    ],
+    "随机/掷骰": [
+      {
+        "category": "战斗人物",
+        "hits": 4,
+        "title": "千手书生"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "范良极"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "胡八一"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "无情"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "方应看"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 3,
+        "title": "米苍穹"
+      },
+      {
+        "category": "附加人物",
+        "hits": 3,
+        "title": "任盈盈"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "风四娘"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "柴玉关"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "魏无牙"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "裴珏"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "云铮"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "赤足汉"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "原随云"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "凌渡宇"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "单玉如"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "谢烟客"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "张小凡"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "元首"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "皇太极"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "大风道长"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "方歌吟"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "严苍茫"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "柳随风"
+      },
+      {
+        "category": "战斗人物",
+        "hits": 2,
+        "title": "唐方"
+      }
+    ]
+  },
+  "life_stats": {
+    "life_value_count": 418,
+    "max": 70000,
+    "mean": 3105.42,
+    "median": 2800.0,
+    "min": 0,
+    "multi_life_cards": [
+      {
+        "category": "战斗人物",
+        "life_values": [
+          2000,
+          1000
+        ],
+        "title": "王怜花"
+      },
+      {
+        "category": "战斗人物",
+        "life_values": [
+          2500,
+          3800
+        ],
+        "title": "金轮法王"
+      },
+      {
+        "category": "战斗人物",
+        "life_values": [
+          2900,
+          2800,
+          3400,
+          2000
+        ],
+        "title": "四大恶人"
+      }
+    ],
+    "multi_life_count": 3,
+    "no_life_cards": [
+      {
+        "category": "战斗人物",
+        "title": "展梦白"
+      },
+      {
+        "category": "战斗人物",
+        "title": "孟星魂"
+      },
+      {
+        "category": "战斗人物",
+        "title": "芮伟"
+      },
+      {
+        "category": "战斗人物",
+        "title": "东海白衣人"
+      },
+      {
+        "category": "战斗人物",
+        "title": "上官金虹"
+      },
+      {
+        "category": "战斗人物",
+        "title": "胡铁花"
+      },
+      {
+        "category": "战斗人物",
+        "title": "光神"
+      },
+      {
+        "category": "战斗人物",
+        "title": "范良极"
+      },
+      {
+        "category": "战斗人物",
+        "title": "全真七子"
+      },
+      {
+        "category": "战斗人物",
+        "title": "李文秀"
+      },
+      {
+        "category": "战斗人物",
+        "title": "流风霜"
+      },
+      {
+        "category": "战斗人物",
+        "title": "雾雨魔理沙"
+      },
+      {
+        "category": "战斗人物",
+        "title": "关七"
+      },
+      {
+        "category": "战斗人物",
+        "title": "温晚"
+      },
+      {
+        "category": "战斗人物",
+        "title": "唐老公公"
+      },
+      {
+        "category": "战斗人物",
+        "title": "唐斩"
+      },
+      {
+        "category": "附加人物",
+        "title": "龟孙子大老爷"
+      },
+      {
+        "category": "附加人物",
+        "title": "苏樱"
+      },
+      {
+        "category": "附加人物",
+        "title": "朱停"
+      },
+      {
+        "category": "附加人物",
+        "title": "十大恶人"
+      },
+      {
+        "category": "附加人物",
+        "title": "万春流"
+      },
+      {
+        "category": "附加人物",
+        "title": "割头小鬼"
+      },
+      {
+        "category": "附加人物",
+        "title": "霍青桐"
+      },
+      {
+        "category": "附加人物",
+        "title": "阿朱"
+      },
+      {
+        "category": "附加人物",
+        "title": "花铁干"
+      },
+      {
+        "category": "附加人物",
+        "title": "程英"
+      },
+      {
+        "category": "附加人物",
+        "title": "程灵素"
+      },
+      {
+        "category": "附加人物",
+        "title": "无名老僧"
+      },
+      {
+        "category": "附加人物",
+        "title": "喀丝丽"
+      },
+      {
+        "category": "附加人物",
+        "title": "任盈盈"
+      },
+      {
+        "category": "附加人物",
+        "title": "小昭"
+      },
+      {
+        "category": "附加人物",
+        "title": "胡青牛王难姑"
+      },
+      {
+        "category": "附加人物",
+        "title": "小丁"
+      },
+      {
+        "category": "附加人物",
+        "title": "陆殷龙"
+      },
+      {
+        "category": "附加人物",
+        "title": "许存舟"
+      },
+      {
+        "category": "附加人物",
+        "title": "计晓军"
+      },
+      {
+        "category": "附加人物",
+        "title": "梁硕"
+      },
+      {
+        "category": "附加人物",
+        "title": "张磊"
+      },
+      {
+        "category": "附加人物",
+        "title": "张愚"
+      },
+      {
+        "category": "附加人物",
+        "title": "卢天宇"
+      },
+      {
+        "category": "附加人物",
+        "title": "泥菩萨"
+      },
+      {
+        "category": "附加人物",
+        "title": "江玉郎"
+      }
+    ],
+    "no_life_count": 42
+  },
+  "multi_unit_or_owner_unit_cards": [
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 4,
+      "owner_units": [
+        "林太平",
+        "燕七",
+        "王动",
+        "郭大路"
+      ],
+      "title": "欢乐英雄",
+      "unit_specific_ability_count": 5
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 2,
+      "owner_units": [
+        "千手书生1",
+        "千手书生2"
+      ],
+      "title": "千手书生",
+      "unit_specific_ability_count": 3
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 4,
+      "owner_units": [
+        "常长风",
+        "盖一鸣",
+        "花剑影",
+        "逍遥子"
+      ],
+      "title": "太岳四侠",
+      "unit_specific_ability_count": 1
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 2,
+      "owner_units": [
+        "萧中慧",
+        "袁冠南"
+      ],
+      "title": "袁冠南 萧中慧",
+      "unit_specific_ability_count": 3
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 3,
+      "owner_units": [
+        "渡劫",
+        "渡厄",
+        "渡难"
+      ],
+      "title": "渡厄 渡劫 渡难",
+      "unit_specific_ability_count": 2
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 2,
+      "owner_units": [
+        "鹤笔翁",
+        "鹿杖客"
+      ],
+      "title": "玄冥二老",
+      "unit_specific_ability_count": 4
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 2,
+      "owner_units": [
+        "木岛主",
+        "龙岛主"
+      ],
+      "title": "龙木二岛主",
+      "unit_specific_ability_count": 2
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 7,
+      "owner_units": [
+        "全金发",
+        "南希仁",
+        "张阿生",
+        "朱聪",
+        "柯镇恶",
+        "韩宝驹",
+        "韩小莹"
+      ],
+      "title": "江南七怪",
+      "unit_specific_ability_count": 7
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 7,
+      "owner_units": [
+        "丘处机",
+        "刘处玄",
+        "孙不二",
+        "王处一",
+        "谭处端",
+        "郝大通",
+        "马钰"
+      ],
+      "title": "全真七子",
+      "unit_specific_ability_count": 14
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 1,
+      "owner_units": [
+        "凌退思"
+      ],
+      "title": "凌退思",
+      "unit_specific_ability_count": 2
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 2,
+      "owner_units": [
+        "阿三",
+        "阿四"
+      ],
+      "title": "阿三阿四",
+      "unit_specific_ability_count": 7
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 2,
+      "owner_units": [
+        "血变1",
+        "血变2"
+      ],
+      "title": "血变",
+      "unit_specific_ability_count": 1
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 3,
+      "owner_units": [
+        "东仙",
+        "伯爵",
+        "鬼子"
+      ],
+      "title": "金坷垃三人组",
+      "unit_specific_ability_count": 4
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 1,
+      "owner_units": [
+        "五个人头"
+      ],
+      "title": "五个人头",
+      "unit_specific_ability_count": 6
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 3,
+      "owner_units": [
+        "江秀音",
+        "温艳阳",
+        "登雕梁"
+      ],
+      "title": "三才剑客",
+      "unit_specific_ability_count": 2
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 4,
+      "owner_units": [
+        "云中鹤",
+        "叶二娘",
+        "岳老三",
+        "段延庆"
+      ],
+      "title": "四大恶人",
+      "unit_specific_ability_count": 16
+    },
+    {
+      "category": "战斗人物",
+      "owner_unit_count": 3,
+      "owner_units": [
+        "石中玉",
+        "石清",
+        "闵柔"
+      ],
+      "title": "石中玉",
+      "unit_specific_ability_count": 6
+    },
+    {
+      "category": "附加人物",
+      "owner_unit_count": 11,
+      "owner_units": [
+        "哈哈儿",
+        "屠娇娇",
+        "李大嘴",
+        "杜杀",
+        "欧阳丁",
+        "欧阳当",
+        "白开心",
+        "萧咪咪",
+        "轩辕三光",
+        "铁战",
+        "阴九幽"
+      ],
+      "title": "十大恶人",
+      "unit_specific_ability_count": 13
+    },
+    {
+      "category": "附加人物",
+      "owner_unit_count": 2,
+      "owner_units": [
+        "王难姑",
+        "胡青牛"
+      ],
+      "title": "胡青牛王难姑",
+      "unit_specific_ability_count": 5
+    }
+  ],
+  "multi_unit_or_owner_unit_count": 19,
+  "owner_unit_ability_count": 103,
+  "review_flag_counts": {
+    "author_confirmed_structure": 13,
+    "author_corrected": 108,
+    "continuation_line": 9,
+    "exclusive_word": 253,
+    "free_text": 141,
+    "implicit_word": 555,
+    "indented_implicit_word": 1,
+    "inherited_kind": 336,
+    "inherited_named_ability": 332,
+    "known_unnamed_ability": 5,
+    "missing_indent_for_inherited": 110,
+    "nested_continuation_line": 58,
+    "nested_indented_line": 5,
+    "nested_named_line": 7,
+    "nested_named_line_without_indent": 3,
+    "unit_specific_ability": 101,
+    "unnamed_star_line": 5
+  },
+  "source_field_counts": {
+    "description": 1980
+  },
+  "source_work_top30": {
+    "七武器": 6,
+    "书剑恩仇录": 12,
+    "仙剑奇侠传": 6,
+    "侠客行": 7,
+    "倚天屠龙记": 33,
+    "其他": 26,
+    "四大名捕": 7,
+    "多情剑客无情剑": 10,
+    "大唐双龙传": 32,
+    "大旗英雄传": 11,
+    "天龙八部": 26,
+    "射雕英雄传": 24,
+    "杨小邪": 11,
+    "楚留香传奇": 9,
+    "武林外史": 6,
+    "破碎虚空": 7,
+    "碧血剑": 9,
+    "神州奇侠": 23,
+    "神雕侠侣": 14,
+    "笑傲江湖": 19,
+    "紫川": 6,
+    "绝代双骄": 16,
+    "血河车": 11,
+    "覆雨翻云": 21,
+    "说英雄谁是英雄": 19,
+    "边荒传说": 8,
+    "连城诀": 11,
+    "陆小凤传奇": 12,
+    "风云": 10,
+    "鹿鼎记": 8
+  },
+  "text_length": {
+    "max": 935,
+    "mean": 212.58,
+    "median": 202.5,
+    "min": 20,
+    "p90": 339
+  },
+  "weapon_counts": {
+    "【不应宝刀】": 1,
+    "【丹药】": 13,
+    "【倚天剑】": 1,
+    "【六器】": 1,
+    "【其他】": 11,
+    "【刀S】": 8,
+    "【刀】": 38,
+    "【剑*2S】": 1,
+    "【剑*6】": 1,
+    "【剑S】": 32,
+    "【剑】": 105,
+    "【博】": 33,
+    "【古剑长歌】": 1,
+    "【噬魂】": 1,
+    "【坐骑】": 4,
+    "【天琊神剑】": 1,
+    "【奇门】": 45,
+    "【屠龙刀】": 1,
+    "【弓】": 10,
+    "【挽留奇剑】": 1,
+    "【暗S】": 2,
+    "【暗】": 38,
+    "【枪S】": 5,
+    "【枪】": 12,
+    "【棍杖】": 11,
+    "【武器】": 15,
+    "【毒药】": 4,
+    "【泪痕剑】": 1,
+    "【火麟剑】": 1,
+    "【灵药】": 2,
+    "【特殊】": 8,
+    "【玄铁重剑】": 1,
+    "【碧玉刀】": 1,
+    "【碧血鸳鸯剑】": 1,
+    "【离别钩】": 1,
+    "【秘籍】": 11,
+    "【红袖刀S】": 1,
+    "【绝世好剑】": 1,
+    "【血刀】": 1,
+    "【血河三宝】": 2,
+    "【装备】": 20,
+    "【诛仙剑】": 1,
+    "【金刚黑索】": 1,
+    "【鎚S】": 1,
+    "【闯王军刀】": 1,
+    "【防具】": 4,
+    "【雪饮狂刀】": 1,
+    "【霸王枪】": 1,
+    "【鞭】": 2,
+    "【马】": 3,
+    "【魂断双钩】": 1
+  }
+}
