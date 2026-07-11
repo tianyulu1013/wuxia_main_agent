@@ -2,35 +2,35 @@
 
 本报告来自当前数据库的 `description` 字段自动解析。它不会替代作者裁定，只用于把疑似结构问题集中列出来。
 
-- 导入时间 UTC：`2026-07-11T08:46:47.066423+00:00`
+- 导入时间 UTC：`2026-07-11T17:05:04.225669+00:00`
 - 卡牌数：536
-- 抽取特技/说明块数：1980
+- 抽取特技/说明块数：1977
 - 结构化特技表：`data/cards.sqlite` / `card_abilities`
 - JSONL：`data/cards_current/abilities.jsonl`
 
 ## 类型统计
 
-- `字`: 563
-- `招式`: 442
+- `字`: 551
+- `招式`: 446
 - `*`: 322
+- `武功`: 198
 - `技能`: 197
-- `武功`: 196
 - `说明`: 132
-- `内功`: 128
+- `内功`: 131
 
 ## 审计标记统计
 
-- `implicit_word`: 555
+- `implicit_word`: 543
 - `inherited_kind`: 336
 - `inherited_named_ability`: 332
 - `exclusive_word`: 253
-- `free_text`: 141
+- `free_text`: 140
 - `missing_indent_for_inherited`: 110
 - `author_corrected`: 108
 - `unit_specific_ability`: 101
-- `nested_continuation_line`: 58
+- `nested_continuation_line`: 57
 - `author_confirmed_structure`: 13
-- `continuation_line`: 9
+- `continuation_line`: 10
 - `nested_named_line`: 7
 - `nested_indented_line`: 5
 - `known_unnamed_ability`: 5
@@ -1346,7 +1346,7 @@
 
 ## 无前缀且按字处理的特技
 
-- 数量：555
+- 数量：543
 
 ### 丁鹏 / 战斗人物!2:4
 
@@ -2322,7 +2322,7 @@
 
 ## 说明性文本块
 
-- 数量：141
+- 数量：140
 
 ### 薛笑人 / 战斗人物!86:3
 
@@ -2768,12 +2768,6 @@
 - 标记：`free_text`
 - 原文：直接习得1条特技，每过一轮出战习得2条，不出战则习得1条。按照金字塔结构学习进阶能力。
 
-### 九阴真经 / 物品!34:17
-
-- 当前判断：`字` / 名称：`9.武功`
-- 标记：`free_text, implicit_word, nested_continuation_line`
-- 原文：9.武功：九阴身法：50%闪避（含不利效果），不中波及 自身的九阴真经特技已经覆盖某特技全部内容，可以视为已经学会该特技
-
 ### 怜花宝鉴 / 物品!35:1
 
 - 当前判断：`说明` / 名称：`—`
@@ -2803,5 +2797,11 @@
 - 当前判断：`说明` / 名称：`—`
 - 标记：`free_text, nested_continuation_line`
 - 原文：欲练此功，必先自宫；持有者每轮自上向下学会一个特技；起始即习得内功；东方不败跳过招式、武功、（字）学习 由葵花宝典习得的特技视为身份技
+
+### 葵花宝典 / 物品!38:9
+
+- 当前判断：`说明` / 名称：`—`
+- 标记：`free_text`
+- 原文：方证，冲虚，风清扬，令狐冲，任我行可不练
 
 - 仅显示前 80 条，完整列表见 `data/cards_current/abilities.jsonl`。

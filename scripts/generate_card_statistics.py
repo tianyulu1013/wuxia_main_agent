@@ -20,7 +20,6 @@ CATEGORY_LABELS = {
     "items": "物品",
     "titles": "称号",
     "scenes": "场景",
-    "deprecated": "废弃",
 }
 
 
@@ -61,6 +60,10 @@ def as_label(category: str) -> str:
 
 def ability_kind_label(kind: str) -> str:
     return ABILITY_KIND_LABELS.get(kind, kind)
+
+
+def is_deprecated_card(card: dict) -> bool:
+    return card.get("category") == "deprecated"
 
 
 def compact_counter(counter: Counter, limit: int | None = None) -> dict:
@@ -105,14 +108,20 @@ def weapon_tokens(text: str) -> list[str]:
 
 def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
     cards_by_id = {card["id"]: card for card in cards}
+    current_cards = [card for card in cards if not is_deprecated_card(card)]
+    current_card_ids = {card["id"] for card in current_cards}
+    deprecated_cards = [card for card in cards if is_deprecated_card(card)]
+    current_abilities = [ability for ability in abilities if ability.get("card_id") in current_card_ids]
+    deprecated_abilities = [ability for ability in abilities if ability.get("card_id") not in current_card_ids]
+
     abilities_by_card = defaultdict(list)
-    for ability in abilities:
+    for ability in current_abilities:
         abilities_by_card[ability["card_id"]].append(ability)
 
-    category_counts = Counter(as_label(card["category"]) for card in cards)
-    author_counts = Counter((card.get("fields") or {}).get("author_group") or "未标作者" for card in cards)
-    source_work_counts = Counter((card.get("fields") or {}).get("source_work") or "未标出处" for card in cards)
-    ability_kind_counts = Counter(ability_kind_label(ability.get("kind") or "未分类") for ability in abilities)
+    category_counts = Counter(as_label(card["category"]) for card in current_cards)
+    author_counts = Counter((card.get("fields") or {}).get("author_group") or "未标作者" for card in current_cards)
+    source_work_counts = Counter((card.get("fields") or {}).get("source_work") or "未标出处" for card in current_cards)
+    ability_kind_counts = Counter(ability_kind_label(ability.get("kind") or "未分类") for ability in current_abilities)
     ability_kind_by_category = defaultdict(Counter)
     exclusive_count = 0
     identity_ability_count = 0
@@ -120,7 +129,7 @@ def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
     review_flag_counts = Counter()
     source_field_counts = Counter()
 
-    for ability in abilities:
+    for ability in current_abilities:
         category = as_label(ability.get("card_category") or cards_by_id.get(ability["card_id"], {}).get("category", ""))
         ability_kind_by_category[category][ability_kind_label(ability.get("kind") or "未分类")] += 1
         if ability.get("is_exclusive"):
@@ -133,7 +142,7 @@ def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
             review_flag_counts[flag] += 1
         source_field_counts[ability.get("source_field") or "未标字段"] += 1
 
-    ability_counts_per_card = [len(abilities_by_card[card["id"]]) for card in cards]
+    ability_counts_per_card = [len(abilities_by_card[card["id"]]) for card in current_cards]
     ability_count_hist = Counter(ability_counts_per_card)
     high_ability_cards = sorted(
         (
@@ -144,13 +153,13 @@ def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
                 "author_group": (card.get("fields") or {}).get("author_group"),
                 "source_work": (card.get("fields") or {}).get("source_work"),
             }
-            for card in cards
+            for card in current_cards
         ),
         key=lambda item: item["ability_count"],
         reverse=True,
     )[:30]
 
-    text_lengths = [len(card.get("all_text") or "") for card in cards]
+    text_lengths = [len(card.get("all_text") or "") for card in current_cards]
     high_text_cards = sorted(
         (
             {
@@ -159,7 +168,7 @@ def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
                 "text_length": len(card.get("all_text") or ""),
                 "ability_count": len(abilities_by_card[card["id"]]),
             }
-            for card in cards
+            for card in current_cards
         ),
         key=lambda item: item["text_length"],
         reverse=True,
@@ -167,7 +176,7 @@ def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
 
     keyword_group_counts = Counter()
     keyword_group_cards = defaultdict(list)
-    for card in cards:
+    for card in current_cards:
         hits = keyword_hits(card.get("all_text") or "")
         for group, count in hits.items():
             keyword_group_counts[group] += 1
@@ -183,7 +192,7 @@ def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
         keyword_group_cards[group] = sorted(keyword_group_cards[group], key=lambda item: item["hits"], reverse=True)[:25]
 
     weapon_counts = Counter()
-    for card in cards:
+    for card in current_cards:
         fields = card.get("fields") or {}
         weapon_text = "\n".join(str(fields.get(key) or "") for key in ["weapons", "traits", "item_category"])
         for token in weapon_tokens(weapon_text):
@@ -192,8 +201,8 @@ def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
     life_values = []
     no_life_cards = []
     multi_life_cards = []
-    for card in cards:
-        if card["category"] not in {"combat_characters", "attached_characters", "deprecated"}:
+    for card in current_cards:
+        if card["category"] not in {"combat_characters", "attached_characters"}:
             continue
         values = parse_life((card.get("fields") or {}).get("life"))
         if not values:
@@ -203,7 +212,7 @@ def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
         life_values.extend(values)
 
     unit_cards = []
-    for card in cards:
+    for card in current_cards:
         card_abilities = abilities_by_card[card["id"]]
         owners = sorted({owner for ability in card_abilities for owner in (ability.get("owner_units") or [])})
         if owners:
@@ -218,10 +227,15 @@ def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
             )
 
     stats = {
-        "card_count": len(cards),
-        "ability_count": len(abilities),
+        "card_count": len(current_cards),
+        "ability_count": len(current_abilities),
+        "all_record_count": len(cards),
+        "all_ability_record_count": len(abilities),
+        "deprecated_record_count": len(deprecated_cards),
+        "deprecated_ability_count": len(deprecated_abilities),
         "notes": {
-            "说明/自由文本": "不是正式特技类型，而是解析器兜底分类：牌面中没有可识别特技前缀，但仍是有效规则文字的段落。"
+            "说明/自由文本": "不是正式特技类型，而是解析器兜底分类：牌面中没有可识别特技前缀，但仍是有效规则文字的段落。",
+            "废弃": "废弃不是基础卡牌类型；本报告默认排除废弃记录，并把它作为历史/生命周期状态单独统计。"
         },
         "category_counts": compact_counter(category_counts),
         "author_counts": compact_counter(author_counts),
@@ -274,17 +288,21 @@ def write_markdown(stats: dict) -> None:
         "# 卡牌数据库统计报告 v0.1",
         "",
         "- 来源：`data/cards_current/all_cards.jsonl` 与 `data/cards_current/abilities.jsonl`",
-        "- 性质：统计报告，不修改源数据库。",
+        "- 性质：统计报告，不修改源数据库；默认只统计当前牌库，废弃记录单列。",
         "",
         "## 总览",
         "",
-        f"- 卡牌总数：{stats['card_count']}",
-        f"- 特技/说明条目总数：{stats['ability_count']}",
+        f"- 当前牌库卡牌数：{stats['card_count']}",
+        f"- 当前牌库特技/说明条目数：{stats['ability_count']}",
+        f"- 废弃记录数：{stats['deprecated_record_count']} 张，{stats['deprecated_ability_count']} 条特技/说明记录",
+        f"- 全部数据库记录数：{stats['all_record_count']} 张，{stats['all_ability_record_count']} 条特技/说明记录",
         f"- 专属特技数：{stats['exclusive_ability_count']}",
         f"- 身份特技数：{stats['identity_ability_count']}",
         f"- 带所属人物单元的特技数：{stats['owner_unit_ability_count']}",
         "",
         "## 卡牌类型",
+        "",
+        "以下只统计当前牌库；`废弃` 是历史/生命周期状态，不作为基础卡牌类型合并统计。",
         "",
     ]
     for key, value in stats["category_counts"].items():

@@ -127,7 +127,7 @@ def card_all_text(record: dict[str, Any]) -> str:
 
 def explicit_ability_kind(line: str) -> str:
     text = line.lstrip()
-    match = re.match(r"^(内功|招式|武功|技能)：", text)
+    match = re.match(r"^(?:\d+[.．、]\s*)?(内功|招式|武功|技能)：", text)
     if match:
         return match.group(1)
     if text.startswith("*"):
@@ -137,19 +137,20 @@ def explicit_ability_kind(line: str) -> str:
 
 def split_ability_name(line: str) -> tuple[str, str, str]:
     text = line or ""
-    heading = re.match(r"^(\s*(?:内功|招式|武功|技能)：)", text)
+    heading = re.match(r"^(\s*)(?:\d+[.．、]\s*)?((?:内功|招式|武功|技能)：)", text)
     if heading:
-        rest = text[len(heading.group(1)) :]
+        type_prefix = f"{heading.group(1)}{heading.group(2)}"
+        rest = text[heading.end() :]
         exclusive = re.match(r"^(\s*【[^】]+】[:：])", rest)
         if exclusive:
-            return heading.group(1), exclusive.group(1), rest[len(exclusive.group(1)) :]
+            return type_prefix, exclusive.group(1), rest[len(exclusive.group(1)) :]
         name = re.match(r"^(\s*[^：:\n]{1,24}[:：])", rest)
         if name:
-            return heading.group(1), name.group(1), rest[len(name.group(1)) :]
+            return type_prefix, name.group(1), rest[len(name.group(1)) :]
         dash_name = re.match(r"^(\s*[^：:\n]{1,24}?)(?=\s+[-—－]{1,}|--)", rest)
         if dash_name:
-            return heading.group(1), dash_name.group(1), rest[len(dash_name.group(1)) :]
-        return heading.group(1), "", rest
+            return type_prefix, dash_name.group(1), rest[len(dash_name.group(1)) :]
+        return type_prefix, "", rest
 
     exclusive = re.match(r"^(\s*【[^】]+】[:：]?)", text)
     if exclusive:

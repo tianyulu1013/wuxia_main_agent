@@ -2178,6 +2178,30 @@
   "ability_deletes": [
     {
       "match": {
+        "source_sheet": "物品",
+        "source_row": 34,
+        "ordinal": 6
+      },
+      "note": "九阴真经：初级是下方特技分组标题，不是真正特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "物品",
+        "source_row": 34,
+        "ordinal": 11
+      },
+      "note": "九阴真经：中级是下方特技分组标题，不是真正特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "物品",
+        "source_row": 34,
+        "ordinal": 15
+      },
+      "note": "九阴真经：高级是下方特技分组标题，不是真正特技。"
+    },
+    {
+      "match": {
         "source_sheet": "附加人物",
         "source_row": 28,
         "ordinal": 2

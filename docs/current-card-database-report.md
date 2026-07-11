@@ -3,7 +3,7 @@
 - 来源 Excel：`outputs\2025-excel-sync-candidate\已制作_2025日志同步候选_PSD校准.xlsx`
 - SQLite：`data\cards.sqlite`
 - JSONL：`data\cards_current/all_cards.jsonl`
-- 导入时间 UTC：`2026-07-11T08:46:47.066423+00:00`
+- 导入时间 UTC：`2026-07-11T17:05:04.225669+00:00`
 - 总记录数：536
 
 ## Sheet 统计
