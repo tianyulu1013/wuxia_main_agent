@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CARDS_PATH = ROOT / "data" / "cards_current" / "all_cards.jsonl"
 OUT_DIR = ROOT / "data" / "review"
 DOCS_DIR = ROOT / "docs"
+STRENGTH_CALIBRATION_PATH = OUT_DIR / "strength_calibration.json"
 
 
 CATEGORY_LABELS = {
@@ -154,6 +155,21 @@ DIMENSION_KEYWORDS = {
             "改变顺序",
             "不需",
             "无论",
+        ],
+    },
+    "tempo_priority": {
+        "label": "抢先/优先结算",
+        "positive": [
+            "抢先",
+            "优先结算",
+            "先结算",
+            "先发动",
+            "战斗开始前",
+            "不能闪避",
+            "不能撤退",
+            "不能中止",
+            "无法闪避",
+            "无法撤退",
         ],
     },
 }
@@ -299,6 +315,23 @@ def load_jsonl(path: Path) -> list[dict]:
             if line:
                 records.append(json.loads(line))
     return records
+
+
+def load_strength_calibration() -> dict:
+    if not STRENGTH_CALIBRATION_PATH.exists():
+        return {"cards": {}, "global_notes": []}
+    return json.loads(STRENGTH_CALIBRATION_PATH.read_text(encoding="utf-8"))
+
+
+def strength_calibration_for_title(title: str, calibration: dict) -> tuple[str, dict] | tuple[None, None]:
+    cards = calibration.get("cards") or {}
+    if title in cards:
+        return title, cards[title]
+    for key, value in cards.items():
+        aliases = value.get("aliases") or []
+        if title in aliases:
+            return key, value
+    return None, None
 
 
 def count_hits(text: str, keywords: list[str]) -> int:
@@ -483,6 +516,7 @@ def first_pass(card: dict) -> dict:
     control = dimension_scores["control"]
     resource = dimension_scores["resource"]
     special = dimension_scores["special_victory"]
+    tempo = dimension_scores["tempo_priority"]
     strength_raw = (
         category_baseline(category)
         + (offense - 1) * 0.34
@@ -490,6 +524,7 @@ def first_pass(card: dict) -> dict:
         + (control - 1) * 0.22
         + (resource - 1) * 0.14
         + (special - 1) * 0.28
+        + (tempo - 1) * 0.24
     )
     if category == "deprecated":
         strength_raw = min(strength_raw, 2.0)
@@ -538,6 +573,7 @@ def first_pass(card: dict) -> dict:
             "mobility_social": dimension_scores["mobility_social"],
             "special_victory": dimension_scores["special_victory"],
             "rule_disruption": dimension_scores["rule_disruption"],
+            "tempo_priority": dimension_scores["tempo_priority"],
         },
         "feature_hits": hit_breakdown,
         "number_features": num,
@@ -728,7 +764,9 @@ def build_round3_summary(review: dict) -> str:
     )
 
 
-def fourth_pass_converge(reviews: list[dict]) -> list[dict]:
+def fourth_pass_converge(reviews: list[dict], calibration: dict | None = None, title_counts: Counter | None = None) -> list[dict]:
+    calibration = calibration or {"cards": {}}
+    title_counts = title_counts or Counter()
     by_category = defaultdict(list)
     for review in reviews:
         by_category[review["category"]].append(review)
@@ -739,8 +777,39 @@ def fourth_pass_converge(reviews: list[dict]) -> list[dict]:
         final_strength = review["scores"].get("strength_rule_adjusted", review["scores"]["strength_adjusted"])
         final_complexity = review["scores"].get("complexity_rule_adjusted", review["scores"]["complexity"])
         rule_pct = percentile_rank(rule_values, review["scores"].get("rule_boundary", 1.0))
+        calibration_key, calibration_entry = strength_calibration_for_title(review["title"], calibration)
+        algorithm_strength_before_calibration = final_strength
+
+        if calibration_entry and title_counts.get(review["title"], 1) > 1 and not calibration_entry.get("apply_to_duplicate_titles"):
+            review["author_strength_calibration_pending"] = {
+                "matched_key": calibration_key,
+                "tier": calibration_entry.get("tier"),
+                "score": float(calibration_entry["score"]),
+                "reason": "同名卡超过一张，需要作者确认具体版本后再套用强度标尺。",
+            }
+            calibration_entry = None
+
+        if calibration_entry:
+            author_score = float(calibration_entry["score"])
+            score_mode = calibration_entry.get("score_mode", "set")
+            if score_mode == "set":
+                final_strength = author_score
+            elif score_mode == "floor":
+                final_strength = max(final_strength, author_score)
+            elif score_mode == "cap":
+                final_strength = min(final_strength, author_score)
+            review["author_strength_calibration"] = {
+                "matched_key": calibration_key,
+                "tier": calibration_entry.get("tier"),
+                "score": author_score,
+                "score_mode": score_mode,
+                "notes": calibration_entry.get("notes", []),
+                "algorithm_strength_before_calibration": round(algorithm_strength_before_calibration, 2),
+            }
 
         final_watch_reasons = []
+        if calibration_entry:
+            final_watch_reasons.append("作者强度标尺")
         if review["electronicization"]["level"] in {"高", "极高"}:
             final_watch_reasons.append("电子化/结算风险较高")
         if review["scores"].get("rule_boundary", 1.0) >= 4.0:
@@ -765,7 +834,8 @@ def fourth_pass_converge(reviews: list[dict]) -> list[dict]:
             "round": 4,
             "summary": (
                 f"第四轮收敛：最终影响力 {stars(final_strength)}，最终复杂度 {stars(final_complexity)}；"
-                f"规则边界分位 {rule_pct:.0%}。"
+                f"规则边界分位 {rule_pct:.0%}"
+                + ("；已套用作者强度标尺。" if calibration_entry else "。")
             ),
             "watch_reasons": final_watch_reasons,
         }
@@ -791,6 +861,8 @@ def write_csv(path: Path, reviews: list[dict]) -> None:
         "life",
         "final_strength",
         "strength_stars",
+        "algorithm_strength_before_calibration",
+        "author_strength_tier",
         "final_complexity",
         "complexity_stars",
         "rule_boundary",
@@ -814,6 +886,8 @@ def write_csv(path: Path, reviews: list[dict]) -> None:
                     "life": review.get("life") if review.get("life") is not None else "",
                     "final_strength": review["scores"].get("final_strength", review["scores"]["strength_adjusted"]),
                     "strength_stars": review["scores"].get("final_strength_stars", review["scores"]["strength_adjusted_stars"]),
+                    "algorithm_strength_before_calibration": (review.get("author_strength_calibration") or {}).get("algorithm_strength_before_calibration", ""),
+                    "author_strength_tier": (review.get("author_strength_calibration") or {}).get("tier", ""),
                     "final_complexity": review["scores"].get("final_complexity", review["scores"]["complexity"]),
                     "complexity_stars": review["scores"].get("final_complexity_stars", review["scores"]["complexity_stars"]),
                     "rule_boundary": review["scores"].get("rule_boundary", ""),
@@ -853,6 +927,22 @@ def build_summary(reviews: list[dict]) -> dict:
     electronicization_counts = Counter(r["electronicization"]["level"] for r in reviews)
     needs_review = [r for r in reviews if r.get("ai_review_round4", {}).get("watch_reasons", r["ai_review_round2"]["needs_author_review"])]
     rule_concept_counts = Counter(concept["label"] for r in reviews for concept in r.get("rule_concepts", []))
+    calibrated_reviews = [r for r in reviews if r.get("author_strength_calibration")]
+    pending_calibrations = [r for r in reviews if r.get("author_strength_calibration_pending")]
+    pending_by_title = {}
+    for review in pending_calibrations:
+        pending = review["author_strength_calibration_pending"]
+        item = pending_by_title.setdefault(
+            review["title"],
+            {
+                "title": review["title"],
+                "tier": pending["tier"],
+                "author_score": pending["score"],
+                "reason": pending["reason"],
+                "duplicate_count": 0,
+            },
+        )
+        item["duplicate_count"] += 1
 
     return {
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -866,6 +956,19 @@ def build_summary(reviews: list[dict]) -> dict:
         "median_strength_adjusted": median(r["scores"].get("final_strength", r["scores"]["strength_adjusted"]) for r in reviews),
         "median_complexity": median(r["scores"].get("final_complexity", r["scores"]["complexity"]) for r in reviews),
         "needs_author_review_count": len(needs_review),
+        "author_strength_calibration_count": len(calibrated_reviews),
+        "author_strength_calibration_pending_count": len(pending_by_title),
+        "author_strength_calibration_pending_cards": list(pending_by_title.values()),
+        "author_strength_calibrated_cards": [
+            {
+                "title": r["title"],
+                "tier": r["author_strength_calibration"]["tier"],
+                "author_score": r["author_strength_calibration"]["score"],
+                "algorithm_strength_before_calibration": r["author_strength_calibration"]["algorithm_strength_before_calibration"],
+                "final_strength": r["scores"]["final_strength"],
+            }
+            for r in sorted(calibrated_reviews, key=lambda r: r["scores"]["final_strength"], reverse=True)
+        ],
         "top_strength": top_cards(reviews, ("scores", "final_strength")),
         "top_complexity": top_cards(reviews, ("scores", "final_complexity")),
         "top_rule_boundary": top_cards(reviews, ("scores", "rule_boundary")),
@@ -909,6 +1012,19 @@ def write_markdown(summary: dict, reviews: list[dict]) -> None:
     lines.extend(["", "## 规则概念分布", ""])
     for name, count in list(summary["rule_concept_counts"].items())[:20]:
         lines.append(f"- {name}: {count}")
+
+    lines.extend(["", "## 作者强度标尺", ""])
+    lines.append(f"- 已套用作者强度标尺：{summary.get('author_strength_calibration_count', 0)} 张")
+    pending_count = summary.get("author_strength_calibration_pending_count", 0)
+    if pending_count:
+        lines.append(f"- 因同名卡待作者消歧，暂未套用：{pending_count} 张")
+        for item in summary.get("author_strength_calibration_pending_cards", []):
+            lines.append(f"  - {item['title']}: {item['tier']}，作者标尺 {item['author_score']}，同名记录 {item['duplicate_count']} 张；{item['reason']}")
+    for item in summary.get("author_strength_calibrated_cards", [])[:30]:
+        lines.append(
+            f"- {item['title']}: {item['tier']}，作者标尺 {item['author_score']}，"
+            f"算法原估 {item['algorithm_strength_before_calibration']}，最终 {item['final_strength']}"
+        )
 
     lines.extend(["", "## 最终影响力前 20", ""])
     for item in summary["top_strength"]:
@@ -1089,11 +1205,13 @@ def write_author_watchlist(reviews: list[dict]) -> None:
 
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    strength_calibration = load_strength_calibration()
     cards = load_jsonl(CARDS_PATH)
+    title_counts = Counter(card.get("title", "") for card in cards)
     round1 = [first_pass(card) for card in cards]
     round2 = second_pass(json.loads(json.dumps(round1, ensure_ascii=False)))
     round3 = third_pass_rule_aware(json.loads(json.dumps(round2, ensure_ascii=False)))
-    round4 = fourth_pass_converge(json.loads(json.dumps(round3, ensure_ascii=False)))
+    round4 = fourth_pass_converge(json.loads(json.dumps(round3, ensure_ascii=False)), strength_calibration, title_counts)
     summary = build_summary(round4)
 
     write_jsonl(OUT_DIR / "ai_card_reviews_round1.jsonl", round1)

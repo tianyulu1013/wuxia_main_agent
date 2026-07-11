@@ -1,0 +1,106 @@
+{
+  "_schema": {
+    "version": 1,
+    "purpose": "独立评语层：作者给出的强度标尺，用于校正 AI 评价；不得反向污染源数据库、Excel、SQLite 或牌面事实。",
+    "score_scale": "1-5。这里的分数表示综合对局影响力，不表示严格排序；同层人物可能互相克制。",
+    "score_modes": {
+      "set": "以作者标尺作为最终影响力的主要值。",
+      "cap": "AI 不应把该卡评到高于此值。",
+      "floor": "AI 不应把该卡评到低于此值。"
+    }
+  },
+  "global_notes": [
+    "强度不是平衡判断，本游戏很多强弱来自随机抓卡、对局环境、互相克制和人工裁定。",
+    "葵花系列的抢先/优先结算非常强，应作为强度关键特征，而不只是看伤害数字。",
+    "特异化人物可能综合强度不高，但长板很长，在特定局面有奇效。"
+  ],
+  "cards": {
+    "葵花老祖": {
+      "tier": "顶级强者",
+      "score": 4.95,
+      "score_mode": "set",
+      "notes": [
+        "作者认为综合上比大多数强者更强。",
+        "核心强点包括葵花系列的优先/抢先结算。"
+      ]
+    },
+    "东方不败": {
+      "tier": "顶级强者",
+      "score": 4.95,
+      "score_mode": "set",
+      "notes": [
+        "作者认为综合上比大多数强者更强。",
+        "葵花系列抢先结算是重要强度来源。"
+      ]
+    },
+    "张三丰": {"tier": "顶级强者候选", "score": 4.75, "score_mode": "set"},
+    "独孤求败": {"tier": "顶级强者候选", "score": 4.75, "score_mode": "set"},
+    "萧秋水": {
+      "tier": "顶级强者候选",
+      "score": 4.75,
+      "score_mode": "set",
+      "aliases": ["萧秋水（大侠）", "大侠萧秋水"]
+    },
+    "传鹰": {"tier": "顶级强者候选", "score": 4.75, "score_mode": "set"},
+    "张小凡": {"tier": "顶级强者候选", "score": 4.75, "score_mode": "set"},
+    "浪翻云": {"tier": "顶级强者候选", "score": 4.75, "score_mode": "set"},
+    "韦青青青": {"tier": "顶级强者候选", "score": 4.75, "score_mode": "set"},
+    "金世遗": {"tier": "顶级强者候选", "score": 4.75, "score_mode": "set"},
+    "杨小邪": {"tier": "顶级强者候选", "score": 4.75, "score_mode": "set"},
+    "黄裳": {"tier": "顶级强者候选", "score": 4.75, "score_mode": "set"},
+    "成吉思汗": {"tier": "顶级强者候选", "score": 4.75, "score_mode": "set"},
+    "燕狂徒": {
+      "tier": "很强但非顶级",
+      "score": 4.25,
+      "score_mode": "set"
+    },
+    "赤尊信": {"tier": "很强但非顶级", "score": 4.25, "score_mode": "set"},
+    "元十三限": {"tier": "很强但非顶级", "score": 4.25, "score_mode": "set"},
+    "方歌吟": {"tier": "很强但非顶级", "score": 4.25, "score_mode": "set"},
+    "关七": {"tier": "很强但非顶级", "score": 4.25, "score_mode": "set"},
+    "诸葛正我": {"tier": "很强但非顶级", "score": 4.25, "score_mode": "set"},
+    "萧峰": {"tier": "强者", "score": 4.15, "score_mode": "floor"},
+    "郭靖": {"tier": "强者", "score": 4.15, "score_mode": "floor"},
+    "杨过": {
+      "tier": "强者",
+      "score": 4.15,
+      "score_mode": "floor",
+      "aliases": ["杨过（大侠）"]
+    },
+    "黄蓉": {"tier": "强者", "score": 4.15, "score_mode": "floor"},
+    "张无忌": {"tier": "强者", "score": 4.15, "score_mode": "floor"},
+    "阿青": {"tier": "强者", "score": 4.15, "score_mode": "floor"},
+    "何铁手": {
+      "tier": "偏弱误判样本",
+      "score": 2.6,
+      "score_mode": "cap",
+      "notes": ["作者指出 AI 将其列入前排属于误判。"]
+    },
+    "周芷若": {
+      "tier": "偏弱误判样本",
+      "score": 2.6,
+      "score_mode": "cap",
+      "notes": ["作者指出 AI 将其列入前排属于误判。"]
+    },
+    "白飞飞": {
+      "tier": "特异化长板",
+      "score": 3.0,
+      "score_mode": "cap",
+      "notes": [
+        "综合不算顶级强者，但长板很长，特定局面有奇效。"
+      ]
+    },
+    "和尚大师": {
+      "tier": "特异化长板",
+      "score": 3.0,
+      "score_mode": "cap",
+      "notes": ["综合不算顶级强者，但特定局面有奇效。"]
+    },
+    "雪峰神尼": {
+      "tier": "特异化长板",
+      "score": 3.0,
+      "score_mode": "cap",
+      "notes": ["综合不算顶级强者，但特定局面有奇效。"]
+    }
+  }
+}
