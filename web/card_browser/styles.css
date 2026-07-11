@@ -701,6 +701,11 @@ button:hover {
   margin-bottom: 16px;
 }
 
+.stat-filter-summary {
+  margin-bottom: 12px;
+  color: #314053;
+}
+
 .stat-list {
   list-style: none;
   margin: 0;

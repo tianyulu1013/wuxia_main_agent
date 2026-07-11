@@ -156,6 +156,47 @@ function compareStaticCards(a, b, sort, q) {
     || Number(a.source_row || 0) - Number(b.source_row || 0);
 }
 
+function staticFilteredCards({ q = "", scope = "all", category = "", author = "" } = {}) {
+  return Object.values(STATIC_DATA.cards)
+    .filter((card) => category ? card.category === category : card.category !== "deprecated")
+    .filter((card) => author ? card.author_group === author : true)
+    .filter((card) => staticMatchesScope(card, q, scope));
+}
+
+function countBy(items, getter) {
+  const counts = {};
+  for (const item of items) {
+    const key = getter(item) || "未标";
+    counts[key] = (counts[key] || 0) + 1;
+  }
+  return Object.fromEntries(Object.entries(counts).sort((a, b) => b[1] - a[1]));
+}
+
+function abilityIsExclusive(ability) {
+  const name = String(ability?.name || "");
+  return name.includes("【") && name.includes("】");
+}
+
+function abilityIsIdentity(ability) {
+  return /[（(]身份[）)]\s*$/.test(String(ability?.text || "").trim());
+}
+
+function staticStatQuery(params) {
+  const cards = staticFilteredCards(params);
+  const abilities = cards.flatMap((card) => Array.isArray(card.abilities) ? card.abilities : []);
+  return {
+    filters: params,
+    card_count: cards.length,
+    ability_count: abilities.length,
+    exclusive_ability_count: abilities.filter(abilityIsExclusive).length,
+    identity_ability_count: abilities.filter(abilityIsIdentity).length,
+    category_counts: countBy(cards, (card) => card.category_label || card.category),
+    author_counts: countBy(cards, (card) => card.author_group),
+    source_work_counts: countBy(cards, (card) => card.source_work),
+    ability_kind_counts: countBy(abilities, (ability) => ability.kind),
+  };
+}
+
 function getStaticJson(url) {
   const parsed = new URL(url, window.location.href);
   if (parsed.pathname.endsWith("/api/meta")) {
@@ -164,6 +205,14 @@ function getStaticJson(url) {
   if (parsed.pathname.endsWith("/api/statistics")) {
     return Promise.resolve(STATIC_DATA.statistics || {});
   }
+  if (parsed.pathname.endsWith("/api/stat-query")) {
+    return Promise.resolve(staticStatQuery({
+      q: (parsed.searchParams.get("q") || "").trim(),
+      scope: parsed.searchParams.get("scope") || "all",
+      category: parsed.searchParams.get("category") || "",
+      author: parsed.searchParams.get("author") || "",
+    }));
+  }
   if (parsed.pathname.endsWith("/api/search")) {
     const q = (parsed.searchParams.get("q") || "").trim();
     const scope = parsed.searchParams.get("scope") || "all";
@@ -171,10 +220,7 @@ function getStaticJson(url) {
     const author = parsed.searchParams.get("author") || "";
     const sort = parsed.searchParams.get("sort") || "sheet";
     const limit = Math.min(Math.max(Number(parsed.searchParams.get("limit") || 60), 1), 500);
-    const cards = Object.values(STATIC_DATA.cards)
-      .filter((card) => category ? card.category === category : card.category !== "deprecated")
-      .filter((card) => author ? card.author_group === author : true)
-      .filter((card) => staticMatchesScope(card, q, scope))
+    const cards = staticFilteredCards({ q, scope, category, author })
       .sort((a, b) => compareStaticCards(a, b, sort, q))
       .slice(0, limit)
       .map((card) => staticSummary(card, scope));
@@ -594,24 +640,48 @@ function counterList(counter, limit = 20) {
     .join("");
 }
 
+function currentFilterParams() {
+  return {
+    q: els.query.value,
+    scope: els.scope.value,
+    category: els.category.value,
+    author: els.author.value,
+  };
+}
+
+function filterSummary(filters) {
+  const parts = [];
+  if (filters.q) parts.push(`关键词：${filters.q}`);
+  if (filters.scope && filters.scope !== "all") {
+    const selected = els.scope.options[els.scope.selectedIndex];
+    parts.push(`范围：${selected ? selected.textContent : filters.scope}`);
+  }
+  if (filters.category) {
+    const selected = els.category.options[els.category.selectedIndex];
+    parts.push(`类别：${selected ? selected.textContent : filters.category}`);
+  }
+  if (filters.author) parts.push(`作者：${filters.author}`);
+  return parts.length ? parts.join("；") : "当前牌库，不含废弃记录";
+}
+
 async function showStatistics() {
-  const stats = await getJson("/api/statistics");
+  const filters = currentFilterParams();
+  const stats = await getJson(`/api/stat-query?${new URLSearchParams(filters).toString()}`);
   state.activeId = null;
   renderResults();
   els.empty.classList.add("hidden");
   els.detail.classList.remove("hidden");
   els.detail.innerHTML = `
     <div class="detail-title">
-      <h2>统计报告</h2>
-      <span class="badge">当前牌库</span>
+      <h2>筛选统计</h2>
+      <span class="badge">动态</span>
     </div>
+    <div class="text-block stat-filter-summary">${highlight(filterSummary(filters))}</div>
     <div class="stats-grid">
-      ${kv("当前牌库", `${stats.card_count || 0} 张`)}
+      ${kv("卡牌", `${stats.card_count || 0} 张`)}
       ${kv("特技/说明", `${stats.ability_count || 0} 条`)}
       ${kv("专属特技", `${stats.exclusive_ability_count || 0} 条`)}
       ${kv("身份特技", `${stats.identity_ability_count || 0} 条`)}
-      ${kv("废弃记录", `${stats.deprecated_record_count || 0} 张`)}
-      ${kv("所属人物特技", `${stats.owner_unit_ability_count || 0} 条`)}
     </div>
     <div class="section statistics-section">
       <h3>卡牌类型</h3>
@@ -622,12 +692,16 @@ async function showStatistics() {
       <ul class="stat-list">${counterList(stats.ability_kind_counts)}</ul>
     </div>
     <div class="section statistics-section">
-      <h3>机制关键词</h3>
-      <ul class="stat-list">${counterList(stats.keyword_group_card_counts)}</ul>
+      <h3>作者</h3>
+      <ul class="stat-list">${counterList(stats.author_counts)}</ul>
+    </div>
+    <div class="section statistics-section">
+      <h3>出处</h3>
+      <ul class="stat-list">${counterList(stats.source_work_counts)}</ul>
     </div>
     <div class="section statistics-section">
       <h3>说明</h3>
-      <div class="text-block">${highlight(Object.values(stats.notes || {}).join("\n"))}</div>
+      <div class="text-block">统计按当前左侧筛选条件实时计算；未选择类别时默认排除废弃记录。</div>
     </div>
   `;
 }

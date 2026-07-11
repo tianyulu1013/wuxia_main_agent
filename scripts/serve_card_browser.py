@@ -318,6 +318,9 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         if parsed.path == "/api/statistics":
             self.handle_statistics()
             return
+        if parsed.path == "/api/stat-query":
+            self.handle_stat_query(parsed.query)
+            return
         if parsed.path == "/api/search":
             self.handle_search(parsed.query)
             return
@@ -366,6 +369,141 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
     def handle_statistics(self) -> None:
         data = load_json_file(STATISTICS_PATH, {})
         self.send_json(data if isinstance(data, dict) else {})
+
+    def search_clauses(self, params: dict[str, list[str]]) -> tuple[list[str], list[object], dict[str, object]]:
+        q = (params.get("q", [""])[0] or "").strip()
+        scope = (params.get("scope", ["all"])[0] or "all").strip()
+        category = (params.get("category", [""])[0] or "").strip()
+        author = (params.get("author", [""])[0] or "").strip()
+        clauses = []
+        values: list[object] = []
+        if q:
+            like = f"%{q}%"
+            normalized = q.replace("（", "(").replace("）", ")").replace(" ", "")
+            normalized_like = f"%{normalized}%"
+            override_titles = matching_unit_override_titles(scope, q)
+
+            def append_search_clause(sql_fragment: str, fragment_values: list[object]) -> None:
+                if override_titles:
+                    placeholders = ", ".join("?" for _ in override_titles)
+                    clauses.append(f"({sql_fragment} OR title IN ({placeholders}))")
+                    values.extend(fragment_values)
+                    values.extend(override_titles)
+                else:
+                    clauses.append(sql_fragment)
+                    values.extend(fragment_values)
+
+            if scope == "title":
+                clauses.append("(title LIKE ? OR normalized_title LIKE ?)")
+                values.extend([like, normalized_like])
+            elif scope == "identity":
+                append_search_clause(
+                    """
+                    (
+                      identity LIKE ?
+                      OR EXISTS (
+                        SELECT 1 FROM card_abilities a
+                        WHERE a.card_id = cards.id AND a.owner_identity LIKE ?
+                      )
+                    )
+                    """,
+                    [like, like],
+                )
+            elif scope == "weapons":
+                append_search_clause(
+                    """
+                    (
+                      weapons LIKE ?
+                      OR EXISTS (
+                        SELECT 1 FROM card_abilities a
+                        WHERE a.card_id = cards.id AND a.owner_weapons_json LIKE ?
+                      )
+                    )
+                    """,
+                    [like, like],
+                )
+            elif scope == "source_work":
+                clauses.append("source_work LIKE ?")
+                values.append(like)
+            elif scope == "relationships":
+                append_search_clause("relationships LIKE ?", [like])
+            elif scope == "ability":
+                clauses.append(
+                    """
+                    EXISTS (
+                      SELECT 1 FROM card_abilities a
+                      WHERE a.card_id = cards.id
+                        AND (
+                          a.kind LIKE ? OR a.name LIKE ? OR a.raw_name LIKE ?
+                          OR a.type_prefix LIKE ? OR a.text LIKE ?
+                        )
+                    )
+                    """
+                )
+                values.extend([like, like, like, like, like])
+            else:
+                append_search_clause(
+                    """
+                    (
+                      title LIKE ? OR normalized_title LIKE ? OR description LIKE ? OR relationships LIKE ?
+                      OR identity LIKE ? OR weapons LIKE ? OR source_work LIKE ? OR author_group LIKE ? OR all_text LIKE ?
+                    )
+                    """,
+                    [like, normalized_like, like, like, like, like, like, like, like],
+                )
+        if category:
+            clauses.append("category = ?")
+            values.append(category)
+        else:
+            clauses.append("category <> ?")
+            values.append("deprecated")
+        if author:
+            clauses.append("author_group = ?")
+            values.append(author)
+        return clauses, values, {"q": q, "scope": scope, "category": category, "author": author}
+
+    def handle_stat_query(self, query_string: str) -> None:
+        params = parse_qs(query_string)
+        clauses, values, filters = self.search_clauses(params)
+        where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
+        with connect() as conn:
+            card_rows = [dict(row) for row in conn.execute(f"SELECT id, category, author_group, source_work FROM cards {where}", values)]
+            card_ids = [row["id"] for row in card_rows]
+            if card_ids:
+                placeholders = ", ".join("?" for _ in card_ids)
+                ability_rows = [
+                    dict(row)
+                    for row in conn.execute(
+                        f"SELECT kind, name, text FROM card_abilities WHERE card_id IN ({placeholders})",
+                        card_ids,
+                    )
+                ]
+            else:
+                ability_rows = []
+
+        def count_by(rows: list[dict[str, object]], key: str, labeler=None) -> dict[str, int]:
+            counts: dict[str, int] = {}
+            for row in rows:
+                raw_value = str(row.get(key) or "未标")
+                value = labeler(raw_value) if labeler else raw_value
+                counts[value] = counts.get(value, 0) + 1
+            return dict(sorted(counts.items(), key=lambda item: item[1], reverse=True))
+
+        exclusive_count = sum(1 for row in ability_rows if "【" in str(row.get("name") or "") and "】" in str(row.get("name") or ""))
+        identity_count = sum(1 for row in ability_rows if re.search(r"[（(]身份[）)]\s*$", str(row.get("text") or "").strip()))
+        self.send_json(
+            {
+                "filters": filters,
+                "card_count": len(card_rows),
+                "ability_count": len(ability_rows),
+                "exclusive_ability_count": exclusive_count,
+                "identity_ability_count": identity_count,
+                "category_counts": count_by(card_rows, "category", label_category),
+                "author_counts": count_by(card_rows, "author_group"),
+                "source_work_counts": count_by(card_rows, "source_work"),
+                "ability_kind_counts": count_by(ability_rows, "kind"),
+            }
+        )
 
     def handle_search(self, query_string: str) -> None:
         params = parse_qs(query_string)
