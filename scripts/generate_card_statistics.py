@@ -24,6 +24,11 @@ CATEGORY_LABELS = {
 }
 
 
+ABILITY_KIND_LABELS = {
+    "说明": "说明/自由文本",
+}
+
+
 KEYWORD_GROUPS = {
     "不占名额/机会成本": ["不占名额", "不占.*名额"],
     "抢先/优先": ["抢先", "优先结算", "先结算", "先发动"],
@@ -52,6 +57,10 @@ def load_jsonl(path: Path) -> list[dict]:
 
 def as_label(category: str) -> str:
     return CATEGORY_LABELS.get(category, category)
+
+
+def ability_kind_label(kind: str) -> str:
+    return ABILITY_KIND_LABELS.get(kind, kind)
 
 
 def compact_counter(counter: Counter, limit: int | None = None) -> dict:
@@ -103,7 +112,7 @@ def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
     category_counts = Counter(as_label(card["category"]) for card in cards)
     author_counts = Counter((card.get("fields") or {}).get("author_group") or "未标作者" for card in cards)
     source_work_counts = Counter((card.get("fields") or {}).get("source_work") or "未标出处" for card in cards)
-    ability_kind_counts = Counter(ability.get("kind") or "未分类" for ability in abilities)
+    ability_kind_counts = Counter(ability_kind_label(ability.get("kind") or "未分类") for ability in abilities)
     ability_kind_by_category = defaultdict(Counter)
     exclusive_count = 0
     identity_ability_count = 0
@@ -113,7 +122,7 @@ def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
 
     for ability in abilities:
         category = as_label(ability.get("card_category") or cards_by_id.get(ability["card_id"], {}).get("category", ""))
-        ability_kind_by_category[category][ability.get("kind") or "未分类"] += 1
+        ability_kind_by_category[category][ability_kind_label(ability.get("kind") or "未分类")] += 1
         if ability.get("is_exclusive"):
             exclusive_count += 1
         if ability.get("is_identity"):
@@ -211,6 +220,9 @@ def build_statistics(cards: list[dict], abilities: list[dict]) -> dict:
     stats = {
         "card_count": len(cards),
         "ability_count": len(abilities),
+        "notes": {
+            "说明/自由文本": "不是正式特技类型，而是解析器兜底分类：牌面中没有可识别特技前缀，但仍是有效规则文字的段落。"
+        },
         "category_counts": compact_counter(category_counts),
         "author_counts": compact_counter(author_counts),
         "source_work_top30": compact_counter(source_work_counts, 30),
@@ -281,6 +293,13 @@ def write_markdown(stats: dict) -> None:
     lines.extend(["", "## 特技类型", ""])
     for key, value in stats["ability_kind_counts"].items():
         lines.append(f"- {key}: {value}")
+    lines.extend(
+        [
+            "",
+            "`说明/自由文本` 不是正式特技类型，而是解析器兜底分类：牌面中没有 `内功/招式/武功/技能/*/字` 等可识别前缀，",
+            "但仍然是有效规则文字的段落。它主要来自物品、场景、称号、附加人物，以及少量战斗人物的开场说明或多人一卡总规则。",
+        ]
+    )
 
     lines.extend(["", "## 各卡牌类型下的特技类型", ""])
     for category, counter in stats["ability_kind_by_category"].items():
