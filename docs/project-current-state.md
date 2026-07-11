@@ -1,5 +1,7 @@
 # 项目当前状态
 
+新对话优先阅读根目录的 `PROJECT_STATE.md`。本文是更详细的当前状态补充。
+
 本文记录当前工具已经形成的稳定起点。
 
 ## 当前目标
@@ -81,7 +83,9 @@
 
 ## 在线化状态
 
-当前查询网页不是纯静态网站。
+当前查询网页有两种形态。
+
+### 本地动态版
 
 它依赖 Python 后端读取 SQLite、JSON 和本地图片，因此不能直接把 `web/card_browser/` 上传到普通静态托管就完整运行。
 
@@ -99,3 +103,19 @@
 - 把卡面图片复制到静态目录。
 - 前端只读取静态 JSON 和图片。
 - 可以部署到 Netlify 等普通静态网站。
+
+### 已建立的 Git 仓库
+
+主工程仓库：
+
+- `https://github.com/tianyulu1013/wuxia_main_agent`
+
+静态发布仓库：
+
+- `https://github.com/tianyulu1013/wuxia_static_publish`
+
+本地静态发布仓库目录：
+
+- `static_publish_repo/`
+
+它是独立 Git 仓库，并被主工程 `.gitignore` 忽略。
