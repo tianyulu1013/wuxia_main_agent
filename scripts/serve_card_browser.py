@@ -16,6 +16,8 @@ DB_PATH = ROOT / "data" / "cards.sqlite"
 UNIT_OVERRIDES_PATH = ROOT / "data" / "card_unit_overrides.json"
 CARD_REVIEWS_PATH = ROOT / "data" / "card_reviews.json"
 CHANGE_CANDIDATES_PATH = ROOT / "data" / "change_candidates.json"
+STRUCTURE_NOTES_PATH = ROOT / "data" / "card_structure_notes.json"
+STATISTICS_PATH = ROOT / "data" / "review" / "card_database_statistics.json"
 CARD_IMAGE_ALIASES_PATH = ROOT / "data" / "card_image_aliases.json"
 RELEASE_CARD_ROOT = ROOT / "data" / "release_images" / "cards"
 ALL_UNITS_GROUP = "__all_units__"
@@ -29,7 +31,7 @@ CATEGORY_LABELS = {
     "items": "物品",
     "scenes": "场景",
     "titles": "称号",
-    "deprecated": "废弃",
+    "deprecated": "废弃记录",
 }
 
 
@@ -83,6 +85,18 @@ def load_review_layers(title: object) -> dict[str, object]:
             if isinstance(item, dict) and item.get("card_title") == card_title
         ]
     return {"review": reviews, "change_candidates": candidates}
+
+
+def load_structure_notes(title: object) -> list[object]:
+    card_title = str(title or "")
+    data = load_json_file(STRUCTURE_NOTES_PATH, {})
+    if not isinstance(data, dict):
+        return []
+    cards = data.get("cards", {})
+    if not isinstance(cards, dict):
+        return []
+    notes = cards.get(card_title, [])
+    return notes if isinstance(notes, list) else []
 
 
 def normalize_image_key(value: str) -> str:
@@ -301,6 +315,9 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         if parsed.path == "/api/meta":
             self.handle_meta()
             return
+        if parsed.path == "/api/statistics":
+            self.handle_statistics()
+            return
         if parsed.path == "/api/search":
             self.handle_search(parsed.query)
             return
@@ -345,6 +362,10 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
                 "authors": authors,
             }
         )
+
+    def handle_statistics(self) -> None:
+        data = load_json_file(STATISTICS_PATH, {})
+        self.send_json(data if isinstance(data, dict) else {})
 
     def handle_search(self, query_string: str) -> None:
         params = parse_qs(query_string)
@@ -522,6 +543,7 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         ]
         payload["units"] = build_card_units(payload, payload["abilities"])
         payload.update(load_review_layers(payload.get("title")))
+        payload["structure_notes"] = load_structure_notes(payload.get("title"))
         if find_card_image(payload):
             payload["image_url"] = f"/api/card-image/{quote(str(payload['id']))}"
         self.send_json(payload)

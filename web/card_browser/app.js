@@ -14,6 +14,7 @@ const els = {
   limit: document.querySelector("#limitSelect"),
   search: document.querySelector("#searchButton"),
   reset: document.querySelector("#resetButton"),
+  statistics: document.querySelector("#statisticsButton"),
   stats: document.querySelector("#statsPanel"),
   count: document.querySelector("#resultCount"),
   results: document.querySelector("#resultsList"),
@@ -160,6 +161,9 @@ function getStaticJson(url) {
   if (parsed.pathname.endsWith("/api/meta")) {
     return Promise.resolve(STATIC_DATA.meta);
   }
+  if (parsed.pathname.endsWith("/api/statistics")) {
+    return Promise.resolve(STATIC_DATA.statistics || {});
+  }
   if (parsed.pathname.endsWith("/api/search")) {
     const q = (parsed.searchParams.get("q") || "").trim();
     const scope = parsed.searchParams.get("scope") || "all";
@@ -263,7 +267,7 @@ function abilityClass(kind, line = "") {
 
 function explicitAbilityKind(line) {
   const text = String(line || "").trimStart();
-  const prefix = text.match(/^(内功|招式|武功|技能)：/);
+  const prefix = text.match(/^(?:\d+[.．、]\s*)?(内功|招式|武功|技能)：/);
   if (prefix) return prefix[1];
   if (text.startsWith("*")) return "*";
   return "";
@@ -291,14 +295,15 @@ function abilityLineMeta(line, inheritedKind = "") {
 
 function splitAbilityName(line) {
   const text = String(line || "");
-  const heading = text.match(/^(\s*(?:内功|招式|武功|技能)：)/);
+  const heading = text.match(/^(\s*)(?:\d+[.．、]\s*)?((?:内功|招式|武功|技能)：)/);
   if (heading) {
-    const rest = text.slice(heading[1].length);
+    const typePrefix = `${heading[1]}${heading[2]}`;
+    const rest = text.slice(heading[0].length);
     const name = rest.match(/^(\s*[^：:\n]{1,24}[:：])/);
     if (name) {
-      return [heading[1], name[1], rest.slice(name[1].length)];
+      return [typePrefix, name[1], rest.slice(name[1].length)];
     }
-    return [heading[1], "", rest];
+    return [typePrefix, "", rest];
   }
 
   const exclusive = text.match(/^(\s*【[^】]+】[:：]?)/);
@@ -548,6 +553,83 @@ function renderReviewLayer(review) {
   `;
 }
 
+function renderStructureNotes(notes) {
+  if (!Array.isArray(notes) || notes.length === 0) return "";
+  return `
+    <div class="section structure-section">
+      <h3>结构说明</h3>
+      <div class="structure-list">
+        ${notes.map((note) => {
+          const groups = Array.isArray(note.groups) && note.groups.length
+            ? `<div class="structure-groups">
+                ${note.groups.map((group) => `
+                  <div class="structure-group">
+                    <strong>${highlight(group.name || "")}</strong>
+                    <span>${Array.isArray(group.applies_to) ? group.applies_to.map((item) => highlight(item)).join("、") : ""}</span>
+                  </div>
+                `).join("")}
+              </div>`
+            : "";
+          return `
+            <article class="structure-note">
+              <div class="structure-note-title">
+                <strong>${highlight(note.title || "结构说明")}</strong>
+                <span>${escapeHtml(note.kind || "说明")}</span>
+              </div>
+              <div class="text-block">${highlight(note.text || "")}</div>
+              ${groups}
+            </article>
+          `;
+        }).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function counterList(counter, limit = 20) {
+  if (!counter || typeof counter !== "object") return "";
+  return Object.entries(counter)
+    .slice(0, limit)
+    .map(([key, value]) => `<li><span>${escapeHtml(key)}</span><strong>${escapeHtml(value)}</strong></li>`)
+    .join("");
+}
+
+async function showStatistics() {
+  const stats = await getJson("/api/statistics");
+  state.activeId = null;
+  renderResults();
+  els.empty.classList.add("hidden");
+  els.detail.classList.remove("hidden");
+  els.detail.innerHTML = `
+    <div class="detail-title">
+      <h2>统计报告</h2>
+      <span class="badge">当前牌库</span>
+    </div>
+    <div class="stats-grid">
+      ${kv("当前牌库", `${stats.card_count || 0} 张`)}
+      ${kv("特技/说明", `${stats.ability_count || 0} 条`)}
+      ${kv("废弃记录", `${stats.deprecated_record_count || 0} 张`)}
+      ${kv("所属人物特技", `${stats.owner_unit_ability_count || 0} 条`)}
+    </div>
+    <div class="section statistics-section">
+      <h3>卡牌类型</h3>
+      <ul class="stat-list">${counterList(stats.category_counts)}</ul>
+    </div>
+    <div class="section statistics-section">
+      <h3>特技类型</h3>
+      <ul class="stat-list">${counterList(stats.ability_kind_counts)}</ul>
+    </div>
+    <div class="section statistics-section">
+      <h3>机制关键词</h3>
+      <ul class="stat-list">${counterList(stats.keyword_group_card_counts)}</ul>
+    </div>
+    <div class="section statistics-section">
+      <h3>说明</h3>
+      <div class="text-block">${highlight(Object.values(stats.notes || {}).join("\n"))}</div>
+    </div>
+  `;
+}
+
 function renderChangeCandidates(candidates) {
   if (!Array.isArray(candidates) || candidates.length === 0) return "";
   return `
@@ -602,6 +684,7 @@ async function loadCard(id) {
       <h3>描述</h3>
       ${renderUnitGroups(card)}
     </div>
+    ${renderStructureNotes(card.structure_notes)}
     <div class="section">
       <h3>关系</h3>
       <div class="text-block">${highlight(card.relationships || "—")}</div>
@@ -642,6 +725,7 @@ function bindEvents() {
     els.limit.value = "60";
     runSearch();
   });
+  els.statistics.addEventListener("click", showStatistics);
   els.query.addEventListener("keydown", (event) => {
     if (event.key === "Enter") runSearch();
   });

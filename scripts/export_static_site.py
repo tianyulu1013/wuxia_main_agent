@@ -82,6 +82,7 @@ def build_cards(conn: sqlite3.Connection) -> dict[str, dict[str, object]]:
         card["abilities"] = abilities
         card["units"] = browser.build_card_units(card, abilities)
         card.update(browser.load_review_layers(card.get("title")))
+        card["structure_notes"] = browser.load_structure_notes(card.get("title"))
         image_path = browser.find_card_image(card)
         if image_path and image_path.exists():
             image_name = f"{card['id']}.png"
@@ -111,6 +112,7 @@ def main() -> None:
         data = {
             "meta": build_meta(conn),
             "cards": build_cards(conn),
+            "statistics": browser.load_json_file(browser.STATISTICS_PATH, {}),
         }
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</script", "<\\/script")
     (OUT_DIR / "static-data.js").write_text(f"window.CARD_BROWSER_STATIC_DATA={payload};\n", encoding="utf-8")
