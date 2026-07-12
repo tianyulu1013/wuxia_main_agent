@@ -76,4 +76,5 @@
 - `docs/skills/wuxia-card-review.md`
 - `docs/skills/wuxia-multi-unit.md`
 - `docs/skills/wuxia-release-publish.md`
+- `.agents/skills/wuxia-release-flow/SKILL.md`
 - `docs/skills/wuxia-rulebook-work.md`

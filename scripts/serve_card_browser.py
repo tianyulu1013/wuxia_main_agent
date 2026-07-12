@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import mimetypes
 import re
 import sqlite3
 from http import HTTPStatus
@@ -25,6 +24,7 @@ RELEASE_CARD_ROOT = ROOT / "data" / "release_images" / "cards"
 ALL_UNITS_GROUP = "__all_units__"
 CARD_IMAGE_INDEX: dict[str, Path] | None = None
 CARD_IMAGE_INDEX_SIGNATURE: tuple[int, int] | None = None
+SITE_DOCUMENT_PAYLOAD_CACHE: dict[str, tuple[tuple[str, float, int], dict[str, object]]] = {}
 
 
 CATEGORY_LABELS = {
@@ -86,12 +86,26 @@ def load_site_document_entries() -> list[dict[str, object]]:
                 "group": str(entry.get("group") or "资料"),
                 "kind": str(entry.get("kind") or path.suffix.removeprefix(".") or "file"),
                 "path": relative_path.replace("\\", "/"),
+                "source_path": str(entry.get("source_path") or ""),
                 "description": str(entry.get("description") or ""),
+                "version": str(entry.get("version") or ""),
+                "updated": str(entry.get("updated") or ""),
                 "exists": path.exists(),
                 "size": path.stat().st_size if path.exists() else 0,
             }
         )
     return normalized
+
+
+def load_site_document_meta() -> dict[str, object]:
+    data = load_json_file(SITE_DOCUMENTS_PATH, {})
+    if not isinstance(data, dict):
+        return {}
+    return {
+        "library_version": data.get("library_version", ""),
+        "site_version": data.get("site_version", ""),
+        "updated": data.get("updated", ""),
+    }
 
 
 def find_site_document(document_id: str) -> dict[str, object] | None:
@@ -105,7 +119,34 @@ def document_path(entry: dict[str, object]) -> Path:
     return (ROOT / str(entry["path"])).resolve()
 
 
-def read_docx_text(path: Path) -> str:
+def is_docx_heading(style_name: str, text: str) -> bool:
+    normalized_style = style_name.lower()
+    if normalized_style.startswith("heading") or normalized_style in {"title", "subtitle"}:
+        return True
+    return bool(
+        re.match(r"^\u7b2c[\u4e00\u4e8c\u4e09\u56db\u4e94\u516d\u4e03\u516b\u4e5d\u5341\u767e\u96f6\u3007]+(?:\u90e8\u5206|\u7ae0|\u7bc7|\u8282)[\uff1a:]", text)
+        or re.match(r"^\d+(?:\.\d+)+\s+\S+", text)
+    )
+
+
+def docx_heading_level(style_name: str, text: str) -> int:
+    match = re.search(r"heading\s*(\d+)", style_name.lower())
+    if match:
+        return max(1, min(6, int(match.group(1))))
+    if style_name.lower() == "title":
+        return 1
+    if style_name.lower() == "subtitle":
+        return 2
+    if text.startswith("\u7b2c\u4e00\u90e8\u5206") or text.startswith("\u7b2c\u4e8c\u90e8\u5206") or text.startswith("\u7b2c\u4e09\u90e8\u5206"):
+        return 1
+    if re.match(r"^\u7b2c[\u4e00\u4e8c\u4e09\u56db\u4e94\u516d\u4e03\u516b\u4e5d\u5341\u767e\u96f6\u3007]+\u7ae0[\uff1a:]", text):
+        return 2
+    if re.match(r"^\d+\.\d+\s+", text):
+        return 3
+    return 2
+
+
+def read_docx_blocks(path: Path) -> list[dict[str, object]]:
     try:
         from docx import Document
     except ImportError as exc:
@@ -114,14 +155,94 @@ def read_docx_text(path: Path) -> str:
     blocks: list[str] = []
     for paragraph in document.paragraphs:
         text = paragraph.text.strip()
-        if text:
-            blocks.append(text)
+        style_name = paragraph.style.name if paragraph.style is not None else ""
+        if not text or style_name.lower().startswith("toc"):
+            continue
+        blocks.append(
+            {
+                "type": "heading" if is_docx_heading(style_name, text) else "paragraph",
+                "level": docx_heading_level(style_name, text),
+                "text": text,
+            }
+        )
     for table in document.tables:
         for row in table.rows:
             cells = [cell.text.strip() for cell in row.cells if cell.text.strip()]
             if cells:
-                blocks.append(" | ".join(cells))
-    return "\n\n".join(blocks)
+                blocks.append({"type": "paragraph", "level": 0, "text": " | ".join(cells)})
+    return blocks
+
+
+def blocks_to_text(blocks: list[dict[str, object]]) -> str:
+    return "\n\n".join(str(block.get("text") or "") for block in blocks if block.get("text"))
+
+
+def blocks_to_sections(blocks: list[dict[str, object]]) -> list[dict[str, object]]:
+    sections: list[dict[str, object]] = []
+    current: dict[str, object] | None = None
+    intro: list[str] = []
+    for block in blocks:
+        text = str(block.get("text") or "").strip()
+        if not text:
+            continue
+        if block.get("type") == "heading":
+            if current is not None:
+                sections.append(current)
+            elif intro:
+                sections.append({"id": "intro", "title": "导言", "level": 1, "content": "\n\n".join(intro)})
+                intro = []
+            current = {
+                "id": f"section-{len(sections) + 1}",
+                "title": text,
+                "level": int(block.get("level") or 2),
+                "content": "",
+            }
+            continue
+        if current is None:
+            intro.append(text)
+        else:
+            existing = str(current.get("content") or "")
+            current["content"] = f"{existing}\n\n{text}".strip()
+    if current is not None:
+        sections.append(current)
+    elif intro:
+        sections.append({"id": "intro", "title": "正文", "level": 1, "content": "\n\n".join(intro)})
+    return sections
+
+
+def read_docx_text(path: Path) -> str:
+    return blocks_to_text(read_docx_blocks(path))
+
+
+def read_markdown_sections(path: Path) -> list[dict[str, object]]:
+    text = path.read_text(encoding="utf-8")
+    blocks: list[dict[str, object]] = []
+    buffer: list[str] = []
+    for line in text.splitlines():
+        match = re.match(r"^(#{1,6})\s+(.+)$", line)
+        if match:
+            if buffer:
+                blocks.append({"type": "paragraph", "level": 0, "text": "\n".join(buffer).strip()})
+                buffer = []
+            blocks.append({"type": "heading", "level": len(match.group(1)), "text": match.group(2).strip()})
+        else:
+            buffer.append(line)
+    if buffer:
+        blocks.append({"type": "paragraph", "level": 0, "text": "\n".join(buffer).strip()})
+    return blocks_to_sections(blocks)
+
+
+def read_site_document_sections(entry: dict[str, object]) -> list[dict[str, object]]:
+    path = document_path(entry)
+    if not path.exists():
+        return []
+    kind = str(entry.get("kind") or "").lower()
+    suffix = path.suffix.lower()
+    if kind == "docx" or suffix == ".docx":
+        return blocks_to_sections(read_docx_blocks(path))
+    if kind in {"markdown", "md"} or suffix == ".md":
+        return read_markdown_sections(path)
+    return []
 
 
 def read_site_document_content(entry: dict[str, object]) -> str:
@@ -130,6 +251,9 @@ def read_site_document_content(entry: dict[str, object]) -> str:
         return ""
     kind = str(entry.get("kind") or "").lower()
     suffix = path.suffix.lower()
+    if kind == "document-json" or suffix == ".json":
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return str(data.get("content") or "") if isinstance(data, dict) else ""
     if kind == "docx" or suffix == ".docx":
         return read_docx_text(path)
     return path.read_text(encoding="utf-8")
@@ -142,11 +266,90 @@ def site_document_summary(entry: dict[str, object]) -> dict[str, object]:
 
 
 def site_document_payload(entry: dict[str, object]) -> dict[str, object]:
-    return {
+    path = document_path(entry)
+    signature = (str(path), path.stat().st_mtime if path.exists() else 0, path.stat().st_size if path.exists() else 0)
+    cache_key = str(entry.get("id") or entry.get("path") or path)
+    cached = SITE_DOCUMENT_PAYLOAD_CACHE.get(cache_key)
+    if cached and cached[0] == signature:
+        return cached[1]
+    kind = str(entry.get("kind") or "").lower()
+    suffix = path.suffix.lower()
+    content = ""
+    sections: list[dict[str, object]] = []
+    if path.exists() and (kind == "document-json" or suffix == ".json"):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(data, dict):
+            payload = {**site_document_summary(entry), **data}
+            SITE_DOCUMENT_PAYLOAD_CACHE[cache_key] = (signature, payload)
+            return payload
+    if path.exists() and (kind == "docx" or suffix == ".docx"):
+        blocks = read_docx_blocks(path)
+        content = blocks_to_text(blocks)
+        sections = blocks_to_sections(blocks)
+    elif path.exists() and (kind in {"markdown", "md"} or suffix == ".md"):
+        content = path.read_text(encoding="utf-8")
+        sections = read_markdown_sections(path)
+    elif path.exists():
+        content = path.read_text(encoding="utf-8")
+    payload = {
         **site_document_summary(entry),
-        "content": read_site_document_content(entry),
-        "download_url": f"/api/document-file/{quote(str(entry['id']))}",
+        "content": content,
+        "sections": sections,
     }
+    SITE_DOCUMENT_PAYLOAD_CACHE[cache_key] = (signature, payload)
+    return payload
+
+
+def document_snippets(content: str, query: str, limit: int = 3, radius: int = 70) -> list[str]:
+    if not query:
+        return []
+    snippets: list[str] = []
+    lower_content = content.lower()
+    lower_query = query.lower()
+    start = 0
+    while len(snippets) < limit:
+        index = lower_content.find(lower_query, start)
+        if index == -1:
+            break
+        left = max(0, index - radius)
+        right = min(len(content), index + len(query) + radius)
+        snippet = content[left:right].replace("\n", " ").strip()
+        if left > 0:
+            snippet = f"...{snippet}"
+        if right < len(content):
+            snippet = f"{snippet}..."
+        snippets.append(snippet)
+        start = index + len(query)
+    return snippets
+
+
+def search_site_documents(query: str) -> list[dict[str, object]]:
+    q = query.strip()
+    results: list[dict[str, object]] = []
+    for entry in load_site_document_entries():
+        payload = site_document_payload(entry)
+        content = str(payload.get("content") or "")
+        haystacks = [
+            str(payload.get("title") or ""),
+            str(payload.get("description") or ""),
+            str(payload.get("group") or ""),
+            str(payload.get("path") or ""),
+            content,
+        ]
+        if not q or any(q.lower() in item.lower() for item in haystacks):
+            results.append(
+                {
+                    **site_document_summary(entry),
+                    "title": payload.get("title"),
+                    "group": payload.get("group"),
+                    "description": payload.get("description"),
+                    "version": payload.get("version"),
+                    "updated": payload.get("updated"),
+                    "snippets": document_snippets(content, q) if q else [],
+                    "match_count": content.lower().count(q.lower()) if q else 0,
+                }
+            )
+    return results
 
 
 def load_card_image_aliases() -> dict[str, object]:
@@ -387,6 +590,10 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
     def log_message(self, format: str, *args: object) -> None:
         print(f"[card-browser] {self.address_string()} - {format % args}")
 
+    def end_headers(self) -> None:
+        self.send_header("Cache-Control", "no-store")
+        super().end_headers()
+
     def send_json(self, payload: object, status: HTTPStatus = HTTPStatus.OK) -> None:
         body = json.dumps(payload, ensure_ascii=False, default=str).encode("utf-8")
         self.send_response(status)
@@ -409,8 +616,8 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         if parsed.path == "/api/documents":
             self.handle_documents()
             return
-        if parsed.path.startswith("/api/document-file/"):
-            self.handle_document_file(unquote(parsed.path.removeprefix("/api/document-file/")))
+        if parsed.path == "/api/document-search":
+            self.handle_document_search(parsed.query)
             return
         if parsed.path.startswith("/api/document/"):
             self.handle_document(unquote(parsed.path.removeprefix("/api/document/")))
@@ -454,6 +661,7 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
             ]
         self.send_json(
             {
+                **load_site_document_meta(),
                 "source_workbook": metadata.get("source_workbook", ""),
                 "source_path": metadata.get("source_path", ""),
                 "record_count": int(metadata.get("record_count", "0")),
@@ -468,7 +676,17 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         self.send_json(data if isinstance(data, dict) else {})
 
     def handle_documents(self) -> None:
-        self.send_json({"documents": [site_document_summary(entry) for entry in load_site_document_entries()]})
+        self.send_json(
+            {
+                **load_site_document_meta(),
+                "documents": [site_document_summary(entry) for entry in load_site_document_entries()],
+            }
+        )
+
+    def handle_document_search(self, query_string: str) -> None:
+        params = parse_qs(query_string)
+        q = (params.get("q", [""])[0] or "").strip()
+        self.send_json({"results": search_site_documents(q)})
 
     def handle_document(self, document_id: str) -> None:
         entry = find_site_document(document_id)
@@ -479,25 +697,6 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
             self.send_json(site_document_payload(entry))
         except RuntimeError as exc:
             self.send_error_json(str(exc), HTTPStatus.INTERNAL_SERVER_ERROR)
-
-    def handle_document_file(self, document_id: str) -> None:
-        entry = find_site_document(document_id)
-        if entry is None:
-            self.send_error_json("未找到资料", HTTPStatus.NOT_FOUND)
-            return
-        path = document_path(entry)
-        if not path.exists():
-            self.send_error_json("资料文件不存在", HTTPStatus.NOT_FOUND)
-            return
-        body = path.read_bytes()
-        mime_type = mimetypes.guess_type(path.name)[0] or "application/octet-stream"
-        filename = quote(path.name)
-        self.send_response(HTTPStatus.OK)
-        self.send_header("Content-Type", mime_type)
-        self.send_header("Content-Length", str(len(body)))
-        self.send_header("Content-Disposition", f"attachment; filename*=UTF-8''{filename}")
-        self.end_headers()
-        self.wfile.write(body)
 
     def search_clauses(self, params: dict[str, list[str]]) -> tuple[list[str], list[object], dict[str, object]]:
         q = (params.get("q", [""])[0] or "").strip()

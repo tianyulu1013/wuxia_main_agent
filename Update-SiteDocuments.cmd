@@ -2,7 +2,6 @@
 setlocal
 
 cd /d "%~dp0"
-set "URL=http://127.0.0.1:8765"
 set "PYTHON_EXE="
 
 if exist "%USERPROFILE%\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" (
@@ -29,26 +28,22 @@ if %ERRORLEVEL% EQU 0 (
 )
 
 echo Could not find Python.
-echo Install Python, or run scripts\serve_card_browser.py manually from Codex.
+echo Install Python, or ask Codex to run scripts\build_site_documents.py.
 pause
 exit /b 1
 
 :found_python
-echo Starting Wuxia Card Browser...
-echo URL: %URL%
+echo Rebuilding rulebook and scenario documents for the local website...
 echo.
-echo Cleaning old local server on port 8765...
-for /f "tokens=5" %%P in ('netstat -ano ^| findstr "127.0.0.1:8765" ^| findstr "LISTENING"') do (
-  taskkill /PID %%P /F >nul 2>nul
+"%PYTHON_EXE%" "%~dp0scripts\build_site_documents.py"
+if %ERRORLEVEL% NEQ 0 (
+  echo.
+  echo Document rebuild failed.
+  pause
+  exit /b %ERRORLEVEL%
 )
-echo.
-echo Keep this window open while using the browser.
-echo Close this window to stop the local server.
-echo.
-start "" cmd /c "timeout /t 3 /nobreak >nul & start "" "%URL%""
-"%PYTHON_EXE%" "%~dp0scripts\serve_card_browser.py"
 
 echo.
-echo Server stopped.
+echo Done. Refresh http://127.0.0.1:8765 to see the latest documents.
 pause
 endlocal

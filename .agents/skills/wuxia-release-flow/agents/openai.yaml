@@ -1,0 +1,4 @@
+interface:
+  display_name: "五行发布流程"
+  short_description: "区分本地修复、静态快照和正式发布，约束版本号与 Git/Netlify 发布。"
+  default_prompt: "请按五行卡牌发布流程处理本地修复、静态快照或正式发布。"

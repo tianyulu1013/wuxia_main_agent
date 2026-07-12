@@ -1,68 +1,40 @@
 {
+  "library_version": "0.3",
+  "site_version": "0.7",
+  "updated": "2026-07-12",
   "documents": [
     {
-      "id": "rulebook-original",
-      "title": "五行卡牌规则（原版）",
-      "group": "规则与剧本",
-      "kind": "docx",
-      "path": "五行卡牌规则.docx",
-      "description": "旧版规则书，保留用于对照。"
+      "id": "rulebook-refactored",
+      "title": "\u4e94\u884c\u5361\u724c\u89c4\u5219\uff08\u65b0\u7248\uff09",
+      "group": "\u89c4\u5219\u4e0e\u5267\u672c",
+      "kind": "document-json",
+      "path": "data/site_documents/rulebook-refactored.json",
+      "source_path": "\u4e94\u884c\u5361\u724c\u89c4\u5219new.docx",
+      "version": "\u91cd\u6784\u4f18\u5316\u7248 v1.0",
+      "updated": "2026-07-11",
+      "description": "\u91cd\u6784\u540e\u7684\u65b0\u7248\u89c4\u5219\u4e66\uff0c\u4f5c\u4e3a\u5f53\u524d\u4f18\u5148\u9605\u8bfb\u7248\u672c\u3002"
     },
     {
-      "id": "rulebook-refactored",
-      "title": "五行卡牌规则（新版）",
-      "group": "规则与剧本",
-      "kind": "docx",
-      "path": "五行卡牌规则new.docx",
-      "description": "重构后的新版规则书。"
+      "id": "rulebook-original",
+      "title": "\u4e94\u884c\u5361\u724c\u89c4\u5219\uff08\u539f\u7248\uff09",
+      "group": "\u89c4\u5219\u4e0e\u5267\u672c",
+      "kind": "document-json",
+      "path": "data/site_documents/rulebook-original.json",
+      "source_path": "\u4e94\u884c\u5361\u724c\u89c4\u5219.docx",
+      "version": "\u539f\u7248\u5bf9\u7167",
+      "updated": "2025-07-04",
+      "description": "\u65e7\u7248\u89c4\u5219\u4e66\uff0c\u4fdd\u7559\u7528\u4e8e\u5bf9\u7167\u3002"
     },
     {
       "id": "scenario-book",
-      "title": "剧本",
-      "group": "规则与剧本",
-      "kind": "docx",
-      "path": "剧本.docx",
-      "description": "当前剧本书。"
-    },
-    {
-      "id": "rulebook-refactored-md",
-      "title": "规则书 Markdown 源稿",
-      "group": "项目资料",
-      "kind": "markdown",
-      "path": "docs/rulebook-refactored.md",
-      "description": "新版规则书的可 diff 文本源稿。"
-    },
-    {
-      "id": "reports-index",
-      "title": "报告导航",
-      "group": "项目资料",
-      "kind": "markdown",
-      "path": "reports/README.md",
-      "description": "卡面、文案、规则书审计报告入口。"
-    },
-    {
-      "id": "card-face-todo",
-      "title": "卡面待改清单",
-      "group": "项目资料",
-      "kind": "markdown",
-      "path": "reports/1-card-face-todo.md",
-      "description": "PSD 卡面排版、缩进、冒号、加粗等待办。"
-    },
-    {
-      "id": "card-text-audit",
-      "title": "卡牌文案审计清单",
-      "group": "项目资料",
-      "kind": "markdown",
-      "path": "reports/2-card-text-audit-todos.md",
-      "description": "术语、时机、文案规范相关的自动审计结果。"
-    },
-    {
-      "id": "rulebook-discrepancy",
-      "title": "规则书比对报告",
-      "group": "项目资料",
-      "kind": "markdown",
-      "path": "reports/3-rulebook-discrepancy-report.md",
-      "description": "新版规则书与旧规则书的自动化比对报告。"
+      "title": "\u5267\u672c",
+      "group": "\u89c4\u5219\u4e0e\u5267\u672c",
+      "kind": "document-json",
+      "path": "data/site_documents/scenario-book.json",
+      "source_path": "\u5267\u672c.docx",
+      "version": "\u5f53\u524d\u7248",
+      "updated": "2026-07-11",
+      "description": "\u5f53\u524d\u5267\u672c\u4e66\u3002"
     }
   ]
 }
