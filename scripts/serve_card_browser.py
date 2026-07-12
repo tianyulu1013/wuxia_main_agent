@@ -15,6 +15,8 @@ WEB_ROOT = ROOT / "web" / "card_browser"
 DB_PATH = ROOT / "data" / "cards.sqlite"
 UNIT_OVERRIDES_PATH = ROOT / "data" / "card_unit_overrides.json"
 CARD_REVIEWS_PATH = ROOT / "data" / "card_reviews.json"
+CARD_UNDERSTANDING_NOTES_PATH = ROOT / "data" / "review" / "card_understanding_notes.json"
+CARD_MAINTENANCE_TODOS_PATH = ROOT / "data" / "review" / "card_maintenance_todos.json"
 CHANGE_CANDIDATES_PATH = ROOT / "data" / "change_candidates.json"
 STRUCTURE_NOTES_PATH = ROOT / "data" / "card_structure_notes.json"
 STATISTICS_PATH = ROOT / "data" / "review" / "card_database_statistics.json"
@@ -360,12 +362,26 @@ def load_card_image_aliases() -> dict[str, object]:
 def load_review_layers(title: object) -> dict[str, object]:
     card_title = str(title or "")
     reviews_data = load_json_file(CARD_REVIEWS_PATH, {})
+    understanding_data = load_json_file(CARD_UNDERSTANDING_NOTES_PATH, {})
+    maintenance_data = load_json_file(CARD_MAINTENANCE_TODOS_PATH, {})
     candidates_data = load_json_file(CHANGE_CANDIDATES_PATH, {})
     reviews = {}
+    understanding_note = {}
+    maintenance_todos: list[object] = []
     if isinstance(reviews_data, dict):
         cards = reviews_data.get("cards", {})
         if isinstance(cards, dict):
             reviews = cards.get(card_title, {}) if isinstance(cards.get(card_title, {}), dict) else {}
+    if isinstance(understanding_data, dict):
+        notes = understanding_data.get("notes", {})
+        if isinstance(notes, dict):
+            note = notes.get(card_title, {})
+            understanding_note = note if isinstance(note, dict) else {}
+    if isinstance(maintenance_data, dict):
+        todos = maintenance_data.get("todos", {})
+        if isinstance(todos, dict):
+            items = todos.get(card_title, [])
+            maintenance_todos = items if isinstance(items, list) else []
     candidates: list[object] = []
     if isinstance(candidates_data, dict) and isinstance(candidates_data.get("candidates"), list):
         candidates = [
@@ -373,7 +389,12 @@ def load_review_layers(title: object) -> dict[str, object]:
             for item in candidates_data["candidates"]
             if isinstance(item, dict) and item.get("card_title") == card_title
         ]
-    return {"review": reviews, "change_candidates": candidates}
+    return {
+        "review": reviews,
+        "understanding_note": understanding_note,
+        "maintenance_todos": maintenance_todos,
+        "change_candidates": candidates,
+    }
 
 
 def load_structure_notes(title: object) -> list[object]:

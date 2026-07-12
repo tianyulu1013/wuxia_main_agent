@@ -1,0 +1,4 @@
+interface:
+  display_name: "五行中文编码安全"
+  short_description: "避免 PowerShell 中文乱码和管道写坏数据。"
+  default_prompt: "处理五行卡牌项目中的中文文件、JSON、Markdown 或 PowerShell 命令时，先使用此技能确保 UTF-8 安全。"

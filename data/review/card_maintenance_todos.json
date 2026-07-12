@@ -1,0 +1,5033 @@
+{
+  "_schema": {
+    "version": 1,
+    "purpose": "卡牌维护待办层：记录 reports 中的卡面排版、缺冒号、缩进、文案审计等待办。不得视为牌面源数据或强度评语。",
+    "sources": [
+      "reports/1-card-face-todo.md",
+      "reports/2-card-text-audit-todos.md"
+    ]
+  },
+  "summary": {
+    "cards_with_todos": 367,
+    "face_todo_items": 11,
+    "text_audit_items": 368
+  },
+  "todos": {
+    "一灯": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "丁典": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "连城诀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "丁春秋": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「连环腐尸毒」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "丁鹏": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "圆月弯刀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「小楼一夜听春雨」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「魔刀」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "七武器": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "七武器",
+        "category": "items",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「长生剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「霸王枪」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "万震山": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "连城诀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "三才剑客": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「天地君亲师」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「金木水火土」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "上官刃": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "白玉老虎",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「白玉老虎」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "上官金虹": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "多情剑客无情剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "东方不败": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "笑傲江湖",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "严苍茫": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "血河车",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「拐中吐刀」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "中原一点红": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "楚留香传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「杀人不流血，剑下一点红」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "乔小雨": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "杨小邪",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "九阳真经": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "items",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "九阴真经": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "items",
+        "summary": "文案审计发现 7 项疑点",
+        "details": [
+          "特技「习得1条中级特技获得」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「1.内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「3.招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「5.内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「6.招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「7.招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「9.武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "九难": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "鹿鼎记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「九难」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "于和": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "三侠五义",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「轩辕重出武圣人」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "云帅": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「西突厥国师」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "云浅雪": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "紫川",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「断臂」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "云铮": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大旗英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「常春」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「激烈暴躁，冲动易怒」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "五个人头": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "其他",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "令狐冲": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "笑傲江湖",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「五岳剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「浪子」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「浪子」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "任我行": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "笑傲江湖",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "任狂": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "血河车",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「从心所欲」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "任盈盈": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "笑傲江湖",
+        "category": "attached_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「七弦琴」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "任遥": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "边荒传说",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「逍遥帝君」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "伏难陀": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「瑜伽术」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "何足道": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「百鸟朝凤」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "何铁手": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "碧血剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「软红蛛索」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「蝎尾鞭」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「金蜈钩」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「五毒教主」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "侯希白": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「得情而忘情」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「多情公子」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "俞佩玉": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "名剑风流",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「先天无极」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「阎王债」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「温柔敦厚」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "傅红雪": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天涯明月刀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「癫痫」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「复仇之神」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "元十三限": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "说英雄谁是英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「忍辱神功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「一线杖」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「伤心小箭」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "元首": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "其他",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「我到河北省来」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「妨碍咱都渣渣」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "全真七子": [
+      {
+        "kind": "card_face_todo",
+        "source_report": "reports/1-card-face-todo.md",
+        "section": "多人一卡结构",
+        "subject": "",
+        "summary": "多人一卡结构：全真七子",
+        "details": [
+          "牌面图：04_全真七子.png",
+          "数据库：已将 丹阳子 / 长春子 / 铁脚仙 / 玉阳子 / 长生子 / 长真子 / 广宁子 / 清净散人 识别为具体特技名",
+          "后续结构待扩展：需要正式表示“某条特技属于某个人物单元”"
+        ]
+      },
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 7 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「王处一1900铁脚仙」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「玉阳子」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「谭处端1400长真子」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「郝大通1000广宁子」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「孙不二800清净散人」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "八师巴": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "破碎虚空",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "公子羽": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天涯明月刀",
+        "category": "titles",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「首任公子羽随机获得」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "公子襄": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大侠传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「正气歌」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "公孙大娘": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "陆小凤传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「熊姥姥」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "公孙止": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神雕侠侣",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "六小龄童": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "其他",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「文体百花齐放」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「改编不是乱编，戏说不是胡说」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「向全国人民谢罪」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「一千个人心中只有一个孙悟空」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "关七": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "说英雄谁是英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「破碎虚空」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「破碎虚空」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「迷天七圣」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「迷天七圣」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "冢中枯骨": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "其他",
+        "category": "titles",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)"
+        ]
+      }
+    ],
+    "冷血": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "四大名捕",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「冷血的血」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "凌渡宇": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "凌渡宇系列",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「灵力」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「上帝之媒」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "割头小鬼": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "楚留香传奇",
+        "category": "attached_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「割头」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "十大恶人": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "绝代双骄",
+        "category": "attached_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「萧咪咪」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「屠娇娇」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「轩辕三光」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「铁战」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "千手书生": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "孤星传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「万流归宗」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「千手书生」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "卓三娘": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大旗英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「轻功世无双」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "单玉如": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "覆雨翻云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "卫宫切嗣": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "Fate Zero Night",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「狙击步枪」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「魔术师杀手」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「为了正义！」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "卫悲回": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "血河车",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「血踪万里」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "厉胜男": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "云海玉弓缘",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "厉若海": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "覆雨翻云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「燎原百击·三十击」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「燎原百击·二十针」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「邪灵」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "原随云": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "楚留香传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「蝙蝠公子」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "叶开": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "九月鹰飞",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「树叶的叶，开心的开」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "向雨田": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "边荒传说",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「圣帝」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "周一仙": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "诛仙",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「青云相术」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "周伯通": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「全真剑法」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "周芷若": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「峨嵋剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「金顶绵掌」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "哥舒天": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "萧十一郎",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「逍遥侯」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "唐斩": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "杀人者唐斩",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「杀人者唐斩」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "唐方": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "唐朋": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "唐柔": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「锦江四公子」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "唐绝": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「唐绝最绝」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "唐老公公": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「万一雷震子」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "唐老太太": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「泼墨神斧」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「留白神箭」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「唐老太太」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "喀丝丽": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "书剑恩仇录",
+        "category": "attached_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「香香公主」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "四大恶人": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 9 项疑点",
+        "details": [
+          "特技「细铁杖」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「无恶不作」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「鳄尾鞭」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「南海鳄神」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「凶神恶煞」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「铁柄钢爪」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「穷凶极恶」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "圣火令": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "items",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「圣火令」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "夏雪宜": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "碧血剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「金蛇锥」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "夏青青": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "碧血剑",
+        "category": "attached_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "大风道长": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "血河车",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武当掌门」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「幽冥血奴」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "天山童姥": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「灵鹫宫主」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "天衣居士": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "说英雄谁是英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「随求大法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「杀风景大阵」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "天象": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "血河车",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "天野源五郎": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "风姿物语",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「九曜极速」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「九极星神变」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「百败军师」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「星贤者卡达尔」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "太岳四侠": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "鸳鸯刀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「太岳四侠」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "婠婠": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「婠儿」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "孙青霞": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "四大名捕",
+        "category": "deprecated",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「错剑」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "孟星魂": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "流星蝴蝶剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「隐匿」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "宁道奇": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「人有畏影恶迹而去之走者，举足愈数而迹愈多；走愈疾而影不离身。不知处阴以休影，处静以息迹，愚亦甚矣」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「散人」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "安隆": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「胖贾」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "宋缺": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「九刀之约」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "宋远桥": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "宫九": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "陆小凤传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「自虐」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "寇仲": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「少帅」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "小丁": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "杨小邪",
+        "category": "attached_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「医术」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「金针渡穴」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「寒玲」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "小方": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大地飞鹰",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「想江南」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "小昭": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "attached_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「东西永隔如参商」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "小马": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "拳头",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「愤怒的小马」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "小龙女": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神雕侠侣",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「玉女心经」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「玉女素心剑」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "尤鸟倦": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「尤鸟儿」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "屠龙刀": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "items",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "岳不群": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "笑傲江湖",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「太岳三青峰」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「五岳剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「君子剑」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "岳飞": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "其他",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「还我河山」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「精忠报国」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「撼山易撼岳家军难」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "左丘超然": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「锦江四公子」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「锦江四公子」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "左冷禅": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "笑傲江湖",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「嵩山剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「辟邪剑法」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "左加明": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "紫川",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「光华」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "左游仙": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「子午剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「道祖真传」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "师妃暄": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「色空剑」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "年怜丹": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "覆雨翻云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「玄铁剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「花仙」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "张三丰": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「通微显化」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「道法自然」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "张三爸": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "说英雄谁是英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「封神指·点就点」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "张丹枫": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "萍踪侠影录",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「无名剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「亦狂亦侠真名士，能哭能歌迈俗流」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "张召重": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "书剑恩仇录",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「火手判官」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「宁挨一枪，莫遇一张」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "张小凡": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "诛仙",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「大梵般若」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "张无忌": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「乾坤大挪移」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "张炭": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "说英雄谁是英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「八大江湖术」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「饭王」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "张翠山": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「银钩铁划」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "归辛树": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "碧血剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 6 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「伏虎拳」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「轻信人言」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「轻信人言」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「神拳无敌」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "心剑神尼": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "阿里布达年代记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「心剑神尼」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "忘情天书": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "items",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「天地君亲师」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「金木水火土」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "恶贯满盈": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "其他",
+        "category": "titles",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「用毒下药」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「挑唆」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "慕容博": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「复国大计」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "慕容垂": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "边荒传说",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「北霸枪」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "慕容复": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "慕容惜花": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "金书红颜录",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「惜花六如」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「惜花六如」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "成吉思汗": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「一代天骄」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「蒙古铁骑」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "成昆": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「少林九阳功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「混元霹雳手」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「混元霹雳手」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "戚少商": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "逆水寒",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "戚长发": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "连城诀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "文泰来": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "书剑恩仇录",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「奔雷手」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「奔雷手」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "文雪岸": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "说英雄谁是英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 6 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「忍辱神功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「仇极掌」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「恨极拳」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「愁极拳」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「伤心小箭」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "斯特林": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "紫川",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "方夜羽": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "覆雨翻云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「黄金家族后裔」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "方应看": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "说英雄谁是英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 7 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「血河神功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「山字经」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「伤心小箭」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「翻手为云覆手雨」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「神通侯」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "方恨少": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "说英雄谁是英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "方振眉": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "白衣方振眉",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「一指凤点头」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "方歌吟": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "血河车",
+        "category": "combat_characters",
+        "summary": "文案审计发现 7 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「玉石俱焚」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「天羽奇剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「长空神指」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「僵尸功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「解牛刀」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「游刃箭」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "方证": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "笑傲江湖",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「方证大师」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "无名": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "风云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "无嗔大师": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "飞狐外传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "无崖子": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「逆运北冥」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "无情": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "四大名捕",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「轿子」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「无腿行千里，千手不能防」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「无情的情」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「四大名捕」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "无花": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "楚留香传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "曲傲": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "曾白水": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "白衣方振眉",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「达摩秘拳」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「东海水云袖」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「大石神功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「大漠神掌」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「长笑帮帮主」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "木道人": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "陆小凤传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「老刀把子」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "朱侠武": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「铁手铁脸铁衣铁罗网」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "朱泪儿": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "名剑风流",
+        "category": "attached_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「斗嘴」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「食毒」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      },
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "名剑风流",
+        "category": "deprecated",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「下毒」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「食毒」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "朱顺水": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「铁索横江」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "李坏": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "飞刀又见飞刀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「右心人」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「飞刀，又见飞刀」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "李大娘": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "仙剑奇侠传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "李寻欢": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "多情剑客无情剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「小李探花」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "李布衣": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "布衣神相",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "李文秀": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "白马啸西风",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「流星锤」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「黑血神针」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "李沉舟": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "李煜": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "风姿物语",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「天痕不动真剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「唐殇君」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "李秋水": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「传音搜魂大法」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "李莫愁": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神雕侠侣",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「赤练神掌」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「问世间情是何物」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "李逍遥": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "仙剑奇侠传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 8 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「万剑诀」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「天剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「剑神」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「雷神」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「山神」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「元灵归心术」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「灵葫咒」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "杜伏威": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "杨小邪": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "杨小邪",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「金针渡穴」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「赌功天下第一」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "杨康": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「全真剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「九阴白骨爪」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "杨虚彦": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "杨过": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神雕侠侣",
+        "category": "combat_characters",
+        "summary": "文案审计发现 9 项疑点",
+        "details": [
+          "含有非标准英文单词: or, or, or",
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「九阴真经」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「玉女剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「玉箫剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「弹指神通」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「打狗棒法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      },
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神雕侠侣",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「黯然销魂者，唯别而已矣」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "杨逍": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 7 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「五行旗生命5000不中即死」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「锐金旗」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「巨木旗」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「厚土旗」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「烈火旗」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「光明左使」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "林仙儿": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "多情剑客无情剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「梅花盗」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "林月如": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "仙剑奇侠传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「七诀剑气」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「斩龙决」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「红颜如月」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "林朝英": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神雕侠侣",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「玉女剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「全真剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「冰魄银针」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「古墓掌门」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「古墓掌门」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "柳焚余": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "布衣神相",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「翠羽眉」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "柳长街": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "七杀手",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "柳随风": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「袖里日月」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "柴玉关": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "武林外史",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「万家生佛」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "梁斗": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "梁硕": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "其他",
+        "category": "attached_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「大家来上本」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "梅念笙": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "连城诀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「梅花拳」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「连城诀」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "梅超风": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「白蟒鞭法」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "楚留香": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "楚留香传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「红颜」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「宋甜儿」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「宋甜儿」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "楚相玉": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "四大名捕",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "檀明": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "孤星传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「空手入白刃」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "欢乐英雄": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "欢乐英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「林太平的身份」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "欧阳不空": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "杨小邪",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「大悲掌」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「寰宇一奇」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "欧阳独": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大侠传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "欧阳锋": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「神驼雪山掌」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「通犀地龙丸」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "步惊云": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "风云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「霸剑三式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「不哭死神」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "武痴": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "杨小邪",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武痴」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "武穆遗书": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "items",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「武穆遗书」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "段延庆": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「细铁杖」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「恶贯满盈」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "段誉": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "殷天正": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「不动刀剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「白眉鹰王」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "殷梨亭": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「神门十三剑」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "求死大师": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "布衣神相",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「求死」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "江别鹤": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "绝代双骄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「江琴的秘密」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "江南七怪": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「柯镇恶【残】」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「韩宝驹」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「张阿生」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "江小鱼": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "绝代双骄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「小鱼儿」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "沈浪": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "武林外史",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "沈虎禅": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "七大寇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「不惑之刀」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「无用之刀」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「阿难刀」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "沙子龙": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "断魂枪",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「神枪沙子龙」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "洪七公": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "洪安通": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "鹿鼎记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「豹胎易筋丸」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「洪教主仙福永享，寿与天齐」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "浦饭幽助": [
+      {
+        "kind": "card_face_todo",
+        "source_report": "reports/1-card-face-todo.md",
+        "section": "缩进 / 子项排版",
+        "subject": "【灵光波动拳】",
+        "summary": "缩进 / 子项排版：【灵光波动拳】",
+        "details": [
+          "牌面图：15_浦饭幽助.png",
+          "数据库：独立招式，不是 百裂拳 子项",
+          "卡面待修：待作者查看牌面确认是否需要整理"
+        ]
+      }
+    ],
+    "浪翻云": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "覆雨翻云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「月满拦江」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "海东青": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "名剑风流",
+        "category": "deprecated",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「天狼」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "海天秘笈": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "孤星传",
+        "category": "items",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「习得海天秘籍」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「或海天秘籍」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "渡厄 渡劫 渡难": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「金刚伏魔圈」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "温晚": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "说英雄谁是英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「境剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「活字号」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「洛阳温晚」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「洛阳温晚」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "温柔": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "说英雄谁是英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「小寒山燕」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "游坦之": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「腐尸毒」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "灭绝师太": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 7 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「金顶绵掌」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「佛光普照」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「截手九式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「飘雪穿云掌」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「四象掌」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「嫉恶如仇」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "烈震北": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "覆雨翻云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "熊猫儿": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "武林外史",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「神磁葫芦」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "燕十三": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "三少爷的剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「燕十三」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "燕南飞": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天涯明月刀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「公子羽」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "燕狂徒": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「玉石俱焚」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "燕飞": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "边荒传说",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「金丹大法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「☯️武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「蝶恋花」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "狄云": [
+      {
+        "kind": "card_face_todo",
+        "source_report": "reports/1-card-face-todo.md",
+        "section": "缺冒号 / 标点错误",
+        "subject": "连城剑法",
+        "summary": "缺冒号 / 标点错误：连城剑法",
+        "details": [
+          "牌面图：32_狄云.png",
+          "数据库：招式 连城剑法",
+          "卡面待修：招式：连城剑法 金水 金木 300金 缺少特技名后的冒号"
+        ]
+      },
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "连城诀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「迟王」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "狄青麟": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "七武器",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「侯门深似海」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "独孤求败": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神雕侠侣",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「不滞于物」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「无剑胜有剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「但求一败」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "玄冥二老": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「鹿角杖，鹤嘴笔」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "玄慈": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "玄澄": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「九劫涅槃」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「四大皆空」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「四大皆空」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "王小石": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "说英雄谁是英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「伤心小箭」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「王小石的石」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「王小石的石」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "王怜花": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "武林外史",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)"
+        ]
+      }
+    ],
+    "王维扬": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "书剑恩仇录",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「刀中加镖」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「威震河朔」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "王语嫣": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "attached_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「曼陀山庄」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "王重阳": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「一阳指」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「一炁化三清」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「华山论剑」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "班察巴那": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大地飞鹰",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「痛苦的心」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「相思的心」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「五花箭神」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "田归农": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "雪山飞狐",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「闯王宝刀」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「天龙门掌门」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "疯·欧阳锋": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「错乱」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「天下第一」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "白玉京": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "七武器",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「长生剑」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "白自在": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "侠客行",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「狂妄自大」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "白起": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "风姿物语",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「涡轮内息」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "白飞飞": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "武林外史",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「孤身远引，至死不见」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "皇太极": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "风姿物语",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「大日烈焰刀」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「（技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "眉间尺": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "铸剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「复仇」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「三王冢」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "石中玉": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "侠客行",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「玩家可以在石中玉不出战的一轮中选择己方某人物杀死石中玉或进行判定」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「冰雪神剑」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "石破天": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "侠客行",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「狗杂种」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「我是谁」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "破军": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "风云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "碧血照丹青": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "绝代双骄",
+        "category": "items",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)"
+        ]
+      }
+    ],
+    "祝玉妍": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「天魔焚身」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "神木王鼎": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "items",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "秦始皇": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "史上第一混乱",
+        "category": "combat_characters",
+        "summary": "文案审计发现 8 项疑点",
+        "details": [
+          "特技「秦灭六国」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「始皇帝」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「始皇帝」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「焚书坑儒」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「焚书坑儒」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「收天下之兵」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「收天下之兵」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「统一一哈」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "程灵素": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "飞狐外传",
+        "category": "attached_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「药王神篇」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "程英": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神雕侠侣",
+        "category": "attached_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "穆人清": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "碧血剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「华山剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「劈石破玉拳」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「伏虎拳」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「天外飞龙」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "空见": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "童林": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "雍正剑侠图",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「八法神钺」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「七十二式地行剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「秋风落叶扫」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「镇八方紫面昆仑侠」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "竺法庆": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "边荒传说",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「大活弥勒」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "米苍穹": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "说英雄谁是英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「老人味」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「老人味」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "紫川秀": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "紫川",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "紫衣侯": [
+      {
+        "kind": "card_face_todo",
+        "source_report": "reports/1-card-face-todo.md",
+        "section": "缩进 / 子项排版",
+        "subject": "一百九十三家秘门剑法",
+        "summary": "缩进 / 子项排版：一百九十三家秘门剑法",
+        "details": [
+          "牌面图：29_紫衣侯.png",
+          "卡面待修：缩进/排版需整理"
+        ]
+      },
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "浣花洗剑录",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「一百九十三家秘门剑法」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "纳斯尔丁·阿凡提": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "书剑恩仇录",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「大铁锅」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "绝无神": [
+      {
+        "kind": "card_face_todo",
+        "source_report": "reports/1-card-face-todo.md",
+        "section": "缺冒号 / 标点错误",
+        "subject": "杀拳",
+        "summary": "缺冒号 / 标点错误：杀拳",
+        "details": [
+          "牌面图：38_绝无神.png",
+          "数据库：招式 杀拳",
+          "卡面待修：招式：杀拳 -- 缺少特技名后的冒号"
+        ]
+      },
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "风云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「杀·破·狼」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "罗格": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "亵渎",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「空间之主」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "老实和尚": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "陆小凤传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「老实和尚的秘密」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「老实和尚不老实」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "聂风": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "风云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「风神腿」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「疯血」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "胡一刀": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "雪山飞狐",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「辽东大侠」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "胡八一": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "鬼吹灯",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「半本《十六字阴阳风水秘术》」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「摸金校尉」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "胡斐": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "飞狐外传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「雪山飞狐」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「雪山飞狐」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "胡铁花": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "楚留香传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「千杯不醉」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "胡青牛王难姑": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "attached_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "般剌密谛": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "笑傲江湖",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「易筋」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「洗髓」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "芮伟": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "剑玄录",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「大悲剧」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "花双霜": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大旗英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「忆女成狂」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "花无缺": [
+      {
+        "kind": "card_face_todo",
+        "source_report": "reports/1-card-face-todo.md",
+        "section": "缩进 / 子项排版",
+        "subject": "移花接玉",
+        "summary": "缩进 / 子项排版：移花接玉",
+        "details": [
+          "牌面图：51_花无缺.png",
+          "卡面待修：缩进/排版需整理"
+        ]
+      },
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "绝代双骄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「移花接玉」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「谦谦君子」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「无缺公子」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "花满楼": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "陆小凤传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「听风辨位」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「花满楼」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "花铁干": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "连城诀",
+        "category": "attached_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "苏梦枕": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "说英雄谁是英雄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「金风细雨楼」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "苏樱": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "绝代双骄",
+        "category": "attached_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「刁钻古怪」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "苗人凤": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "雪山飞狐",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "范良极": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "覆雨翻云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「烟管点穴」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "范遥": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「光明右使」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "莫大先生": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "笑傲江湖",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「百变千幻衡山云雾十三式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "萧十一郎": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "萧十一郎",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「割鹿刀」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「狼」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "萧半和": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "鸳鸯刀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「仁者无敌」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "萧少英": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "七武器",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "萧秋水": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「长虹贯日」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      },
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「金木水火土」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「惊天一剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「天下英雄」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "葛平": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "其他",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「我来！」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「我有姿势我自豪」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "葵花宝典": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "笑傲江湖",
+        "category": "items",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "葵花老祖": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "笑傲江湖",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "蒙赤行": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "破碎虚空",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「魔宗」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "虚竹": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「天山折梅手」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "虚若无": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "覆雨翻云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「鬼火十三拍」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "血刀老祖": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "连城诀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「血刀僧」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "血河车": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "血河车",
+        "category": "items",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「血河车」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "血葫芦": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "丑娘娘",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "使用非标准词「打死」（规则书推荐：「杀死」)",
+          "特技「半仙之体」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "袁冠南 萧中慧": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "鸳鸯刀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「仁者无敌」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "袁承志": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "碧血剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 7 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「劈石破玉拳」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「伏虎拳」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「金蛇秘籍」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "裘千丈": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招摇撞骗」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "裘千仞": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「铁掌帮主」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「铁掌水上飘」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "裘千尺": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神雕侠侣",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「阴阳倒乱刃」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "裴珏": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "孤星传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「坚韧宽恕」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "西门吹雪": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "陆小凤传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「决战紫禁之巅」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "言峰绮礼": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "Fate Zero Night",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「作弊者」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「麻婆神父」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「麻婆神父」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "言达平": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "连城诀",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "许存舟": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "其他",
+        "category": "attached_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「大舟神」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "诸葛正我": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "四大名捕",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「惊艳一枪」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「幻术」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "谢晓峰": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "三少爷的剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "谢烟客": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "侠客行",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「弹指神通」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "谢逊": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「金毛狮王」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "贝海石": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "侠客行",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「妙手回春」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "赖药儿": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "布衣神相",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「三不医」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「先天过早衰老症」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "赤尊信": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "覆雨翻云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「刀」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "赤足汉": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大旗英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「落日照大旗」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "赵半山": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "书剑恩仇录",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「回龙璧」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "赵德言": [
+      {
+        "kind": "card_face_todo",
+        "source_report": "reports/1-card-face-todo.md",
+        "section": "缺冒号 / 标点错误",
+        "subject": "归魂十八爪",
+        "summary": "缺冒号 / 标点错误：归魂十八爪",
+        "details": [
+          "牌面图：57_赵德言.png",
+          "数据库：招式 归魂十八爪，其下 朱雀拒尸 / 玄武悲泣 / 青龙嫉主 为姿态子项",
+          "卡面待修：招式：归魂十八爪 -- 应补清晰分隔；子项排版也需要整理"
+        ]
+      },
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "赵敏": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「绍敏郡主」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「绍敏郡主」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "赵无忌": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "白玉老虎",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「结」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「结」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "赵灵儿": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "仙剑奇侠传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「五系神术」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武神」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型",
+          "特技「还魂咒」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "跋锋寒": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「射月神弓」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "软猬甲": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "items",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「软猬甲」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "连城璧": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "萧十一郎",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「侠义双无」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「侠义双无」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "迪卢木多": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "Fate Zero Night",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「爱之黑痣」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "追命": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "四大名捕",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「饮酒愈醒，喷酒制敌」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "邀月": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "绝代双骄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "邓玉函": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神州奇侠",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「锦江四公子」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "郭嵩阳": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "多情剑客无情剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「嵩阳铁剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「舍生取义」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "郭襄": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「四象掌」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「金顶绵掌」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「飘雪穿云掌」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      },
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神雕侠侣",
+        "category": "combat_characters",
+        "summary": "文案审计发现 15 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「玉女剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「全真剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「铁掌」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「玉箫剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「碧波掌法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「兰花拂穴手」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「罗汉拳」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「空明拳」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「狂风绝技」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「泥鳅功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「越女剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「小东邪」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「小东邪」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "郭襄（小）": [
+      {
+        "kind": "card_face_todo",
+        "source_report": "reports/1-card-face-todo.md",
+        "section": "缺冒号 / 标点错误",
+        "subject": "瑜伽密乘",
+        "summary": "缺冒号 / 标点错误：瑜伽密乘",
+        "details": [
+          "牌面图：52_郭襄（小）.png",
+          "数据库：内功 瑜伽密乘",
+          "卡面待修：内功：瑜伽密乘 1/3大招正常 缺少特技名后的冒号"
+        ]
+      }
+    ],
+    "郭襄（峨眉祖师）": [
+      {
+        "kind": "card_face_todo",
+        "source_report": "reports/1-card-face-todo.md",
+        "section": "缩进 / 子项排版",
+        "subject": "四象掌、金顶绵掌、飘雪穿云掌、佛光普照",
+        "summary": "缩进 / 子项排版：四象掌、金顶绵掌、飘雪穿云掌、佛光普照",
+        "details": [
+          "牌面图：53_郭襄（峨眉祖师）.png",
+          "卡面待修：多条招式缩进/排版需整理"
+        ]
+      }
+    ],
+    "郭靖": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「侠之大者」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "里赤媚": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "覆雨翻云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「人妖」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "金世遗": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "云海玉弓缘",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「毒手疯丐」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "金坷垃三人组": [
+      {
+        "kind": "card_face_todo",
+        "source_report": "reports/1-card-face-todo.md",
+        "section": "缺冒号 / 标点错误",
+        "subject": "【东仙の手刀】",
+        "summary": "缺冒号 / 标点错误：【东仙の手刀】",
+        "details": [
+          "牌面图：22_金坷垃三人组.png",
+          "数据库：武功 【东仙の手刀】",
+          "卡面待修：武功：【东仙の手刀】，... 应改为更清晰的特技名分隔"
+        ]
+      },
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "其他",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)"
+        ]
+      }
+    ],
+    "金轮法王": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "神雕侠侣",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "铁中棠": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大旗英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「铁血大旗门」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "铁手": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "四大名捕",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「铁手的手」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「四大名捕」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "阴姬": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "楚留香传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「水母」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "阴阳和合散": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "items",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「春药效果」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "阿三阿四": [
+      {
+        "kind": "card_face_todo",
+        "source_report": "reports/1-card-face-todo.md",
+        "section": "多人一卡结构",
+        "subject": "",
+        "summary": "多人一卡结构：阿三阿四",
+        "details": [
+          "牌面图：53_阿三阿四.png",
+          "数据库：已将 大悲掌 和 反通吃馆招式 拆为两个招式特技",
+          "后续结构待扩展：需要正式表示 三撇老蛋 / 吹牛皮 属于阿三，拔毛剃刀 / 拍马屁 属于阿四，内斗 属于二人共同"
+        ]
+      },
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "杨小邪",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「反通吃馆招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "阿尔托莉雅": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "Fate Zero Night",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「君王馈赠」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "阿紫": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "阿青": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "越女剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「越女剑」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "阿飞": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "多情剑客无情剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「阿飞的剑」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "陆小凤": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "陆小凤传奇",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「四条眉毛」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「四条眉毛」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "陆游": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "风姿物语",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「飞仙剑阵」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「月贤者」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "陆菲青": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "书剑恩仇录",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「白龙剑」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "陆雪琪": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "诛仙",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「天琊神剑」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "陈家洛": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "书剑恩仇录",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "陈近南": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "鹿鼎记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "雄霸": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "风云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "特技「排云掌」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「风神腿」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「天下会」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「金鳞岂是池中物，一遇风云便化龙」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「九霄龙吟惊天变，风云际会浅水游」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "雪峰神尼": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "血河车",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "雷卷": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "逆水寒",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「小寒神」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "雾雨魔理沙": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "东方project",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「迷你八卦炉」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "韦一笑": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「青翼蝠王」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "韦亦玄": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "杨小邪",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「烈火剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「翠蛛绿柳丝，沉海软乌金」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "韦小宝": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "鹿鼎记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 5 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「撒泼甩赖」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「含沙射影」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「化尸粉」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「阔绰」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "韦青青青": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "请借夫人一用",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「爱恨神功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「恨拳」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「爱极拳」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「赶雨步法」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "韩柏": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "覆雨翻云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「赤尊信元神」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "项少龙": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "寻秦记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "顾惜朝": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "逆水寒",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「雕刀」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「玉面修罗」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "颜烈射": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "破碎虚空",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「蒙古射手」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "颜紫绡": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "镜花缘",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「女中侠」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「幼谙剑侠之术，长通元妙之机」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "风九幽": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大旗英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「风梭断月魂」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "风四娘": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "萧十一郎",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「爬最高的山」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「吃最辣的菜」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "风清扬": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "笑傲江湖",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "风行烈": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "覆雨翻云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「厉若海」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "飧毒大师": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大旗英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 6 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「无影毒」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「毒药精研」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「飧毒」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「毒神现体」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "马保国": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "其他",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「浑元形意十三刀」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「闪电指」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「我大意了啊，没有闪」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「偷袭！」文案带有“（身份）”，请核对该特技在数据层是否已正确标记为身份特技类型"
+        ]
+      }
+    ],
+    "高渐飞": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "英雄无泪",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「泪痕剑主人」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "高立": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "七武器",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「自信」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "鬼影": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "边荒传说",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「遁术」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "魏无牙": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "绝代双骄",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)",
+          "特技「子鼠」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「钻」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「陷阱」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "鲁妙子": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "大唐双龙传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「奇门异术」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「回春」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "鸠摩智": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "鹰缘": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "覆雨翻云",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「鹰刀」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「活佛」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "黄眉僧": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "天龙八部",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「右心人」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "黄真": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "碧血剑",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "使用非标准词「掉血」（规则书推荐：「生命流失 / 损失生命」)",
+          "特技「内功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「伏虎拳」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "黄药师": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 4 项疑点",
+        "details": [
+          "特技「兰花拂穴手」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「落英神剑」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「玉箫剑法」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "黄蓉": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 3 项疑点",
+        "details": [
+          "特技「招式」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「软猬甲」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "黄裳": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "射雕英雄传",
+        "category": "combat_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "使用非标准词「血量」（规则书推荐：「生命值」)"
+        ]
+      }
+    ],
+    "黛绮丝": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "倚天屠龙记",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「技能」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「珊瑚金」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "龙木二岛主": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "侠客行",
+        "category": "combat_characters",
+        "summary": "文案审计发现 2 项疑点",
+        "details": [
+          "特技「武功」描述中疑似缺失明确的触发/生效时机限制词",
+          "特技「断肠蚀骨腐心草」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ],
+    "龟孙子大老爷": [
+      {
+        "kind": "card_text_audit",
+        "source_report": "reports/2-card-text-audit-todos.md",
+        "section": "陆小凤传奇",
+        "category": "attached_characters",
+        "summary": "文案审计发现 1 项疑点",
+        "details": [
+          "特技「大智大通」描述中疑似缺失明确的触发/生效时机限制词"
+        ]
+      }
+    ]
+  }
+}
