@@ -1,6 +1,6 @@
 {
   "_schema": {
-    "version": 1,
+    "version": 2,
     "purpose": "改卡候选层：记录尚未确认或已确认的修改建议，用于生成新版文本、更新日志、Excel/PSD待办。不得直接视为源数据。",
     "status_values": [
       "draft",
@@ -9,17 +9,533 @@
       "applied",
       "rejected"
     ],
+    "candidate_type_values": [
+      "revision",
+      "new_card",
+      "rules_text",
+      "other"
+    ],
+    "ai_position_values": [
+      "support",
+      "caution",
+      "oppose",
+      "uncertain"
+    ],
     "candidate_fields": {
       "id": "稳定候选ID，例如 change_20260711_zhouzhiruo_001。",
+      "candidate_type": "候选类型：revision/new_card/rules_text/other。",
       "card_title": "目标卡名。",
       "status": "候选状态。",
       "request": "作者原始修改意图或问题。",
+      "design_goal": "作者希望实现的设计目标，例如增强输出、贴合艺术形象、统一文本。",
+      "ai_position": "AI 对修改方向的态度：support/caution/oppose/uncertain。即使 oppose 也必须生成候选文本。",
       "rationale": "为什么这样改。",
+      "current_snapshot": "当前卡牌摘要，用于之后回看候选时理解上下文，不作为源数据。",
+      "review": "评审层信息：strength_impact、flavor_fit、clarity、rules_risks、electronic_risks、open_questions 等。",
       "proposed_full_text": "候选新版完整文本；没有把握时留空。",
+      "proposed_patch": "局部修改方案；适合只改一条特技或一个数字的情况。",
       "patch_notes": "面向玩家的更新说明草稿。",
+      "author_decision_needed": "需要作者裁定的问题列表。",
       "source_tasks": "确认后需要做的事项，例如改PSD、更新Excel、重建数据库。",
       "created_at": "创建日期。"
     }
   },
-  "candidates": []
+  "candidates": [
+    {
+      "id": "change_20260711_无崖子_001",
+      "candidate_type": "revision",
+      "card_title": "无崖子",
+      "status": "needs_author_review",
+      "request": "【珍珑】次数太多：删除固定增加的5次，只保留生命至0前己出场次数",
+      "design_goal": "减少珍珑阶段的出战次数和残局拖延，保留其与无崖子归零前出场次数的关联",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "现行【珍珑】可出战次数为5+生命至0前己出场次数",
+      "review": {
+        "strength_impact": "明显缩短珍珑阶段并削弱归零后的持续作战能力，不改变猜五行及逆运北冥机制。",
+        "flavor_fit": "保留前期参与次数与珍珑残局长度之间的联系。",
+        "clarity": "删除5+后算法更直接，但需要继续按现行方式记录归零前出场次数。",
+        "rules_risks": [
+          "若无崖子生命至0前从未出场，则珍珑可出战次数为0；是否符合作者意图待确认。"
+        ],
+        "electronic_risks": [],
+        "open_questions": [
+          "生命至0前出场次数为0时，【珍珑】是否完全不能出战？"
+        ]
+      },
+      "proposed_full_text": "",
+      "proposed_patch": [
+        "（可出战次数为5+生命至0前己出场次数，有过珍珑者，自身死亡）→（可出战次数为生命至0前己出场次数，有过珍珑者，自身死亡）"
+      ],
+      "patch_notes": [
+        "无崖子【珍珑】不再额外增加5次出战次数，可出战次数改为其生命至0前己出场次数。"
+      ],
+      "author_decision_needed": [
+        "生命至0前出场次数为0时，【珍珑】是否完全不能出战？"
+      ],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    },
+    {
+      "id": "change_20260711_石中玉_001",
+      "candidate_type": "revision",
+      "card_title": "石中玉",
+      "status": "rejected",
+      "request": "石中玉的效果不对自己使用",
+      "design_goal": "",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "现行首段未明确排除石中玉自身",
+      "review": {
+        "strength_impact": "",
+        "flavor_fit": "",
+        "clarity": "",
+        "rules_risks": [],
+        "electronic_risks": [],
+        "open_questions": []
+      },
+      "proposed_full_text": "本方遗失一件物品、一个附加人物、一人物的一张基础卡牌、一个人物的一个特技失灵（均视为针对玩家的效果，且不能对石中玉使用）",
+      "proposed_patch": [
+        "本方遗失一件物品，一个附加人物，一人物的一张基础卡牌，一个人物的一个特技失灵（均视为针对玩家的效果）→本方遗失一件物品、一个附加人物、一人物的一张基础卡牌、一个人物的一个特技失灵（均视为针对玩家的效果，且不能对石中玉使用）"
+      ],
+      "patch_notes": [
+        "石中玉造成的遗失或失灵效果不能对石中玉自身使用。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    },
+    {
+      "id": "change_20260711_四大恶人_001",
+      "candidate_type": "revision",
+      "card_title": "四大恶人",
+      "status": "rejected",
+      "request": "四大恶人全都不能出场时，本卡消失",
+      "design_goal": "",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "现行共同规则未规定四人均不能出场时如何处理",
+      "review": {
+        "strength_impact": "",
+        "flavor_fit": "",
+        "clarity": "",
+        "rules_risks": [],
+        "electronic_risks": [],
+        "open_questions": []
+      },
+      "proposed_full_text": "四大恶人可以同时出战任意多个，同时攻击；起始不需要声明哪个恶人出战，直至本卡翻开；四大恶人均不能出场时，本卡消失",
+      "proposed_patch": [
+        "四大恶人可以同时出战任意多个，同时攻击；起始不需要声明哪个恶人出战，直至本卡翻开→四大恶人可以同时出战任意多个，同时攻击；起始不需要声明哪个恶人出战，直至本卡翻开；四大恶人均不能出场时，本卡消失"
+      ],
+      "patch_notes": [
+        "四大恶人均不能出场时，本卡消失。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    },
+    {
+      "id": "change_20260711_石破天_001",
+      "candidate_type": "revision",
+      "card_title": "石破天",
+      "status": "rejected",
+      "request": "石破天一定上侠客岛；石破天上岛时，所有已上岛人物回来",
+      "design_goal": "",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "赏善罚恶令现行规则允许受邀者不同意上岛，且二使全部死亡或离场后上岛人物消失",
+      "review": {
+        "strength_impact": "",
+        "flavor_fit": "",
+        "clarity": "",
+        "rules_risks": [
+          "返回后的所在方及状态沿用原人物离开前状态，若不是此意需要另行裁定。"
+        ],
+        "electronic_risks": [],
+        "open_questions": [
+          "所有上岛人物返回时，是否回到各自原来一方并保持离岛前状态？"
+        ]
+      },
+      "proposed_full_text": "石破天一定同意去侠客岛；石破天去侠客岛时，所有已去侠客岛的人物返回。",
+      "proposed_patch": [
+        "新增：石破天一定同意去侠客岛；石破天去侠客岛时，所有已去侠客岛的人物返回"
+      ],
+      "patch_notes": [
+        "石破天必定前往侠客岛；其上岛时，所有已去侠客岛的人物返回。"
+      ],
+      "author_decision_needed": [
+        "所有上岛人物返回时，是否回到各自原来一方并保持离岛前状态？"
+      ],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    },
+    {
+      "id": "change_20260711_毕夜惊_001",
+      "candidate_type": "revision",
+      "card_title": "毕夜惊",
+      "status": "rejected",
+      "request": "毕夜惊和单玉如结盟",
+      "design_goal": "",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "现行关系：与厉工、旭烈兀结盟",
+      "review": {
+        "strength_impact": "",
+        "flavor_fit": "",
+        "clarity": "",
+        "rules_risks": [],
+        "electronic_risks": [],
+        "open_questions": []
+      },
+      "proposed_full_text": "与厉工、旭烈兀、单玉如结盟",
+      "proposed_patch": [
+        "与厉工、旭烈兀结盟→与厉工、旭烈兀、单玉如结盟"
+      ],
+      "patch_notes": [
+        "毕夜惊新增与单玉如结盟。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    },
+    {
+      "id": "change_20260711_鹰刀_001",
+      "candidate_type": "revision",
+      "card_title": "鹰刀",
+      "status": "rejected",
+      "request": "鹰刀中的特技是学得特别好，不是可以学得特别好",
+      "design_goal": "",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "现行文本：开启鹰刀可得到之中的特技，并再将一特技存入鹰刀",
+      "review": {
+        "strength_impact": "",
+        "flavor_fit": "",
+        "clarity": "",
+        "rules_risks": [],
+        "electronic_risks": [],
+        "open_questions": []
+      },
+      "proposed_full_text": "开启鹰刀后，学得特别好其中的特技，并再将一特技存入鹰刀",
+      "proposed_patch": [
+        "开启鹰刀可得到之中的特技，并再将一特技存入鹰刀→开启鹰刀后，学得特别好其中的特技，并再将一特技存入鹰刀"
+      ],
+      "patch_notes": [
+        "开启鹰刀后改为必定学得特别好其中的特技。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    },
+    {
+      "id": "change_20260711_上官刃_001",
+      "candidate_type": "revision",
+      "card_title": "上官刃",
+      "status": "rejected",
+      "request": "上官刃的不出战不是一直不出战，只能拒绝当次出战",
+      "design_goal": "",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "现行大风堂三巨头末句：仍由原玩家控制，可拒绝出战",
+      "review": {
+        "strength_impact": "",
+        "flavor_fit": "",
+        "clarity": "",
+        "rules_risks": [],
+        "electronic_risks": [],
+        "open_questions": []
+      },
+      "proposed_full_text": "*【大风堂三巨头】：选人时可杀死一人物卡，弃掉视为未选（该人物本局无法返回），若如此做则上官刃不占名额，在开局时投靠一方，附加【恶】，视为该方人物，仍由原玩家控制，可拒绝本次出战",
+      "proposed_patch": [
+        "仍由原玩家控制，可拒绝出战→仍由原玩家控制，可拒绝本次出战"
+      ],
+      "patch_notes": [
+        "明确上官刃只能拒绝当次出战，不会因此持续不出战。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    },
+    {
+      "id": "change_20260711_唐斩_001",
+      "candidate_type": "revision",
+      "card_title": "唐斩",
+      "status": "rejected",
+      "request": "唐斩被错误视为生命无上限，需要补回正确生命值",
+      "design_goal": "",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "当前数据库中唐斩缺少生命字段，因此可能被错误解释为无生命上限",
+      "review": {
+        "strength_impact": "",
+        "flavor_fit": "",
+        "clarity": "",
+        "rules_risks": [
+          "缺少作者裁定的正确生命数值，目前不能生成可粘贴的最终数字。"
+        ],
+        "electronic_risks": [],
+        "open_questions": [
+          "唐斩的正确生命值是多少？"
+        ]
+      },
+      "proposed_full_text": "",
+      "proposed_patch": [
+        "生命：（空缺）→生命：待作者提供正确数值"
+      ],
+      "patch_notes": [
+        "修正唐斩生命字段缺失导致的无上限错误。"
+      ],
+      "author_decision_needed": [
+        "唐斩的正确生命值是多少？"
+      ],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    },
+    {
+      "id": "change_20260711_石中玉_002",
+      "candidate_type": "revision",
+      "card_title": "石中玉",
+      "status": "needs_author_review",
+      "request": "第一段遗失或失灵效果不能选择石中玉或石清闵柔自己的牌或特技",
+      "design_goal": "",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "现行第一段：本方遗失一件物品，一个附加人物，一人物的一张基础卡牌，一个人物的一个特技失灵（均视为针对玩家的效果）",
+      "review": {
+        "strength_impact": "",
+        "flavor_fit": "",
+        "clarity": "",
+        "rules_risks": [],
+        "electronic_risks": [],
+        "open_questions": []
+      },
+      "proposed_full_text": "本方遗失一件物品，一个附加人物，一人物的一张基础卡牌，一个人物的一个特技失灵（均视为针对玩家的效果，不能选择石中玉或石清、闵柔自身的牌或特技）",
+      "proposed_patch": [
+        "（均视为针对玩家的效果）→（均视为针对玩家的效果，不能选择石中玉或石清、闵柔自身的牌或特技）"
+      ],
+      "patch_notes": [
+        "石中玉的遗失或失灵效果不能选择石中玉、石清或闵柔自身的牌或特技。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    },
+    {
+      "id": "change_20260711_四大恶人_002",
+      "candidate_type": "revision",
+      "card_title": "四大恶人",
+      "status": "needs_author_review",
+      "request": "四大恶人全部没有剩余出场次数时，本卡离场",
+      "design_goal": "",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "现行牌面分别限制各单位出场次数，但没有规定所有单位耗尽出场次数后的失败衔接",
+      "review": {
+        "strength_impact": "",
+        "flavor_fit": "",
+        "clarity": "",
+        "rules_risks": [
+          "叶二娘通过婴儿获得的可出战回合也应计入剩余出场次数。"
+        ],
+        "electronic_risks": [],
+        "open_questions": []
+      },
+      "proposed_full_text": "四大恶人可以同时出战任意多个，同时攻击；起始不需要声明哪个恶人出战，直至本卡翻开；四大恶人均无剩余出场次数时，本卡离场",
+      "proposed_patch": [
+        "共同规则新增：四大恶人均无剩余出场次数时，本卡离场"
+      ],
+      "patch_notes": [
+        "四大恶人均无剩余出场次数时，整张人物卡离场，并按正常离场规则处理。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    },
+    {
+      "id": "change_20260711_毕夜惊_002",
+      "candidate_type": "revision",
+      "card_title": "毕夜惊",
+      "status": "needs_author_review",
+      "request": "毕夜惊与单玉如结盟",
+      "design_goal": "",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "现行关系：与厉工、旭烈兀结盟",
+      "review": {
+        "strength_impact": "",
+        "flavor_fit": "",
+        "clarity": "",
+        "rules_risks": [],
+        "electronic_risks": [],
+        "open_questions": []
+      },
+      "proposed_full_text": "与厉工、旭烈兀、单玉如结盟",
+      "proposed_patch": [
+        "与厉工、旭烈兀结盟→与厉工、旭烈兀、单玉如结盟"
+      ],
+      "patch_notes": [
+        "毕夜惊新增与单玉如结盟。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    },
+    {
+      "id": "change_20260711_鹰刀_002",
+      "candidate_type": "revision",
+      "card_title": "鹰刀",
+      "status": "needs_author_review",
+      "request": "开启鹰刀完美学会其中的特技；不写“可”即为必须执行",
+      "design_goal": "",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "现行文本：开启鹰刀可得到之中的特技，并再将一特技存入鹰刀",
+      "review": {
+        "strength_impact": "",
+        "flavor_fit": "",
+        "clarity": "",
+        "rules_risks": [],
+        "electronic_risks": [],
+        "open_questions": []
+      },
+      "proposed_full_text": "开启鹰刀完美学会其中的特技，并再将一特技存入鹰刀",
+      "proposed_patch": [
+        "开启鹰刀可得到之中的特技，并再将一特技存入鹰刀→开启鹰刀完美学会其中的特技，并再将一特技存入鹰刀"
+      ],
+      "patch_notes": [
+        "开启鹰刀完美学会其中的特技；删除“可”，表示不能选择不学。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    },
+    {
+      "id": "change_20260711_上官刃_002",
+      "candidate_type": "revision",
+      "card_title": "上官刃",
+      "status": "needs_author_review",
+      "request": "明确上官刃可以主动出战，也可以拒绝出战",
+      "design_goal": "",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "现行大风堂三巨头末句：仍由原玩家控制，可拒绝出战",
+      "review": {
+        "strength_impact": "",
+        "flavor_fit": "",
+        "clarity": "",
+        "rules_risks": [],
+        "electronic_risks": [],
+        "open_questions": []
+      },
+      "proposed_full_text": "*【大风堂三巨头】：选人时可杀死一人物卡，弃掉视为未选（该人物本局无法返回），若如此做则上官刃不占名额，在开局时投靠一方，附加【恶】，视为该方人物，仍由原玩家控制，可主动出战，也可拒绝出战",
+      "proposed_patch": [
+        "仍由原玩家控制，可拒绝出战→仍由原玩家控制，可主动出战，也可拒绝出战"
+      ],
+      "patch_notes": [
+        "明确上官刃可主动出战，也可拒绝出战。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    },
+    {
+      "id": "change_20260711_赏善罚恶令_001",
+      "candidate_type": "revision",
+      "card_title": "赏善罚恶令",
+      "status": "needs_author_review",
+      "request": "石破天受到邀请时必须去侠客岛；石破天去侠客岛一转轮后，所有已去侠客岛的人物返回",
+      "design_goal": "",
+      "ai_position": "support",
+      "rationale": "",
+      "current_snapshot": "现行赏善罚恶允许受邀人物拒绝去侠客岛，并规定赏善罚恶二使全部死亡或离场后，上岛人物消失",
+      "review": {
+        "strength_impact": "",
+        "flavor_fit": "",
+        "clarity": "计时从石破天去侠客岛时开始，经过一转轮后统一返回。",
+        "rules_risks": [],
+        "electronic_risks": [],
+        "open_questions": []
+      },
+      "proposed_full_text": "石破天受到邀请时必须去侠客岛；石破天去侠客岛一转轮后，所有已去侠客岛的人物返回",
+      "proposed_patch": [
+        "新增：石破天受到邀请时必须去侠客岛；石破天去侠客岛一转轮后，所有已去侠客岛的人物返回"
+      ],
+      "patch_notes": [
+        "石破天必定接受侠客岛邀请；其上岛一转轮后，包括石破天在内的所有已去侠客岛人物返回。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-11"
+    }
+  ]
 }

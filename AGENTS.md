@@ -22,7 +22,11 @@
 - 源数据：`data/cards.sqlite`、`data/cards_current/*.jsonl`
 - 作者裁定/覆盖：`data/card_unit_overrides.json`、`data/card_field_overrides.json`、`data/author_ability_overrides.json`
 - AI/作者评语：`data/card_reviews.json`
+- 理解校准样本：`data/review/understanding_samples.json`
+- 卡牌理解笔记：`data/review/card_understanding_notes.json`
+- 术语理解层：`data/review/rule_terms.json`
 - 改卡候选：`data/change_candidates.json`
+- 改卡候选框架：`docs/change-candidate-framework.md`
 
 不要把评语层、候选层、规则理解层写进源数据层。
 
@@ -74,6 +78,10 @@
 - `docs/skills/wuxia-source-policy.md`
 - `docs/skills/wuxia-data-query.md`
 - `docs/skills/wuxia-card-review.md`
+- `docs/change-candidate-framework.md`
+- `docs/card-understanding-calibration.md`
+- `docs/rule-terms-understanding.md`
+- `.agents/skills/wuxia-card-change-flow/SKILL.md`
 - `docs/skills/wuxia-multi-unit.md`
 - `docs/skills/wuxia-release-publish.md`
 - `.agents/skills/wuxia-release-flow/SKILL.md`

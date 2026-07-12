@@ -26,6 +26,20 @@
 
 这些是作者体感校准，不是绝对数学排序。
 
+理解校准样本：
+
+- `docs/card-understanding-calibration.md`
+- `data/review/understanding_samples.json`
+
+评新卡或复杂改卡时，应优先找 1-3 张机制相近的样本作参照；不要把样本清单误当强度排行榜。
+
+术语理解：
+
+- `docs/rule-terms-understanding.md`
+- `data/review/rule_terms.json`
+
+涉及学会、复制、模拟、获得特技、完美学会、完美复制时，必须先查术语理解层。普通学会不等于完美适配自身；若原特技文本写有原人物名字，学习者可能无法受益。
+
 ## 改卡流程
 
 1. 查询当前文本、卡面和已有裁定。
@@ -34,6 +48,12 @@
 4. 说明改动点。
 5. 等作者确认。
 6. 确认后才更新源数据、Excel、PSD 和更新日志。
+
+更细的候选层框架见：
+
+- `docs/change-candidate-framework.md`
+
+关键要求：即使 AI 对修改方向持 `caution` 或 `oppose`，也必须按作者意图生成可编辑的候选文本；风险提示和候选文本要分开写。
 
 ## 写入位置
 

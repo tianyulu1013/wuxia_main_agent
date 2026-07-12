@@ -24,6 +24,10 @@ graph TD
 -   **Lv1 核心骨架 (全局必读)**：
     -   文件：[rulebook-confirmed-rulings.md](file:///d:/workspace/wuxia-card-agent/docs/rulebook-confirmed-rulings.md)
     -   时机：启动改卡评审或设计新特技时，**必须首先读取该文件**，以获得作者确认过的核心游戏概念边界。
+-   **术语理解层 (按术语触发)**：
+    -   文件：`data/review/rule_terms.json`、`docs/rule-terms-understanding.md`
+    -   时机：请求涉及学会、学习、复制、模拟、获得特技、完美学会、完美复制，或特技文本中写有原人物名字时，必须读取。
+    -   目的：补足规则书尚未完整展开的作者术语解释，避免把普通学会误判为完美适配自身。
 -   **Lv2 局部细节 (按需定向读取)**：
     -   文件：[rulebook-refactored.md](file:///d:/workspace/wuxia-card-agent/docs/rulebook-refactored.md) 的特定章节
     -   时机：仅当卡牌涉及具体的复杂机制时，才通过 line-range 或 grep_search 定向读取对应章节。例如：

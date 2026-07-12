@@ -688,7 +688,11 @@ function renderReviewField(label, value) {
     `;
   }
   if (typeof value === "object") {
-    const rows = Object.entries(value);
+    const rows = Object.entries(value).filter(([, item]) => {
+      if (item == null || item === "") return false;
+      if (Array.isArray(item)) return item.length > 0;
+      return true;
+    });
     if (rows.length === 0) return "";
     return `
       <div class="review-field">
@@ -1335,12 +1339,18 @@ function renderChangeCandidates(candidates) {
           <article class="candidate-card">
             <div class="candidate-header">
               <strong>${highlight(candidate.id || "未命名候选")}</strong>
-              <span>${escapeHtml(candidate.status || "draft")}</span>
+              <span>${escapeHtml([candidate.status || "draft", candidate.ai_position].filter(Boolean).join(" · "))}</span>
             </div>
+            ${renderReviewField("类型", candidate.candidate_type)}
             ${renderReviewField("修改意图", candidate.request)}
+            ${renderReviewField("设计目标", candidate.design_goal)}
             ${renderReviewField("理由", candidate.rationale)}
+            ${renderReviewField("当前摘要", candidate.current_snapshot)}
+            ${renderReviewField("评审", candidate.review)}
             ${renderReviewField("候选完整文本", candidate.proposed_full_text)}
+            ${renderReviewField("局部修改", candidate.proposed_patch)}
             ${renderReviewField("更新说明", candidate.patch_notes)}
+            ${renderReviewField("待作者裁定", candidate.author_decision_needed)}
             ${renderReviewField("待办", candidate.source_tasks)}
           </article>
         `).join("")}
