@@ -1,0 +1,68 @@
+{
+  "documents": [
+    {
+      "id": "rulebook-original",
+      "title": "五行卡牌规则（原版）",
+      "group": "规则与剧本",
+      "kind": "docx",
+      "path": "五行卡牌规则.docx",
+      "description": "旧版规则书，保留用于对照。"
+    },
+    {
+      "id": "rulebook-refactored",
+      "title": "五行卡牌规则（新版）",
+      "group": "规则与剧本",
+      "kind": "docx",
+      "path": "五行卡牌规则new.docx",
+      "description": "重构后的新版规则书。"
+    },
+    {
+      "id": "scenario-book",
+      "title": "剧本",
+      "group": "规则与剧本",
+      "kind": "docx",
+      "path": "剧本.docx",
+      "description": "当前剧本书。"
+    },
+    {
+      "id": "rulebook-refactored-md",
+      "title": "规则书 Markdown 源稿",
+      "group": "项目资料",
+      "kind": "markdown",
+      "path": "docs/rulebook-refactored.md",
+      "description": "新版规则书的可 diff 文本源稿。"
+    },
+    {
+      "id": "reports-index",
+      "title": "报告导航",
+      "group": "项目资料",
+      "kind": "markdown",
+      "path": "reports/README.md",
+      "description": "卡面、文案、规则书审计报告入口。"
+    },
+    {
+      "id": "card-face-todo",
+      "title": "卡面待改清单",
+      "group": "项目资料",
+      "kind": "markdown",
+      "path": "reports/1-card-face-todo.md",
+      "description": "PSD 卡面排版、缩进、冒号、加粗等待办。"
+    },
+    {
+      "id": "card-text-audit",
+      "title": "卡牌文案审计清单",
+      "group": "项目资料",
+      "kind": "markdown",
+      "path": "reports/2-card-text-audit-todos.md",
+      "description": "术语、时机、文案规范相关的自动审计结果。"
+    },
+    {
+      "id": "rulebook-discrepancy",
+      "title": "规则书比对报告",
+      "group": "项目资料",
+      "kind": "markdown",
+      "path": "reports/3-rulebook-discrepancy-report.md",
+      "description": "新版规则书与旧规则书的自动化比对报告。"
+    }
+  ]
+}

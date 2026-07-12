@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import sqlite3
 import sys
@@ -92,11 +93,26 @@ def build_cards(conn: sqlite3.Connection) -> dict[str, dict[str, object]]:
     return cards
 
 
+def build_documents() -> list[dict[str, object]]:
+    documents: list[dict[str, object]] = []
+    document_dir = OUT_DIR / "documents"
+    document_dir.mkdir(parents=True, exist_ok=True)
+    for entry in browser.load_site_document_entries():
+        document = browser.site_document_payload(entry)
+        source_path = browser.document_path(entry)
+        if source_path.exists():
+            target_name = f"{entry['id']}{source_path.suffix}"
+            shutil.copy2(source_path, document_dir / target_name)
+            document["download_url"] = f"documents/{target_name}"
+        documents.append(document)
+    return documents
+
+
 def write_frontend() -> None:
     for filename in ["app.js", "styles.css"]:
         shutil.copy2(WEB_ROOT / filename, OUT_DIR / filename)
     html = (WEB_ROOT / "index.html").read_text(encoding="utf-8")
-    html = html.replace('href="/styles.css"', 'href="styles.css"')
+    html = re.sub(r'href="/styles\.css(?:\?[^"]*)?"', 'href="styles.css"', html)
     html = html.replace(
         '<script src="/app.js"></script>',
         '<script src="static-data.js"></script>\n    <script src="app.js"></script>',
@@ -113,6 +129,7 @@ def main() -> None:
             "meta": build_meta(conn),
             "cards": build_cards(conn),
             "statistics": browser.load_json_file(browser.STATISTICS_PATH, {}),
+            "documents": build_documents(),
         }
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</script", "<\\/script")
     (OUT_DIR / "static-data.js").write_text(f"window.CARD_BROWSER_STATIC_DATA={payload};\n", encoding="utf-8")

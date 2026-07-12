@@ -21,6 +21,7 @@ const els = {
   search: document.querySelector("#searchButton"),
   reset: document.querySelector("#resetButton"),
   statistics: document.querySelector("#statisticsButton"),
+  documents: document.querySelector("#documentsButton"),
   stats: document.querySelector("#statsPanel"),
   count: document.querySelector("#resultCount"),
   results: document.querySelector("#resultsList"),
@@ -235,6 +236,16 @@ function getStaticJson(url) {
   }
   if (parsed.pathname.endsWith("/api/statistics")) {
     return Promise.resolve(STATIC_DATA.statistics || {});
+  }
+  if (parsed.pathname.endsWith("/api/documents")) {
+    return Promise.resolve({ documents: STATIC_DATA.documents || [] });
+  }
+  const documentMatch = parsed.pathname.match(/\/api\/document\/([^/]+)$/);
+  if (documentMatch) {
+    const id = decodeURIComponent(documentMatch[1]);
+    const document = (STATIC_DATA.documents || []).find((item) => item.id === id);
+    if (!document) return Promise.reject(new Error("未找到资料"));
+    return Promise.resolve(document);
   }
   if (parsed.pathname.endsWith("/api/stat-query")) {
     return Promise.resolve(staticStatQuery({
@@ -685,6 +696,130 @@ function renderStructureNotes(notes) {
   `;
 }
 
+function documentDownloadUrl(document) {
+  if (!document) return "";
+  if (STATIC_DATA) return document.download_url || "";
+  return `/api/document-file/${encodeURIComponent(document.id)}`;
+}
+
+function documentMetaLine(document) {
+  const parts = [];
+  if (document.kind) parts.push(document.kind.toUpperCase());
+  if (document.size) parts.push(`${Math.round(Number(document.size) / 1024)} KB`);
+  return parts.join(" · ");
+}
+
+function renderDocumentText(content) {
+  const raw = String(content || "").replace(/\r\n/g, "\n").trim();
+  if (!raw) return '<div class="text-block">暂无可读取正文，可下载原文件查看。</div>';
+  const blocks = raw.split(/\n{2,}/).filter((block) => block.trim());
+  return `
+    <div class="document-text">
+      ${blocks.map((block) => {
+        const text = block.trim();
+        if (/^#{1,4}\s+/.test(text)) {
+          const level = Math.min((text.match(/^#+/) || [""])[0].length + 3, 6);
+          return `<h${level}>${highlight(text.replace(/^#{1,4}\s+/, ""))}</h${level}>`;
+        }
+        if (/^[-*]\s+/.test(text)) {
+          const items = text.split("\n").map((line) => line.replace(/^[-*]\s+/, "").trim()).filter(Boolean);
+          return `<ul>${items.map((item) => `<li>${highlight(item)}</li>`).join("")}</ul>`;
+        }
+        return `<p>${highlight(text)}</p>`;
+      }).join("")}
+    </div>
+  `;
+}
+
+async function loadDocument(id) {
+  const document = await getJson(`/api/document/${encodeURIComponent(id)}`);
+  state.activeId = `document:${id}`;
+  renderResults();
+  els.empty.classList.add("hidden");
+  els.detail.classList.remove("hidden");
+  const downloadUrl = documentDownloadUrl(document);
+  els.detail.innerHTML = `
+    <div class="detail-title">
+      <h2>${highlight(document.title, "title")}</h2>
+      <span class="badge">${escapeHtml(document.group || "资料")}</span>
+    </div>
+    <div class="detail-grid">
+      ${kv("类型", document.kind)}
+      ${kv("文件", document.path)}
+      ${kv("大小", document.size ? `${Math.round(Number(document.size) / 1024)} KB` : "")}
+    </div>
+    <div class="document-actions">
+      ${downloadUrl ? `<a class="document-download" href="${escapeHtml(downloadUrl)}" target="_blank" rel="noopener">下载原文件</a>` : ""}
+    </div>
+    ${document.description ? `<div class="text-block">${highlight(document.description)}</div>` : ""}
+    <div class="section document-section">
+      <h3>正文</h3>
+      ${renderDocumentText(document.content)}
+    </div>
+  `;
+}
+
+async function showDocuments() {
+  const data = await getJson("/api/documents");
+  const documents = Array.isArray(data.documents) ? data.documents : [];
+  state.activeId = null;
+  state.results = [];
+  els.count.textContent = `${documents.length} 项`;
+  els.results.innerHTML = "";
+  els.empty.classList.add("hidden");
+  els.detail.classList.remove("hidden");
+
+  const grouped = documents.reduce((acc, document) => {
+    const group = document.group || "资料";
+    if (!acc[group]) acc[group] = [];
+    acc[group].push(document);
+    return acc;
+  }, {});
+
+  const fragment = document.createDocumentFragment();
+  for (const document of documents) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "result-row document-result";
+    button.dataset.id = document.id;
+    button.innerHTML = `
+      <div class="result-title">
+        <span>${highlight(document.title, "title")}</span>
+        <span class="badge">${escapeHtml(document.kind || "file")}</span>
+      </div>
+      <div class="meta">${escapeHtml(document.group || "资料")} · ${escapeHtml(documentMetaLine(document))}</div>
+      <div class="snippet">${highlight(compact(document.description || document.path || ""))}</div>
+    `;
+    button.addEventListener("click", () => loadDocument(document.id));
+    fragment.append(button);
+  }
+  els.results.append(fragment);
+
+  els.detail.innerHTML = `
+    <div class="detail-title">
+      <h2>资料库</h2>
+      <span class="badge">规则/剧本/报告</span>
+    </div>
+    <div class="resource-grid">
+      ${Object.entries(grouped).map(([group, items]) => `
+        <section class="resource-group">
+          <h3>${escapeHtml(group)}</h3>
+          ${items.map((document) => `
+            <button class="resource-card" type="button" data-document-id="${escapeHtml(document.id)}">
+              <strong>${highlight(document.title, "title")}</strong>
+              <span>${escapeHtml(document.description || document.path || "")}</span>
+              <em>${escapeHtml(documentMetaLine(document))}</em>
+            </button>
+          `).join("")}
+        </section>
+      `).join("")}
+    </div>
+  `;
+  els.detail.querySelectorAll("[data-document-id]").forEach((button) => {
+    button.addEventListener("click", () => loadDocument(button.dataset.documentId));
+  });
+}
+
 const SOURCE_WORK_TO_AUTHOR = {
   // 古龙
   "圆月弯刀": "古龙", "英雄无泪": "古龙", "萧十一郎": "古龙", "武林外史": "古龙", "天涯明月刀": "古龙",
@@ -965,6 +1100,7 @@ function bindEvents() {
     runSearch();
   });
   els.statistics.addEventListener("click", () => showStatistics(true));
+  els.documents.addEventListener("click", showDocuments);
   els.query.addEventListener("keydown", (event) => {
     if (event.key === "Enter") runSearch();
   });

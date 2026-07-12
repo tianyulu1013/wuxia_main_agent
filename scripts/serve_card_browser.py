@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import mimetypes
 import re
 import sqlite3
 from http import HTTPStatus
@@ -19,6 +20,7 @@ CHANGE_CANDIDATES_PATH = ROOT / "data" / "change_candidates.json"
 STRUCTURE_NOTES_PATH = ROOT / "data" / "card_structure_notes.json"
 STATISTICS_PATH = ROOT / "data" / "review" / "card_database_statistics.json"
 CARD_IMAGE_ALIASES_PATH = ROOT / "data" / "card_image_aliases.json"
+SITE_DOCUMENTS_PATH = ROOT / "data" / "site_documents.json"
 RELEASE_CARD_ROOT = ROOT / "data" / "release_images" / "cards"
 ALL_UNITS_GROUP = "__all_units__"
 CARD_IMAGE_INDEX: dict[str, Path] | None = None
@@ -61,6 +63,90 @@ def load_json_file(path: Path, fallback: object) -> object:
     if not path.exists():
         return fallback
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_site_document_entries() -> list[dict[str, object]]:
+    data = load_json_file(SITE_DOCUMENTS_PATH, {})
+    entries = data.get("documents", []) if isinstance(data, dict) else []
+    normalized: list[dict[str, object]] = []
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        document_id = str(entry.get("id") or "").strip()
+        relative_path = str(entry.get("path") or "").strip()
+        if not document_id or not relative_path:
+            continue
+        path = (ROOT / relative_path).resolve()
+        if ROOT.resolve() not in path.parents and path != ROOT.resolve():
+            continue
+        normalized.append(
+            {
+                "id": document_id,
+                "title": str(entry.get("title") or document_id),
+                "group": str(entry.get("group") or "资料"),
+                "kind": str(entry.get("kind") or path.suffix.removeprefix(".") or "file"),
+                "path": relative_path.replace("\\", "/"),
+                "description": str(entry.get("description") or ""),
+                "exists": path.exists(),
+                "size": path.stat().st_size if path.exists() else 0,
+            }
+        )
+    return normalized
+
+
+def find_site_document(document_id: str) -> dict[str, object] | None:
+    for entry in load_site_document_entries():
+        if entry["id"] == document_id:
+            return entry
+    return None
+
+
+def document_path(entry: dict[str, object]) -> Path:
+    return (ROOT / str(entry["path"])).resolve()
+
+
+def read_docx_text(path: Path) -> str:
+    try:
+        from docx import Document
+    except ImportError as exc:
+        raise RuntimeError("当前 Python 环境缺少 python-docx，无法读取 docx。") from exc
+    document = Document(str(path))
+    blocks: list[str] = []
+    for paragraph in document.paragraphs:
+        text = paragraph.text.strip()
+        if text:
+            blocks.append(text)
+    for table in document.tables:
+        for row in table.rows:
+            cells = [cell.text.strip() for cell in row.cells if cell.text.strip()]
+            if cells:
+                blocks.append(" | ".join(cells))
+    return "\n\n".join(blocks)
+
+
+def read_site_document_content(entry: dict[str, object]) -> str:
+    path = document_path(entry)
+    if not path.exists():
+        return ""
+    kind = str(entry.get("kind") or "").lower()
+    suffix = path.suffix.lower()
+    if kind == "docx" or suffix == ".docx":
+        return read_docx_text(path)
+    return path.read_text(encoding="utf-8")
+
+
+def site_document_summary(entry: dict[str, object]) -> dict[str, object]:
+    path = document_path(entry)
+    modified = path.stat().st_mtime if path.exists() else None
+    return {**entry, "modified": modified}
+
+
+def site_document_payload(entry: dict[str, object]) -> dict[str, object]:
+    return {
+        **site_document_summary(entry),
+        "content": read_site_document_content(entry),
+        "download_url": f"/api/document-file/{quote(str(entry['id']))}",
+    }
 
 
 def load_card_image_aliases() -> dict[str, object]:
@@ -320,6 +406,15 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         if parsed.path == "/api/statistics":
             self.handle_statistics()
             return
+        if parsed.path == "/api/documents":
+            self.handle_documents()
+            return
+        if parsed.path.startswith("/api/document-file/"):
+            self.handle_document_file(unquote(parsed.path.removeprefix("/api/document-file/")))
+            return
+        if parsed.path.startswith("/api/document/"):
+            self.handle_document(unquote(parsed.path.removeprefix("/api/document/")))
+            return
         if parsed.path == "/api/stat-query":
             self.handle_stat_query(parsed.query)
             return
@@ -371,6 +466,38 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
     def handle_statistics(self) -> None:
         data = load_json_file(STATISTICS_PATH, {})
         self.send_json(data if isinstance(data, dict) else {})
+
+    def handle_documents(self) -> None:
+        self.send_json({"documents": [site_document_summary(entry) for entry in load_site_document_entries()]})
+
+    def handle_document(self, document_id: str) -> None:
+        entry = find_site_document(document_id)
+        if entry is None:
+            self.send_error_json("未找到资料", HTTPStatus.NOT_FOUND)
+            return
+        try:
+            self.send_json(site_document_payload(entry))
+        except RuntimeError as exc:
+            self.send_error_json(str(exc), HTTPStatus.INTERNAL_SERVER_ERROR)
+
+    def handle_document_file(self, document_id: str) -> None:
+        entry = find_site_document(document_id)
+        if entry is None:
+            self.send_error_json("未找到资料", HTTPStatus.NOT_FOUND)
+            return
+        path = document_path(entry)
+        if not path.exists():
+            self.send_error_json("资料文件不存在", HTTPStatus.NOT_FOUND)
+            return
+        body = path.read_bytes()
+        mime_type = mimetypes.guess_type(path.name)[0] or "application/octet-stream"
+        filename = quote(path.name)
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", mime_type)
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Content-Disposition", f"attachment; filename*=UTF-8''{filename}")
+        self.end_headers()
+        self.wfile.write(body)
 
     def search_clauses(self, params: dict[str, list[str]]) -> tuple[list[str], list[object], dict[str, object]]:
         q = (params.get("q", [""])[0] or "").strip()
