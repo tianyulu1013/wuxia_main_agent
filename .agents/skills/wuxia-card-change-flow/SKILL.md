@@ -45,6 +45,7 @@ If the request touches rules terms or unclear mechanics, also read:
    - rules stability
    - text clarity
    - electronic-game risk if relevant
+   For flavor fit, do not guess from the card text alone. For public literary/film/game characters, use source knowledge or perform a focused lookup when needed; for internal friends/private characters, ask the author.
 5. Set `ai_position`: `support`, `caution`, `oppose`, or `uncertain`.
 6. Produce candidate text:
    - full card text for new cards or large rewrites
