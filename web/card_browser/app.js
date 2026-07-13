@@ -16,6 +16,7 @@ const state = {
   activeTab: "card-search", // "card-search" | "eval" | "docs"
   cardDisplayMode: "stats", // "stats" | "detail"
   evalDisplayMode: "list",  // "list" | "stats"
+  mobileActivePage: "filter", // "filter" | "list" | "detail"
 };
 
 const els = {
@@ -65,6 +66,11 @@ const els = {
   results: document.querySelector("#resultsList"),
   empty: document.querySelector("#emptyState"),
   detail: document.querySelector("#cardDetail"),
+
+  // Mobile tab buttons
+  mTabFilter: document.querySelector("#mTabFilter"),
+  mTabList: document.querySelector("#mTabList"),
+  mTabDetail: document.querySelector("#mTabDetail"),
 };
 
 const STATIC_DATA = window.CARD_BROWSER_STATIC_DATA || null;
@@ -1342,6 +1348,7 @@ async function loadDocument(id) {
   const doc = await getJson(`/api/document/${encodeURIComponent(id)}`);
   state.activeId = `document:${id}`;
   renderDocumentDetail(doc, "");
+  setMobileActivePage("list");
 }
 
 function renderDocumentHome(documents, searchText = "") {
@@ -1478,6 +1485,17 @@ const SOURCE_WORK_TO_AUTHOR = {
   "白衣方振眉": "温瑞安",
 };
 
+function setMobileActivePage(page) {
+  state.mobileActivePage = page;
+  document.body.classList.remove("active-page-filter", "active-page-list", "active-page-detail");
+  document.body.classList.add(`active-page-${page}`);
+
+  // 联动底部按钮高亮
+  els.mTabFilter?.classList.toggle("active", page === "filter");
+  els.mTabList?.classList.toggle("active", page === "list");
+  els.mTabDetail?.classList.toggle("active", page === "detail");
+}
+
 function sortCounter(counterEntries, type) {
   if (state.statSortMode === "count") {
     return counterEntries.sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "zh-Hans"));
@@ -1539,6 +1557,7 @@ window.setCardViewMode = function(mode) {
     state.activeId = null;
     renderResults();
     showCardSearchStatistics();
+    setMobileActivePage("detail");
   } else {
     if (state.results.length > 0) {
       loadCard(state.results[0].id);
@@ -1550,6 +1569,7 @@ window.setCardViewMode = function(mode) {
         </div>
         <div class="empty-state">当前结果列表为空，没有可展示详情的卡牌</div>
       `;
+      setMobileActivePage("detail");
     }
   }
 };
@@ -1562,6 +1582,7 @@ window.setEvalViewMode = function(mode) {
     state.activeId = null;
     renderResults();
     showEvalStatisticsData();
+    setMobileActivePage("detail");
   } else {
     els.evalListModeBtn?.classList.add("active");
     els.evalStatsModeBtn?.classList.remove("active");
@@ -1575,6 +1596,7 @@ window.setEvalViewMode = function(mode) {
         </div>
         <div class="empty-state">当前结果列表为空，没有可展示评语的卡牌</div>
       `;
+      setMobileActivePage("detail");
     }
   }
 };
@@ -1704,6 +1726,7 @@ async function loadCard(id) {
     els.evalListModeBtn?.classList.add("active");
     els.evalStatsModeBtn?.classList.remove("active");
   }
+  setMobileActivePage("detail");
   renderResults();
   const card = await getJson(`/api/card/${encodeURIComponent(id)}`);
   els.empty.classList.add("hidden");
@@ -1867,6 +1890,19 @@ function setTab(tabName) {
   };
   Object.entries(tabs).forEach(([name, btn]) => btn?.classList.toggle("active", name === tabName));
   Object.entries(panels).forEach(([name, panel]) => panel?.classList.toggle("hidden", name !== tabName));
+
+  if (tabName === "docs") {
+    if (els.mTabDetail) els.mTabDetail.style.display = "none";
+    if (els.mTabFilter) els.mTabFilter.innerHTML = "📖 目录";
+    if (els.mTabList) els.mTabList.innerHTML = "📄 阅读";
+    setMobileActivePage("filter");
+  } else {
+    if (els.mTabDetail) els.mTabDetail.style.display = "";
+    if (els.mTabFilter) els.mTabFilter.innerHTML = "🎛️ 筛选";
+    if (els.mTabList) els.mTabList.innerHTML = "📋 列表";
+    if (els.mTabDetail) els.mTabDetail.innerHTML = "📊 详情";
+    setMobileActivePage("filter");
+  }
 }
 
 async function runCardSearch() {
@@ -1900,6 +1936,7 @@ async function runCardSearch() {
     state.activeId = null;
     state.cardDisplayMode = "stats";
     showCardSearchStatistics();
+    setMobileActivePage("list");
   } else {
     state.cardDisplayMode = "detail";
     loadCard(state.activeId);
@@ -1932,6 +1969,7 @@ async function runEvalSearch() {
     state.activeId = null;
     state.evalDisplayMode = "stats";
     showEvalStatisticsData();
+    setMobileActivePage("list");
   } else {
     state.evalDisplayMode = "list";
     loadCard(state.activeId);
@@ -2007,6 +2045,21 @@ function bindEvents() {
   els.tabDocs?.addEventListener("click", () => {
     setTab("docs");
     showDocuments("");
+  });
+
+  // 📱 Mobile tab bar bindings
+  els.mTabFilter?.addEventListener("click", () => setMobileActivePage("filter"));
+  els.mTabList?.addEventListener("click", () => setMobileActivePage("list"));
+  els.mTabDetail?.addEventListener("click", () => {
+    if (state.activeId === null) {
+      if (state.activeTab === "card-search") {
+        window.setCardViewMode("stats");
+      } else if (state.activeTab === "eval") {
+        window.setEvalViewMode("stats");
+      }
+    } else {
+      setMobileActivePage("detail");
+    }
   });
 }
 
