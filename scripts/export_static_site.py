@@ -126,6 +126,8 @@ def main() -> None:
             "statistics": browser.load_json_file(browser.STATISTICS_PATH, {}),
             "document_meta": browser.load_site_document_meta(),
             "documents": build_documents(),
+            "evaluation_entries": browser.evaluation_search_payload({}).get("results", []),
+            "evaluation_stats": browser.evaluation_statistics_payload(),
         }
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</script", "<\\/script")
     (OUT_DIR / "static-data.js").write_text(f"window.CARD_BROWSER_STATIC_DATA={payload};\n", encoding="utf-8")

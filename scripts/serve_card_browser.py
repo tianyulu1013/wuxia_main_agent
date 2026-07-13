@@ -370,6 +370,296 @@ def evaluation_methodology() -> dict[str, object]:
     return methodology if isinstance(methodology, dict) else {}
 
 
+def markdown_sections(text: object) -> list[dict[str, object]]:
+    lines = str(text or "").replace("\r\n", "\n").splitlines()
+    headings: list[tuple[int, int, str]] = []
+    for index, line in enumerate(lines):
+        match = re.match(r"^(#{2,4})\s+(.+?)\s*$", line)
+        if match:
+            headings.append((index, len(match.group(1)), match.group(2).strip()))
+    sections: list[dict[str, object]] = []
+    for position, (start, level, title) in enumerate(headings):
+        end = len(lines)
+        for next_start, next_level, _ in headings[position + 1:]:
+            if next_level <= level:
+                end = next_start
+                break
+        sections.append({"title": title, "level": level, "body": "\n".join(lines[start + 1:end]).strip()})
+    return sections
+
+
+def find_markdown_section(sections: list[dict[str, object]], *names: str) -> str:
+    normalized_names = [re.sub(r"^[A-Z一二三四五六七八九十0-9.、\s]+", "", name).strip() for name in names]
+    for section in sections:
+        title = re.sub(r"^[A-Z一二三四五六七八九十0-9.、\s]+", "", str(section.get("title") or "")).strip()
+        if any(name and name in title for name in normalized_names):
+            return str(section.get("body") or "").strip()
+    return ""
+
+
+def markdown_items(text: object) -> list[str]:
+    items: list[str] = []
+    for raw_line in str(text or "").splitlines():
+        line = raw_line.strip()
+        if not line or re.match(r"^\|?\s*:?-{3,}", line):
+            continue
+        if line.startswith("|") and line.endswith("|"):
+            cells = [cell.strip() for cell in line.strip("|").split("|")]
+            if cells and cells[0] not in {"问题", "能力", "项目"}:
+                line = "；".join(cell for cell in cells if cell and cell != "—")
+            else:
+                continue
+        line = re.sub(r"^(?:[-*+]\s+|\d+[.、]\s*)", "", line)
+        line = re.sub(r"\*\*(.*?)\*\*", r"\1", line).replace("`", "").strip()
+        if line:
+            items.append(line)
+    return items
+
+
+def evaluation_dimension_score(full_text: str, label: str) -> int | None:
+    patterns = [
+        rf"(?:暂评)?{re.escape(label)}(?:能力)?\s*(?:为|：|:)?\s*(\d{{1,3}})",
+        rf"{re.escape(label)}[^\n]{{0,30}}?[（(]?(\d{{1,3}})(?:分|[）)])",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, full_text)
+        if match:
+            value = int(match.group(1))
+            if 0 <= value <= 100:
+                return value
+    return None
+
+
+def evaluation_section_score(section_text: str, full_text: str, label: str) -> int | None:
+    direct = evaluation_dimension_score(full_text, label)
+    if direct is not None:
+        return direct
+    for pattern in [r"(?:暂评|评分|约为|约|常态)\s*(\d{1,3})", r"(?:生存|能力)\s*(\d{1,3})"]:
+        matches = re.findall(pattern, section_text)
+        for raw in reversed(matches):
+            value = int(raw)
+            if 0 <= value <= 100:
+                return value
+    return None
+
+
+def risk_payload(text: str) -> dict[str, object] | None:
+    if not text:
+        return None
+    level = next((item for item in ["极高", "高", "中高", "中", "中低", "低"] if text.lstrip().startswith(item)), "未分级")
+    return {"level": level, "summary": text}
+
+
+def legacy_survival_fragment(text: str, label: str) -> str:
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
+        if label not in line or "**" not in line:
+            continue
+        qualifier_match = re.search(
+            rf"{re.escape(label)}(?:能力)?\s*[：:]\s*([^*：:\n]+)",
+            line,
+        )
+        qualifier = qualifier_match.group(1).strip() if qualifier_match else ""
+        details: list[str] = []
+        for following in lines[index + 1:]:
+            if ("正面生存" in following or "侧面生存" in following) and label not in following:
+                break
+            cleaned = markdown_items(following)
+            if cleaned:
+                details.extend(cleaned)
+        if qualifier or details:
+            prefix = f"{qualifier}。" if qualifier else ""
+            return (prefix + " ".join(details)).strip()
+    matches = list(re.finditer(re.escape(label), text))
+    if not matches:
+        return ""
+    fragment = text[matches[-1].end():]
+    fragment = re.split(r"[；;\n]", fragment, maxsplit=1)[0]
+    return re.sub(r"^[\s，,：:、/]+", "", fragment).strip()
+
+
+def evaluation_summary(entry: dict[str, object]) -> dict[str, object]:
+    structured = entry.get("summary")
+    if isinstance(structured, dict):
+        return structured
+    full_text = str(entry.get("full_text") or "")
+    sections = markdown_sections(full_text)
+    core = find_markdown_section(sections, "核心定位", "核心玩法循环")
+    overall = find_markdown_section(sections, "一句话总评")
+    front = find_markdown_section(sections, "正面生存")
+    side = find_markdown_section(sections, "侧面生存")
+    combined_survival = find_markdown_section(sections, "初始评价", "生存能力")
+    if not front and combined_survival:
+        front = legacy_survival_fragment(combined_survival, "正面生存")
+    if not side and combined_survival:
+        side = legacy_survival_fragment(combined_survival, "侧面生存")
+    pros = markdown_items(find_markdown_section(sections, "优点"))
+    cons = markdown_items(find_markdown_section(sections, "缺点", "缺点与死穴"))
+    questions_text = find_markdown_section(sections, "必要待校准问题", "待校准问题必要性", "待作者校准的问题")
+    questions = [
+        {"id": f"{entry.get('id')}_q{index}", "question": item, "status": "open"}
+        for index, item in enumerate(markdown_items(questions_text), start=1)
+        if item not in {"无", "无；已完成时序校正，无新增问题；-；-；-"}
+    ]
+    rules_risk = find_markdown_section(sections, "规则风险")
+    digital_risk = find_markdown_section(sections, "电子化风险")
+    coverage = {
+        "core_positioning": bool(core), "overall": bool(overall), "front_survival": bool(front),
+        "side_survival": bool(side), "pros": bool(pros), "cons": bool(cons),
+        "questions": bool(questions_text), "rules_risk": bool(rules_risk), "digital_risk": bool(digital_risk),
+    }
+    front_score = evaluation_section_score(front, full_text, "正面生存")
+    side_score = evaluation_section_score(side, full_text, "侧面生存")
+    return {
+        "schema_version": 1,
+        "source": "legacy_section_adapter",
+        "coverage": "complete" if all(coverage.values()) else "partial",
+        "missing_fields": [key for key, value in coverage.items() if not value],
+        "core_positioning": core,
+        "overall": overall,
+        "survival": {
+            "front": {"score": front_score, "summary": front},
+            "side": {"score": side_score, "summary": side},
+        },
+        "pros": pros,
+        "cons": cons,
+        "questions": questions,
+        "risks": {"rules": risk_payload(rules_risk), "digital": risk_payload(digital_risk)},
+        "dimension_scores": {
+            "strength": entry.get("strength_score"), "generality": entry.get("generality_score"),
+            "front_survival": front_score,
+            "side_survival": side_score,
+            "burst": None, "control": None,
+        },
+    }
+
+
+def normalized_evaluation_entries() -> list[dict[str, object]]:
+    data = load_card_evaluations()
+    entries = data.get("entries", [])
+    normalized: list[dict[str, object]] = []
+    if not isinstance(entries, list):
+        return normalized
+    with connect() as conn:
+        card_rows = conn.execute(
+            "SELECT id, title, normalized_title, category, author_group, source_work, source_sheet, source_row FROM cards"
+        ).fetchall()
+    cards_by_title: dict[str, dict[str, object]] = {}
+    for row in card_rows:
+        card = dict(row)
+        cards_by_title.setdefault(str(card.get("title") or ""), card)
+    for raw_entry in entries:
+        if not isinstance(raw_entry, dict):
+            continue
+        entry = dict(raw_entry)
+        card = cards_by_title.get(str(entry.get("card_title") or ""), {})
+        entry["summary"] = evaluation_summary(entry)
+        entry["card_id"] = card.get("id")
+        entry["author_group"] = card.get("author_group")
+        entry["source_work"] = card.get("source_work")
+        entry["source_sheet"] = card.get("source_sheet")
+        entry["source_row"] = card.get("source_row")
+        entry["category_label"] = entry.get("category_label") or label_category(str(entry.get("category") or card.get("category") or ""))
+        normalized.append(entry)
+    return normalized
+
+
+def evaluation_search_payload(params: dict[str, str]) -> dict[str, object]:
+    q = params.get("q", "").strip().lower()
+    scope = params.get("scope", "all")
+    category = params.get("category", "")
+    author = params.get("author", "")
+    status = params.get("status", "")
+    try:
+        limit = min(max(int(params.get("limit", "500")), 1), 500)
+    except ValueError:
+        limit = 500
+    entries = normalized_evaluation_entries()
+    latest: dict[str, dict[str, object]] = {}
+    for entry in entries:
+        title = str(entry.get("card_title") or "")
+        if title not in latest or int(entry.get("entry_number") or 0) > int(latest[title].get("entry_number") or 0):
+            latest[title] = entry
+    filtered: list[dict[str, object]] = []
+    for entry in latest.values():
+        if category and entry.get("category") != category:
+            continue
+        if author and entry.get("author_group") != author:
+            continue
+        if status and entry.get("status") != status:
+            continue
+        summary = entry.get("summary", {}) if isinstance(entry.get("summary"), dict) else {}
+        survival = summary.get("survival", {}) if isinstance(summary.get("survival"), dict) else {}
+        risks = summary.get("risks", {}) if isinstance(summary.get("risks"), dict) else {}
+        questions = summary.get("questions", []) if isinstance(summary.get("questions"), list) else []
+        fields = {
+            "title": str(entry.get("card_title") or ""),
+            "positioning": str(summary.get("core_positioning") or "") + "\n" + str(summary.get("overall") or ""),
+            "survival": json.dumps(survival, ensure_ascii=False),
+            "pros": "\n".join(str(item) for item in summary.get("pros", []) if item),
+            "cons": "\n".join(str(item) for item in summary.get("cons", []) if item),
+            "questions": "\n".join(str(item.get("question") or "") for item in questions if isinstance(item, dict)),
+            "rules_risk": json.dumps(risks.get("rules"), ensure_ascii=False),
+            "digital_risk": json.dumps(risks.get("digital"), ensure_ascii=False),
+            "full_text": str(entry.get("full_text") or ""),
+        }
+        haystack = fields.get(scope, "\n".join(fields.values())) if scope != "all" else "\n".join(fields.values())
+        if q and q not in haystack.lower():
+            continue
+        snippet_source = fields.get(scope) or fields["positioning"] or fields["full_text"]
+        filtered.append({
+            "id": entry.get("card_id"), "title": entry.get("card_title"), "category": entry.get("category"),
+            "category_label": entry.get("category_label"), "author_group": entry.get("author_group"),
+            "source_work": entry.get("source_work"), "source_sheet": entry.get("source_sheet"),
+            "source_row": entry.get("source_row"), "snippet": re.sub(r"\s+", " ", snippet_source).strip()[:240],
+            "strength_score": entry.get("strength_score"), "generality_score": entry.get("generality_score"),
+            "status": entry.get("status"),
+            "status_label": entry.get("status_label") or {
+                "author_reviewed": "作者评估", "ai_unreviewed": "ai评估",
+                "ai_draft": "ai草稿", "unreviewed": "未评估",
+            }.get(str(entry.get("status") or ""), str(entry.get("status") or "未标状态")),
+            "summary": summary, "full_text": entry.get("full_text"),
+        })
+    filtered.sort(key=lambda item: (-(int(item.get("strength_score") or -1)), str(item.get("title") or "")))
+    return {"results": filtered[:limit], "reviewed_count": len(latest)}
+
+
+def numeric_dimension_stats(values: list[int]) -> dict[str, object]:
+    clean = sorted(value for value in values if isinstance(value, int) and 0 <= value <= 100)
+    bins = {label: 0 for label in ["0-19", "20-39", "40-59", "60-69", "70-79", "80-89", "90-100"]}
+    for value in clean:
+        label = "0-19" if value < 20 else "20-39" if value < 40 else "40-59" if value < 60 else "60-69" if value < 70 else "70-79" if value < 80 else "80-89" if value < 90 else "90-100"
+        bins[label] += 1
+    median = None if not clean else clean[len(clean) // 2] if len(clean) % 2 else round((clean[len(clean)//2 - 1] + clean[len(clean)//2]) / 2, 1)
+    return {"evaluated_count": len(clean), "average": round(sum(clean) / len(clean), 1) if clean else None, "median": median, "distribution": bins}
+
+
+def evaluation_statistics_payload() -> dict[str, object]:
+    search = evaluation_search_payload({})
+    entries = search["results"] if isinstance(search.get("results"), list) else []
+    dimensions = {
+        "strength": {"label": "强度", **numeric_dimension_stats([item.get("strength_score") for item in entries])},
+        "generality": {"label": "泛用性", **numeric_dimension_stats([item.get("generality_score") for item in entries])},
+        "front_survival": {"label": "正面生存", **numeric_dimension_stats([item.get("summary", {}).get("dimension_scores", {}).get("front_survival") for item in entries])},
+        "side_survival": {"label": "侧面生存", **numeric_dimension_stats([item.get("summary", {}).get("dimension_scores", {}).get("side_survival") for item in entries])},
+        "burst": {"label": "爆发能力", **numeric_dimension_stats([])},
+        "control": {"label": "控制能力", **numeric_dimension_stats([])},
+    }
+    with connect() as conn:
+        total_cards = int(conn.execute("SELECT COUNT(*) FROM cards WHERE category <> 'deprecated'").fetchone()[0])
+    status_counts: dict[str, int] = {}
+    open_questions = 0
+    for item in entries:
+        label = str(item.get("status_label") or item.get("status") or "未标")
+        status_counts[label] = status_counts.get(label, 0) + 1
+        open_questions += sum(1 for question in item.get("summary", {}).get("questions", []) if question.get("status") == "open")
+    return {
+        "total_card_count": total_cards, "reviewed_card_count": len(entries),
+        "unreviewed_card_count": max(0, total_cards - len(entries)), "open_question_count": open_questions,
+        "status_counts": status_counts, "dimensions": dimensions,
+    }
+
+
 def card_evaluation_payload(title: object) -> dict[str, object]:
     card_title = str(title or "")
     data = load_card_evaluations()
@@ -398,6 +688,7 @@ def card_evaluation_payload(title: object) -> dict[str, object]:
         status_label = "未评估"
 
     for entry in matched:
+        entry["summary"] = evaluation_summary(entry)
         s = entry.get("status")
         if s == "author_reviewed":
             entry["status_label"] = "作者评估"
@@ -701,6 +992,12 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         if parsed.path == "/api/stat-query":
             self.handle_stat_query(parsed.query)
             return
+        if parsed.path == "/api/evaluation-search":
+            self.handle_evaluation_search(parsed.query)
+            return
+        if parsed.path == "/api/evaluation-stats":
+            self.send_json(evaluation_statistics_payload())
+            return
         if parsed.path == "/api/search":
             self.handle_search(parsed.query)
             return
@@ -936,6 +1233,18 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
                 "ability_kind_counts": count_by(ability_rows, "kind"),
             }
         )
+
+    def handle_evaluation_search(self, query_string: str) -> None:
+        params = parse_qs(query_string)
+        payload = evaluation_search_payload({
+            "q": (params.get("q", [""])[0] or "").strip(),
+            "scope": (params.get("scope", ["all"])[0] or "all").strip(),
+            "category": (params.get("category", [""])[0] or "").strip(),
+            "author": (params.get("author", [""])[0] or "").strip(),
+            "limit": (params.get("limit", ["500"])[0] or "500").strip(),
+            "status": (params.get("status", [""])[0] or "").strip(),
+        })
+        self.send_json(payload)
 
     def handle_search(self, query_string: str) -> None:
         params = parse_qs(query_string)

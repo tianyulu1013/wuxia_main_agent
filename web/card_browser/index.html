@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>五行卡牌查询</title>
-    <link rel="stylesheet" href="/styles.css?v=20260712_09" />
+    <link rel="stylesheet" href="/styles.css?v=20260712_10" />
   </head>
   <body>
     <div class="app-shell">
@@ -16,6 +16,11 @@
             <p id="siteVersion" class="site-version">版本读取中...</p>
             <p id="dbMeta">读取数据库中...</p>
           </div>
+        </div>
+
+        <div class="search-mode-switcher" aria-label="检索数据层">
+          <button id="cardSearchModeButton" class="mode-button active" type="button">卡牌资料</button>
+          <button id="evaluationSearchModeButton" class="mode-button" type="button">评语与评分</button>
         </div>
 
         <label class="field">
@@ -87,7 +92,8 @@
           <button id="resetButton" type="button">重置</button>
         </div>
 
-        <button id="statisticsButton" class="secondary-action" type="button">统计报告</button>
+        <button id="statisticsButton" class="secondary-action" type="button">牌库统计</button>
+        <button id="evaluationStatisticsButton" class="secondary-action" type="button">评价统计</button>
         <button id="documentsButton" class="secondary-action" type="button">资料库</button>
 
         <div class="stats" id="statsPanel"></div>
@@ -109,6 +115,6 @@
       </main>
     </div>
 
-    <script src="/app.js?v=20260712_09"></script>
+    <script src="/app.js?v=20260712_10"></script>
   </body>
 </html>
