@@ -434,7 +434,7 @@ def evaluation_section_score(section_text: str, full_text: str, label: str) -> i
     direct = evaluation_dimension_score(full_text, label)
     if direct is not None:
         return direct
-    for pattern in [r"(?:暂评|评分|约为|约|常态)\s*(\d{1,3})", r"(?:生存|能力)\s*(\d{1,3})"]:
+    for pattern in [r"(?:暂评|评分|约为|约|常态)\s*(\d{1,3})", r"(?:生存|能力)\s*(\d{1,3})", r"[（(]\s*(\d{1,3})\s*(?:，|,|分|）|\))"]:
         matches = re.findall(pattern, section_text)
         for raw in reversed(matches):
             value = int(raw)
@@ -487,14 +487,24 @@ def evaluation_summary(entry: dict[str, object]) -> dict[str, object]:
     core = find_markdown_section(sections, "核心定位", "核心玩法循环")
     overall = find_markdown_section(sections, "一句话总评")
     front = find_markdown_section(sections, "正面生存")
-    side = find_markdown_section(sections, "侧面生存")
     combined_survival = find_markdown_section(sections, "初始评价", "生存能力")
     if not front and combined_survival:
         front = legacy_survival_fragment(combined_survival, "正面生存")
+    if not front:
+        front = str(entry.get("frontal_survival") or "")
+        
+    side = find_markdown_section(sections, "侧面生存")
     if not side and combined_survival:
         side = legacy_survival_fragment(combined_survival, "侧面生存")
-    pros = markdown_items(find_markdown_section(sections, "优点"))
-    cons = markdown_items(find_markdown_section(sections, "缺点", "缺点与死穴"))
+    if not side:
+        side = str(entry.get("lateral_survival") or "")
+        
+    pros_text = find_markdown_section(sections, "优点")
+    pros = markdown_items(pros_text) if pros_text else markdown_items(entry.get("advantages"))
+    
+    cons_text = find_markdown_section(sections, "缺点", "缺点与死穴")
+    cons = markdown_items(cons_text) if cons_text else markdown_items(entry.get("disadvantages"))
+    
     questions_text = find_markdown_section(sections, "必要待校准问题", "待校准问题必要性", "待作者校准的问题")
     questions = [
         {"id": f"{entry.get('id')}_q{index}", "question": item, "status": "open"}
@@ -502,7 +512,11 @@ def evaluation_summary(entry: dict[str, object]) -> dict[str, object]:
         if item not in {"无", "无；已完成时序校正，无新增问题；-；-；-"}
     ]
     rules_risk = find_markdown_section(sections, "规则风险")
+    if not rules_risk:
+        rules_risk = str(entry.get("rules_risk") or "")
     digital_risk = find_markdown_section(sections, "电子化风险")
+    if not digital_risk:
+        digital_risk = str(entry.get("electronic_risk") or "")
     coverage = {
         "core_positioning": bool(core), "overall": bool(overall), "front_survival": bool(front),
         "side_survival": bool(side), "pros": bool(pros), "cons": bool(cons),
