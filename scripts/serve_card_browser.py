@@ -648,8 +648,8 @@ def numeric_dimension_stats(values: list[int]) -> dict[str, object]:
     return {"evaluated_count": len(clean), "average": round(sum(clean) / len(clean), 1) if clean else None, "median": median, "distribution": bins}
 
 
-def evaluation_statistics_payload() -> dict[str, object]:
-    search = evaluation_search_payload({})
+def evaluation_statistics_payload(params: dict[str, str] = None) -> dict[str, object]:
+    search = evaluation_search_payload(params or {})
     entries = search["results"] if isinstance(search.get("results"), list) else []
     dimensions = {
         "strength": {"label": "强度", **numeric_dimension_stats([item.get("strength_score") for item in entries])},
@@ -1010,7 +1010,9 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
             self.handle_evaluation_search(parsed.query)
             return
         if parsed.path == "/api/evaluation-stats":
-            self.send_json(evaluation_statistics_payload())
+            params = parse_qs(parsed.query)
+            flat_params = {k: v[0] for k, v in params.items()}
+            self.send_json(evaluation_statistics_payload(flat_params))
             return
         if parsed.path == "/api/search":
             self.handle_search(parsed.query)
@@ -1208,9 +1210,37 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
     def handle_stat_query(self, query_string: str) -> None:
         params = parse_qs(query_string)
         clauses, values, filters = self.search_clauses(params)
+        is_exclusive = (params.get("is_exclusive", ["0"])[0] or "0").strip() == "1"
+        is_identity = (params.get("is_identity", ["0"])[0] or "0").strip() == "1"
         where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
         with connect() as conn:
             card_rows = [dict(row) for row in conn.execute(f"SELECT id, category, author_group, source_work FROM cards {where}", values)]
+            
+            if is_exclusive or is_identity:
+                filtered_card_rows = []
+                for row in card_rows:
+                    card_id = row["id"]
+                    ability_rows_for_card = conn.execute(
+                        "SELECT name, text, is_exclusive, is_identity FROM card_abilities WHERE card_id = ?",
+                        (card_id,)
+                    ).fetchall()
+                    has_exclusive = any(
+                        bool(a["is_exclusive"]) or (a["name"] and "【" in a["name"] and "】" in a["name"])
+                        for a in ability_rows_for_card
+                    )
+                    has_identity = any(
+                        bool(a["is_identity"]) or (a["text"] and "（身份）" in a["text"])
+                        for a in ability_rows_for_card
+                    )
+                    keep = True
+                    if is_exclusive and not has_exclusive:
+                        keep = False
+                    if is_identity and not has_identity:
+                        keep = False
+                    if keep:
+                        filtered_card_rows.append(row)
+                card_rows = filtered_card_rows
+
             card_ids = [row["id"] for row in card_rows]
             if card_ids:
                 placeholders = ", ".join("?" for _ in card_ids)
@@ -1268,6 +1298,8 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         category = (params.get("category", [""])[0] or "").strip()
         author = (params.get("author", [""])[0] or "").strip()
         sort = (params.get("sort", ["sheet"])[0] or "sheet").strip()
+        is_exclusive = (params.get("is_exclusive", ["0"])[0] or "0").strip() == "1"
+        is_identity = (params.get("is_identity", ["0"])[0] or "0").strip() == "1"
         try:
             limit = min(max(int(params.get("limit", ["60"])[0]), 1), 500)
         except ValueError:
@@ -1420,6 +1452,56 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         """
         with connect() as conn:
             rows = [row_to_result(row) for row in conn.execute(sql, values)]
+
+        if is_exclusive or is_identity or q:
+            filtered_rows = []
+            with connect() as conn:
+                for row in rows:
+                    card_id = row["id"]
+                    ability_rows = conn.execute(
+                        "SELECT kind, name, text, is_exclusive, is_identity FROM card_abilities WHERE card_id = ?",
+                        (card_id,)
+                    ).fetchall()
+                    
+                    matched_abilities = []
+                    for a in ability_rows:
+                        a_is_exclusive = bool(a["is_exclusive"]) or (a["name"] and "【" in a["name"] and "】" in a["name"])
+                        a_is_identity = bool(a["is_identity"]) or (a["text"] and "（身份）" in a["text"])
+                        
+                        keep_ability = True
+                        if is_exclusive and not a_is_exclusive:
+                            keep_ability = False
+                        if is_identity and not a_is_identity:
+                            keep_ability = False
+                        if keep_ability:
+                            matched_abilities.append(a)
+                            
+                    if (is_exclusive or is_identity) and not matched_abilities:
+                        continue
+                        
+                    if q:
+                        if scope == "ability":
+                            has_match = False
+                            for a in matched_abilities:
+                                if ability_type and a["kind"] != ability_type:
+                                    continue
+                                text_to_search = f"{a['kind']} {a['name']} {a['text']}"
+                                if q.lower() in text_to_search.lower():
+                                    has_match = True
+                                    break
+                            if not has_match:
+                                continue
+                        elif scope == "all":
+                            card_text = f"{row['title']} {row.get('description') or ''} {row.get('relationships') or ''} {row.get('identity') or ''} {row.get('weapons') or ''} {row.get('source_work') or ''}"
+                            card_match = q.lower() in card_text.lower()
+                            abilities_text = " ".join(f"{a['kind']} {a['name']} {a['text']}" for a in matched_abilities)
+                            abilities_match = q.lower() in abilities_text.lower()
+                            if not (card_match or abilities_match):
+                                continue
+                                
+                    filtered_rows.append(row)
+            rows = filtered_rows
+
         if scope in {"identity", "weapons", "source_work", "relationships"}:
             snippet_field = {
                 "identity": "identity",
