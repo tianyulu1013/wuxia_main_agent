@@ -16,6 +16,7 @@ DB_PATH = ROOT / "data" / "cards.sqlite"
 UNIT_OVERRIDES_PATH = ROOT / "data" / "card_unit_overrides.json"
 CARD_REVIEWS_PATH = ROOT / "data" / "card_reviews.json"
 CARD_UNDERSTANDING_NOTES_PATH = ROOT / "data" / "review" / "card_understanding_notes.json"
+CARD_EVALUATIONS_PATH = ROOT / "data" / "review" / "card_evaluations.json"
 CARD_MAINTENANCE_TODOS_PATH = ROOT / "data" / "review" / "card_maintenance_todos.json"
 CHANGE_CANDIDATES_PATH = ROOT / "data" / "change_candidates.json"
 STRUCTURE_NOTES_PATH = ROOT / "data" / "card_structure_notes.json"
@@ -359,6 +360,59 @@ def load_card_image_aliases() -> dict[str, object]:
     return data if isinstance(data, dict) else {}
 
 
+def load_card_evaluations() -> dict[str, object]:
+    data = load_json_file(CARD_EVALUATIONS_PATH, {})
+    return data if isinstance(data, dict) else {}
+
+
+def evaluation_methodology() -> dict[str, object]:
+    methodology = load_card_evaluations().get("methodology", {})
+    return methodology if isinstance(methodology, dict) else {}
+
+
+def card_evaluation_payload(title: object) -> dict[str, object]:
+    card_title = str(title or "")
+    data = load_card_evaluations()
+    entries = data.get("entries", [])
+    by_title = data.get("by_title", {})
+    entry_ids = by_title.get(card_title, []) if isinstance(by_title, dict) else []
+    entry_id_set = {str(item) for item in entry_ids} if isinstance(entry_ids, list) else set()
+    matched = [
+        entry for entry in entries
+        if isinstance(entry, dict) and str(entry.get("id")) in entry_id_set
+    ] if isinstance(entries, list) else []
+    if not matched:
+        return {"status": "unreviewed", "status_label": "未评估", "entries": []}
+
+    if any(entry.get("status") == "author_reviewed" for entry in matched):
+        status = "author_reviewed"
+        status_label = "作者评估"
+    elif any(entry.get("status") == "ai_unreviewed" for entry in matched):
+        status = "ai_unreviewed"
+        status_label = "ai评估"
+    elif any(entry.get("status") == "ai_draft" for entry in matched):
+        status = "ai_draft"
+        status_label = "ai草稿"
+    else:
+        status = "unreviewed"
+        status_label = "未评估"
+
+    for entry in matched:
+        s = entry.get("status")
+        if s == "author_reviewed":
+            entry["status_label"] = "作者评估"
+        elif s == "ai_unreviewed":
+            entry["status_label"] = "ai评估"
+        elif s == "ai_draft":
+            entry["status_label"] = "ai草稿"
+
+    return {
+        "status": status,
+        "status_label": status_label,
+        "entries": matched,
+    }
+
+
 def load_review_layers(title: object) -> dict[str, object]:
     card_title = str(title or "")
     reviews_data = load_json_file(CARD_REVIEWS_PATH, {})
@@ -392,6 +446,7 @@ def load_review_layers(title: object) -> dict[str, object]:
     return {
         "review": reviews,
         "understanding_note": understanding_note,
+        "evaluation": card_evaluation_payload(card_title),
         "maintenance_todos": maintenance_todos,
         "change_candidates": candidates,
     }
@@ -683,6 +738,7 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         self.send_json(
             {
                 **load_site_document_meta(),
+                "evaluation_methodology": evaluation_methodology(),
                 "source_workbook": metadata.get("source_workbook", ""),
                 "source_path": metadata.get("source_path", ""),
                 "record_count": int(metadata.get("record_count", "0")),

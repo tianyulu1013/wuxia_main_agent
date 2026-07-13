@@ -70,6 +70,7 @@ def build_meta(conn: sqlite3.Connection) -> dict[str, object]:
         "by_category": by_category,
         "categories": categories,
         "authors": authors,
+        "evaluation_methodology": browser.evaluation_methodology(),
         "static_export": True,
     }
 

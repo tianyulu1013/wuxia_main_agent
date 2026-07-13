@@ -13,5 +13,226 @@
       "play_tips": "玩法、对局提示或攻略。"
     }
   },
-  "cards": {}
+  "cards": {
+    "九难": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "云帅": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "公孙大娘": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": "- 优先用易容学到实用的技能、* 或字，但要记住只是普通学会。\n- 熊姥姥适合挡可挡的效果或波及，但不能指望挡破和一定造成。\n- 红鞋子的收益不只是临时加入己方，还可能在终局形成和公孙大娘绑定的小团体顺位。"
+    },
+    "周芷若": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "圣火令": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "物品"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "小马": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "尤鸟倦": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "展梦白": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "怜花宝鉴": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "物品"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "恶人谷": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "场景"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "戚长发": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "木桑道长": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "桃花岛": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "场景"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "欢乐英雄": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": "- 起始前排选择很重要。对方缺少指定目标能力时，可让低血量人物出战，通过重生循环消耗对方。\n- 面对全体或不能区分人物的攻击时，用前排承担；面对可指定目标攻击时，要判断哪名人物能响应或最适合承受。\n- 不要追求四人同时像四个主战强者一样输出，重点是换位、禁制、保护和复活循环。"
+    },
+    "武林盟主": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "称号"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "死了一样": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "称号"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "燕飞": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "玄烨": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "白愁飞": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "豹胎易筋丸*2": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "魏无牙": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "战斗人物"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    },
+    "龙元": {
+      "design_notes": "",
+      "ai_review": "强度评分: None | 泛用性评分: None\n\n优点:\n\n\n缺点:\n",
+      "tags": [
+        "物品"
+      ],
+      "strength": "强度: None | 泛用性: None",
+      "risks": "规则风险:\n\n\n电子化风险:\n",
+      "play_tips": ""
+    }
+  }
 }

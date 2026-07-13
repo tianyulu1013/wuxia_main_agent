@@ -1,0 +1,295 @@
+{
+  "_schema": {
+    "version": 1,
+    "purpose": "AI评审比较锚点与可迁移结论，用于未来新卡横向比较；不是作者裁定，不得写入源数据。",
+    "statuses": [
+      "draft",
+      "locked"
+    ]
+  },
+  "anchors": {
+    "李逍遥": {
+      "status": "locked",
+      "normal_output": "单个主动攻击通常100—400；剑神400破为常态高质攻击，万剑诀200全提供多人总量。",
+      "conditional_burst": "雷神/山神按敌方元素每张加深200；满生命酒神为回合末3300一定造成。",
+      "timing": "仙风提供基础卡抢先攻击；酒神在回合结束；无抢先结算。",
+      "penetration": [
+        "剑神：破",
+        "酒神：一定造成"
+      ],
+      "frequency": "每个主动技每回合一次；持续强化按5/7/9张基础卡；酒神造成下一轮禁大招。",
+      "setup_and_failure": "多项能力争夺四个位置；持续强化需先投入位置；可能被更早时序杀死；酒神排斥其他特技。",
+      "front_survival": "3300生命；真元护体仅免基础卡伤害；冰心诀提供解；无免死、减伤或闪避。",
+      "side_survival": "无找不到、不在场、免波及或场下防攻击。",
+      "strengths": [
+        "主动特技稳定放出",
+        "跨回合持续强化",
+        "工具覆盖广",
+        "酒神提供一定造成终结"
+      ],
+      "weaknesses": [
+        "无绝对速度",
+        "常态单项伤害中等",
+        "酒神时序晚且有空窗",
+        "侧面无防护"
+      ],
+      "nearest_anchors": [
+        "司徒钟",
+        "其他工具箱人物",
+        "抢先结算人物",
+        "窄类型防御人物"
+      ],
+      "score": 85,
+      "generality": 91,
+      "confidence": "高",
+      "source_workcard": "data/review/workcards/batch_009_074_李逍遥.md"
+    },
+    "林月如": {
+      "status": "locked",
+      "normal_output": "七诀剑气100×7；斩龙决400全破。",
+      "conditional_burst": "乾坤一掷一次性对任一敌2200，使用时机未校准。",
+      "timing": "无抢先；红颜如月为整回合保护响应，具体窗口未校准。",
+      "penetration": [
+        "斩龙决：破",
+        "红颜如月：明确可抵挡一定造成"
+      ],
+      "frequency": "乾坤一掷一次性；红颜如月一次性；其他大招按正常回合使用。",
+      "setup_and_failure": "1700生命易被先杀；核心资源一次性；红颜范围和乾坤时机未明。",
+      "front_survival": "1700生命，无个人硬防；红颜如月属于团队保护，不计入自身生存。",
+      "side_survival": "无找不到、免波及或场下防攻击。",
+      "strengths": [
+        "手选不占名额",
+        "一次2200点杀",
+        "400全破",
+        "可抵挡一定造成的团队替死"
+      ],
+      "weaknesses": [
+        "生命极低",
+        "核心资源一次性",
+        "无速度权",
+        "规则边界未明"
+      ],
+      "nearest_anchors": [
+        "低生命不占名额人物",
+        "一次性替死人物",
+        "多段攻击人物"
+      ],
+      "score": 84,
+      "generality": 88,
+      "confidence": "中低",
+      "source_workcard": "data/review/workcards/batch_009_075_林月如.md"
+    },
+    "赵灵儿": {
+      "status": "locked",
+      "normal_output": "五系神术2000单体；武神900全破；无抢先结算。",
+      "conditional_burst": "梦蛇后生命4500、免异常、大招全平可放，显著提高输出稳定性。",
+      "timing": "正常大招时序；回梦触发窗口待校准。",
+      "penetration": [
+        "武神：破"
+      ],
+      "frequency": "梦蛇一次；还魂一次；回梦两次；五气朝元长期。",
+      "setup_and_failure": "梦蛇前1500生命易被先杀；无侧防；核心资源有限。",
+      "front_survival": "1500；梦蛇后4500并免异常，但无减伤、闪避或免死。",
+      "side_survival": "无找不到、免波及或场下防攻击。",
+      "strengths": [
+        "梦蛇攻防一体",
+        "2000单体",
+        "900全破",
+        "团队治疗",
+        "复活与控制"
+      ],
+      "weaknesses": [
+        "变身前极脆",
+        "无速度权",
+        "无侧防",
+        "核心能力一次性"
+      ],
+      "nearest_anchors": [
+        "一次性变身人物",
+        "复活辅助",
+        "普通时序高伤人物"
+      ],
+      "score": 89,
+      "generality": 91,
+      "confidence": "中低",
+      "source_workcard": "data/review/workcards/batch_009_076_赵灵儿.md"
+    },
+    "五个人头": {
+      "status": "locked",
+      "summary_anchor": "输出随场上无名能力浮动；2000生命；无侧防；对阵起始类别空白；计5人头。",
+      "score": 88,
+      "generality": 74,
+      "confidence": "低",
+      "source_workcard": "data/review/workcards/batch_009_077_五个人头.md"
+    },
+    "元首": {
+      "status": "locked",
+      "summary_anchor": "普通伤害等效约7000生命；神rap提供一定造成和全敌200流失；无找不到；随机动卡。",
+      "score": 85,
+      "generality": 67,
+      "confidence": "低",
+      "source_workcard": "data/review/workcards/batch_009_078_元首.md"
+    },
+    "六小龄童": {
+      "status": "locked",
+      "summary_anchor": "6666生命；100×8多段；无硬防和侧防；一次事件回滚；文字触发频率未明。",
+      "score": 80,
+      "generality": 68,
+      "confidence": "低",
+      "source_workcard": "data/review/workcards/batch_009_079_六小龄童.md"
+    },
+    "岳飞": {
+      "status": "locked",
+      "summary_anchor": "6000生命；不中大招；十二金牌前不死不离场；核心+1000字段缺失，暂不评分。",
+      "score": null,
+      "generality": null,
+      "confidence": "低，暂不评分",
+      "source_workcard": "data/review/workcards/batch_009_080_岳飞.md"
+    },
+    "疯张愚": {
+      "status": "locked",
+      "summary_anchor": "隐藏生命取决于弃卡；侧面绝对找不到；正面50%；输出完全镜像敌；强制出战且只留此人。",
+      "score": 88,
+      "generality": 60,
+      "confidence": "低",
+      "source_workcard": "data/review/workcards/batch_009_081_疯张愚.md"
+    },
+    "葛平": {
+      "status": "locked",
+      "summary_anchor": "理论10000普通大招；2222生命；1/3白卡化；无穿透和速度；真人表演回血。",
+      "score": 76,
+      "generality": 58,
+      "confidence": "低",
+      "source_workcard": "data/review/workcards/batch_009_082_葛平.md"
+    },
+    "金坷垃三人组": {
+      "status": "locked",
+      "summary_anchor": "总生命3600分为3×1200；多击随出场次数增长；最大伤害复制；侧面生命∞；预言攻守未完全定义。",
+      "score": 87,
+      "generality": 78,
+      "confidence": "低",
+      "source_workcard": "data/review/workcards/batch_009_083_金坷垃三人组.md"
+    }
+  },
+  "transferable_lessons": [
+    {
+      "source_card": "李逍遥",
+      "lesson": "多功能和稳定选择主要抬高泛用性，不自动构成90+统治力。",
+      "applies_to": "多主动特技工具箱人物",
+      "confidence": "高",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "林月如",
+      "lesson": "一次性能力的价值必须结合不占名额等带入成本计算。",
+      "applies_to": "低成本一次性人物",
+      "confidence": "高",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "林月如",
+      "lesson": "团队代挡不能计入保护者自身生存。",
+      "applies_to": "替死与代挡人物",
+      "confidence": "高",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "林月如",
+      "lesson": "多段总伤害与单次等额伤害不能等价评价。",
+      "applies_to": "多段攻击",
+      "confidence": "高",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "李逍遥",
+      "lesson": "回合末一定造成虽穿透强，但速度价值低于内功阶段爆发和抢先结算。",
+      "applies_to": "延迟终结技",
+      "confidence": "高",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "李逍遥",
+      "lesson": "只防基础卡伤害不能写成全面正面生存。",
+      "applies_to": "窄类型防御",
+      "confidence": "高",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "李逍遥",
+      "lesson": "跨回合按卡张数持续的强化，应按一次位置投入换取后续多张收益计算资源效率。",
+      "applies_to": "张数型持续状态",
+      "confidence": "高",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "赵灵儿",
+      "lesson": "一次性变身人物必须分开评价变身前暴毙概率与变身后战力。",
+      "applies_to": "一次性变身",
+      "confidence": "高",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "赵灵儿",
+      "lesson": "高数值普通时序大招不能与早时序或抢先结算的同数值爆发等价。",
+      "applies_to": "爆发时序",
+      "confidence": "高",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "赵灵儿",
+      "lesson": "复活价值应按复活生命、回归阵营和立即价值计算。",
+      "applies_to": "复活能力",
+      "confidence": "高",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "五个人头",
+      "lesson": "动态复制型人物必须以当局可用能力池计算，不能按理论全库上限评分。",
+      "applies_to": "相近机制卡",
+      "confidence": "低",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "元首",
+      "lesson": "超大生命与受伤倍率必须换算有效生命，不能按牌面生命直接比较。",
+      "applies_to": "相近机制卡",
+      "confidence": "低",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "六小龄童",
+      "lesson": "依赖自然语言或作品符合度的能力应把人工裁定稳定性计入强度折扣。",
+      "applies_to": "相近机制卡",
+      "confidence": "低",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "岳飞",
+      "lesson": "决定核心数值的字段缺失时应暂不评分，不能用区间掩盖事实缺口。",
+      "applies_to": "相近机制卡",
+      "confidence": "低，暂不评分",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "疯张愚",
+      "lesson": "镜像人物应同时按目标质量与目标副作用评估，上限不能替代常态分布。",
+      "applies_to": "相近机制卡",
+      "confidence": "低",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "葛平",
+      "lesson": "极高牌面伤害必须乘以施放、命中、穿透与存活到结算的兑现率。",
+      "applies_to": "相近机制卡",
+      "confidence": "低",
+      "type": "ai_derived_calibration"
+    },
+    {
+      "source_card": "金坷垃三人组",
+      "lesson": "多人一卡必须同时评总生命与单unit被针对风险；侧面无限生命不等于侧面全免疫。",
+      "applies_to": "相近机制卡",
+      "confidence": "低",
+      "type": "ai_derived_calibration"
+    }
+  ]
+}
