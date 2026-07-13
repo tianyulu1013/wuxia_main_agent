@@ -103,15 +103,24 @@ def build_documents() -> list[dict[str, object]]:
 
 
 def write_frontend() -> None:
+    import time
     for filename in ["app.js", "styles.css"]:
         shutil.copy2(WEB_ROOT / filename, OUT_DIR / filename)
     html = (WEB_ROOT / "index.html").read_text(encoding="utf-8")
-    html = re.sub(r'href="/styles\.css(?:\?[^"]*)?"', 'href="styles.css"', html)
+    ts = int(time.time())
+    html = re.sub(r'href="/styles\.css(?:\?[^"]*)?"', f'href="styles.css?v={ts}"', html)
     html = re.sub(
-        r'<script src="/app\.js(?:\?[^"]*)?"></script>',
-        '<script src="static-data.js"></script>\n    <script src="app.js"></script>',
+        r'<script src="/app\.js(?:\?[^}]+)?"></script>', # note the pattern to match script tag
+        f'<script src="static-data.js?v={ts}"></script>\n    <script src="app.js?v={ts}"></script>',
         html,
     )
+    # Also handle standard script match in case it is already replaced
+    if "static-data.js" not in html:
+        html = re.sub(
+            r'<script src="/app\.js(?:\?[^"]*)?"></script>',
+            f'<script src="static-data.js?v={ts}"></script>\n    <script src="app.js?v={ts}"></script>',
+            html,
+        )
     (OUT_DIR / "index.html").write_text(html, encoding="utf-8")
 
 

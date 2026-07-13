@@ -21,6 +21,8 @@ description: Use when working on 五行卡牌 local web fixes, document-library 
 
 除非用户明确说“发布”“给别人看”“上传 Git/Netlify”“生成可发布快照”，否则只把工作视为本地修复。
 
+**绝对限制：在没有获得用户明确允许和清晰的推送指令前，AI 绝对禁止在主仓库或静态发布仓库执行任何 git commit 或 git push 推送动作。所有的改动和打包测试默认仅作为本地文件修复。**
+
 ## 版本类型
 
 - `library_version`：资料库内容结构或资料库对外组织方式的发布版本。
