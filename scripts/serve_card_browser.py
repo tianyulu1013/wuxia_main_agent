@@ -585,9 +585,9 @@ def evaluation_search_payload(params: dict[str, str]) -> dict[str, object]:
     author = params.get("author", "")
     status = params.get("status", "")
     try:
-        limit = min(max(int(params.get("limit", "500")), 1), 500)
+        limit = min(max(int(params.get("limit", "1000")), 1), 1000)
     except ValueError:
-        limit = 500
+        limit = 1000
     entries = normalized_evaluation_entries()
     latest: dict[str, dict[str, object]] = {}
     for entry in entries:
@@ -1301,9 +1301,9 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         is_exclusive = (params.get("is_exclusive", ["0"])[0] or "0").strip() == "1"
         is_identity = (params.get("is_identity", ["0"])[0] or "0").strip() == "1"
         try:
-            limit = min(max(int(params.get("limit", ["60"])[0]), 1), 500)
+            limit = min(max(int(params.get("limit", ["1000"])[0]), 1), 1000)
         except ValueError:
-            limit = 60
+            limit = 1000
 
         clauses = []
         values: list[object] = []
@@ -1418,11 +1418,20 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
             values.append(author)
 
         where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
+        category_weight = (
+            "CASE category "
+            "WHEN 'combat_characters' THEN 0 "
+            "WHEN 'attached_characters' THEN 1 "
+            "WHEN 'items' THEN 2 "
+            "WHEN 'titles' THEN 3 "
+            "WHEN 'scenes' THEN 4 "
+            "ELSE 5 END"
+        )
         base_order = {
             "title": "title COLLATE NOCASE, source_sheet, source_row",
-            "category": "category, source_sheet, source_row",
-            "sheet": "source_sheet, source_row",
-        }.get(sort, "source_sheet, source_row")
+            "category": f"{category_weight}, source_sheet, source_row",
+            "sheet": f"{category_weight}, source_sheet, source_row",
+        }.get(sort, f"{category_weight}, source_sheet, source_row")
         if q:
             order_by = (
                 "CASE "

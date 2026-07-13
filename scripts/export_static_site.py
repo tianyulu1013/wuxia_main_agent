@@ -79,7 +79,16 @@ def build_cards(conn: sqlite3.Connection) -> dict[str, dict[str, object]]:
     cards: dict[str, dict[str, object]] = {}
     image_dir = OUT_DIR / "card-images"
     image_dir.mkdir(parents=True, exist_ok=True)
-    for row in conn.execute("SELECT * FROM cards ORDER BY source_sheet, source_row"):
+    category_weight = (
+        "CASE category "
+        "WHEN 'combat_characters' THEN 0 "
+        "WHEN 'attached_characters' THEN 1 "
+        "WHEN 'items' THEN 2 "
+        "WHEN 'titles' THEN 3 "
+        "WHEN 'scenes' THEN 4 "
+        "ELSE 5 END"
+    )
+    for row in conn.execute(f"SELECT * FROM cards ORDER BY {category_weight}, source_sheet, source_row"):
         card = browser.row_to_result(row)
         abilities = load_abilities(conn, card["id"])
         card["abilities"] = abilities
