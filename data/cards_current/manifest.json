@@ -1,14 +1,14 @@
 {
   "source_workbook": "已制作_2025日志同步候选_PSD校准.xlsx",
   "source_path": "outputs\\2025-excel-sync-candidate\\已制作_2025日志同步候选_PSD校准.xlsx",
-  "imported_at_utc": "2026-07-11T20:27:42.460596+00:00",
-  "record_count": 536,
-  "ability_count": 1969,
+  "imported_at_utc": "2026-07-24T09:12:21.835723+00:00",
+  "record_count": 541,
+  "ability_count": 1988,
   "sheets": [
     {
       "sheet": "战斗人物",
       "category": "combat_characters",
-      "max_row": 578,
+      "max_row": 581,
       "max_column": 9,
       "header_values": [
         "名称",
@@ -21,7 +21,7 @@
         "作者",
         "性别"
       ],
-      "record_count": 420,
+      "record_count": 423,
       "unnamed_header_count": 0,
       "rows_with_extra_values": [],
       "blank_name_rows": []
@@ -103,7 +103,7 @@
     {
       "sheet": "场景",
       "category": "scenes",
-      "max_row": 200,
+      "max_row": 202,
       "max_column": 4,
       "header_values": [
         "名称",
@@ -111,12 +111,10 @@
         "出处",
         "作者"
       ],
-      "record_count": 11,
+      "record_count": 13,
       "unnamed_header_count": 0,
       "rows_with_extra_values": [],
-      "blank_name_rows": [
-        13
-      ]
+      "blank_name_rows": []
     },
     {
       "sheet": "废弃",

@@ -1,0 +1,492 @@
+{
+  "schema_version": 1,
+  "releases": [
+    {
+      "release_id": "3.07",
+      "display_name": "3.07",
+      "status": "complete",
+      "created_at": "2026-07-23",
+      "history_start": true,
+      "notes": "3.07数据、完整数据库Excel、发布更新日志和15张新版卡面WebP均已完成；历史版本从3.07开始记录，5张新增卡没有旧版本。",
+      "cards": [
+        {
+          "card_id": "card_143d43bbc5be",
+          "title": "上官刃",
+          "previous_version_id": "card_143d43bbc5be@pre-3.07",
+          "current_version_id": "card_143d43bbc5be@3.07",
+          "release_deck": "古龙1",
+          "slot": 1,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/古龙1/01_上官刃.webp",
+            "sha256": "cb17d8e382bcd6444c7b4e52b75a681ab2857bfef52fe9a0718e0883da8db5a7",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07古龙1.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 1,
+            "crop_box": [
+              0,
+              0,
+              550,
+              900
+            ]
+          }
+        },
+        {
+          "card_id": "card_118e0bf8c483",
+          "title": "无崖子",
+          "previous_version_id": "card_118e0bf8c483@pre-3.07",
+          "current_version_id": "card_118e0bf8c483@3.07",
+          "release_deck": "金庸2",
+          "slot": 27,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/金庸2/27_无崖子.webp",
+            "sha256": "08b01f8229be25df3c591fac5090742393e5e1f4c9201f085d998042c2a94e2f",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07金庸2.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 27,
+            "crop_box": [
+              3300,
+              1800,
+              3850,
+              2700
+            ]
+          }
+        },
+        {
+          "card_id": "card_45390e0b1a98",
+          "title": "石中玉",
+          "previous_version_id": "card_45390e0b1a98@pre-3.07",
+          "current_version_id": "card_45390e0b1a98@3.07",
+          "release_deck": "金庸3",
+          "slot": 24,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/金庸3/21_石中玉.webp",
+            "sha256": "3c7474ba4ae37ec862964b89b40fbc715daf18ffb05e835776fd196fa513d1db",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07金庸3.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 24,
+            "crop_box": [
+              1650,
+              1800,
+              2200,
+              2700
+            ]
+          }
+        },
+        {
+          "card_id": "card_e3640861c102",
+          "title": "四大恶人",
+          "previous_version_id": "card_e3640861c102@pre-3.07",
+          "current_version_id": "card_e3640861c102@3.07",
+          "release_deck": "金庸3",
+          "slot": 3,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/金庸3/03_四大恶人.webp",
+            "sha256": "0b6a3aaeb2048c69e749d91597cee514fb34adab042968f2a0bef69bfc1090cf",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07金庸3.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 3,
+            "crop_box": [
+              1100,
+              0,
+              1650,
+              900
+            ]
+          }
+        },
+        {
+          "card_id": "card_d233f3012e73",
+          "title": "毕夜惊",
+          "previous_version_id": "card_d233f3012e73@pre-3.07",
+          "current_version_id": "card_d233f3012e73@3.07",
+          "release_deck": "黄易1",
+          "slot": 39,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/黄易1/39_毕夜惊.webp",
+            "sha256": "be5bb57e7e8249918e58641bffc8444a9e7c5db2fc838c62c44a2008fdd9f44a",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07黄易1.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 39,
+            "crop_box": [
+              4400,
+              2700,
+              4950,
+              3600
+            ]
+          }
+        },
+        {
+          "card_id": "card_635cd4d90d6f",
+          "title": "鹰刀",
+          "previous_version_id": "card_635cd4d90d6f@pre-3.07",
+          "current_version_id": "card_635cd4d90d6f@3.07",
+          "release_deck": "黄易1",
+          "slot": 68,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/黄易1/68_鹰刀.webp",
+            "sha256": "255d35f74e5352c0c29efc5d98c1f59c2bdf55c99289ccd813e2bcc1d37b74eb",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07黄易1.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 68,
+            "crop_box": [
+              3850,
+              5400,
+              4400,
+              6300
+            ]
+          }
+        },
+        {
+          "card_id": "card_46da2bbbb91b",
+          "title": "赏善罚恶令",
+          "previous_version_id": "card_46da2bbbb91b@pre-3.07",
+          "current_version_id": "card_46da2bbbb91b@3.07",
+          "release_deck": "金庸3",
+          "slot": 32,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/金庸3/29_赏善罚恶令.webp",
+            "sha256": "65b50f091f34ef8b4eda99741ea701004a68a17da3825c449a5963b3e3e20339",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07金庸3.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 32,
+            "crop_box": [
+              550,
+              2700,
+              1100,
+              3600
+            ]
+          }
+        },
+        {
+          "card_id": "card_cd9f729a4f77",
+          "title": "浪翻云",
+          "previous_version_id": "card_cd9f729a4f77@pre-3.07",
+          "current_version_id": "card_cd9f729a4f77@3.07",
+          "release_deck": "黄易1",
+          "slot": 42,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/黄易1/42_浪翻云.webp",
+            "sha256": "5b9419d5647db808fbc91d650933833948a6813cf105bd8a7004bde81b0afdfa",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07黄易1.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 42,
+            "crop_box": [
+              550,
+              3600,
+              1100,
+              4500
+            ]
+          }
+        },
+        {
+          "card_id": "card_96aadd7fac43",
+          "title": "陆游",
+          "previous_version_id": "card_96aadd7fac43@pre-3.07",
+          "current_version_id": "card_96aadd7fac43@3.07",
+          "release_deck": "其他1",
+          "slot": 54,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/其他1/54_陆游.webp",
+            "sha256": "ca88f2803927d8b6f328bb9405f73d8d9f6419eae4a7a2b6ee218e868acef641",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07其他1.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 54,
+            "crop_box": [
+              1650,
+              4500,
+              2200,
+              5400
+            ]
+          }
+        },
+        {
+          "card_id": "card_ba00ff164222",
+          "title": "黄真",
+          "previous_version_id": "card_ba00ff164222@pre-3.07",
+          "current_version_id": "card_ba00ff164222@3.07",
+          "release_deck": "金庸3",
+          "slot": 38,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/金庸3/35_黄真.webp",
+            "sha256": "ef2be6c70532bc2fa86aa3f7f3579674c799ea4eada4af33b568d43801db8fcd",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07金庸3.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 38,
+            "crop_box": [
+              3850,
+              2700,
+              4400,
+              3600
+            ]
+          }
+        },
+        {
+          "card_id": "card_fd2e7af42c22",
+          "title": "天龙六僧",
+          "previous_version_id": null,
+          "current_version_id": "card_fd2e7af42c22@3.07",
+          "change_type": "added",
+          "release_deck": "金庸3",
+          "slot": 9,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/金庸3/09_天龙六僧.webp",
+            "sha256": "a94720689aad7dfa00b0cef515f54760d8ac33e9ae19e60ed964d2d22b291dee",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07金庸3.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 9,
+            "crop_box": [
+              4400,
+              0,
+              4950,
+              900
+            ]
+          }
+        },
+        {
+          "card_id": "card_d9c93fa04bcc",
+          "title": "段正淳",
+          "previous_version_id": null,
+          "current_version_id": "card_d9c93fa04bcc@3.07",
+          "change_type": "added",
+          "release_deck": "金庸3",
+          "slot": 23,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/金庸3/23_段正淳.webp",
+            "sha256": "7963cd197aa30265437115d5a5ad5e4e80d324541de638d7dc1c11ee4b816c89",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07金庸3.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 23,
+            "crop_box": [
+              1100,
+              1800,
+              1650,
+              2700
+            ]
+          }
+        },
+        {
+          "card_id": "card_1e7b5a1c1e29",
+          "title": "幽灵山庄",
+          "previous_version_id": null,
+          "current_version_id": "card_1e7b5a1c1e29@3.07",
+          "change_type": "added",
+          "release_deck": "场景",
+          "slot": 5,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/场景/05_幽灵山庄.webp",
+            "sha256": "8c3fb8d7ff0edbcebc6dbe300660ed38ca3a17a29a77af827c95a6aa9f14d46c",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07场景.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 5,
+            "crop_box": [
+              2200,
+              0,
+              2750,
+              900
+            ]
+          }
+        },
+        {
+          "card_id": "card_17800832b95f",
+          "title": "地仙村",
+          "previous_version_id": null,
+          "current_version_id": "card_17800832b95f@3.07",
+          "change_type": "added",
+          "release_deck": "场景",
+          "slot": 2,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/场景/02_地仙村.webp",
+            "sha256": "b975398cda168256cbb44523631e092ac5664a75d45fabf9a4333bb318aacc0b",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07场景.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 2,
+            "crop_box": [
+              550,
+              0,
+              1100,
+              900
+            ]
+          }
+        },
+        {
+          "card_id": "card_2e63842a0357",
+          "title": "段正明",
+          "previous_version_id": null,
+          "current_version_id": "card_2e63842a0357@3.07",
+          "change_type": "added",
+          "release_deck": "金庸3",
+          "slot": 22,
+          "image": {
+            "status": "current",
+            "format": "webp",
+            "path": "data/release_images/cards_webp/金庸3/22_段正明.webp",
+            "sha256": "a8990db235c194ae474aa04681eda4f98cf54932f0629df79727a86409277205",
+            "width": 550,
+            "height": 900,
+            "quality": 85,
+            "source_image": "release_images/3.07-20260723/3.07金庸3.png",
+            "source_release_version": "3.07-20260723",
+            "slot": 22,
+            "crop_box": [
+              550,
+              1800,
+              1100,
+              2700
+            ]
+          }
+        }
+      ],
+      "data_applied_at": "2026-07-23",
+      "full_database_excel": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_完整数据库.xlsx",
+      "update_log": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_发布更新日志.md",
+      "affected_decks": [
+        "其他1",
+        "古龙1",
+        "场景",
+        "金庸2",
+        "金庸3",
+        "黄易1"
+      ],
+      "data_completed_at": "2026-07-24",
+      "image_update": {
+        "status": "complete",
+        "applied_at": "2026-07-24",
+        "source_release_version": "3.07-20260723",
+        "card_count": 15,
+        "cards": [
+          {
+            "card_id": "card_143d43bbc5be",
+            "title": "上官刃"
+          },
+          {
+            "card_id": "card_118e0bf8c483",
+            "title": "无崖子"
+          },
+          {
+            "card_id": "card_e3640861c102",
+            "title": "四大恶人"
+          },
+          {
+            "card_id": "card_fd2e7af42c22",
+            "title": "天龙六僧"
+          },
+          {
+            "card_id": "card_d9c93fa04bcc",
+            "title": "段正淳"
+          },
+          {
+            "card_id": "card_2e63842a0357",
+            "title": "段正明"
+          },
+          {
+            "card_id": "card_45390e0b1a98",
+            "title": "石中玉"
+          },
+          {
+            "card_id": "card_46da2bbbb91b",
+            "title": "赏善罚恶令"
+          },
+          {
+            "card_id": "card_ba00ff164222",
+            "title": "黄真"
+          },
+          {
+            "card_id": "card_d233f3012e73",
+            "title": "毕夜惊"
+          },
+          {
+            "card_id": "card_cd9f729a4f77",
+            "title": "浪翻云"
+          },
+          {
+            "card_id": "card_635cd4d90d6f",
+            "title": "鹰刀"
+          },
+          {
+            "card_id": "card_96aadd7fac43",
+            "title": "陆游"
+          },
+          {
+            "card_id": "card_17800832b95f",
+            "title": "地仙村"
+          },
+          {
+            "card_id": "card_1e7b5a1c1e29",
+            "title": "幽灵山庄"
+          }
+        ],
+        "excluded_release_cards": []
+      },
+      "images_applied_at": "2026-07-24"
+    }
+  ]
+}

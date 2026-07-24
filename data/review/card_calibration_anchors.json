@@ -9,7 +9,7 @@
   },
   "anchors": {
     "李逍遥": {
-      "status": "locked",
+      "status": "draft",
       "normal_output": "单个主动攻击通常100—400；剑神400破为常态高质攻击，万剑诀200全提供多人总量。",
       "conditional_burst": "雷神/山神按敌方元素每张加深200；满生命酒神为回合末3300一定造成。",
       "timing": "仙风提供基础卡抢先攻击；酒神在回合结束；无抢先结算。",
@@ -42,10 +42,11 @@
       "score": 85,
       "generality": 91,
       "confidence": "高",
-      "source_workcard": "data/review/workcards/batch_009_074_李逍遥.md"
+      "source_workcard": "data/review/workcards/batch_009_074_李逍遥.md",
+      "review_note": "旧模型锚点，尚未按当前核心流程、卡牌类别和战斗人物功能模块复核；不得作为已锁定锚点使用。"
     },
     "林月如": {
-      "status": "locked",
+      "status": "draft",
       "normal_output": "七诀剑气100×7；斩龙决400全破。",
       "conditional_burst": "乾坤一掷一次性对任一敌2200，使用时机未校准。",
       "timing": "无抢先；红颜如月为整回合保护响应，具体窗口未校准。",
@@ -77,10 +78,11 @@
       "score": 84,
       "generality": 88,
       "confidence": "中低",
-      "source_workcard": "data/review/workcards/batch_009_075_林月如.md"
+      "source_workcard": "data/review/workcards/batch_009_075_林月如.md",
+      "review_note": "旧模型锚点，尚未按当前核心流程、卡牌类别和战斗人物功能模块复核；不得作为已锁定锚点使用。"
     },
     "赵灵儿": {
-      "status": "locked",
+      "status": "draft",
       "normal_output": "五系神术2000单体；武神900全破；无抢先结算。",
       "conditional_burst": "梦蛇后生命4500、免异常、大招全平可放，显著提高输出稳定性。",
       "timing": "正常大招时序；回梦触发窗口待校准。",
@@ -112,63 +114,98 @@
       "score": 89,
       "generality": 91,
       "confidence": "中低",
-      "source_workcard": "data/review/workcards/batch_009_076_赵灵儿.md"
+      "source_workcard": "data/review/workcards/batch_009_076_赵灵儿.md",
+      "review_note": "旧模型锚点，尚未按当前核心流程、卡牌类别和战斗人物功能模块复核；不得作为已锁定锚点使用。"
     },
     "五个人头": {
-      "status": "locked",
+      "status": "draft",
       "summary_anchor": "输出随场上无名能力浮动；2000生命；无侧防；对阵起始类别空白；计5人头。",
       "score": 88,
       "generality": 74,
       "confidence": "低",
-      "source_workcard": "data/review/workcards/batch_009_077_五个人头.md"
+      "source_workcard": "data/review/workcards/batch_009_077_五个人头.md",
+      "review_note": "旧模型锚点，尚未按当前核心流程、卡牌类别和战斗人物功能模块复核；不得作为已锁定锚点使用。"
     },
     "元首": {
-      "status": "locked",
+      "status": "draft",
       "summary_anchor": "普通伤害等效约7000生命；神rap提供一定造成和全敌200流失；无找不到；随机动卡。",
       "score": 85,
       "generality": 67,
       "confidence": "低",
-      "source_workcard": "data/review/workcards/batch_009_078_元首.md"
+      "source_workcard": "data/review/workcards/batch_009_078_元首.md",
+      "review_note": "旧模型锚点，尚未按当前核心流程、卡牌类别和战斗人物功能模块复核；不得作为已锁定锚点使用。"
     },
     "六小龄童": {
-      "status": "locked",
+      "status": "draft",
       "summary_anchor": "6666生命；100×8多段；无硬防和侧防；一次事件回滚；文字触发频率未明。",
       "score": 80,
       "generality": 68,
       "confidence": "低",
-      "source_workcard": "data/review/workcards/batch_009_079_六小龄童.md"
+      "source_workcard": "data/review/workcards/batch_009_079_六小龄童.md",
+      "review_note": "旧模型锚点，尚未按当前核心流程、卡牌类别和战斗人物功能模块复核；不得作为已锁定锚点使用。"
     },
     "岳飞": {
-      "status": "locked",
+      "status": "draft",
       "summary_anchor": "6000生命；不中大招；十二金牌前不死不离场；核心+1000字段缺失，暂不评分。",
       "score": null,
       "generality": null,
       "confidence": "低，暂不评分",
-      "source_workcard": "data/review/workcards/batch_009_080_岳飞.md"
+      "source_workcard": "data/review/workcards/batch_009_080_岳飞.md",
+      "review_note": "旧模型锚点，尚未按当前核心流程、卡牌类别和战斗人物功能模块复核；不得作为已锁定锚点使用。"
     },
     "疯张愚": {
-      "status": "locked",
+      "status": "draft",
       "summary_anchor": "隐藏生命取决于弃卡；侧面绝对找不到；正面50%；输出完全镜像敌；强制出战且只留此人。",
       "score": 88,
       "generality": 60,
       "confidence": "低",
-      "source_workcard": "data/review/workcards/batch_009_081_疯张愚.md"
+      "source_workcard": "data/review/workcards/batch_009_081_疯张愚.md",
+      "review_note": "旧模型锚点，尚未按当前核心流程、卡牌类别和战斗人物功能模块复核；不得作为已锁定锚点使用。"
     },
     "葛平": {
-      "status": "locked",
+      "status": "draft",
       "summary_anchor": "理论10000普通大招；2222生命；1/3白卡化；无穿透和速度；真人表演回血。",
       "score": 76,
       "generality": 58,
       "confidence": "低",
-      "source_workcard": "data/review/workcards/batch_009_082_葛平.md"
+      "source_workcard": "data/review/workcards/batch_009_082_葛平.md",
+      "review_note": "旧模型锚点，尚未按当前核心流程、卡牌类别和战斗人物功能模块复核；不得作为已锁定锚点使用。"
     },
     "金坷垃三人组": {
-      "status": "locked",
+      "status": "draft",
       "summary_anchor": "总生命3600分为3×1200；多击随出场次数增长；最大伤害复制；侧面生命∞；预言攻守未完全定义。",
       "score": 87,
       "generality": 78,
       "confidence": "低",
-      "source_workcard": "data/review/workcards/batch_009_083_金坷垃三人组.md"
+      "source_workcard": "data/review/workcards/batch_009_083_金坷垃三人组.md",
+      "review_note": "旧模型锚点，尚未按当前核心流程、卡牌类别和战斗人物功能模块复核；不得作为已锁定锚点使用。"
+    },
+    "王重阳": {
+      "status": "locked",
+      "calibration_source": "author_confirmed",
+      "function_type": "强正面战斗人物",
+      "baseline_comparison": "普通白人期望输出400。",
+      "normal_output": "综合合法牌形后的输出期望为2376，约2400：内功普攻期望360，招式普攻期望1440，主动全真剑法期望576。",
+      "specific_pattern_output": "四张均平时：两张招式位置的普攻分别为全真剑法300，并各由一炁化三清变为300×3，共1800；两平再放出一个300×3，合计2700。",
+      "timing": "所有基础位置产生的普攻均可为全真剑法并由一炁化三清变为900。主动全真剑法要求放法中的两张招式均未被克且至少一张克敌；一克一被克不能放出。先天功另允许两张均平时放出。",
+      "front_survival": "4500生命；生命至0后不立即死亡，而在下次被克时死亡；抽走对方2张基础卡后通常可获知对方缺失五行并安排不被克；先天功1/3回复300会重置压至0的击杀进度。",
+      "survival_evaluation": "按存活期望或可出场回合数评价，不能折算成一个未经推演的固定额外生命值。",
+      "side_survival": "本次作者校准未新增侧面生存结论。",
+      "strengths": [
+        "约2400的高正面输出期望",
+        "四平2700的明确高输出牌形",
+        "生命至0后的延迟死亡",
+        "抽牌同时削减对方牌形并提供五行信息",
+        "先天功概率回复使击杀流程可能重置"
+      ],
+      "weaknesses": [
+        "本次校准未完整重评其侧面生存与全局影响。",
+        "存活上限仍取决于抽到的两张牌类别、下一轮牌形和先天功随机结果。"
+      ],
+      "score": null,
+      "generality": null,
+      "confidence": "高：核心输出与存活逻辑由作者校准；整卡评分未定",
+      "source_understanding_note": "data/review/card_understanding_notes.json"
     }
   },
   "transferable_lessons": [

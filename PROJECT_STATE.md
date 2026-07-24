@@ -39,7 +39,9 @@
 - `data/card_unit_overrides.json`：多人一卡、unit、特技所属等作者裁定。
 - `data/card_field_overrides.json`：字段修正。
 - `data/author_ability_overrides.json`：特技结构修正。
-- `data/card_reviews.json`：评语层，放强度、定位、风险、攻略、AI 理解等。
+- `data/review/card_evaluations.json`、`data/review/card_notes/`：当前完整评审及人类可读单卡笔记。
+- `data/card_reviews.json`：历史兼容评语文件，不再作为新评审默认写入目标。
+- `docs/ai-understanding/`：AI内部使用的核心流程、类别、功能、专项规则路由和案例体系。
 - `data/change_candidates.json`：改卡候选。
 - `web/card_browser/`：本地查询网页前端。
 - `scripts/serve_card_browser.py`：启动本地查询服务。
@@ -140,10 +142,12 @@ Publish directory: .
 如果任务涉及规则书，再读：
 
 ```text
-docs/rulebook-structure-audit.md
-docs/rulebook-confirmed-rulings.md
-docs/rulebook-docx-extract.md
+docs/ai-understanding/README.md
+docs/ai-understanding/core/game-flow.md
+docs/ai-understanding/core/combat-baseline.md
 ```
+
+再根据当前卡牌类别和牌面机制定向读取局部模块；不要默认整份加载旧规则总表。
 
 如果任务涉及网页或发布，再读：
 

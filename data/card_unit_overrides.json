@@ -478,5 +478,44 @@
         "gender": "女"
       }
     ]
+  },
+  "天龙六僧": {
+    "suppress_card_life": true,
+    "shared": {
+      "display_name": "六脉剑阵生命分配",
+      "note": "运行时可将六僧剩余生命合一，或按整百为单位动态分为不超过6份；多人可共享同一份生命"
+    },
+    "units": [
+      {
+        "name": "枯荣",
+        "life": "2000",
+        "gender": "男"
+      },
+      {
+        "name": "本因",
+        "life": "1500",
+        "gender": "男"
+      },
+      {
+        "name": "本观",
+        "life": "1500",
+        "gender": "男"
+      },
+      {
+        "name": "本相",
+        "life": "1500",
+        "gender": "男"
+      },
+      {
+        "name": "本参",
+        "life": "1500",
+        "gender": "男"
+      },
+      {
+        "name": "本尘",
+        "life": "1500",
+        "gender": "男"
+      }
+    ]
   }
 }

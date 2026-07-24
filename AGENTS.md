@@ -22,10 +22,11 @@
 
 - 源数据：`data/cards.sqlite`、`data/cards_current/*.jsonl`
 - 作者裁定/覆盖：`data/card_unit_overrides.json`、`data/card_field_overrides.json`、`data/author_ability_overrides.json`
-- AI/作者评语：`data/card_reviews.json`
+- AI/作者评语：`data/review/card_evaluations.json`、`data/review/card_notes/`
 - 理解校准样本：`data/review/understanding_samples.json`
 - 卡牌理解笔记：`data/review/card_understanding_notes.json`
 - 术语理解层：`data/review/rule_terms.json`
+- AI模块化理解入口：`docs/ai-understanding/README.md`
 - 改卡候选：`data/change_candidates.json`
 - 改卡候选框架：`docs/change-candidate-framework.md`
 
@@ -75,7 +76,7 @@
 
 每一张卡牌的评审都不应是孤立存在的，AI 必须严格执行闭环反馈与自适应分析：
 
-1. **单卡反馈记录**：当单卡经过作者口头裁定（或校准）后，必须第一时间将裁定记录写入 `data/review/rule_terms.json` (术语层) 和 `docs/rule-terms-understanding.md`，并在单卡工作卡的 `H. 作者校准完整记录` 中保存。
+1. **作者反馈分层记录**：当作者作出口头裁定或校准后，先判断内容性质。普遍流程进入核心规则，局部机制进入专项规则，特殊词义进入术语层，评价方法进入类别/功能模块，具体单卡计算进入案例和单卡理解，玩家意愿进入玩家动态；不得把所有反馈一律写入 `data/review/rule_terms.json`。本卡相关作者原话仍须在单卡工作卡的“作者校准完整记录”中保存。
 2. **横向自适应检索**：在分析后面的卡牌前，AI 必须检索机制相近 of已锁定卡牌锚点及“可迁移结论”，对比其爆发、生存和泛用性分值，以此修正新卡评价，严禁分值倒挂或无依据脑补。
 3. **评审模块完整性限制**：在生成任何卡牌的 `card_evaluations.json` 数据库 full_text、单卡 Markdown 人类可读笔记 `data/review/card_notes/<卡名>.md`、以及最终的批次评审报告时，必须完整包含**正面生存**、**侧面生存**、**优点**、**缺点**、**规则风险**和**电子化风险**评估模块，严禁合并、简化或漏掉任何一项。
 
@@ -89,8 +90,8 @@
 - `docs/skills/wuxia-data-query.md`
 - `docs/skills/wuxia-card-review.md`
 - `docs/change-candidate-framework.md`
-- `docs/card-understanding-calibration.md`
 - `docs/rule-terms-understanding.md`
+- `docs/ai-understanding/README.md`
 - `.agents/skills/wuxia-card-change-flow/SKILL.md`
 - `docs/skills/wuxia-multi-unit.md`
 - `docs/skills/wuxia-release-publish.md`

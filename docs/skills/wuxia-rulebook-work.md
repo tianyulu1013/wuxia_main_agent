@@ -9,7 +9,10 @@
 - `五行卡牌规则.docx` （最终生成的二进制 Word 规则书）
 - `docs/rulebook-refactored.md` （新版 Markdown 规则书源文件，重构的核心）
 - `docs/rulebook-docx-extract.md` （旧规则书的纯文本正文提取物）
-- `docs/rulebook-confirmed-rulings.md` （已确认的核心概念及口头裁定记录）
+- `docs/ai-understanding/README.md`（AI规则和评价模块入口）
+- `docs/ai-understanding/core/`（最小常驻核心）
+- `docs/ai-understanding/rules/README.md`（专项规则路由）
+- `docs/rulebook-confirmed-rulings.md`（迁移中的历史裁定总表，不再整份默认加载）
 
 ## 工作目标
 

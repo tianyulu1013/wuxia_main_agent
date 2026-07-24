@@ -97,9 +97,57 @@ def build_cards(conn: sqlite3.Connection) -> dict[str, dict[str, object]]:
         card["structure_notes"] = browser.load_structure_notes(card.get("title"))
         image_path = browser.find_card_image(card)
         if image_path and image_path.exists():
-            image_name = f"{card['id']}.png"
+            image_name = f"{card['id']}{image_path.suffix.lower()}"
             shutil.copy2(image_path, image_dir / image_name)
             card["image_url"] = f"card-images/{image_name}"
+            
+        # Attach history records
+        history_records = browser.CARD_HISTORY_MAP.get(card["id"], [])
+        history_payloads = []
+        for r in history_records:
+            card_data = r.get("card", {})
+            fields = card_data.get("fields", {})
+            h_payload = {
+                "card_version_id": r.get("card_version_id"),
+                "display_label": r.get("display_label", "历史版本"),
+                "superseded_by_release": r.get("superseded_by_release"),
+                "id": card_data.get("id"),
+                "title": fields.get("title"),
+                "life": fields.get("life"),
+                "description": fields.get("description"),
+                "relationships": fields.get("relationships"),
+                "weapons": fields.get("weapons"),
+                "source_work": fields.get("source_work"),
+                "author_group": fields.get("author_group"),
+                "gender": fields.get("gender"),
+                "category": card_data.get("category"),
+                "category_label": browser.label_category(card_data.get("category")),
+                "abilities": [
+                    {
+                        **ab,
+                        "is_exclusive": bool(ab.get("is_exclusive")),
+                        "is_identity": bool(ab.get("is_identity")),
+                        "owner_units": ab.get("owner_units"),
+                        "owner_identity": ab.get("owner_identity"),
+                        "owner_weapons": ab.get("owner_weapons"),
+                        "review_flags": ab.get("review_flags", []),
+                    }
+                    for ab in card_data.get("abilities", [])
+                ]
+            }
+            h_payload["units"] = browser.build_card_units(h_payload, h_payload["abilities"])
+            
+            # Copy historical image if exists
+            img_info = r.get("image", {})
+            if img_info and img_info.get("path"):
+                hist_image_path = ROOT / img_info["path"]
+                if hist_image_path.exists():
+                    hist_image_name = f"{r.get('card_version_id')}{hist_image_path.suffix.lower()}"
+                    shutil.copy2(hist_image_path, image_dir / hist_image_name)
+                    h_payload["image_url"] = f"card-images/{hist_image_name}"
+            history_payloads.append(h_payload)
+            
+        card["history"] = history_payloads
         cards[str(card["id"])] = card
     return cards
 
@@ -130,6 +178,7 @@ def main() -> None:
     if OUT_DIR.exists():
         shutil.rmtree(OUT_DIR)
     OUT_DIR.mkdir(parents=True)
+    browser.load_card_history()
     with browser.connect() as conn:
         data = {
             "meta": build_meta(conn),

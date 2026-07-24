@@ -841,6 +841,39 @@
     {
       "match": {
         "source_sheet": "战斗人物",
+        "source_row": 393,
+        "ordinal": 1
+      },
+      "set": {
+        "text": "武功：忘情天书：天地君亲师：人物不必翻出，只需通知结算结果\n金木水火土：不会受到场景负面效果，免疫普攻\n日月风云我：有一次使本回合/次全部攻击、效果透至发出者外另一处的机会",
+        "end_line": 3
+      },
+      "add_flags": [
+        "author_corrected"
+      ],
+      "note": "萧秋水（大侠）：忘情天书是一个武功，天地君亲师/金木水火土/日月风云我是其子项。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 393,
+        "ordinal": 4
+      },
+      "set": {
+        "kind": "武功",
+        "type_prefix": "武功："
+      },
+      "remove_flags": [
+        "implicit_word"
+      ],
+      "add_flags": [
+        "author_corrected"
+      ],
+      "note": "萧秋水（大侠）：惊天一剑是武功，不是字。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
         "source_row": 384,
         "ordinal": 5
       },
@@ -1725,7 +1758,7 @@
         "owner_units": [
           "石中玉"
         ],
-        "text": "本方遗失一件物品，一个附加人物，一人物的一张基础卡牌，一个人物的一个特技失灵（均视为针对玩家的效果）\n玩家可以在石中玉不出战的一轮中选择己方某人物杀死石中玉或进行判定：1/2 石中玉逃走到另一方（石中玉不会重复逃回已经待过的一方），1/2无效\n杀死石中玉则石清闵柔与其死战，石中玉被迫出战时则可以请石清闵柔出战一回合（其余时候石清闵柔不出现在场上）"
+        "text": "本方遗失一件物品，一个附加人物，一人物的一张基础卡牌，一个人物的一个特技失灵（均视为针对玩家的效果，不能选择石中玉或石清、闵柔自身的牌或特技）\n玩家可以在石中玉不出战的一轮中选择己方某人物杀死石中玉或进行判定：1/2 石中玉逃走到另一方（石中玉不会重复逃回已经待过的一方），1/2无效\n杀死石中玉则石清闵柔与其死战，石中玉被迫出战时则可以请石清闵柔出战一回合（其余时候石清闵柔不出现在场上）"
       },
       "add_flags": [
         "author_corrected",
@@ -2049,6 +2082,118 @@
         "unit_specific_ability"
       ],
       "note": "作者裁定：多人一卡特技所属。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 579,
+        "ordinal": 1
+      },
+      "set": {
+        "kind": "内功",
+        "name": "枯荣禅功",
+        "raw_name": "枯荣禅功：",
+        "type_prefix": "内功：",
+        "owner_units": [
+          "枯荣"
+        ],
+        "text": "内功：枯荣禅功：当枯荣生命为 0 且其余僧人中至少一人生命不为 0 时，将六僧的剩余生命融合，并回复 1000生命"
+      },
+      "remove_flags": [
+        "implicit_word"
+      ],
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者定稿：牌面“枯荣：”标明特技所属；结构化能力为枯荣独有的内功“枯荣禅功”。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 579,
+        "ordinal": 2
+      },
+      "set": {
+        "owner_units": [
+          "枯荣",
+          "本因",
+          "本观",
+          "本相",
+          "本参",
+          "本尘"
+        ]
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者定稿：六脉剑阵为天龙六僧共同特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 579,
+        "ordinal": 3
+      },
+      "set": {
+        "owner_units": [
+          "枯荣",
+          "本因",
+          "本观",
+          "本相",
+          "本参",
+          "本尘"
+        ],
+        "kind": "字"
+      },
+      "add_flags": [
+        "author_corrected",
+        "unit_specific_ability"
+      ],
+      "note": "作者定稿：六脉神剑经为天龙六僧共同特技，且属于字特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 580,
+        "ordinal": 4
+      },
+      "set": {
+        "kind": "字"
+      },
+      "add_flags": [
+        "author_corrected"
+      ],
+      "note": "作者定稿：保定帝为字特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 580,
+        "ordinal": 5
+      },
+      "set": {
+        "kind": "字"
+      },
+      "add_flags": [
+        "author_corrected"
+      ],
+      "note": "作者定稿：避位为僧为字特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 581,
+        "ordinal": 5
+      },
+      "set": {
+        "kind": "字"
+      },
+      "add_flags": [
+        "author_corrected"
+      ],
+      "note": "作者定稿：大理段二为字特技。"
     }
   ],
   "ability_splits": [
@@ -2318,6 +2463,22 @@
         "ordinal": 4
       },
       "note": "三才剑客：忘情天书子项，不是独立特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 393,
+        "ordinal": 2
+      },
+      "note": "萧秋水（大侠）：金木水火土是忘情天书子项，不是独立特技。"
+    },
+    {
+      "match": {
+        "source_sheet": "战斗人物",
+        "source_row": 393,
+        "ordinal": 3
+      },
+      "note": "萧秋水（大侠）：日月风云我是忘情天书子项，不是独立特技。"
     },
     {
       "match": {

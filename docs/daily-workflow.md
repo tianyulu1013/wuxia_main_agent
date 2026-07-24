@@ -29,21 +29,27 @@
 
 ## 确认改卡
 
-作者确认后，才进入源数据更新流程：
+作者确认候选后，先由作者修改卡面；此时 TODO 仍保留。作者告知卡面已经改完后，才进入源数据更新流程：
 
-1. 修改 PSD。
-2. 更新 Excel。
-3. 重建数据库。
-4. 生成玩家更新说明。
-5. 更新 release 卡面图。
+本流程可以直接从现有 TODO 开始。如果作者已经在其他时间完成卡面修改，Agent 应读取该 TODO 和当前数据库，然后直接执行以下回录步骤，不要求重新进行前面的改卡讨论。
+
+1. 读取更新后的实际卡面或作者提供的最终精确文本。
+2. 对比旧数据库、TODO 和最终卡面，以最终卡面为准。
+3. 按最终卡面更新 Excel 并重建数据库。
+4. 核对 Excel、SQLite、JSONL 与最终卡面完全一致。
+5. 如果作者还会继续修改本批其他卡，将候选标记为 `source_applied`，记录批次编号、实际差异和所属牌堆，并重新生成 `改卡TODO.md`，使该完成项退出可见 TODO。
+6. 作者说明本批全部完成后，根据全部实际改动生成玩家更新说明。
+7. 生成全数据库 Excel、本批更新日志，以及改动牌堆与卡牌汇总，再将本批候选统一标记为 `applied`。
+8. 更新 release 卡面图。
 
 ## 记录评语或裁定
 
-评语、裁定、强度、定位、电子化风险、攻略写入：
+完整评审、强度、定位、电子化风险和攻略写入：
 
-- `data/card_reviews.json`
+- `data/review/card_evaluations.json`
+- `data/review/card_notes/<卡名>.md`
 
-这些内容不改牌面，不进入源数据库。
+单卡理解进入`data/review/card_understanding_notes.json`。`data/card_reviews.json`仅作历史兼容，不再是新评审默认入口。这些内容不改牌面，不进入源数据库。
 
 ## 规则书修订与优化流程
 
@@ -51,19 +57,27 @@
 
 1. **收集未决例外 / 口头裁定**：由 Agent 或作者在对话中指出哪些规则术语或段落存在冲突（例如：“找不到”与“波及”的相互关系）。
 2. **商议与直接修正**：不委曲求全去“变通绕过”，而是采取“直接重构规则或修改卡牌本身”的方式，从底层把逻辑梳理干净自洽。
-3. **记录确认的裁定**：将已商定的精准规则落盘记录到 `docs/rulebook-confirmed-rulings.md`，作为唯一的规则源素材。
+3. **分层记录确认内容**：普遍流程进入`docs/ai-understanding/core/`，局部机制进入专项规则，特殊词义进入术语层，评价方法进入类别/功能模块，具体人物计算进入案例和单卡理解，玩家意愿进入玩家动态。
 4. **修订规则书（Markdown 源文件）**：根据最新的目录大纲，在 `docs/rulebook-refactored.md` 中进行对应的正文重构、细节说明与合并重写，确保内容无一遗漏。
 5. **编译输出 docx**：运行转换脚本，将最新的 Markdown 规则书重新生成覆盖为 `五行卡牌规则.docx`。
 
 ## Release 后更新卡面
 
-当前网页读取：
+卡面更新流程已经固化在：
 
-- `data/release_images/cards/`
+- `.agents/skills/wuxia-release-flow/SKILL.md`
+- `.agents/skills/wuxia-release-flow/references/card-image-release.md`
 
-如果已经有单卡 PNG，只要更新对应图片即可。
+作者交付 TTS 用的 10×7、共 70 张卡的牌堆大图后：
 
-如果只有 TTS 用的 70 张大图，未来应使用固定切图脚本生成单卡 PNG。这个流程还未固化。
+1. 根据实际更新日志或已回录批次确定需要替换的卡、牌堆和槽位。
+2. 在覆盖当前图片前，将修改卡的旧版 WebP 和完整旧卡数据冻结到历史层。
+3. 归档并索引新版牌堆大图。
+4. 只切出更新记录涉及的槽位，写入当前单卡 PNG 母版。
+5. 生成 550×900、质量 85 的当前 WebP，并更新图片清单。
+6. 核对旧版页面使用历史图、当前页面使用新版图，最后汇总本次受影响牌堆。
+
+当前网页优先读取 `data/release_images/cards_webp/`，`data/release_images/cards/` 中的 PNG 是当前单卡母版和兼容回退。没有用户明确发布指令时，只做本地更新和验证。
 
 ## 发布静态快照
 
@@ -108,6 +122,7 @@
 - 规范：`docs/skills/wuxia-card-calibration-sop.md`
 - 单卡工作卡：`docs/skills/wuxia-card-review-workcard.md`
 - 校准技能：`.agents/skills/wuxia-card-review-calibration/SKILL.md`
+- AI理解入口：`docs/ai-understanding/README.md`
 
 强制要求：
 

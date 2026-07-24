@@ -3,42 +3,60 @@ name: wuxia-rule-understanding
 description: Guides the agent on how to retrieve and understand 五行卡牌 rules hierarchically to prevent context bloat, using English internally and Outputting Chinese.
 ---
 
-# Skill: 五行卡牌规则按需理解与语言规范
+# 五行卡牌规则按需理解
 
-此技能定义了后续 Agent（包括本 Agent）在开发、修改和评估卡牌时，如何以最节省 context 且最精确的方式分级检索桌游规则，以及中英文术语的转化规范。
+本技能要求先理解默认游戏流程，再按卡牌类别、战斗人物功能和实际机制逐层加载。规则、术语、评价方法、具体案例和玩家心理必须分层保存。
 
-## 1. 规则的分级按需检索机制 (RAG 策略)
+## 1. 最小常驻核心
 
-为了避免将 50KB 的重构规则书一并塞入 context 导致 Token 爆仓或注意力失焦，Agent 在工作时必须遵循以下 **3 级按需检索模型**：
+处理设计、改卡或评价时，先完整读取：
 
-```mermaid
-graph TD
-    A[收到改卡/设计请求] --> B[Lv1 核心骨架: 必须加载 rulebook-confirmed-rulings.md]
-    B --> C{是否涉及复杂例外?}
-    C -- 是 --> D[Lv3 裁定层: 检索 rulebook-refactored.md 第十三章 FAQ]
-    C -- 否 --> E{是否涉及局部时空/结算细节?}
-    E -- 是 --> F[Lv2 局部正文: 定向读取 rulebook-refactored.md 对应章节]
-    E -- 否 --> G[开始推理与重写]
-```
+- `docs/ai-understanding/core/game-flow.md`
+- `docs/ai-understanding/core/combat-baseline.md`
 
--   **Lv1 核心骨架 (全局必读)**：
-    -   文件：[rulebook-confirmed-rulings.md](file:///d:/workspace/wuxia-card-agent/docs/rulebook-confirmed-rulings.md)
-    -   时机：启动改卡评审或设计新特技时，**必须首先读取该文件**，以获得作者确认过的核心游戏概念边界。
--   **术语理解层 (按术语触发)**：
-    -   文件：`data/review/rule_terms.json`、`docs/rule-terms-understanding.md`
-    -   时机：请求涉及学会、学习、复制、模拟、获得特技、完美学会、完美复制，或特技文本中写有原人物名字时，必须读取。
-    -   目的：补足规则书尚未完整展开的作者术语解释，避免把普通学会误判为完美适配自身。
--   **Lv2 局部细节 (按需定向读取)**：
-    -   文件：[rulebook-refactored.md](file:///d:/workspace/wuxia-card-agent/docs/rulebook-refactored.md) 的特定章节
-    -   时机：仅当卡牌涉及具体的复杂机制时，才通过 line-range 或 grep_search 定向读取对应章节。例如：
-        -   涉及隐形、布阵、破空 $\rightarrow$ 仅读 **第四章：时空、在场与定位机制**。
-        -   涉及结算优先级、不中、无效 $\rightarrow$ 仅读 **第九章：特技结算顺序与优先级队列**。
-        -   涉及死亡、免死、共享生命 $\rightarrow$ 仅读 **第七章：防御系统 / 第一章：卡牌容器**。
--   **Lv3 裁定FAQ (冲突检索)**：
-    -   文件：[rulebook-refactored.md](file:///d:/workspace/wuxia-card-agent/docs/rulebook-refactored.md) 第十三章 (FAQ/历史裁定案例集)
-    -   时机：当面对被抹去、改字等极度破坏规则的特技，或者李沉舟、步惊云等高优先级例外卡牌时，定向检索此章。
+这两份文件是默认游戏流程与基础战斗的最小常驻核心。`docs/rulebook-confirmed-rulings.md`不再作为每次整份必读入口。
 
-## 2. 语言规范：内部英文推导，输出全中文规则
+## 2. 卡牌类别路由
+
+只读取当前卡牌对应的一个类别模块：
+
+- 战斗人物：`docs/ai-understanding/evaluation/card-types/combat-character.md`
+- 附加人物：`docs/ai-understanding/evaluation/card-types/attached-character.md`
+- 物品：`docs/ai-understanding/evaluation/card-types/item.md`
+- 称号：`docs/ai-understanding/evaluation/card-types/title.md`
+- 场景：`docs/ai-understanding/evaluation/card-types/scene.md`
+
+只有战斗人物竞争两张人物名额。附加人物、物品和称号摸到后直接进入本局；场景定义整局环境，不做普通强度评分。
+
+## 3. 战斗人物功能路由
+
+只有战斗人物继续读取`docs/ai-understanding/evaluation/functions/README.md`，判断主要功能和次要功能，再加载相关的小模块。
+
+主要功能决定评价权重和横向案例。不得用正面输出直接判定辅助型、调度型或全局影响型人物的整卡强弱。
+
+## 4. 专项规则、术语与案例
+
+- 根据牌面关键词，通过`docs/ai-understanding/rules/README.md`只读取实际涉及的局部规则。
+- `data/review/rule_terms.json`只在牌面出现特殊术语时定向查询对应条目。基础战斗、评价方法和具体人物计算不属于术语。
+- `docs/ai-understanding/cases/`只加载同类别、同主要功能、同关键机制的少量案例。
+- 本卡作者裁定和理解读取`data/review/card_understanding_notes.json`及对应单卡笔记。
+- 玩家意愿和桌面心理读取`data/review/player_dynamics.json`，但不能当作自动规则。
+
+禁止为了保险读取完整规则书、全部术语、全部案例或全部历史评审。
+
+## 5. 新裁定归档
+
+作者纠正后按内容归档：
+
+- 普遍游戏流程或结算：核心规则或专项规则模块。
+- 特殊词语的精确定义：术语层。
+- 如何评价某类卡或某项功能：评价模块。
+- 某张卡的完整推导：案例库与单卡理解。
+- 玩家选择和桌面心理：玩家动态。
+
+不得把所有作者反馈一律写入术语层。
+
+## 6. 语言规范：内部英文推导，输出全中文规则
 
 -   **内部推理与代码逻辑 (中 $\rightarrow$ 英)**：
     -   为了保证逻辑判断的严密性和变量命名的一致性，Agent 在写内部代码（如后端 SQL、前端 JS）、数据模型（JSON）和在思索（Thinking）中进行逻辑链推导时，**支持并推荐使用清晰的英文术语**进行命名和映射。

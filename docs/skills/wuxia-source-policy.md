@@ -31,7 +31,8 @@
 
 - 源数据：`data/cards.sqlite`、`data/cards_current/*.jsonl`
 - 作者裁定/覆盖：`data/card_unit_overrides.json`、`data/card_field_overrides.json`、`data/author_ability_overrides.json`
-- 评语层：`data/card_reviews.json`
+- 当前评语层：`data/review/card_evaluations.json`、`data/review/card_notes/`、`data/review/card_understanding_notes.json`
+- 历史兼容评语：`data/card_reviews.json`
 - 改卡候选：`data/change_candidates.json`
 
 ## 遇到不确定内容

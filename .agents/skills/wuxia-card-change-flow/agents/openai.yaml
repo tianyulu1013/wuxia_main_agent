@@ -1,4 +1,4 @@
 interface:
-  display_name: "五行改卡候选"
-  short_description: "把新卡/改卡意图整理成可确认候选文本"
-  default_prompt: "Use $wuxia-card-change-flow to review this card idea and produce an editable change candidate."
+  display_name: "五行改卡闭环"
+  short_description: "从候选讨论到卡面回录、数据库同步和交付"
+  default_prompt: "Use $wuxia-card-change-flow to discuss this card change, create a copy-paste TODO, and after I finish the card face, synchronize the actual final text and produce the database Excel and update log."

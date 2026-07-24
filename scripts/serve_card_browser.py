@@ -24,7 +24,34 @@ STATISTICS_PATH = ROOT / "data" / "review" / "card_database_statistics.json"
 CARD_IMAGE_ALIASES_PATH = ROOT / "data" / "card_image_aliases.json"
 SITE_DOCUMENTS_PATH = ROOT / "data" / "site_documents.json"
 RELEASE_CARD_ROOT = ROOT / "data" / "release_images" / "cards"
+WEB_CARD_ROOT = ROOT / "data" / "release_images" / "cards_webp"
 ALL_UNITS_GROUP = "__all_units__"
+RELEASES_PATH = ROOT / "data" / "cards_history" / "releases.json"
+CARD_VERSIONS_PATH = ROOT / "data" / "cards_history" / "card_versions.jsonl"
+CARD_HISTORY_MAP: dict[str, list[dict]] = {}
+
+def load_card_history() -> None:
+    global CARD_HISTORY_MAP
+    CARD_HISTORY_MAP.clear()
+    if not CARD_VERSIONS_PATH.exists():
+        return
+    try:
+        with open(CARD_VERSIONS_PATH, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                record = json.loads(line)
+                card_id = record.get("card_id")
+                if not card_id:
+                    continue
+                if card_id not in CARD_HISTORY_MAP:
+                    CARD_HISTORY_MAP[card_id] = []
+                CARD_HISTORY_MAP[card_id].append(record)
+        for card_id in CARD_HISTORY_MAP:
+            CARD_HISTORY_MAP[card_id].sort(key=lambda r: r.get("captured_at", ""), reverse=True)
+    except Exception as e:
+        print(f"Error loading card history: {e}")
 CARD_IMAGE_INDEX: dict[str, Path] | None = None
 CARD_IMAGE_INDEX_SIGNATURE: tuple[int, int] | None = None
 SITE_DOCUMENT_PAYLOAD_CACHE: dict[str, tuple[tuple[str, float, int], dict[str, object]]] = {}
@@ -775,7 +802,9 @@ def normalize_image_key(value: str) -> str:
 
 def load_card_image_index() -> dict[str, Path]:
     global CARD_IMAGE_INDEX, CARD_IMAGE_INDEX_SIGNATURE
-    paths = list(RELEASE_CARD_ROOT.rglob("*.png")) if RELEASE_CARD_ROOT.exists() else []
+    webp_paths = list(WEB_CARD_ROOT.rglob("*.webp")) if WEB_CARD_ROOT.exists() else []
+    png_paths = list(RELEASE_CARD_ROOT.rglob("*.png")) if RELEASE_CARD_ROOT.exists() else []
+    paths = webp_paths + png_paths
     signature = (len(paths), max((path.stat().st_mtime_ns for path in paths), default=0))
     if CARD_IMAGE_INDEX is not None and CARD_IMAGE_INDEX_SIGNATURE == signature:
         return CARD_IMAGE_INDEX
@@ -1557,22 +1586,78 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         payload["structure_notes"] = load_structure_notes(payload.get("title"))
         if find_card_image(payload):
             payload["image_url"] = f"/api/card-image/{quote(str(payload['id']))}"
+        
+        # Attach history records
+        history_records = CARD_HISTORY_MAP.get(card_id, [])
+        history_payloads = []
+        for r in history_records:
+            card_data = r.get("card", {})
+            fields = card_data.get("fields", {})
+            h_payload = {
+                "card_version_id": r.get("card_version_id"),
+                "display_label": r.get("display_label", "历史版本"),
+                "superseded_by_release": r.get("superseded_by_release"),
+                "id": card_data.get("id"),
+                "title": fields.get("title"),
+                "life": fields.get("life"),
+                "description": fields.get("description"),
+                "relationships": fields.get("relationships"),
+                "weapons": fields.get("weapons"),
+                "source_work": fields.get("source_work"),
+                "author_group": fields.get("author_group"),
+                "gender": fields.get("gender"),
+                "category": card_data.get("category"),
+                "category_label": label_category(card_data.get("category")),
+                "abilities": [
+                    {
+                        **ab,
+                        "is_exclusive": bool(ab.get("is_exclusive")),
+                        "is_identity": bool(ab.get("is_identity")),
+                        "owner_units": ab.get("owner_units"),
+                        "owner_identity": ab.get("owner_identity"),
+                        "owner_weapons": ab.get("owner_weapons"),
+                        "review_flags": ab.get("review_flags", []),
+                    }
+                    for ab in card_data.get("abilities", [])
+                ]
+            }
+            h_payload["units"] = build_card_units(h_payload, h_payload["abilities"])
+            h_payload["image_url"] = f"/api/card-image/{quote(str(r.get('card_version_id')))}"
+            history_payloads.append(h_payload)
+            
+        payload["history"] = history_payloads
         self.send_json(payload)
 
     def handle_card_image(self, card_id: str) -> None:
-        with connect() as conn:
-            row = conn.execute("SELECT * FROM cards WHERE id = ?", (card_id,)).fetchone()
-        if row is None:
-            self.send_error_json("未找到卡牌", HTTPStatus.NOT_FOUND)
-            return
-        card = row_to_result(row)
-        path = find_card_image(card)
+        path = None
+        if "@" in card_id:
+            base_card_id = card_id.split("@")[0]
+            records = CARD_HISTORY_MAP.get(base_card_id, [])
+            for r in records:
+                if r.get("card_version_id") == card_id:
+                    img_info = r.get("image", {})
+                    if img_info and img_info.get("path"):
+                        path = ROOT / img_info["path"]
+                        break
+            if path is None:
+                self.send_error_json("未找到历史卡牌版本记录", HTTPStatus.NOT_FOUND)
+                return
+        else:
+            with connect() as conn:
+                row = conn.execute("SELECT * FROM cards WHERE id = ?", (card_id,)).fetchone()
+            if row is None:
+                self.send_error_json("未找到卡牌", HTTPStatus.NOT_FOUND)
+                return
+            card = row_to_result(row)
+            path = find_card_image(card)
+            
         if path is None or not path.exists():
             self.send_error_json("未找到卡面图片", HTTPStatus.NOT_FOUND)
             return
         body = path.read_bytes()
         self.send_response(HTTPStatus.OK)
-        self.send_header("Content-Type", "image/png")
+        content_type = "image/webp" if path.suffix.lower() == ".webp" else "image/png"
+        self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Cache-Control", "no-cache")
         self.end_headers()
@@ -1587,6 +1672,7 @@ def main() -> None:
 
     if not DB_PATH.exists():
         raise FileNotFoundError(f"Database not found: {DB_PATH}")
+    load_card_history()
     server = ThreadingHTTPServer((args.host, args.port), CardBrowserHandler)
     print(f"Card browser: http://{args.host}:{args.port}")
     server.serve_forever()

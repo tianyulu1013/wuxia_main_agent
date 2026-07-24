@@ -1,40 +1,51 @@
 {
-  "library_version": "0.3",
-  "site_version": "0.8",
-  "updated": "2026-07-12",
+  "library_version": "3.07",
+  "site_version": "0.9",
+  "updated": "2026-07-24",
   "documents": [
     {
       "id": "rulebook-refactored",
-      "title": "\u4e94\u884c\u5361\u724c\u89c4\u5219\uff08\u65b0\u7248\uff09",
-      "group": "\u89c4\u5219\u4e0e\u5267\u672c",
+      "title": "五行卡牌规则（新版）",
+      "group": "规则与剧本",
       "kind": "document-json",
       "path": "data/site_documents/rulebook-refactored.json",
-      "source_path": "\u4e94\u884c\u5361\u724c\u89c4\u5219new.docx",
-      "version": "\u91cd\u6784\u4f18\u5316\u7248 v1.0",
+      "source_path": "五行卡牌规则new.docx",
+      "version": "重构优化版 v1.0",
       "updated": "2026-07-11",
-      "description": "\u91cd\u6784\u540e\u7684\u65b0\u7248\u89c4\u5219\u4e66\uff0c\u4f5c\u4e3a\u5f53\u524d\u4f18\u5148\u9605\u8bfb\u7248\u672c\u3002"
+      "description": "重构后的新版规则书，作为当前优先阅读版本。"
     },
     {
       "id": "rulebook-original",
-      "title": "\u4e94\u884c\u5361\u724c\u89c4\u5219\uff08\u539f\u7248\uff09",
-      "group": "\u89c4\u5219\u4e0e\u5267\u672c",
+      "title": "五行卡牌规则（原版）",
+      "group": "规则与剧本",
       "kind": "document-json",
       "path": "data/site_documents/rulebook-original.json",
-      "source_path": "\u4e94\u884c\u5361\u724c\u89c4\u5219.docx",
-      "version": "\u539f\u7248\u5bf9\u7167",
+      "source_path": "五行卡牌规则.docx",
+      "version": "原版对照",
       "updated": "2025-07-04",
-      "description": "\u65e7\u7248\u89c4\u5219\u4e66\uff0c\u4fdd\u7559\u7528\u4e8e\u5bf9\u7167\u3002"
+      "description": "旧版规则书，保留用于对照。"
     },
     {
       "id": "scenario-book",
-      "title": "\u5267\u672c",
-      "group": "\u89c4\u5219\u4e0e\u5267\u672c",
+      "title": "剧本",
+      "group": "规则与剧本",
       "kind": "document-json",
       "path": "data/site_documents/scenario-book.json",
-      "source_path": "\u5267\u672c.docx",
-      "version": "\u5f53\u524d\u7248",
+      "source_path": "剧本.docx",
+      "version": "当前版",
       "updated": "2026-07-11",
-      "description": "\u5f53\u524d\u5267\u672c\u4e66\u3002"
+      "description": "当前剧本书。"
+    },
+    {
+      "id": "changelog-3.07",
+      "title": "3.07 更新日志",
+      "group": "更新日志",
+      "kind": "document-json",
+      "path": "data/site_documents/changelog-3.07.json",
+      "source_path": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_发布更新日志.md",
+      "version": "v3.07",
+      "updated": "2026-07-23",
+      "description": "3.07版本卡牌修改与新增的详细日志。"
     }
   ]
 }

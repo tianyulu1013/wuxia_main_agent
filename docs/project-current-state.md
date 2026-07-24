@@ -34,7 +34,9 @@
 
 ### 评语层
 
-- `data/card_reviews.json`
+- `data/review/card_evaluations.json`、`data/review/card_notes/`
+- `data/card_reviews.json`（历史兼容）
+- `docs/ai-understanding/`
 
 用于记录作者裁定、AI 评语、强度、定位、设计风险、电子化风险、攻略。它不是牌面事实。
 

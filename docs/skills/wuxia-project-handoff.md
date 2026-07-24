@@ -12,10 +12,12 @@
 
 按任务追加阅读：
 
-- 规则书：`docs/rulebook-structure-audit.md`、`docs/rulebook-confirmed-rulings.md`、`docs/rulebook-docx-extract.md`
+- AI规则理解入口：`docs/ai-understanding/README.md`
+- 玩家规则书材料：`docs/rulebook-refactored.md`、`docs/rulebook-structure-audit.md`、`docs/rulebook-docx-extract.md`
 - 多人一卡：`docs/multi-unit-completeness-report.md`、`docs/multi-unit-ownership-report.md`、`data/card_unit_overrides.json`
 - 网页/发布：`web/card_browser/`、`scripts/export_static_site.py`、`docs/static-hosting-plan.md`
-- AI 评语：`data/card_reviews.json`、`docs/ai-card-review-understanding-map.md`
+- 当前AI评审：`data/review/card_evaluations.json`、`data/review/card_notes/`
+- 历史AI评语：`data/card_reviews.json`、`docs/ai-card-review-understanding-map.md`
 
 ## 判断当前阶段
 

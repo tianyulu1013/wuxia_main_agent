@@ -4,7 +4,10 @@
 
 ## 文件
 
-- `data/card_reviews.json`：作者裁定、AI评语、强度、定位、设计风险、电子化风险、攻略。
+- `data/review/card_evaluations.json`：当前结构化完整评审。
+- `data/review/card_notes/`：人类可读单卡评审。
+- `data/review/card_understanding_notes.json`：单卡作者校准和理解。
+- `data/card_reviews.json`：历史兼容评语文件，不再作为新评审默认写入目标。
 - `data/change_candidates.json`：改卡候选、候选新版文本、更新日志草稿、确认状态。
 
 ## 原则

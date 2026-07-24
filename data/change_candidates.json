@@ -6,6 +6,7 @@
       "draft",
       "needs_author_review",
       "approved",
+      "source_applied",
       "applied",
       "rejected"
     ],
@@ -37,7 +38,8 @@
       "patch_notes": "面向玩家的更新说明草稿。",
       "author_decision_needed": "需要作者裁定的问题列表。",
       "source_tasks": "确认后需要做的事项，例如改PSD、更新Excel、重建数据库。",
-      "created_at": "创建日期。"
+      "created_at": "创建日期。",
+      "application": "实际卡面回录记录：批次ID、最终文本差异、来源位置、所属牌堆、Excel/SQLite/JSONL核验状态及批次交付状态。"
     }
   },
   "candidates": [
@@ -45,7 +47,7 @@
       "id": "change_20260711_无崖子_001",
       "candidate_type": "revision",
       "card_title": "无崖子",
-      "status": "needs_author_review",
+      "status": "applied",
       "request": "【珍珑】次数太多：删除固定增加的5次，只保留生命至0前己出场次数",
       "design_goal": "减少珍珑阶段的出战次数和残局拖延，保留其与无崖子归零前出场次数的关联",
       "ai_position": "support",
@@ -79,7 +81,49 @@
         "重建数据库",
         "生成玩家更新说明"
       ],
-      "created_at": "2026-07-11"
+      "created_at": "2026-07-11",
+      "application": {
+        "batch_id": "card_update_20260723_001",
+        "batch_status": "completed",
+        "source_applied_at": "2026-07-23",
+        "applied_at": "2026-07-24",
+        "actual_source": "作者说明实际卡面已经修改完成，并提供与TODO不同的最终文本",
+        "source_workbook": "已制作_2025日志同步候选_PSD校准.xlsx",
+        "verification": {
+          "baseline_excel_matches_actual": true,
+          "sqlite_matches_actual": true,
+          "jsonl_matches_actual": true,
+          "sqlite_integrity": "ok",
+          "candidate_wording_not_substituted": true
+        },
+        "final_deliverables": {
+          "status": "data_complete_images_pending",
+          "full_database_excel": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_完整数据库.xlsx",
+          "update_log": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_发布更新日志.md"
+        },
+        "card_id": "card_118e0bf8c483",
+        "source_sheet": "战斗人物",
+        "source_row": 218,
+        "deck": "金庸2",
+        "field": "description; relationships",
+        "candidate_fragment": "（可出战次数为生命至0前己出场次数，有过珍珑者，自身死亡）",
+        "actual_final_fragment": "（可出战次数为生命至0前己出场次数，有过珍珑者，自身死亡）；遇丁春秋进入珍珑状态",
+        "actual_change_summary": "【珍珑】取消固定增加5次出战次数；“与丁春秋进入珍珑状态”改为“遇丁春秋进入珍珑状态”。",
+        "candidate_matches_actual": false,
+        "changes": [
+          {
+            "field": "description",
+            "old_fragment": "（可出战次数为5+生命至0前己出场次数，有过珍珑者，自身死亡）",
+            "actual_final_fragment": "（可出战次数为生命至0前己出场次数，有过珍珑者，自身死亡）"
+          },
+          {
+            "field": "relationships",
+            "old_fragment": "与丁春秋进入珍珑状态",
+            "actual_final_fragment": "遇丁春秋进入珍珑状态"
+          }
+        ],
+        "public_release_id": "3.07"
+      }
     },
     {
       "id": "change_20260711_石中玉_001",
@@ -335,7 +379,7 @@
       "id": "change_20260711_石中玉_002",
       "candidate_type": "revision",
       "card_title": "石中玉",
-      "status": "needs_author_review",
+      "status": "applied",
       "request": "第一段遗失或失灵效果不能选择石中玉或石清闵柔自己的牌或特技",
       "design_goal": "",
       "ai_position": "support",
@@ -363,13 +407,44 @@
         "重建数据库",
         "生成玩家更新说明"
       ],
-      "created_at": "2026-07-11"
+      "created_at": "2026-07-11",
+      "application": {
+        "batch_id": "card_update_20260723_001",
+        "batch_status": "completed",
+        "source_applied_at": "2026-07-23",
+        "applied_at": "2026-07-24",
+        "actual_source": "作者说明实际卡面已经修改完成，并提供与TODO不同的最终文本",
+        "source_workbook": "已制作_2025日志同步候选_PSD校准.xlsx",
+        "verification": {
+          "baseline_excel_matches_actual": true,
+          "sqlite_matches_actual": true,
+          "jsonl_matches_actual": true,
+          "sqlite_integrity": "ok",
+          "candidate_wording_not_substituted": true
+        },
+        "final_deliverables": {
+          "status": "data_complete_images_pending",
+          "full_database_excel": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_完整数据库.xlsx",
+          "update_log": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_发布更新日志.md"
+        },
+        "card_id": "card_45390e0b1a98",
+        "source_sheet": "战斗人物",
+        "source_row": 577,
+        "deck": "金庸3",
+        "field": "description",
+        "old_fragment": "（均视为针对玩家的效果）",
+        "candidate_fragment": "（均视为针对玩家的效果，不能选择石中玉或石清、闵柔自身的牌或特技）",
+        "actual_final_fragment": "（均视为针对玩家的效果，不能选择石中玉或石清、闵柔自身的牌或特技）",
+        "actual_change_summary": "遗失或失灵效果不能选择石中玉或石清、闵柔自身的牌或特技。",
+        "candidate_matches_actual": true,
+        "public_release_id": "3.07"
+      }
     },
     {
       "id": "change_20260711_四大恶人_002",
       "candidate_type": "revision",
       "card_title": "四大恶人",
-      "status": "needs_author_review",
+      "status": "applied",
       "request": "四大恶人全部没有剩余出场次数时，本卡离场",
       "design_goal": "",
       "ai_position": "support",
@@ -399,13 +474,44 @@
         "重建数据库",
         "生成玩家更新说明"
       ],
-      "created_at": "2026-07-11"
+      "created_at": "2026-07-11",
+      "application": {
+        "batch_id": "card_update_20260723_001",
+        "batch_status": "completed",
+        "source_applied_at": "2026-07-23",
+        "applied_at": "2026-07-24",
+        "actual_source": "作者说明实际卡面已经修改完成，并提供与TODO不同的最终文本",
+        "source_workbook": "已制作_2025日志同步候选_PSD校准.xlsx",
+        "verification": {
+          "baseline_excel_matches_actual": true,
+          "sqlite_matches_actual": true,
+          "jsonl_matches_actual": true,
+          "sqlite_integrity": "ok",
+          "candidate_wording_not_substituted": true
+        },
+        "final_deliverables": {
+          "status": "data_complete_images_pending",
+          "full_database_excel": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_完整数据库.xlsx",
+          "update_log": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_发布更新日志.md"
+        },
+        "card_id": "card_e3640861c102",
+        "source_sheet": "战斗人物",
+        "source_row": 576,
+        "deck": "金庸3",
+        "field": "description",
+        "old_fragment": "四大恶人可以同时出战任意多个，同时攻击；起始不需要声明哪个恶人出战，直至本卡翻开",
+        "candidate_fragment": "四大恶人均无剩余出场次数时，本卡离场",
+        "actual_final_fragment": "四大恶人均无剩余出场次数时，本卡离场",
+        "actual_change_summary": "四大恶人均无剩余出场次数时，本卡离场。",
+        "candidate_matches_actual": true,
+        "public_release_id": "3.07"
+      }
     },
     {
       "id": "change_20260711_毕夜惊_002",
       "candidate_type": "revision",
       "card_title": "毕夜惊",
-      "status": "needs_author_review",
+      "status": "applied",
       "request": "毕夜惊与单玉如结盟",
       "design_goal": "",
       "ai_position": "support",
@@ -433,13 +539,44 @@
         "重建数据库",
         "生成玩家更新说明"
       ],
-      "created_at": "2026-07-11"
+      "created_at": "2026-07-11",
+      "application": {
+        "batch_id": "card_update_20260723_001",
+        "batch_status": "completed",
+        "source_applied_at": "2026-07-23",
+        "applied_at": "2026-07-24",
+        "actual_source": "作者说明实际卡面已经修改完成，并提供与TODO不同的最终文本",
+        "source_workbook": "已制作_2025日志同步候选_PSD校准.xlsx",
+        "verification": {
+          "baseline_excel_matches_actual": true,
+          "sqlite_matches_actual": true,
+          "jsonl_matches_actual": true,
+          "sqlite_integrity": "ok",
+          "candidate_wording_not_substituted": true
+        },
+        "final_deliverables": {
+          "status": "data_complete_images_pending",
+          "full_database_excel": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_完整数据库.xlsx",
+          "update_log": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_发布更新日志.md"
+        },
+        "card_id": "card_d233f3012e73",
+        "source_sheet": "战斗人物",
+        "source_row": 98,
+        "deck": "黄易1",
+        "field": "relationships",
+        "old_fragment": "与厉工、旭烈兀结盟",
+        "candidate_fragment": "与厉工、旭烈兀、单玉如结盟",
+        "actual_final_fragment": "与厉工、旭烈兀、单玉如结盟",
+        "actual_change_summary": "新增与单玉如结盟。",
+        "candidate_matches_actual": true,
+        "public_release_id": "3.07"
+      }
     },
     {
       "id": "change_20260711_鹰刀_002",
       "candidate_type": "revision",
       "card_title": "鹰刀",
-      "status": "needs_author_review",
+      "status": "applied",
       "request": "开启鹰刀完美学会其中的特技；不写“可”即为必须执行",
       "design_goal": "",
       "ai_position": "support",
@@ -467,13 +604,44 @@
         "重建数据库",
         "生成玩家更新说明"
       ],
-      "created_at": "2026-07-11"
+      "created_at": "2026-07-11",
+      "application": {
+        "batch_id": "card_update_20260723_001",
+        "batch_status": "completed",
+        "source_applied_at": "2026-07-23",
+        "applied_at": "2026-07-24",
+        "actual_source": "作者说明实际卡面已经修改完成，并提供与TODO不同的最终文本",
+        "source_workbook": "已制作_2025日志同步候选_PSD校准.xlsx",
+        "verification": {
+          "baseline_excel_matches_actual": true,
+          "sqlite_matches_actual": true,
+          "jsonl_matches_actual": true,
+          "sqlite_integrity": "ok",
+          "candidate_wording_not_substituted": true
+        },
+        "final_deliverables": {
+          "status": "data_complete_images_pending",
+          "full_database_excel": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_完整数据库.xlsx",
+          "update_log": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_发布更新日志.md"
+        },
+        "card_id": "card_635cd4d90d6f",
+        "source_sheet": "物品",
+        "source_row": 44,
+        "deck": "黄易1",
+        "field": "description",
+        "old_fragment": "开启鹰刀可得到之中的特技，并再将一特技存入鹰刀",
+        "candidate_fragment": "开启鹰刀完美学会其中的特技，并再将一特技存入鹰刀",
+        "actual_final_fragment": "开启鹰刀完美学会其中的特技，并再将一特技存入鹰刀",
+        "actual_change_summary": "开启鹰刀后完美学会其中的特技，并再将一特技存入鹰刀。",
+        "candidate_matches_actual": true,
+        "public_release_id": "3.07"
+      }
     },
     {
       "id": "change_20260711_上官刃_002",
       "candidate_type": "revision",
       "card_title": "上官刃",
-      "status": "needs_author_review",
+      "status": "applied",
       "request": "明确上官刃可以主动出战，也可以拒绝出战",
       "design_goal": "",
       "ai_position": "support",
@@ -501,13 +669,43 @@
         "重建数据库",
         "生成玩家更新说明"
       ],
-      "created_at": "2026-07-11"
+      "created_at": "2026-07-11",
+      "application": {
+        "batch_id": "card_update_20260723_001",
+        "batch_status": "completed",
+        "source_applied_at": "2026-07-23",
+        "actual_source": "作者提供的实际卡面最终文本",
+        "card_id": "card_143d43bbc5be",
+        "source_workbook": "已制作_2025日志同步候选_PSD校准.xlsx",
+        "source_sheet": "战斗人物",
+        "source_row": 91,
+        "deck": "古龙1",
+        "field": "description",
+        "old_fragment": "附加【恶】，视为该方人物，仍由原玩家控制，可拒绝出战",
+        "candidate_fragment": "附加【恶】，视为该方人物，仍由原玩家控制，可主动出战，也可拒绝出战",
+        "actual_final_fragment": "附加【恶】，视为该方人物，仍由原玩家控制，该阵营要求上官刃出战时，可拒绝出战",
+        "actual_change_summary": "明确只有该阵营要求上官刃出战时，上官刃才具有拒绝此次出战的权利。",
+        "verification": {
+          "baseline_excel_matches_actual": true,
+          "sqlite_matches_actual": true,
+          "jsonl_matches_actual": true,
+          "sqlite_integrity": "ok",
+          "candidate_wording_not_substituted": true
+        },
+        "final_deliverables": {
+          "status": "data_complete_images_pending",
+          "full_database_excel": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_完整数据库.xlsx",
+          "update_log": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_发布更新日志.md"
+        },
+        "applied_at": "2026-07-24",
+        "public_release_id": "3.07"
+      }
     },
     {
       "id": "change_20260711_赏善罚恶令_001",
       "candidate_type": "revision",
       "card_title": "赏善罚恶令",
-      "status": "needs_author_review",
+      "status": "applied",
       "request": "石破天受到邀请时必须去侠客岛；石破天去侠客岛一转轮后，所有已去侠客岛的人物返回",
       "design_goal": "",
       "ai_position": "support",
@@ -535,7 +733,243 @@
         "重建数据库",
         "生成玩家更新说明"
       ],
-      "created_at": "2026-07-11"
+      "created_at": "2026-07-11",
+      "application": {
+        "batch_id": "card_update_20260723_001",
+        "batch_status": "completed",
+        "source_applied_at": "2026-07-23",
+        "applied_at": "2026-07-24",
+        "actual_source": "作者说明实际卡面已经修改完成，并提供与TODO不同的最终文本",
+        "source_workbook": "已制作_2025日志同步候选_PSD校准.xlsx",
+        "verification": {
+          "baseline_excel_matches_actual": true,
+          "sqlite_matches_actual": true,
+          "jsonl_matches_actual": true,
+          "sqlite_integrity": "ok",
+          "candidate_wording_not_substituted": true
+        },
+        "final_deliverables": {
+          "status": "data_complete_images_pending",
+          "full_database_excel": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_完整数据库.xlsx",
+          "update_log": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_发布更新日志.md"
+        },
+        "card_id": "card_46da2bbbb91b",
+        "source_sheet": "物品",
+        "source_row": 55,
+        "deck": "金庸3",
+        "field": "description",
+        "old_fragment": "与龙木二岛主结盟，赏善罚恶对龙木二岛主无效",
+        "candidate_fragment": "石破天受到邀请时必须去侠客岛；石破天去侠客岛一转轮后，所有已去侠客岛的人物返回",
+        "actual_final_fragment": "与龙木二岛主结盟，赏善罚恶对龙木二岛主无效；石破天受到邀请时必须去侠客岛；石破天去侠客岛一转轮后，所有已去侠客岛的人物返回",
+        "actual_change_summary": "在龙木二岛主关系句后追加：石破天受到邀请时必须去侠客岛；石破天去侠客岛一转轮后，所有已去侠客岛的人物返回。",
+        "candidate_matches_actual": true,
+        "public_release_id": "3.07"
+      }
+    },
+    {
+      "id": "change_20260723_浪翻云_001",
+      "candidate_type": "revision",
+      "card_title": "浪翻云",
+      "status": "applied",
+      "request": "将覆雨剑法中的“不利相关”改为“非有利相关”，使中性相关也包含在触发范围内。",
+      "design_goal": "修正规则范围，明确覆雨剑法针对所有非有利相关。",
+      "ai_position": "support",
+      "rationale": "“不利”不包含中性情况，“非有利”才能覆盖作者要求的完整范围。",
+      "current_snapshot": "武功：覆雨剑法：除基础外其他不利的相关释放，己翻面，起始800，浪翻云每出现一次加300伤害（剑）",
+      "review": {
+        "strength_impact": "小幅增强：中性相关也进入触发范围。",
+        "flavor_fit": "保持原有人物形象和覆雨剑法机制。",
+        "clarity": "局部用词替换，规则范围更准确。",
+        "rules_risks": [],
+        "electronic_risks": [
+          "低：只需调整相关判定范围。"
+        ],
+        "open_questions": []
+      },
+      "proposed_full_text": "武功：覆雨剑法：除基础外其他非有利的相关释放，己翻面，起始800，浪翻云每出现一次加300伤害（剑）",
+      "proposed_patch": [
+        "将“除基础外其他不利的相关释放”替换为“除基础外其他非有利的相关释放”。"
+      ],
+      "patch_notes": [
+        "浪翻云【覆雨剑法】的触发范围由“不利相关”调整为“非有利相关”。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-23",
+      "application": {
+        "batch_id": "card_update_20260723_001",
+        "public_release_id": "3.07",
+        "batch_status": "completed",
+        "source_applied_at": "2026-07-23",
+        "applied_at": "2026-07-24",
+        "actual_source": "作者说明实际卡面已经修改完成，并提供最终精确文本",
+        "source_workbook": "已制作_2025日志同步候选_PSD校准.xlsx",
+        "verification": {
+          "baseline_excel_matches_actual": true,
+          "sqlite_matches_actual": true,
+          "jsonl_matches_actual": true,
+          "sqlite_integrity": "ok",
+          "candidate_wording_not_substituted": true
+        },
+        "final_deliverables": {
+          "status": "data_complete_images_pending",
+          "full_database_excel": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_完整数据库.xlsx",
+          "update_log": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_发布更新日志.md"
+        },
+        "card_id": "card_cd9f729a4f77",
+        "source_sheet": "战斗人物",
+        "source_row": 113,
+        "deck": "黄易1",
+        "field": "description",
+        "old_fragment": "武功：覆雨剑法：除基础外其他不利的相关释放，己翻面，起始800，浪翻云每出现一次加300伤害（剑）",
+        "candidate_fragment": "武功：覆雨剑法：除基础外其他非有利的相关释放，己翻面，起始800，浪翻云每出现一次加300伤害（剑）",
+        "actual_final_fragment": "武功：覆雨剑法：除基础外其他非有利的相关释放，己翻面，起始800，浪翻云每出现一次加300伤害（剑）",
+        "actual_change_summary": "【覆雨剑法】的“不利相关”改为“非有利相关”。",
+        "candidate_matches_actual": true
+      }
+    },
+    {
+      "id": "change_20260723_陆游_001",
+      "candidate_type": "revision",
+      "card_title": "陆游",
+      "status": "applied",
+      "request": "混沌洪荒百万剑阵只给原本没有【剑】的人物附【剑】，已有【剑】者不再重复附加。",
+      "design_goal": "避免已有剑的人物被重复附剑，同时保留全场剑数量联动。",
+      "ai_position": "support",
+      "rationale": "明确附剑对象，可避免重复附加【剑】造成的数量和结算歧义。",
+      "current_snapshot": "*混沌洪荒百万剑阵：可发动一次，令场上附【剑】，每有一把剑，陆游攻防+100（不会因为减少剑失去攻防加成），此后每减少一把陆游生命+200（破上限）",
+      "review": {
+        "strength_impact": "小幅削弱可重复附剑产生的收益，主要属于规则修正。",
+        "flavor_fit": "保留百万剑阵强化全场剑势的核心形象。",
+        "clarity": "明确已有【剑】者不属于附加对象。",
+        "rules_risks": [],
+        "electronic_risks": [
+          "降低：不再需要处理同一人物重复附加【剑】。"
+        ],
+        "open_questions": []
+      },
+      "proposed_full_text": "*混沌洪荒百万剑阵：可发动一次，令场上没有【剑】的人物附【剑】，每有一把剑，陆游攻防+100（不会因为减少剑失去攻防加成），此后每减少一把陆游生命+200（破上限）",
+      "proposed_patch": [
+        "将“令场上附【剑】”替换为“令场上没有【剑】的人物附【剑】”。"
+      ],
+      "patch_notes": [
+        "陆游【混沌洪荒百万剑阵】不再为已有【剑】的人物重复附剑。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-23",
+      "application": {
+        "batch_id": "card_update_20260723_001",
+        "public_release_id": "3.07",
+        "batch_status": "completed",
+        "source_applied_at": "2026-07-23",
+        "applied_at": "2026-07-24",
+        "actual_source": "作者说明实际卡面已经修改完成，并提供最终精确文本",
+        "source_workbook": "已制作_2025日志同步候选_PSD校准.xlsx",
+        "verification": {
+          "baseline_excel_matches_actual": true,
+          "sqlite_matches_actual": true,
+          "jsonl_matches_actual": true,
+          "sqlite_integrity": "ok",
+          "candidate_wording_not_substituted": true
+        },
+        "final_deliverables": {
+          "status": "data_complete_images_pending",
+          "full_database_excel": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_完整数据库.xlsx",
+          "update_log": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_发布更新日志.md"
+        },
+        "card_id": "card_96aadd7fac43",
+        "source_sheet": "战斗人物",
+        "source_row": 327,
+        "deck": "其他1",
+        "field": "description",
+        "old_fragment": "*混沌洪荒百万剑阵：可发动一次，令场上附【剑】，每有一把剑，陆游攻防+100（不会因为减少剑失去攻防加成），此后每减少一把陆游生命+200（破上限）",
+        "candidate_fragment": "*混沌洪荒百万剑阵：可发动一次，令场上没有【剑】的人物附【剑】，每有一把剑，陆游攻防+100（不会因为减少剑失去攻防加成），此后每减少一把陆游生命+200（破上限）",
+        "actual_final_fragment": "*混沌洪荒百万剑阵：可发动一次，令场上没有【剑】的人物附【剑】，每有一把剑，陆游攻防+100（不会因为减少剑失去攻防加成），此后每减少一把陆游生命+200（破上限）",
+        "actual_change_summary": "【混沌洪荒百万剑阵】只给没有【剑】的人物附【剑】。",
+        "candidate_matches_actual": true
+      }
+    },
+    {
+      "id": "change_20260723_黄真_001",
+      "candidate_type": "revision",
+      "card_title": "黄真",
+      "status": "applied",
+      "request": "将童叟无欺改为统一记录未结伤害；每轮总共结算200，新伤害只顺延结算时间而不叠加每轮掉血。",
+      "design_goal": "保留赊账与延后结算的人物特色，同时把多笔持续掉血简化为一个未结伤害总额。",
+      "ai_position": "support",
+      "rationale": "统一伤害池只需记录一个剩余数值；每轮固定结算200，避免多笔伤害分别计时和叠加。",
+      "current_snapshot": "*童叟无欺：一回合/侧面受到的伤害转化为此后以100为单位/回合的持续掉血，直至总额；每损失一次生命，为伤害来源记一本“账”",
+      "review": {
+        "strength_impact": "针对连续承伤明显增强：常见每轮300至600伤害时，预计存活轮数约提高40%至100%；面对单笔巨额伤害时会比旧版更快结清。",
+        "flavor_fit": "保留铁算盘赊账、延后偿还和向伤害来源记账的核心特色。",
+        "clarity": "只记录一个未结伤害总额，取消多笔掉血分别计时。",
+        "rules_risks": [],
+        "electronic_risks": [
+          "中低：需要保存未结伤害总额和各来源账数，但不再维护多条并行持续伤害。"
+        ],
+        "open_questions": [
+          "【不放赊账】的引爆算法尚未简化，后续继续讨论；本候选暂不改该特技。"
+        ]
+      },
+      "proposed_full_text": "*童叟无欺：一回合/侧面受到的伤害不立即结算，改为记录为未结伤害，并为伤害来源记一本“账”。此后每轮从未结伤害中结算200；不足200时全部结算。新受到的伤害只增加未结伤害，不会提高每轮结算",
+      "proposed_patch": [
+        "用统一的未结伤害总额替代多笔持续掉血；每轮总共结算200，不累计每轮结算值。"
+      ],
+      "patch_notes": [
+        "黄真【童叟无欺】改为统一记录未结伤害，每轮最多结算200，新伤害只延长结算时间。"
+      ],
+      "author_decision_needed": [
+        "【不放赊账】的引爆算法尚未简化，后续继续讨论；本候选暂不改该特技。"
+      ],
+      "source_tasks": [
+        "作者确认后修改PSD",
+        "更新Excel",
+        "重建数据库",
+        "生成玩家更新说明"
+      ],
+      "created_at": "2026-07-23",
+      "application": {
+        "batch_id": "card_update_20260723_001",
+        "public_release_id": "3.07",
+        "batch_status": "completed",
+        "source_applied_at": "2026-07-23",
+        "applied_at": "2026-07-24",
+        "actual_source": "作者说明实际卡面已经修改完成，并提供最终精确文本",
+        "source_workbook": "已制作_2025日志同步候选_PSD校准.xlsx",
+        "verification": {
+          "baseline_excel_matches_actual": true,
+          "sqlite_matches_actual": true,
+          "jsonl_matches_actual": true,
+          "sqlite_integrity": "ok",
+          "candidate_wording_not_substituted": true
+        },
+        "final_deliverables": {
+          "status": "data_complete_images_pending",
+          "full_database_excel": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_完整数据库.xlsx",
+          "update_log": "outputs/card-database-deliverables/2026-07-23_card_update_001/五行卡牌_3.07_发布更新日志.md"
+        },
+        "card_id": "card_ba00ff164222",
+        "source_sheet": "战斗人物",
+        "source_row": 415,
+        "deck": "金庸3",
+        "field": "description",
+        "old_fragment": "*童叟无欺：一回合/侧面受到的伤害转化为此后以100为单位/回合的持续掉血，直至总额；每损失一次生命，为伤害来源记一本“账”",
+        "candidate_fragment": "*童叟无欺：一回合/侧面受到的伤害不立即结算，改为记录为未结伤害，并为伤害来源记一本“账”。此后每轮从未结伤害中结算200；不足200时全部结算。新受到的伤害只增加未结伤害，不会提高每轮结算",
+        "actual_final_fragment": "*童叟无欺：一回合/侧面受到的伤害不立即结算，改为记录为未结伤害，并为伤害来源记一本“账”。此后每轮从未结伤害中结算200；不足200时全部结算。新受到的伤害只增加未结伤害，不会提高每轮结算",
+        "actual_change_summary": "【童叟无欺】改为统一记录未结伤害，每轮总共结算200，新伤害不叠加每轮结算值。",
+        "candidate_matches_actual": true
+      }
     }
   ]
 }

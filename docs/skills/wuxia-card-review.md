@@ -1,4 +1,6 @@
-# Skill: 卡牌评审与改卡候选
+# 旧版卡牌评审与改卡说明（历史兼容）
+
+> 本文件包含早期评审流程和早期强度理解，可能与当前模块化体系冲突，不再作为AI默认入口。新评审请使用`docs/ai-understanding/README.md`、`docs/skills/wuxia-card-calibration-sop.md`和`.agents/skills/wuxia-card-review-calibration/SKILL.md`。本文件暂不删除，等待历史清理。
 
 ## 适用场景
 
