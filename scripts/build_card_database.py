@@ -30,6 +30,7 @@ SHEET_KEYS = {
     "场景": "scenes",
     "废弃": "deprecated",
 }
+KEY_SHEETS = {v: k for k, v in SHEET_KEYS.items()}
 
 
 FIELD_KEYS = {
@@ -44,6 +45,7 @@ FIELD_KEYS = {
     "性别": "gender",
     "特性": "traits",
     "类别": "item_category",
+    "卡牌ID": "id",
 }
 
 
@@ -561,8 +563,22 @@ def read_sheet(ws: openpyxl.worksheet.worksheet.Worksheet, source: Path) -> tupl
         if unnamed_values:
             rows_with_extra_values.append(row_number)
 
+        # Determine the record ID
+        import uuid
+        import hashlib
+        if "卡牌ID" in field_names:
+            record_id = fields.pop("id", None)
+            if is_blank(record_id):
+                # Generate new UUID-based ID
+                seed = f"{ws.title}|{title}|{uuid.uuid4()}"
+                record_id = f"card_{hashlib.sha1(seed.encode('utf-8')).hexdigest()[:12]}"
+                print(f"Generated new UUID {record_id} for new card: {title}")
+        else:
+            record_id = stable_id(ws.title, row_number, title)
+            fields.pop("id", None)
+
         record = {
-            "id": stable_id(ws.title, row_number, title),
+            "id": record_id,
             "source": {
                 "workbook": source.name,
                 "sheet": ws.title,
@@ -578,6 +594,8 @@ def read_sheet(ws: openpyxl.worksheet.worksheet.Worksheet, source: Path) -> tupl
         apply_field_overrides(record, field_overrides)
         record["all_text"] = card_all_text(record)
         record["abilities"] = apply_author_overrides(record, parse_abilities(record), author_overrides)
+        # Shift the row number to a 1-based card index (so row 2 in Excel becomes 1)
+        record["source"]["row"] = row_number - 1
         records.append(record)
 
     stats = {
@@ -968,23 +986,216 @@ def write_ability_audit(records: list[dict[str, Any]], abilities: list[dict[str,
     ABILITY_AUDIT.write_text("\n".join(lines), encoding="utf-8")
 
 
+def import_from_excel(source: Path) -> None:
+    import uuid
+    print(f"Importing card data from Excel workbook {source} to JSONL files...")
+    
+    # 1. Load existing IDs from JSONL files to preserve them
+    existing_ids = {}  # (category, title, occurrence_index) -> id
+    existing_ids_global = {}  # (title, occurrence_index) -> id
+    
+    global_occurrences = {}
+    for key, sheet_title in KEY_SHEETS.items():
+        jsonl_path = OUT_DIR / f"{key}.jsonl"
+        if jsonl_path.exists():
+            category_occurrences = {}
+            with jsonl_path.open("r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line:
+                        try:
+                            card = json.loads(line)
+                            title = card.get("title")
+                            if title:
+                                # Category-specific occurrence index
+                                c_idx = category_occurrences.get(title, 0)
+                                category_occurrences[title] = c_idx + 1
+                                existing_ids[(key, title, c_idx)] = card.get("id")
+                                
+                                # Global occurrence index (across all categories)
+                                g_idx = global_occurrences.get(title, 0)
+                                global_occurrences[title] = g_idx + 1
+                                existing_ids_global[(title, g_idx)] = card.get("id")
+                        except Exception:
+                            pass
+
+    wb = openpyxl.load_workbook(source, data_only=False)
+    
+    # Track assigned IDs during this import to avoid duplicates
+    assigned_ids = set()
+    
+    for ws in wb.worksheets:
+        records, stats = read_sheet(ws, source)
+        key = SHEET_KEYS.get(ws.title, ws.title)
+        
+        has_uid_column = "卡牌ID" in stats.get("header_values", [])
+        
+        if not has_uid_column:
+            # 2. First-time migration: Match and preserve existing IDs, or generate new UUID-based IDs
+            import_category_occurrences = {}
+            for record in records:
+                title = record.get("title")
+                if not title:
+                    continue
+                
+                c_idx = import_category_occurrences.get(title, 0)
+                import_category_occurrences[title] = c_idx + 1
+                
+                # Strategy A: Try exact match in the same sheet/category first
+                matched_id = existing_ids.get((key, title, c_idx))
+                
+                # Strategy B: Try global match by title (if card was moved to another sheet, e.g. 'deprecated')
+                if not matched_id or matched_id in assigned_ids:
+                    for g_idx in range(100):
+                        possible_id = existing_ids_global.get((title, g_idx))
+                        if possible_id and possible_id not in assigned_ids:
+                            matched_id = possible_id
+                            print(f"Preserved ID {matched_id} for card '{title}' moved to sheet '{ws.title}'")
+                            break
+                
+                # Strategy C: Generate a new unique ID using UUID
+                if not matched_id or matched_id in assigned_ids:
+                    seed = f"{key}|{title}|{uuid.uuid4()}"
+                    digest = hashlib.sha1(seed.encode("utf-8")).hexdigest()[:12]
+                    matched_id = f"card_{digest}"
+                    print(f"Assigned new static ID {matched_id} to new card: {title}")
+                    
+                assigned_ids.add(matched_id)
+                record["id"] = matched_id
+                for ab in record.get("abilities", []):
+                    ab["card_id"] = matched_id
+                    ab["id"] = f"{matched_id}::ability::{str(ab['ordinal']).zfill(3)}"
+        else:
+            # UID column is present: Just track assigned IDs
+            for record in records:
+                assigned_ids.add(record["id"])
+                
+        write_jsonl(OUT_DIR / f"{key}.jsonl", records)
+    print("Excel import complete.")
+
+
+def sync_to_excel(all_records: list[dict[str, Any]], source: Path) -> None:
+    print(f"Syncing {len(all_records)} records back to Excel workbook: {source}")
+    wb = openpyxl.load_workbook(source, data_only=False)
+    
+    # Group records by category
+    records_by_category = {}
+    for record in all_records:
+        cat = record["category"]
+        records_by_category.setdefault(cat, []).append(record)
+        
+    for sheet_title, key in SHEET_KEYS.items():
+        if sheet_title not in wb.sheetnames:
+            continue
+        ws = wb[sheet_title]
+        sheet_records = records_by_category.get(key, [])
+        
+        # Sort records by their source row to write them in order
+        sheet_records.sort(key=lambda x: x["source"]["row"])
+        
+        # Read headers
+        headers = []
+        for c in range(1, ws.max_column + 1):
+            h = ws.cell(row=1, column=c).value
+            headers.append(h)
+            
+        # If "卡牌ID" is not in headers, append it!
+        if "卡牌ID" not in headers:
+            col_idx = len(headers) + 1
+            ws.cell(row=1, column=col_idx).value = "卡牌ID"
+            headers.append("卡牌ID")
+            print(f"Appended '卡牌ID' header column to sheet: {sheet_title}")
+            
+        # Write values
+        for i, record in enumerate(sheet_records):
+            r = i + 2  # Start from row 2
+            # Update record source row to reflect its position
+            record["source"]["row"] = r - 1
+            for c_idx, header in enumerate(headers, start=1):
+                if not header:
+                    continue
+                if header == "卡牌ID":
+                    ws.cell(row=r, column=c_idx).value = record["id"]
+                else:
+                    field_key = FIELD_KEYS.get(header)
+                    if field_key:
+                        val = record["fields"].get(field_key)
+                        # Convert to int if it is life and is a number
+                        if field_key == "life" and val is not None:
+                            try:
+                                val = int(val)
+                            except ValueError:
+                                pass
+                        ws.cell(row=r, column=c_idx).value = val
+                    else:
+                        # Check extra fields
+                        val = record.get("extra_fields", {}).get(header)
+                        ws.cell(row=r, column=c_idx).value = val
+                    
+        # Delete any extra rows below the written records
+        written_count = len(sheet_records)
+        old_max = ws.max_row
+        if old_max > written_count + 1:
+            ws.delete_rows(written_count + 2, old_max - written_count - 1)
+            
+    wb.save(source)
+    print("Excel sync complete.")
+
+
 def build(source: Path) -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     imported_at = datetime.now(timezone.utc).isoformat()
-    wb = openpyxl.load_workbook(source, data_only=False)
-
+    
+    # 1. Load records from JSONL files (primary source of truth)
     all_records: list[dict[str, Any]] = []
     sheet_stats: list[dict[str, Any]] = []
-    for ws in wb.worksheets:
-        records, stats = read_sheet(ws, source)
+    
+    for key, sheet_title in KEY_SHEETS.items():
+        jsonl_path = OUT_DIR / f"{key}.jsonl"
+        records = []
+        if jsonl_path.exists():
+            with jsonl_path.open("r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line:
+                        records.append(json.loads(line))
+        
         all_records.extend(records)
+        
+        # Build statistics for report
+        max_row = len(records) + 1 if records else 1
+        headers_list = [k for k, v in FIELD_KEYS.items() if v in CARD_COLUMNS]
+        
+        stats = {
+            "sheet": sheet_title,
+            "category": key,
+            "max_row": max_row,
+            "max_column": len(headers_list),
+            "header_values": headers_list,
+            "record_count": len(records),
+            "unnamed_header_count": 0,
+            "rows_with_extra_values": [],
+            "blank_name_rows": [],
+        }
         sheet_stats.append(stats)
-        key = SHEET_KEYS.get(ws.title, ws.title)
-        write_jsonl(OUT_DIR / f"{key}.jsonl", records)
+        
+    print(f"Loaded {len(all_records)} records from JSONL files.")
 
-    write_jsonl(OUT_DIR / "all_cards.jsonl", all_records)
+    # 2. Compile SQLite database directly from the loaded JSONL records
+    build_sqlite(DB_PATH, all_records, source, imported_at)
+    
+    # 3. Synchronize/Backfill Excel workbook from the JSONL records
+    try:
+        sync_to_excel(all_records, source)
+    except Exception as e:
+        print(f"Warning: Failed to sync back to Excel (it might be locked or read-only): {e}")
+    
+    # 4. Flatten abilities and write reports/audits
     all_abilities = flatten_abilities(all_records)
+    write_jsonl(OUT_DIR / "all_cards.jsonl", all_records)
     write_jsonl(OUT_DIR / "abilities.jsonl", all_abilities)
+    
+    # Write manifest.json
     (OUT_DIR / "manifest.json").write_text(
         json.dumps(
             {
@@ -1001,21 +1212,26 @@ def build(source: Path) -> None:
         ),
         encoding="utf-8",
     )
-    build_sqlite(DB_PATH, all_records, source, imported_at)
+    
     write_report(source, all_records, sheet_stats, imported_at)
     write_ability_audit(all_records, all_abilities, imported_at)
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build the queryable card database from the current Excel workbook.")
+    parser = argparse.ArgumentParser(description="Compile queryable card database from JSONL database files.")
     parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
+    parser.add_argument("--import-excel", action="store_true", help="Import card data from Excel to JSONL first, then compile.")
     args = parser.parse_args()
-
+ 
     source = args.source
     if not source.is_absolute():
         source = ROOT / source
     if not source.exists():
         raise FileNotFoundError(source)
+        
+    if args.import_excel:
+        import_from_excel(source)
+        
     build(source)
     print(str(DB_PATH))
     print(str(OUT_DIR / "all_cards.jsonl"))

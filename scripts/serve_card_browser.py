@@ -1046,6 +1046,9 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         if parsed.path == "/api/search":
             self.handle_search(parsed.query)
             return
+        if parsed.path == "/api/change-candidates":
+            self.handle_change_candidates()
+            return
         if parsed.path.startswith("/api/card-image/"):
             self.handle_card_image(unquote(parsed.path.removeprefix("/api/card-image/")))
             return
@@ -1053,6 +1056,253 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
             self.handle_card(unquote(parsed.path.removeprefix("/api/card/")))
             return
         return super().do_GET()
+
+    def do_POST(self) -> None:
+        parsed = urlparse(self.path)
+        if parsed.path == "/api/change-candidate/save":
+            self.handle_change_candidate_save()
+            return
+        self.send_error_json("未找到路径", HTTPStatus.NOT_FOUND)
+
+    def read_post_json(self) -> dict | None:
+        content_length = int(self.headers.get("Content-Length", 0))
+        if not content_length:
+            return None
+        body = self.rfile.read(content_length)
+        return json.loads(body.decode("utf-8"))
+
+    def handle_change_candidates(self) -> None:
+        try:
+            candidates_data = load_json_file(CHANGE_CANDIDATES_PATH, {"candidates": []})
+            if not isinstance(candidates_data, dict):
+                candidates_data = {"candidates": []}
+            drafts = [c for c in candidates_data.get("candidates", []) if c.get("status") == "draft"]
+            self.send_json({"candidates": drafts})
+        except Exception as e:
+            self.send_error_json(str(e), HTTPStatus.INTERNAL_SERVER_ERROR)
+
+    def handle_change_candidate_save(self) -> None:
+        try:
+            data = self.read_post_json()
+            if not data:
+                self.send_error_json("无效的请求数据", HTTPStatus.BAD_REQUEST)
+                return
+            
+            card_id = data.get("card_id")
+            target_id = data.get("target_id")
+            category = data.get("category")
+            title = data.get("title", "").strip()
+            design_goal = data.get("design_goal", "").strip()
+            
+            candidates_data = load_json_file(CHANGE_CANDIDATES_PATH, {"candidates": []})
+            if not isinstance(candidates_data, dict):
+                candidates_data = {"candidates": []}
+            candidates = candidates_data.get("candidates", [])
+            
+            from datetime import datetime
+            import uuid
+            
+            if card_id is not None:
+                # CARD CHANGE CANDIDATE
+                fields = data.get("fields", {})
+                abilities = data.get("abilities", [])
+                
+                is_new = False
+                if not card_id:
+                    import hashlib
+                    seed = f"{category}|{title}|{uuid.uuid4()}"
+                    digest = hashlib.sha1(seed.encode("utf-8")).hexdigest()[:12]
+                    card_id = f"card_{digest}"
+                    is_new = True
+                
+                existing = None
+                for c in candidates:
+                    if c.get("card_id") == card_id and c.get("status") == "draft":
+                        existing = c
+                        break
+                
+                candidate_id = existing.get("id") if existing else f"change_{datetime.now().strftime('%Y%m%d')}_{title}_{str(uuid.uuid4())[:8]}"
+                
+                cand_record = {
+                    "id": candidate_id,
+                    "candidate_type": "new_card" if is_new else "revision",
+                    "card_id": card_id,
+                    "card_title": title,
+                    "category": category,
+                    "status": "draft",
+                    "request": design_goal or "网页编辑器修改",
+                    "design_goal": design_goal,
+                    "ai_position": "support",
+                    "rationale": "网页编辑器暂存修改",
+                    "proposed_fields": fields,
+                    "proposed_abilities": abilities,
+                    "created_at": datetime.now().strftime("%Y-%m-%d")
+                }
+                
+                if existing:
+                    candidates[candidates.index(existing)] = cand_record
+                else:
+                    candidates.append(cand_record)
+                
+                print(f"[editor] Successfully staged card draft change: {candidate_id}")
+                
+            elif target_id is not None:
+                # DOCUMENT CHANGE CANDIDATE
+                content = data.get("content")
+                
+                existing = None
+                for c in candidates:
+                    if c.get("target_id") == target_id and c.get("status") == "draft":
+                        existing = c
+                        break
+                        
+                candidate_id = existing.get("id") if existing else f"change_{datetime.now().strftime('%Y%m%d')}_doc_{target_id}_{str(uuid.uuid4())[:8]}"
+                
+                cand_record = {
+                    "id": candidate_id,
+                    "candidate_type": "rules_text",
+                    "target_id": target_id,
+                    "card_title": title,
+                    "category": "rules_text",
+                    "status": "draft",
+                    "request": design_goal or "网页编辑器修改文献",
+                    "design_goal": design_goal,
+                    "ai_position": "support",
+                    "rationale": "网页编辑器暂存文献修改",
+                    "proposed_full_text": content,
+                    "created_at": datetime.now().strftime("%Y-%m-%d")
+                }
+                
+                if existing:
+                    candidates[candidates.index(existing)] = cand_record
+                else:
+                    candidates.append(cand_record)
+                
+                print(f"[editor] Successfully staged document draft change: {candidate_id}")
+            else:
+                self.send_error_json("无效的暂存请求", HTTPStatus.BAD_REQUEST)
+                return
+                
+            candidates_data["candidates"] = candidates
+            CHANGE_CANDIDATES_PATH.parent.mkdir(parents=True, exist_ok=True)
+            CHANGE_CANDIDATES_PATH.write_text(json.dumps(candidates_data, ensure_ascii=False, indent=2), encoding="utf-8")
+            
+            self.generate_pending_changes_report(candidates)
+            
+            self.send_json({"success": True, "card_id": card_id if card_id else None, "target_id": target_id if target_id else None})
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            self.send_error_json(f"暂存修改失败: {str(e)}", HTTPStatus.INTERNAL_SERVER_ERROR)
+
+    def generate_pending_changes_report(self, candidates: list[dict]) -> None:
+        try:
+            from datetime import datetime
+            report_path = ROOT / "data" / "review" / "pending_changes.md"
+            report_path.parent.mkdir(parents=True, exist_ok=True)
+            
+            drafts = [c for c in candidates if c.get("status") == "draft"]
+            if not drafts:
+                report_path.write_text("# 暂存待审修改清单 (Staged Changes)\n\n当前没有暂存的草稿修改。\n", encoding="utf-8")
+                return
+                
+            md_lines = []
+            md_lines.append("# 暂存待审修改清单 (Staged Changes)")
+            md_lines.append(f"生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} (仅暂存，未合并入源数据)")
+            md_lines.append("\n请与 AI 确认以下修改，无误后由 AI 执行应用脚本合并入源数据库。\n")
+            
+            card_drafts = [c for c in drafts if c.get("candidate_type") in ["new_card", "revision"]]
+            doc_drafts = [c for c in drafts if c.get("candidate_type") == "rules_text"]
+            
+            if card_drafts:
+                md_lines.append("## 1. 卡牌修改草稿\n")
+                for c in card_drafts:
+                    card_id = c.get("card_id")
+                    title = c.get("card_title")
+                    cat = c.get("category")
+                    req_desc = c.get("request", "")
+                    
+                    md_lines.append(f"### 🎴 卡牌：《{title}》 (ID: `{card_id}`, 分类: `{cat}`)")
+                    md_lines.append(f"* **设计目标/理由**: {req_desc}")
+                    
+                    orig = None
+                    orig_abilities = []
+                    if DB_PATH.exists():
+                        try:
+                            with connect() as conn:
+                                row = conn.execute("SELECT * FROM cards WHERE id = ?", (card_id,)).fetchone()
+                                if row:
+                                    orig = dict(row)
+                                    ability_rows = conn.execute("SELECT * FROM card_abilities WHERE card_id = ? ORDER BY ordinal", (card_id,)).fetchall()
+                                    orig_abilities = [dict(a) for a in ability_rows]
+                        except Exception:
+                            pass
+                            
+                    md_lines.append("\n| 字段/属性 | 线上/源版本 | 暂存草稿版本 | 变更状态 |")
+                    md_lines.append("| --- | --- | --- | --- |")
+                    
+                    proposed_fields = c.get("proposed_fields", {})
+                    field_labels = {
+                        "life": "生命值 (Life)",
+                        "identity": "身份 (Identity)",
+                        "weapons": "武器 (Weapons)",
+                        "source_work": "出处 (Source Work)",
+                        "author_group": "作者 (Author Group)",
+                        "gender": "性别 (Gender)",
+                        "relationships": "关系 (Relationships)",
+                        "description": "卡面描述 (Description)",
+                        "item_category": "物品类别 (Item Category)",
+                        "traits": "物品特性 (Traits)"
+                    }
+                    
+                    if not orig:
+                        md_lines.append(f"| **状态** | *(不存在此卡)* | **新建卡牌** | 🆕 新建 |")
+                        for k, v in proposed_fields.items():
+                            label = field_labels.get(k, k)
+                            val_str = str(v).replace("\n", " ")
+                            md_lines.append(f"| {label} | — | {val_str} | ➕ 新增 |")
+                    else:
+                        for k, label in field_labels.items():
+                            new_val = proposed_fields.get(k)
+                            old_val = orig.get(k)
+                            if k == "description" and not old_val:
+                                old_val = orig.get("description")
+                            
+                            new_clean = str(new_val).strip() if new_val is not None else ""
+                            old_clean = str(old_val).strip() if old_val is not None else ""
+                            
+                            if new_clean != old_clean:
+                                old_display = old_clean.replace("\n", "<br>") or "—"
+                                new_display = new_clean.replace("\n", "<br>") or "—"
+                                md_lines.append(f"| {label} | {old_display} | {new_display} | 📝 修改 |")
+                                
+                    proposed_abilities = c.get("proposed_abilities", [])
+                    if proposed_abilities or orig_abilities:
+                        old_ab_list = [f"[{a.get('kind')}] {a.get('name')}: {a.get('text') or a.get('description', '')}" for a in orig_abilities]
+                        new_ab_list = [f"[{a.get('kind')}] {a.get('name')}: {a.get('text')}" for a in proposed_abilities]
+                        
+                        if old_ab_list != new_ab_list:
+                            old_ab_str = "<br>".join(old_ab_list) or "—"
+                            new_ab_str = "<br>".join(new_ab_list) or "—"
+                            md_lines.append(f"| 结构化特技列表 | {old_ab_str} | {new_ab_str} | ⚙️ 结构修改 |")
+                            
+                    md_lines.append("\n---\n")
+                    
+            if doc_drafts:
+                md_lines.append("## 2. 规则文献修改草稿\n")
+                for c in doc_drafts:
+                    target_id = c.get("target_id")
+                    title = c.get("card_title")
+                    
+                    md_lines.append(f"### 📖 文献：《{title}》 (ID: `{target_id}`)")
+                    md_lines.append(f"* **修改说明**: 暂存大段正文修改。")
+                    md_lines.append("\n*由于文献内容较长，建议使用 Git 差异工具或在编辑器中对比原文和草稿。*\n")
+                    md_lines.append("\n---\n")
+                    
+            report_path.write_text("\n".join(md_lines), encoding="utf-8")
+            print(f"[editor] Generated pending changes markdown report at: {report_path}")
+        except Exception as e:
+            print(f"[editor] Failed to generate pending changes report: {e}")
 
     def handle_meta(self) -> None:
         with connect() as conn:

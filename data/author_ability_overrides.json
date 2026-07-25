@@ -1407,7 +1407,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 1
       },
       "set": {
@@ -1428,7 +1428,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 2
       },
       "set": {
@@ -1449,7 +1449,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 3
       },
       "set": {
@@ -1470,7 +1470,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 4
       },
       "set": {
@@ -1491,7 +1491,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 5
       },
       "set": {
@@ -1514,7 +1514,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 6
       },
       "set": {
@@ -1535,7 +1535,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 7
       },
       "set": {
@@ -1558,7 +1558,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 8
       },
       "set": {
@@ -1579,7 +1579,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 9
       },
       "set": {
@@ -1600,7 +1600,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 10
       },
       "set": {
@@ -1621,7 +1621,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 11
       },
       "set": {
@@ -1642,7 +1642,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 12
       },
       "set": {
@@ -1665,7 +1665,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 13
       },
       "set": {
@@ -1686,7 +1686,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 14
       },
       "set": {
@@ -1707,7 +1707,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 15
       },
       "set": {
@@ -1729,7 +1729,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 576,
+        "source_row": 419,
         "ordinal": 16
       },
       "set": {
@@ -1751,7 +1751,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 577,
+        "source_row": 420,
         "ordinal": 1
       },
       "set": {
@@ -1769,7 +1769,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 577,
+        "source_row": 420,
         "ordinal": 2
       },
       "set": {
@@ -1790,7 +1790,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 577,
+        "source_row": 420,
         "ordinal": 3
       },
       "set": {
@@ -1811,7 +1811,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 577,
+        "source_row": 420,
         "ordinal": 4
       },
       "set": {
@@ -1832,7 +1832,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 577,
+        "source_row": 420,
         "ordinal": 5
       },
       "set": {
@@ -1853,7 +1853,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 577,
+        "source_row": 420,
         "ordinal": 6
       },
       "set": {
@@ -2086,7 +2086,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 579,
+        "source_row": 422,
         "ordinal": 1
       },
       "set": {
@@ -2111,7 +2111,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 579,
+        "source_row": 422,
         "ordinal": 2
       },
       "set": {
@@ -2133,7 +2133,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 579,
+        "source_row": 422,
         "ordinal": 3
       },
       "set": {
@@ -2156,7 +2156,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 580,
+        "source_row": 423,
         "ordinal": 4
       },
       "set": {
@@ -2170,7 +2170,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 580,
+        "source_row": 423,
         "ordinal": 5
       },
       "set": {
@@ -2184,7 +2184,7 @@
     {
       "match": {
         "source_sheet": "战斗人物",
-        "source_row": 581,
+        "source_row": 424,
         "ordinal": 5
       },
       "set": {

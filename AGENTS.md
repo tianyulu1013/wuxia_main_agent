@@ -87,6 +87,7 @@
 
 - `docs/skills/wuxia-project-handoff.md`
 - `docs/skills/wuxia-source-policy.md`
+- `docs/skills/wuxia-database-architecture.md`
 - `docs/skills/wuxia-data-query.md`
 - `docs/skills/wuxia-card-review.md`
 - `docs/change-candidate-framework.md`

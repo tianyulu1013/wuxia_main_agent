@@ -14,8 +14,9 @@ description: Global workflow and data-layer guide for 五行卡牌. Use at the s
 
 ## 数据层
 
-- 源数据：`data/cards.sqlite`、`data/cards_current/*.jsonl`
-- 作者结构覆盖：`data/card_unit_overrides.json`、`data/card_field_overrides.json`、`data/author_ability_overrides.json`
+- 结构化源数据（唯一可信源）：`data/cards_current/*.jsonl`
+- 编译输出数据库：`data/cards.sqlite`
+- 自动同步回填 Excel 镜像：`outputs/.../已制作_2025日志同步候选_PSD校准.xlsx`
 - 改卡候选：`data/change_candidates.json`
 - 单卡完整评审：`data/review/card_evaluations.json`、`data/review/card_notes/`
 - 单卡理解：`data/review/card_understanding_notes.json`
@@ -23,6 +24,7 @@ description: Global workflow and data-layer guide for 五行卡牌. Use at the s
 - 玩家动态：`data/review/player_dynamics.json`
 - 比较案例与锚点：`docs/ai-understanding/cases/`、`data/review/card_calibration_anchors.json`
 - AI理解入口：`docs/ai-understanding/README.md`
+- 数据源与编译架构技能书：`docs/skills/wuxia-database-architecture.md`
 
 `data/card_reviews.json`和旧轮次AI评审属于历史兼容材料，不是新评审默认写入目标。
 
