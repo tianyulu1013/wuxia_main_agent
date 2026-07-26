@@ -9,6 +9,7 @@
 1. 始终读取：
    - `core/game-flow.md`
    - `core/combat-baseline.md`
+   - `parser-guide.md` (用于指导卡面缺省翻译与模糊度审计)
 2. 根据卡牌类别，只读取一个类别模块：
    - 战斗人物：`evaluation/card-types/combat-character.md`
    - 附加人物：`evaluation/card-types/attached-character.md`

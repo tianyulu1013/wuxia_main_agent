@@ -13,48 +13,37 @@ description: Guides the agent on how to retrieve and understand 五行卡牌 rul
 
 - `docs/ai-understanding/core/game-flow.md`
 - `docs/ai-understanding/core/combat-baseline.md`
+- `docs/ai-understanding/parser-guide.md`
 
-这两份文件是默认游戏流程与基础战斗的最小常驻核心。`docs/rulebook-confirmed-rulings.md`不再作为每次整份必读入口。
+这三份文件是默认游戏流程、基础战斗及卡面翻译常识的最小常驻核心。AI 在评审卡牌时，**必须基于 `parser-guide.md` 的规范在评审报告中增设“模糊表述与修改建议”专项栏目**。`docs/rulebook-confirmed-rulings.md` 不再作为默认必读入口。
 
-## 2. 卡牌类别路由
+## 2. 卡牌类别与主要功能路由
 
-只读取当前卡牌对应的一个类别模块：
+1. **选择评估方法 (evaluation/)**：根据卡牌类别和功能，只读取一个专门的评估指南：
+   * 正面比拼战斗人物：`docs/ai-understanding/evaluation/frontal-combat.md` (包含白人期望计算及王重阳案例锚点)。
+   * 全局影响/场景人物：`docs/ai-understanding/evaluation/global-effects.md` (包含时空、结盟避让、规则改写评估)。
+   * 辅助随从/物品/称号：`docs/ai-understanding/evaluation/support-and-items.md` (评估直接入局白嫖空间)。
+2. **选择专项规则 (rules/)**：根据牌面关键词，通过 `docs/ai-understanding/rules/README.md` 路由，定向只读取发生关联的机制文件，**绝对禁止**加载整份规则书：
+   * 出现 兵器/双持/博 等：读取 `docs/ai-understanding/rules/weapons.md`（多兵器互斥及复制虚拟持有规则）。
+   * 出现 优先级/抢先/无法响应/嵌套 等：读取 `docs/ai-understanding/rules/resolution-priority.md`（12层特技优先级级联与嵌套禁止）。
+   * 出现 冰狂混乱惊毒迟封等13种异常/解/转/出血 等：读取 `docs/ai-understanding/rules/status-effects.md`（三级异常判定与非异常结算）。
+   * 出现 在场/不在场/找不到/无此人/破空 等：读取 `docs/ai-understanding/rules/space-states.md`（定位修饰与放逐空间）。
 
-- 战斗人物：`docs/ai-understanding/evaluation/card-types/combat-character.md`
-- 附加人物：`docs/ai-understanding/evaluation/card-types/attached-character.md`
-- 物品：`docs/ai-understanding/evaluation/card-types/item.md`
-- 称号：`docs/ai-understanding/evaluation/card-types/title.md`
-- 场景：`docs/ai-understanding/evaluation/card-types/scene.md`
+## 3. 术语与案例独立隔离
 
-只有战斗人物竞争两张人物名额。附加人物、物品和称号摸到后直接进入本局；场景定义整局环境，不做普通强度评分。
+* **术语层只定名不写逻辑**：`data/review/rule_terms.json` 仅作为特殊词义的权威字词解释（用于前端高亮与词义检索），**禁止**在术语层记录庞杂的结算流程、期望计算或防脑补限制。
+* **单卡案例锚点归档**：具体卡牌的完整数值推导、公式演算及不可迁移边界归于 `docs/ai-understanding/cases/`，不与通用规则混合。
+* **作者裁定**：读取本卡的单独笔记 `data/review/card_notes/<卡名>.md` 或者是 `data/card_unit_overrides.json` 等级联卡牌。
 
-## 3. 战斗人物功能路由
+## 4. 新反馈归档原则
 
-只有战斗人物继续读取`docs/ai-understanding/evaluation/functions/README.md`，判断主要功能和次要功能，再加载相关的小模块。
+当作者对卡牌或规则给出口头裁定/修正后，AI 必须严格按下述分类逻辑进行增量归档：
+* 若属于基础流程或通用结算：更新 `rules/` 下对应的机制小文件。
+* 若属于纯词条释义：更新术语字典 `rule_terms.json`。
+* 若属于某项功能的打分准则：更新 `evaluation/` 下的评估方法小文件。
+* 若属于具体某张卡的计算：更新 `cases/` 或单卡理解笔记。
 
-主要功能决定评价权重和横向案例。不得用正面输出直接判定辅助型、调度型或全局影响型人物的整卡强弱。
-
-## 4. 专项规则、术语与案例
-
-- 根据牌面关键词，通过`docs/ai-understanding/rules/README.md`只读取实际涉及的局部规则。
-- `data/review/rule_terms.json`只在牌面出现特殊术语时定向查询对应条目。基础战斗、评价方法和具体人物计算不属于术语。
-- `docs/ai-understanding/cases/`只加载同类别、同主要功能、同关键机制的少量案例。
-- 本卡作者裁定和理解读取`data/review/card_understanding_notes.json`及对应单卡笔记。
-- 玩家意愿和桌面心理读取`data/review/player_dynamics.json`，但不能当作自动规则。
-
-禁止为了保险读取完整规则书、全部术语、全部案例或全部历史评审。
-
-## 5. 新裁定归档
-
-作者纠正后按内容归档：
-
-- 普遍游戏流程或结算：核心规则或专项规则模块。
-- 特殊词语的精确定义：术语层。
-- 如何评价某类卡或某项功能：评价模块。
-- 某张卡的完整推导：案例库与单卡理解。
-- 玩家选择和桌面心理：玩家动态。
-
-不得把所有作者反馈一律写入术语层。
+禁止为了“省事”或“安全”将一切反馈无脑塞进术语表中，以维持整个规则树的立体与轻量。
 
 ## 6. 语言规范：内部英文推导，输出全中文规则
 

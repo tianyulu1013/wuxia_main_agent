@@ -1049,6 +1049,9 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
         if parsed.path == "/api/change-candidates":
             self.handle_change_candidates()
             return
+        if parsed.path == "/api/glossary":
+            self.handle_glossary()
+            return
         if parsed.path.startswith("/api/card-image/"):
             self.handle_card_image(unquote(parsed.path.removeprefix("/api/card-image/")))
             return
@@ -1078,6 +1081,13 @@ class CardBrowserHandler(SimpleHTTPRequestHandler):
                 candidates_data = {"candidates": []}
             drafts = [c for c in candidates_data.get("candidates", []) if c.get("status") == "draft"]
             self.send_json({"candidates": drafts})
+        except Exception as e:
+            self.send_error_json(str(e), HTTPStatus.INTERNAL_SERVER_ERROR)
+
+    def handle_glossary(self) -> None:
+        try:
+            terms_data = load_json_file(ROOT / "data" / "review" / "rule_terms.json", {"terms": []})
+            self.send_json(terms_data)
         except Exception as e:
             self.send_error_json(str(e), HTTPStatus.INTERNAL_SERVER_ERROR)
 

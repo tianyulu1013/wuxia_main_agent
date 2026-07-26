@@ -1497,6 +1497,10 @@ function renderDocumentDetail(doc, query = "") {
   `;
   bindDocumentDetailEvents();
   if (query) window.setTimeout(() => jumpDocumentMatch(0), 0);
+  
+  if (window.Glossary && window.Glossary.isReady()) {
+    window.Glossary.apply(els.detail);
+  }
 }
 
 async function loadDocument(id) {
@@ -2046,6 +2050,10 @@ function renderCardDetail() {
     ${renderMaintenanceTodos(card.maintenance_todos)}
     ${renderChangeCandidates(card.change_candidates)}
   `;
+
+  if (window.Glossary && window.Glossary.isReady()) {
+    window.Glossary.apply(els.detail);
+  }
 }
 
 function renderEvaluationDimension(key, dimension) {

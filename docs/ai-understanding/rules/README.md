@@ -6,17 +6,15 @@
 
 | 牌面内容 | 定向读取 |
 |---|---|
+| 兵器、武器、刀、剑、拳掌、双持、博 | `weapons.md` |
+| 结算顺序、优先级、抢先、无法响应、嵌套 | `resolution-priority.md` |
+| 冰、狂、混、乱、毒、麻、迟、点、惊、封、禁咒、异常、解、转、出血 | `status-effects.md` |
+| 在场、不在场、破空、找不到、无此人 | `space-states.md` |
+| 结盟、阵营、本方、敌方、队友、从属、称号关系 | `alliance-faction.md` |
 | 攻击、伤害、受伤、减伤、反伤 | `attack-damage-and-injury.md` |
 | 相关、不相关、派出、派遣、借出、召回 | `related-response-and-dispatch.md` |
 | 未注明时点的回合中攻击或一击 | `default-late-timing.md` |
-| 人物、卡、多人一卡、共同特技、计人数 | `docs/skills/wuxia-multi-unit.md`，以及 `docs/rulebook-refactored.md` 对应人物容器章节 |
-| 伤害、生命流失、杀死、生命为0、复活 | `docs/rulebook-refactored.md` 的生命与防御相关章节 |
-| 死亡、离场、不在场、找不到、破空、清除 | `docs/rulebook-refactored.md` 的时空、存在状态和死亡章节 |
-| 回合、轮、转轮、战斗嵌套 | `docs/rulebook-refactored.md` 的时间和战斗章节 |
-| 结盟、阵营、名次、围攻、玩家顺序 | `docs/rulebook-refactored.md` 的玩家、阵营和胜负章节 |
-| 抢先、无法响应、不中、无效 | `docs/rulebook-refactored.md` 的结算顺序与优先级章节 |
-| 学会、复制、模拟、完美学会等特殊词 | `data/review/rule_terms.json` 中对应术语，不读取全部术语 |
-| 删字、改字、改数字、只剩某行 | `docs/rulebook-refactored.md` 的人工裁定与FAQ |
+| 学会、复制、模拟、完美学会等特殊词 | 定向查询 `data/review/rule_terms.json` 中对应术语，不读取全部术语 |
 
 ## 模块迁移原则
 
