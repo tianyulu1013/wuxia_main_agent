@@ -1,0 +1,112 @@
+{
+  "_schema": {
+    "version": 1,
+    "purpose": "全局影响力横向锚点。影响强度与净收益稳定性分账，不与正面或侧面伤害重复计分。",
+    "dimensions": [
+      "allied_support",
+      "enemy_suppression",
+      "board_control",
+      "coverage",
+      "persistence",
+      "reliability",
+      "net_value"
+    ],
+    "tiers": [
+      "较弱",
+      "一般",
+      "较强",
+      "强",
+      "极强"
+    ],
+    "scoring_policy": "当前先用作者校准分档和物理证据，不建立伪精确百分制。"
+  },
+  "author_calibration": "前边凤三一灯俞佩玉的全局影响力明显较强，王重阳一般，邀月怜星较弱。；燕南天全局影响一般，【恶】约70余名，相对五百余张全库覆盖有限。",
+  "entries": {
+    "凤三": {
+      "tier": "强，接近极强",
+      "allied_support": "阵营人物输出至少比本人上次实际输出高100，无法补足时转为差额生命流失。",
+      "enemy_suppression": "敌方输出未严格递增时，本回合攻击与不利效果全部无效。",
+      "board_control": "跨回合记录、阵营级输出规则和悖论终止规则持续改写多场战斗。",
+      "coverage": "阵营级相关对阵",
+      "persistence": "本局持续、被动自动",
+      "reliability": "规则覆盖稳定，具体收益依历史输出",
+      "net_value": "明显偏向凤三阵营"
+    },
+    "王重阳": {
+      "tier": "一般",
+      "allied_support": "可通过华山论剑调度各方人物与物品归属。",
+      "enemy_suppression": "抽走基础牌可破坏组合，但只影响具体战斗后的目标。",
+      "board_control": "指定参赛人物、顺序和多物品论剑事件。",
+      "coverage": "多方事件",
+      "persistence": "按物品反复发动，每件一次",
+      "reliability": "依赖物品、真实战斗与赛果",
+      "net_value": "王重阳必须参赛，收益和损耗并存"
+    },
+    "邀月": {
+      "tier": "较弱",
+      "allied_support": "已有碧血照丹青处于可转交状态时可给与一人。",
+      "enemy_suppression": "主要通过自身反射和回滚处理当前敌人。",
+      "board_control": "没有持续阵营强化、关系改写或全场规则覆盖。",
+      "coverage": "主要局限于自身战斗",
+      "persistence": "外部贡献条件式",
+      "reliability": "依赖受击或已有物品",
+      "net_value": "整卡强度高，但外部净贡献有限"
+    },
+    "怜星": {
+      "tier": "较弱",
+      "allied_support": "正常战斗回合发动怜星宫主时可间接保护其他目标。",
+      "enemy_suppression": "一次性令敌方整回合攻击与效果自击。",
+      "board_control": "单次事件改写很深，但不持续。",
+      "coverage": "围绕怜星所在战斗",
+      "persistence": "整局一次；侧面仅单次",
+      "reliability": "反应式，要求敌方事件涉及怜星",
+      "net_value": "发动同时撤销怜星本回合全部对敌输出"
+    },
+    "俞佩玉": {
+      "tier": "强",
+      "allied_support": "温柔敦厚可在场上场下无限次恢复任意多项特技的可控性。",
+      "enemy_suppression": "可选择性让敌方可控技继续被阎王债强制发动。",
+      "board_control": "阎王债改写全场发动许可与时机。",
+      "coverage": "全场",
+      "persistence": "取得后持续；温柔敦厚可反复修正",
+      "reliability": "需假身份先死亡重生一次",
+      "net_value": "影响强，但同时波及己方，阵容依赖明显"
+    },
+    "一灯": {
+      "tier": "强",
+      "allied_support": "可循环把一名活人完整恢复初始状态。",
+      "enemy_suppression": "点化可把当前敌方人物变为弟子并改变关系。",
+      "board_control": "弟子顺位与结盟持续本局，可能扩展到该方。",
+      "coverage": "单人物直接作用，关系可能扩展至整方",
+      "persistence": "恢复可刷新循环；结盟持续本局",
+      "reliability": "恢复可控；点化要求正好三相克",
+      "net_value": "恢复会清除有利累积并暂时封锁一灯攻击与治疗"
+    },
+    "燕南天": {
+      "tier": "一般",
+      "allied_support": "没有直接治疗、强化或调度；迫使【恶】回避可能把攻击转移给其他人物。",
+      "enemy_suppression": "约70余名【恶】受即时贪心回避约束，邀月例外。",
+      "board_control": "可迫使【恶】改变当前选战或使用袭击类特技另找目标。",
+      "coverage": "约70余名【恶】，相对于五百余张全库覆盖有限",
+      "persistence": "身份描述持续存在",
+      "reliability": "对符合身份者强制即时贪心，但不进行长期计算",
+      "net_value": "稳定保护燕南天本人，但可能只是把攻击压力转移给队友"
+    },
+    "叶开": {
+      "tier": "强",
+      "allied_support": "在场即可撤销非【恶】他人的一次致死事件。",
+      "enemy_suppression": "后发先至取消一次特技，且可附带0或1000可防御伤害。",
+      "board_control": "跨战斗改写人物死亡和关键特技结算。",
+      "coverage": "叶开在场时的全部合格事件；不要求参战",
+      "persistence": "库存跨回合积累；不在场时不能使用",
+      "reliability": "打断本身可靠，实际频率依事件与资源策略",
+      "net_value": "可救友亦可救敌，不能保护【恶】；没有顺位约束",
+      "first_entry_current_combat_expectation": 2680,
+      "first_entry_total_capacity_expectation": 2960,
+      "later_entry_current_combat_expectation": 1680,
+      "later_entry_total_capacity_expectation": 1960,
+      "career_current_output_formula": "1680+1000/T",
+      "career_total_capacity_formula": "1960+1000/T"
+    }
+  }
+}

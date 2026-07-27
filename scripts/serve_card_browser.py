@@ -17,6 +17,8 @@ UNIT_OVERRIDES_PATH = ROOT / "data" / "card_unit_overrides.json"
 CARD_REVIEWS_PATH = ROOT / "data" / "card_reviews.json"
 CARD_UNDERSTANDING_NOTES_PATH = ROOT / "data" / "review" / "card_understanding_notes.json"
 CARD_EVALUATIONS_PATH = ROOT / "data" / "review" / "card_evaluations.json"
+CARD_REVIEW_ROOT = ROOT / "data" / "review" / "cards"
+COMBAT_BASELINES_PATH = ROOT / "data" / "review" / "combat_baselines.json"
 CARD_MAINTENANCE_TODOS_PATH = ROOT / "data" / "review" / "card_maintenance_todos.json"
 CHANGE_CANDIDATES_PATH = ROOT / "data" / "change_candidates.json"
 STRUCTURE_NOTES_PATH = ROOT / "data" / "card_structure_notes.json"
@@ -55,6 +57,18 @@ def load_card_history() -> None:
 CARD_IMAGE_INDEX: dict[str, Path] | None = None
 CARD_IMAGE_INDEX_SIGNATURE: tuple[int, int] | None = None
 SITE_DOCUMENT_PAYLOAD_CACHE: dict[str, tuple[tuple[str, float, int], dict[str, object]]] = {}
+
+EVALUATION_DETAIL_FILES = [
+    ("mechanics", "规则语义", "mechanics.md"),
+    ("front_output", "正面输出与计算", "front-output.md"),
+    ("side_output", "侧面目标与场下输出", "side-output.md"),
+    ("front_survival", "正面生存", "front-survival.md"),
+    ("side_survival", "侧面生存", "side-survival.md"),
+    ("global_influence", "全局影响力", "global-influence.md"),
+    ("gameplay_and_comparison", "玩法、反证与横向比较", "gameplay-and-comparison.md"),
+    ("risks", "规则与电子化风险", "risks.md"),
+    ("author_calibration", "作者校准原问原答", "author-calibration.md"),
+]
 
 
 CATEGORY_LABELS = {
@@ -544,10 +558,17 @@ def evaluation_summary(entry: dict[str, object]) -> dict[str, object]:
     digital_risk = find_markdown_section(sections, "电子化风险")
     if not digital_risk:
         digital_risk = str(entry.get("electronic_risk") or "")
+    front_output = str(entry.get("damage_output") or "")
+    side_output = str(entry.get("lateral_output") or "")
+    global_influence = entry.get("global_influence")
+    if not isinstance(global_influence, dict):
+        global_influence = {}
     coverage = {
         "core_positioning": bool(core), "overall": bool(overall), "front_survival": bool(front),
         "side_survival": bool(side), "pros": bool(pros), "cons": bool(cons),
         "questions": bool(questions_text), "rules_risk": bool(rules_risk), "digital_risk": bool(digital_risk),
+        "front_output": bool(front_output), "side_output": bool(side_output),
+        "global_influence": bool(global_influence),
     }
     front_score = evaluation_section_score(front, full_text, "正面生存")
     side_score = evaluation_section_score(side, full_text, "侧面生存")
@@ -562,6 +583,12 @@ def evaluation_summary(entry: dict[str, object]) -> dict[str, object]:
             "front": {"score": front_score, "summary": front},
             "side": {"score": side_score, "summary": side},
         },
+        "output": {
+            "front_target": front_output,
+            "side_target": side_output,
+            "off_field": "",
+        },
+        "global_influence": global_influence,
         "pros": pros,
         "cons": cons,
         "questions": questions,
@@ -605,6 +632,125 @@ def normalized_evaluation_entries() -> list[dict[str, object]]:
     return normalized
 
 
+def evaluation_entry_priority(entry: dict[str, object]) -> tuple[int, int, int, int]:
+    """Prefer current per-card refined reviews, then the best single legacy fallback."""
+    refined = int(bool(str(entry.get("review_directory") or "").strip()))
+    status_priority = {
+        "author_reviewed": 3,
+        "ai_draft": 2,
+        "ai_unreviewed": 1,
+        "unreviewed": 0,
+    }.get(str(entry.get("status") or ""), 0)
+    try:
+        entry_number = int(entry.get("entry_number") or 0)
+    except (TypeError, ValueError):
+        entry_number = 0
+    try:
+        batch = int(entry.get("batch") or 0)
+    except (TypeError, ValueError):
+        batch = 0
+    return refined, status_priority, entry_number, batch
+
+
+def preferred_evaluation_entry(entries: list[dict[str, object]]) -> dict[str, object] | None:
+    candidates = [entry for entry in entries if isinstance(entry, dict)]
+    if not candidates:
+        return None
+    return max(candidates, key=evaluation_entry_priority)
+
+
+def evaluation_detail_sections(entry: dict[str, object]) -> list[dict[str, str]]:
+    relative_folder = str(entry.get("review_directory") or "").strip()
+    if not relative_folder:
+        return []
+    folder = (ROOT / relative_folder).resolve()
+    review_root = CARD_REVIEW_ROOT.resolve()
+    if folder != review_root and review_root not in folder.parents:
+        return []
+    sections: list[dict[str, str]] = []
+    for key, label, filename in EVALUATION_DETAIL_FILES:
+        path = folder / filename
+        if not path.is_file():
+            continue
+        sections.append({
+            "key": key,
+            "label": label,
+            "path": str(path.relative_to(ROOT)).replace("\\", "/"),
+            "content": path.read_text(encoding="utf-8"),
+        })
+    return sections
+
+
+def evaluation_statistics(entry: dict[str, object]) -> dict[str, object]:
+    """Return explicit measured models only; unknown statistics stay unset."""
+    title = str(entry.get("card_title") or "")
+    data = load_json_file(COMBAT_BASELINES_PATH, {})
+    entries = data.get("entries", {}) if isinstance(data, dict) else {}
+    baseline = entries.get(title, {}) if isinstance(entries, dict) else {}
+    if not isinstance(baseline, dict):
+        baseline = {}
+
+    def output_models(key: str) -> list[dict[str, object]]:
+        raw_models = baseline.get(key, [])
+        if not isinstance(raw_models, list):
+            return []
+        models: list[dict[str, object]] = []
+        for raw in raw_models:
+            if not isinstance(raw, dict):
+                continue
+            expectation = raw.get("expectation")
+            if expectation is None:
+                expectation = raw.get("expectation_per_target")
+            variance = raw.get("variance")
+            if variance is None:
+                variance = raw.get("variance_per_target")
+            standard_deviation = raw.get("standard_deviation")
+            if standard_deviation is None:
+                standard_deviation = raw.get("standard_deviation_per_target")
+            if standard_deviation is None and isinstance(variance, (int, float)) and variance >= 0:
+                standard_deviation = round(variance ** 0.5, 2)
+            value_range = raw.get("range")
+            if value_range is None:
+                value_range = raw.get("range_per_target")
+            models.append({
+                "id": raw.get("id"),
+                "topline": bool(raw.get("topline")),
+                "label": raw.get("label") or raw.get("id"),
+                "scope": raw.get("scope") or raw.get("reason"),
+                "expectation": expectation,
+                "variance": variance,
+                "standard_deviation": standard_deviation,
+                "coefficient_of_variation": raw.get("coefficient_of_variation")
+                if raw.get("coefficient_of_variation") is not None
+                else raw.get("coefficient_of_variation_per_target"),
+                "range": value_range,
+                "penetration_expected_amount": raw.get("penetration_expected_amount"),
+                "penetration_fraction": raw.get("penetration_fraction"),
+            })
+        return models
+
+    def survival(key: str) -> dict[str, object]:
+        raw = baseline.get(key, {})
+        if not isinstance(raw, dict):
+            return {}
+        return {
+            "life": raw.get("life"),
+            "single_turn_survival_probability": raw.get("topline_single_turn_survival_probability"),
+            "expected_turns": raw.get("topline_expected_turns"),
+        }
+
+    return {
+        "source": "combat_baselines" if baseline else "pending",
+        "front_output_models": output_models("front_output_models"),
+        "side_output_models": output_models("lateral_output_models"),
+        "off_field_output_models": output_models("off_field_output_models"),
+        "front_survival": survival("front_survival"),
+        "side_survival": survival("side_survival"),
+        "global_influence": baseline.get("global_influence", {})
+        if isinstance(baseline.get("global_influence"), dict) else {},
+    }
+
+
 def evaluation_search_payload(params: dict[str, str]) -> dict[str, object]:
     q = params.get("q", "").strip().lower()
     scope = params.get("scope", "all")
@@ -619,7 +765,7 @@ def evaluation_search_payload(params: dict[str, str]) -> dict[str, object]:
     latest: dict[str, dict[str, object]] = {}
     for entry in entries:
         title = str(entry.get("card_title") or "")
-        if title not in latest or int(entry.get("entry_number") or 0) > int(latest[title].get("entry_number") or 0):
+        if title not in latest or evaluation_entry_priority(entry) > evaluation_entry_priority(latest[title]):
             latest[title] = entry
     filtered: list[dict[str, object]] = []
     for entry in latest.values():
@@ -631,12 +777,16 @@ def evaluation_search_payload(params: dict[str, str]) -> dict[str, object]:
             continue
         summary = entry.get("summary", {}) if isinstance(entry.get("summary"), dict) else {}
         survival = summary.get("survival", {}) if isinstance(summary.get("survival"), dict) else {}
+        output = summary.get("output", {}) if isinstance(summary.get("output"), dict) else {}
+        global_influence = summary.get("global_influence", {}) if isinstance(summary.get("global_influence"), dict) else {}
         risks = summary.get("risks", {}) if isinstance(summary.get("risks"), dict) else {}
         questions = summary.get("questions", []) if isinstance(summary.get("questions"), list) else []
         fields = {
             "title": str(entry.get("card_title") or ""),
             "positioning": str(summary.get("core_positioning") or "") + "\n" + str(summary.get("overall") or ""),
             "survival": json.dumps(survival, ensure_ascii=False),
+            "side_output": json.dumps(output, ensure_ascii=False),
+            "global_influence": json.dumps(global_influence, ensure_ascii=False),
             "pros": "\n".join(str(item) for item in summary.get("pros", []) if item),
             "cons": "\n".join(str(item) for item in summary.get("cons", []) if item),
             "questions": "\n".join(str(item.get("question") or "") for item in questions if isinstance(item, dict)),
@@ -712,36 +862,28 @@ def card_evaluation_payload(title: object) -> dict[str, object]:
         entry for entry in entries
         if isinstance(entry, dict) and str(entry.get("id")) in entry_id_set
     ] if isinstance(entries, list) else []
-    if not matched:
+    selected = preferred_evaluation_entry(matched)
+    if selected is None:
         return {"status": "unreviewed", "status_label": "未评估", "entries": []}
 
-    if any(entry.get("status") == "author_reviewed" for entry in matched):
-        status = "author_reviewed"
-        status_label = "作者评估"
-    elif any(entry.get("status") == "ai_unreviewed" for entry in matched):
-        status = "ai_unreviewed"
-        status_label = "ai评估"
-    elif any(entry.get("status") == "ai_draft" for entry in matched):
-        status = "ai_draft"
-        status_label = "ai草稿"
-    else:
-        status = "unreviewed"
-        status_label = "未评估"
-
-    for entry in matched:
-        entry["summary"] = evaluation_summary(entry)
-        s = entry.get("status")
-        if s == "author_reviewed":
-            entry["status_label"] = "作者评估"
-        elif s == "ai_unreviewed":
-            entry["status_label"] = "ai评估"
-        elif s == "ai_draft":
-            entry["status_label"] = "ai草稿"
+    entry = dict(selected)
+    entry["summary"] = evaluation_summary(entry)
+    entry["statistics"] = evaluation_statistics(entry)
+    entry["detail_sections"] = evaluation_detail_sections(entry)
+    status = str(entry.get("status") or "unreviewed")
+    status_label = str(entry.get("status_label") or {
+        "author_reviewed": "作者评估",
+        "ai_unreviewed": "ai评估",
+        "ai_draft": "ai草稿",
+        "unreviewed": "未评估",
+    }.get(status, "未评估"))
+    entry["status_label"] = status_label
 
     return {
         "status": status,
         "status_label": status_label,
-        "entries": matched,
+        "selection": "refined" if entry.get("review_directory") else "fallback",
+        "entries": [entry],
     }
 
 

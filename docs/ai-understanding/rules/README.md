@@ -8,10 +8,11 @@
 |---|---|
 | 兵器、武器、刀、剑、拳掌、双持、博 | `weapons.md` |
 | 结算顺序、优先级、抢先、无法响应、嵌套 | `resolution-priority.md` |
-| 冰、狂、混、乱、毒、麻、迟、点、惊、封、禁咒、异常、解、转、出血 | `status-effects.md` |
+| 冰、狂、混、乱、毒、麻、迟、点、惊、封、禁咒、异常、不利、移除不利、解、转、出血 | `status-effects.md` |
 | 在场、不在场、破空、找不到、无此人 | `space-states.md` |
 | 结盟、阵营、本方、敌方、队友、从属、称号关系 | `alliance-faction.md` |
 | 攻击、伤害、受伤、减伤、反伤 | `attack-damage-and-injury.md` |
+| 无敌、不中、防御状态何时生效 | `defensive-states.md` |
 | 相关、不相关、派出、派遣、借出、召回 | `related-response-and-dispatch.md` |
 | 未注明时点的回合中攻击或一击 | `default-late-timing.md` |
 | 学会、复制、模拟、完美学会等特殊词 | 定向查询 `data/review/rule_terms.json` 中对应术语，不读取全部术语 |

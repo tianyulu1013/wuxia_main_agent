@@ -23,6 +23,8 @@ description: Global workflow and data-layer guide for 五行卡牌. Use at the s
 - 特殊术语：`data/review/rule_terms.json`
 - 玩家动态：`data/review/player_dynamics.json`
 - 比较案例与锚点：`docs/ai-understanding/cases/`、`data/review/card_calibration_anchors.json`
+- 战斗人物量化基线：`data/review/combat_baselines.json`（用`scripts/query_combat_baselines.py`按卡名或功能查询）
+- 精评进度：`data/review/calibration_progress.md`（人类可读）与`data/review/calibration_queue.json`（机器可读）
 - AI理解入口：`docs/ai-understanding/README.md`
 - 数据源与编译架构技能书：`docs/skills/wuxia-database-architecture.md`
 
@@ -58,10 +60,15 @@ description: Global workflow and data-layer guide for 五行卡牌. Use at the s
 4. 战斗人物的相关功能模块
 5. 牌面触发的专项规则
 6. 实际出现的特殊术语
-7. 少量同功能案例
-8. 本卡理解与必要玩家动态
+7. 战斗人物先查询白人参考及二至四个同功能量化基线
+8. 少量同功能案例
+9. 本卡理解与必要玩家动态
 
 禁止整份加载全部规则、术语、案例和历史评审。
+
+战斗人物完成作者校准和定量计算后，必须把正面输出、侧面目标输出、场下输出、方差、正面生存和侧面生存同步到`data/review/combat_baselines.json`；无法计算的字段保留`null`并写明原因。这样后续评审以已校准人物为横向基线，不反复从白人或全部旧工作卡起算。
+
+每张卡完成本轮精评后，还要同步`data/review/calibration_queue.json`和`data/review/calibration_progress.md`，明确区分“本轮精评完成但环境回归开放”与“只有旧评语、尚未重新精评”。
 
 ## 中文与文件安全
 

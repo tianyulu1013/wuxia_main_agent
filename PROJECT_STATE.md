@@ -39,7 +39,11 @@
 - `data/card_unit_overrides.json`：多人一卡、unit、特技所属等作者裁定。
 - `data/card_field_overrides.json`：字段修正。
 - `data/author_ability_overrides.json`：特技结构修正。
-- `data/review/card_evaluations.json`、`data/review/card_notes/`：当前完整评审及人类可读单卡笔记。
+- `data/review/cards/<卡名>/`：已精评人物的完整证据目录；`README.md`为总分析，其余文件按输出、生存、全局影响、风险、作者校准等维度拆分。
+- `data/review/cards/index.json`：单卡评价目录的机器可读路由索引。
+- `data/review/card_evaluations.json`：网页使用的结构化摘要；不再承载整篇完整证据。
+- `data/review/card_notes/`：历史兼容入口；已迁移人物只保留指向新目录的导航。
+- `data/review/calibration_progress.md`、`data/review/calibration_queue.json`：本轮逐卡精评的人类可读进度与机器可读状态。
 - `data/card_reviews.json`：历史兼容评语文件，不再作为新评审默认写入目标。
 - `docs/ai-understanding/`：AI内部使用的核心流程、类别、功能、专项规则路由和案例体系。
 - `data/change_candidates.json`：改卡候选。
@@ -128,7 +132,7 @@ Publish directory: .
 1. 规则书整理：读取 `五行卡牌规则.docx`，结合已讨论裁定，重写结构更清楚的规则书。
 2. 查询网页完善：属性字段、更多筛选统计、规则书/剧本书入口、卡面更新流程。
 3. 数据修正：发现卡牌录入或多人一卡所属错误时，直接修正数据库/覆盖层，必要时写入卡面待办。
-4. 评语层建设：人物强度、定位、设计特点、设计风险、电子化风险、攻略，不得写入源数据。
+4. 评语层建设：人物强度、定位、设计特点、设计风险、电子化风险、攻略写入`data/review/cards/<卡名>/`，不得写入源数据。
 5. 新卡评审助手：根据用户自然语言修改意见，生成候选新版文本和更新说明。
 
 ## 新对话建议开场

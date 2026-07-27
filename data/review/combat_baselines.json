@@ -1,0 +1,882 @@
+{
+  "_schema": {
+    "version": 1,
+    "purpose": "已完成当前流程校准的战斗人物横向基线索引。用于评下一张人物时按功能检索少量同类锚点，不代替单卡工作卡和calibrated_stats.json中的完整计算。",
+    "authority": "只登记按现行流程重新核验的模型；旧AI评分和旧批次不得直接进入。",
+    "output_definitions": {
+      "front_output": "人物正常出战时，对当前对阵者造成的防御前名义输出。",
+      "lateral_output": "人物正常出战时，对当前对阵者以外目标造成的输出。与正面输出共用同一伤害资源时必须注明不可相加。",
+      "off_field_output": "人物自己不是当前出战者时，从侧面产生的输出。",
+      "variance": "对应输出模型的方差，单位为伤害平方。",
+      "standard_deviation": "对应输出模型的标准差，便于与期望直接比较。",
+      "coefficient_of_variation": "标准差除以期望，用于比较不同均值人物的相对波动。",
+      "penetration_expected_amount": "期望有多少输出点数能保证由原目标承担；用于估计高防御人物面对的真实伤害压力。",
+      "penetration_fraction": "期望确定穿透输出除以总输出期望；必须与穿透点数同时登记。"
+    },
+    "survival_definitions": {
+      "front_survival": "人物作为当前出战者时的承伤、免伤、回复、死亡边界和可出战持续能力。",
+      "side_survival": "人物不在当前正常对阵中时，对指定、波及、伤害、生命流失、异常和清除等的生存能力。"
+    },
+    "required_per_character": [
+      "function_tags",
+      "front_output_models",
+      "lateral_output_models",
+      "off_field_output_models",
+      "front_survival",
+      "side_survival",
+      "model_limits",
+      "sources"
+    ],
+    "null_policy": "无法计算时写null并提供reason，不得用白人400或主观分数填补。",
+    "query": "python scripts/query_combat_baselines.py title <卡名>；或 python scripts/query_combat_baselines.py function <功能标签>"
+  },
+  "white_reference": {
+    "id": "white_uniform_four_positions",
+    "scope": "双方四位置独立、五行均匀、防御前名义输出",
+    "expectation": 400,
+    "variance": 22400,
+    "standard_deviation": 149.67,
+    "coefficient_of_variation": 0.3742,
+    "range": [
+      0,
+      800
+    ],
+    "distribution": {
+      "0": 0.0256,
+      "100": 0.0128,
+      "200": 0.1552,
+      "300": 0.128,
+      "400": 0.2656,
+      "500": 0.272,
+      "600": 0.1168,
+      "700": 0.0224,
+      "800": 0.0016
+    }
+  },
+  "entries": {
+    "凤三": {
+      "status": "semantic_calibrated_environment_pending",
+      "function_tags": [
+        "正面作战",
+        "全局规则干预",
+        "侧面范围输出",
+        "阵营辅助"
+      ],
+      "front_output_models": [
+        {
+          "id": "first_front_white",
+          "label": "本人第一次出战白人基线",
+          "scope": "凤三本人没有其他正面增伤，按均匀五行四位置",
+          "expectation": 400,
+          "variance": 22400,
+          "standard_deviation": 149.67,
+          "coefficient_of_variation": 0.3742,
+          "range": [
+            0,
+            800
+          ],
+          "penetration_guaranteed_fraction": 0,
+          "confidence": "高"
+        },
+        {
+          "id": "later_front_regression",
+          "label": "后续出战递增模型",
+          "scope": "依赖该人物上一回合实际输出记录和全库人物分布",
+          "expectation": null,
+          "variance": null,
+          "standard_deviation": null,
+          "coefficient_of_variation": null,
+          "range": null,
+          "penetration_guaranteed_fraction": null,
+          "reason": "需要随机样本及全库人物输出状态转移回归",
+          "confidence": "待回归"
+        }
+      ],
+      "lateral_output_models": [
+        {
+          "id": "white_incoming_per_adjacent_enemy",
+          "label": "凤三出战受伤后，对每个距离1合格敌人的无来源伤害",
+          "scope": "凤三面对白人且无防御，D为本回合受伤总量，每名合格敌人受到2D",
+          "expectation_per_target": 800,
+          "variance_per_target": 89600,
+          "standard_deviation_per_target": 299.33,
+          "coefficient_of_variation_per_target": 0.3742,
+          "range_per_target": [
+            0,
+            1600
+          ],
+          "total_formula": "n名合格敌人时，总侧面输出=2nD；期望800n，方差89600n²。",
+          "penetration_guaranteed_fraction": 0,
+          "confidence": "中高"
+        }
+      ],
+      "off_field_output_models": [
+        {
+          "id": "not_fighting",
+          "expectation": 0,
+          "variance": 0,
+          "reason": "行云布雨要求凤三本回合出战并受伤。"
+        }
+      ],
+      "front_survival": {
+        "life": 3333,
+        "expected_turns": null,
+        "white_life_divided_by_mean_reference": 8.33,
+        "summary": "无硬防。敌方递增失败可使攻击与不利无效，但触发率依赖具体人物历史输出。",
+        "reason": "必须用人物输出分布和历史记录状态转移计算，8.33不是固定存活回合。"
+      },
+      "side_survival": {
+        "expected_turns": null,
+        "summary": "3333生命，无独立侧面硬防；只有敌方整回合递增校验失败时存在条件性间接保护。"
+      },
+      "model_limits": [
+        "第一回合400只适用于凤三本人第一次出战。",
+        "侧面范围输出按每个合格目标登记，总量受目标数和同一D导致的完全相关性影响。",
+        "无来源伤害可防御。"
+      ],
+      "sources": {
+        "workcard": "data/review/workcards/batch_013_122_凤三.md",
+        "details": "data/review/calibrated_stats.json",
+        "case": "docs/ai-understanding/cases/global-effects/feng-san.md"
+      },
+      "global_influence": {
+        "tier": "强，接近极强",
+        "allied_support": "阵营人物输出至少比本人上次实际输出高100，无法补足时转为差额生命流失。",
+        "enemy_suppression": "敌方输出未严格递增时，本回合攻击与不利效果全部无效。",
+        "board_control": "跨回合记录、阵营级输出规则和悖论终止规则持续改写多场战斗。",
+        "coverage": "阵营级相关对阵",
+        "persistence": "本局持续、被动自动",
+        "reliability": "规则覆盖稳定，具体收益依历史输出",
+        "net_value": "明显偏向凤三阵营"
+      }
+    },
+    "王重阳": {
+      "status": "semantic_calibrated_environment_pending",
+      "function_tags": [
+        "正面作战",
+        "多段输出",
+        "续航",
+        "控制",
+        "全局事件"
+      ],
+      "front_output_models": [
+        {
+          "id": "full_true_max_conversion",
+          "label": "始终追求极致全真剑法转化",
+          "scope": "均匀五行盲打、防御前；每次合格普攻均转全真并一化为三",
+          "expectation": 2376,
+          "variance": 1119744,
+          "standard_deviation": 1058.18,
+          "coefficient_of_variation": 0.4454,
+          "range": [
+            0,
+            4500
+          ],
+          "penetration_guaranteed_fraction": 0,
+          "confidence": "高",
+          "strategy_note": "实际可通过少转一次全真剑法或少化一剑微调输出；本模型只代表追求极致强攻。"
+        },
+        {
+          "id": "yiyang_route",
+          "label": "一阳指续航控制路线",
+          "scope": "均匀五行盲打、防御前；主动全真剑法与一阳指二选一",
+          "expectation": 1992,
+          "variance": 677376,
+          "standard_deviation": 823.03,
+          "coefficient_of_variation": 0.4132,
+          "range": [
+            0,
+            3900
+          ],
+          "penetration_guaranteed_fraction": 0,
+          "confidence": "高"
+        }
+      ],
+      "lateral_output_models": [
+        {
+          "id": "no_regular_lateral_damage",
+          "expectation": 0,
+          "variance": 0,
+          "reason": "华山论剑属于全局事件控制，不登记为王重阳对侧面目标的个人伤害。"
+        }
+      ],
+      "off_field_output_models": [
+        {
+          "id": "no_regular_off_field_damage",
+          "expectation": 0,
+          "variance": 0
+        }
+      ],
+      "front_survival": {
+        "life": 4500,
+        "expected_turns": null,
+        "white_net_loss_reference": 300,
+        "white_life_to_zero_reference": 15,
+        "summary": "先天功符合条件时每回合回复期望上限100并移除全部不利；生命至0后等待下一次被克。",
+        "reason": "15只表示白人承伤减期望回复后到0的粗参考，不含换人、抽卡保护、杀死与清除。"
+      },
+      "side_survival": {
+        "expected_turns": null,
+        "summary": "4500生命、不中惊、概率净化和到0延迟死亡；无即时减伤、免波及或免生命流失，杀死／清除绕过。"
+      },
+      "model_limits": [
+        "2376与1992都是防御前名义输出。",
+        "多次300须按目标逐次防御。",
+        "极致强攻方差不能代表王重阳所有可调节策略。"
+      ],
+      "sources": {
+        "workcard": "data/review/workcards/batch_005_038_王重阳.md",
+        "details": "data/review/calibrated_stats.json",
+        "case": "docs/ai-understanding/cases/frontal-combat/wang-chongyang.md"
+      },
+      "global_influence": {
+        "tier": "一般",
+        "allied_support": "可通过华山论剑调度各方人物与物品归属。",
+        "enemy_suppression": "抽走基础牌可破坏组合，但只影响具体战斗后的目标。",
+        "board_control": "指定参赛人物、顺序和多物品论剑事件。",
+        "coverage": "多方事件",
+        "persistence": "按物品反复发动，每件一次",
+        "reliability": "依赖物品、真实战斗与赛果",
+        "net_value": "王重阳必须参赛，收益和损耗并存"
+      }
+    },
+    "邀月": {
+      "status": "semantic_calibrated_environment_pending",
+      "function_tags": [
+        "正面作战",
+        "防反",
+        "储存",
+        "侧面目标输出",
+        "形态切换"
+      ],
+      "front_output_models": [
+        {
+          "id": "white_reflect_to_opponent",
+          "label": "白人盲打，反射全部打当前对阵者",
+          "scope": "不储存、无大招、无目标防御、防御前名义输出",
+          "expectation": 984,
+          "variance": 67648,
+          "standard_deviation": 260.09,
+          "coefficient_of_variation": 0.2643,
+          "range": [
+            400,
+            1600
+          ],
+          "penetration_guaranteed_fraction": null,
+          "confidence": "高"
+        }
+      ],
+      "lateral_output_models": [
+        {
+          "id": "white_reflection_reallocated",
+          "label": "把全部合格反射改打一个非对阵目标",
+          "scope": "与正面984模型共用同一批反射伤害，不能相加",
+          "expectation_per_target": 200,
+          "variance_per_target": 8000,
+          "standard_deviation_per_target": 89.44,
+          "coefficient_of_variation_per_target": 0.4472,
+          "range_per_target": [
+            0,
+            400
+          ],
+          "allocation_constraint": "全部反射打侧面时，当前对阵者期望由984降为784，侧面目标期望200。",
+          "confidence": "高"
+        }
+      ],
+      "off_field_output_models": [
+        {
+          "id": "side_reflection_conditional",
+          "expectation": null,
+          "variance": null,
+          "reason": "侧面反射依赖实际攻击邀月的单项伤害分布，不能用白人正面对阵直接代替。"
+        }
+      ],
+      "front_survival": {
+        "life": 3300,
+        "expected_turns": null,
+        "white_base_result": "初始门槛下，白人全部基础伤害项均可减100后反射，生命不下降。",
+        "summary": "附加伤害不中；储存可抵挡；清空储存可使整场战斗回合结果无效且对一定造成有效。"
+      },
+      "side_survival": {
+        "expected_turns": null,
+        "summary": "明玉功、附加伤害免疫、反射和储存可用于侧面；预选铜先生后不中禁制、即死、看不见、清除。"
+      },
+      "model_limits": [
+        "正面984与侧面200共享反射资源，不可相加成1184。",
+        "储存、反射目标和真实防御会改变实际输出。",
+        "吸血和反射储存边界尚待校准。"
+      ],
+      "sources": {
+        "workcard": "data/review/workcards/batch_005_048_邀月.md",
+        "details": "data/review/calibrated_stats.json",
+        "case": "docs/ai-understanding/cases/global-effects/yao-yue.md"
+      },
+      "global_influence": {
+        "tier": "较弱",
+        "allied_support": "已有碧血照丹青处于可转交状态时可给与一人。",
+        "enemy_suppression": "主要通过自身反射和回滚处理当前敌人。",
+        "board_control": "没有持续阵营强化、关系改写或全场规则覆盖。",
+        "coverage": "主要局限于自身战斗",
+        "persistence": "外部贡献条件式",
+        "reliability": "依赖受击或已有物品",
+        "net_value": "整卡强度高，但外部净贡献有限"
+      }
+    },
+    "怜星": {
+      "status": "semantic_calibrated_environment_pending",
+      "function_tags": [
+        "正面作战",
+        "防反",
+        "整回合反噬",
+        "侧面自卫",
+        "形态切换"
+      ],
+      "front_output_models": [
+        {
+          "id": "normal_white",
+          "label": "普通形态白人盲打",
+          "scope": "不发动怜星宫主、无大招、无目标防御、防御前名义输出",
+          "expectation": 984,
+          "variance": 67648,
+          "standard_deviation": 260.09,
+          "coefficient_of_variation": 0.2643,
+          "range": [
+            400,
+            1600
+          ],
+          "penetration_guaranteed_fraction": 0,
+          "confidence": "高"
+        },
+        {
+          "id": "wood_lady_white",
+          "label": "木夫人附加伤害400",
+          "scope": "木夫人400既非基础卡普攻，也不在内功、招式、武功类型中，属于附加伤害；明玉功回溯不扩大加成类别",
+          "expectation": 1384,
+          "variance": 67648,
+          "standard_deviation": 260.09,
+          "coefficient_of_variation": 0.1879,
+          "range": [
+            800,
+            2000
+          ],
+          "penetration_guaranteed_fraction": 0,
+          "confidence": "高",
+          "distribution": {
+            "800": 0.0256,
+            "1000": 0.0432,
+            "1100": 0.1248,
+            "1200": 0.1808,
+            "1300": 0.0096,
+            "1400": 0.3184,
+            "1600": 0.1248,
+            "1700": 0.1152,
+            "1800": 0.0144,
+            "2000": 0.0432
+          },
+          "strategy_note": "相对普通形态固定增加附加伤害400；不吃攻+或攻×，全攻+可明确覆盖。"
+        },
+        {
+          "id": "palace_white_enemy_self_hit",
+          "label": "怜星宫主发动后白人敌方自击",
+          "scope": "怜星自身对敌输出为0；这里只登记敌方自击结果",
+          "expectation": 400,
+          "variance": 22400,
+          "standard_deviation": 149.67,
+          "coefficient_of_variation": 0.3742,
+          "range": [
+            0,
+            800
+          ],
+          "penetration_guaranteed_fraction": null,
+          "confidence": "高",
+          "strategy_note": "实际价值随敌方整回合输出和效果变化，不应把400当怜星固定输出。"
+        }
+      ],
+      "lateral_output_models": [
+        {
+          "id": "no_own_regular_lateral_damage",
+          "expectation": 0,
+          "variance": 0,
+          "reason": "正常回合怜星宫主使敌方攻击来源自击，不算怜星对侧面目标的个人输出。"
+        }
+      ],
+      "off_field_output_models": [
+        {
+          "id": "palace_side_single_conditional",
+          "expectation": null,
+          "variance": null,
+          "reason": "侧面只把针对怜星的单次攻击或效果打回来源，数值取决于该事件。"
+        }
+      ],
+      "front_survival": {
+        "life": 3100,
+        "expected_turns": null,
+        "white_base_result": "初始门槛下，白人全部基础伤害项均可减100后反射，生命不下降。",
+        "summary": "怜星宫主一次性反噬普通整回合爆发；一定造成／破会打回来源但怜星同时承受。"
+      },
+      "side_survival": {
+        "expected_turns": null,
+        "summary": "侧面攻击或纯效果可触发单次反噬；木夫人不中即死、看不见、清除；无持续隐藏、免波及或免生命流失。"
+      },
+      "model_limits": [
+        "木夫人切换窗口仍待最终确认。",
+        "纯侧面没有对阵者时，移花接玉的反射目标待确认。",
+        "一定造成／破与明玉功减100的精确数值先后待确认。"
+      ],
+      "sources": {
+        "workcard": "data/review/workcards/batch_005_044_怜星.md",
+        "details": "data/review/calibrated_stats.json",
+        "case": "docs/ai-understanding/cases/global-effects/lian-xing.md"
+      },
+      "global_influence": {
+        "tier": "较弱",
+        "allied_support": "正常战斗回合发动怜星宫主时可间接保护其他目标。",
+        "enemy_suppression": "一次性令敌方整回合攻击与效果自击。",
+        "board_control": "单次事件改写很深，但不持续。",
+        "coverage": "围绕怜星所在战斗",
+        "persistence": "整局一次；侧面仅单次",
+        "reliability": "反应式，要求敌方事件涉及怜星",
+        "net_value": "发动同时撤销怜星本回合全部对敌输出"
+      }
+    },
+    "俞佩玉": {
+      "status": "semantic_calibrated_environment_pending",
+      "function_tags": [
+        "正面作战",
+        "攻击力重排",
+        "稳定单击",
+        "侧面生存",
+        "全局发动权控制"
+      ],
+      "front_output_models": [
+        {
+          "id": "max_nominal_consolidation",
+          "label": "白人盲打最大名义输出归并",
+          "scope": "均匀五行、结算时分配、只要至少一张牌形成攻击便将800原生攻击力与无相神功1000归并；不计目标防御",
+          "expectation": 1753.92,
+          "variance": 80820.6336,
+          "standard_deviation": 284.29,
+          "coefficient_of_variation": 0.1621,
+          "range": [
+            0,
+            1800
+          ],
+          "distribution": {
+            "0": 0.0256,
+            "1800": 0.9744
+          },
+          "penetration_guaranteed_fraction": 0,
+          "confidence": "高",
+          "strategy_note": "通常集中为一次1800；可针对特定防御保留多次攻击，不与本模型相加。"
+        }
+      ],
+      "lateral_output_models": [
+        {
+          "id": "no_regular_lateral_output",
+          "expectation": 0,
+          "variance": 0,
+          "reason": "牌面没有对当前对阵者以外目标造成伤害的能力。"
+        }
+      ],
+      "off_field_output_models": [
+        {
+          "id": "no_off_field_damage",
+          "expectation": 0,
+          "variance": 0,
+          "reason": "温柔敦厚场下可用，但属于控制贡献而非输出。"
+        }
+      ],
+      "front_survival": {
+        "life": 2800,
+        "expected_turns": null,
+        "white_base_result": "从初始相等双血只受对称正面伤害时，本体不能靠血差重生，基础正面有效生命按2800理解。",
+        "summary": "正面结果向本体和假身份各结算一份；指定检定点双血不同才令本体重生。环境顺序决定上限，清除、离场绕过。"
+      },
+      "side_survival": {
+        "expected_turns": null,
+        "summary": "侧面伤害与不利只作用2800假身份；本体存活时假身份死亡可无限重生。清除或离场直接失去假身份。"
+      },
+      "model_limits": [
+        "1753.92是防御前最大名义输出路线，不是实伤。",
+        "面对单击免疫、反射或次数型防御时，最优策略可能不是完全归并。",
+        "固定生存回合依赖正侧面事件顺序、回合开始双血、杀死、清除与离场分布。"
+      ],
+      "sources": {
+        "workcard": "data/review/workcards/batch_013_121_俞佩玉.md",
+        "details": "data/review/calibrated_stats.json",
+        "case": "docs/ai-understanding/cases/frontal-combat/yu-peiyu.md"
+      },
+      "global_influence": {
+        "tier": "强",
+        "allied_support": "温柔敦厚可在场上场下无限次恢复任意多项特技的可控性。",
+        "enemy_suppression": "可选择性让敌方可控技继续被阎王债强制发动。",
+        "board_control": "阎王债改写全场发动许可与时机。",
+        "coverage": "全场",
+        "persistence": "取得后持续；温柔敦厚可反复修正",
+        "reliability": "需假身份先死亡重生一次",
+        "net_value": "影响强，但同时波及己方，阵容依赖明显"
+      }
+    },
+    "一灯": {
+      "status": "semantic_calibrated_environment_pending",
+      "function_tags": [
+        "正面作战",
+        "条件穿透",
+        "正面生存",
+        "完整状态恢复",
+        "结盟"
+      ],
+      "front_output_models": [
+        {
+          "id": "normal_white_baseline",
+          "label": "未受伤白人盲打",
+          "scope": "均匀五行；选择土-或火-之一；保留常规输出并追加敌我原输出总和；不计目标防御",
+          "expectation": 931.2,
+          "variance": 280482.56,
+          "standard_deviation": 529.61,
+          "coefficient_of_variation": 0.5687,
+          "range": [
+            0,
+            1600
+          ],
+          "penetration_expected_amount": 531.2,
+          "confidence": "高",
+          "penetration_fraction": 0.5704,
+          "penetration_range": [
+            0,
+            1000
+          ]
+        },
+        {
+          "id": "injured_white_baseline",
+          "topline": true,
+          "label": "受伤后渔樵耕读发动",
+          "scope": "普通模型固定增加来源为渔樵耕读的400；该400不进入一阳指原输出总和",
+          "expectation": 1331.2,
+          "variance": 280482.56,
+          "standard_deviation": 529.61,
+          "coefficient_of_variation": 0.3978,
+          "range": [
+            400,
+            2000
+          ],
+          "penetration_expected_amount": 531.2,
+          "confidence": "高",
+          "penetration_fraction": 0.399,
+          "penetration_range": [
+            0,
+            1000
+          ]
+        }
+      ],
+      "lateral_output_models": [
+        {
+          "id": "yiyang_side_target",
+          "expectation": 531.2,
+          "variance": 164194.56,
+          "reason": "一灯正面出战时把一阳指改打侧面；不是一定造成。当前对阵者同时只承受共享资源的常规原输出期望400。",
+          "penetration_expected_amount": 0,
+          "penetration_fraction": 0
+        }
+      ],
+      "off_field_output_models": [
+        {
+          "id": "no_off_field_damage",
+          "expectation": 0,
+          "variance": 0,
+          "reason": "一灯本人不出战时没有自动伤害。"
+        }
+      ],
+      "front_survival": {
+        "life": 2500,
+        "expected_turns": 80.84,
+        "white_base_result": "满生命首回合期望损血200；受伤后期望损血28.96。",
+        "summary": "伤害所致损血减半；受伤出战时渔樵耕读累计承担敌前400输出。白人离散递推约80.84回合归零，仅为低输出压力测试。"
+      },
+      "side_survival": {
+        "expected_turns": 12.95,
+        "summary": "场下仍减半伤害所致损血，但无渔樵耕读；不防生命流失、杀死、清除、离场和异常。"
+      },
+      "model_limits": [
+        "931.2与1331.2是白人均匀五行、防御前名义模型，不是全库平均。",
+        "双方知情选牌时一阳指放出率与常规输出联动，需完整收益矩阵。",
+        "80.84和12.95不含生命流失、杀死、清除、异常与真实人物大招。",
+        "侧面输出与正面常规输出共享同一回合资源，不能相加两份完整正面期望。"
+      ],
+      "sources": {
+        "workcard": "data/review/workcards/batch_018_164_一灯.md",
+        "details": "data/review/calibrated_stats.json",
+        "case": "docs/ai-understanding/cases/global-effects/yi-deng.md"
+      },
+      "global_influence": {
+        "tier": "强",
+        "allied_support": "可循环把一名活人完整恢复初始状态。",
+        "enemy_suppression": "点化可把当前敌方人物变为弟子并改变关系。",
+        "board_control": "弟子顺位与结盟持续本局，可能扩展到该方。",
+        "coverage": "单人物直接作用，关系可能扩展至整方",
+        "persistence": "恢复可刷新循环；结盟持续本局",
+        "reliability": "恢复可控；点化要求正好三相克",
+        "net_value": "恢复会清除有利累积并暂时封锁一灯攻击与治疗"
+      }
+    },
+    "燕南天": {
+      "status": "semantic_calibrated_environment_pending",
+      "function_tags": [
+        "正面作战",
+        "后发先至",
+        "一定造成",
+        "多目标输出",
+        "侧面自卫",
+        "选战控制"
+      ],
+      "front_output_models": [
+        {
+          "id": "white_full_four_positions",
+          "label": "高生命目标允许四卡完整结算",
+          "scope": "均匀五行；无特殊提前亮卡；开场300与四卡基础伤害全部乘2^N；目标不中途死亡",
+          "expectation": 3110.4,
+          "variance": 3103683.84,
+          "standard_deviation": 1761.73,
+          "coefficient_of_variation": 0.5664,
+          "range": [
+            900,
+            11200
+          ],
+          "penetration_guaranteed_fraction": 1,
+          "confidence": "高",
+          "penetration_expected_amount": 3110.4,
+          "penetration_fraction": 1,
+          "penetration_range": [
+            900,
+            11200
+          ]
+        },
+        {
+          "id": "white_5000_hp_death_truncation",
+          "label": "5000生命白人死亡截断",
+          "scope": "同上；敌死亡时取消后续卡位，实际损血封顶5000",
+          "expectation": 2886.72,
+          "variance": 1462015.6416,
+          "standard_deviation": 1209.14,
+          "coefficient_of_variation": 0.4189,
+          "range": [
+            900,
+            5000
+          ],
+          "one_turn_kill_probability": 0.1488,
+          "penetration_guaranteed_fraction": 1,
+          "confidence": "高",
+          "penetration_expected_amount": 2886.72,
+          "penetration_fraction": 1,
+          "penetration_range": [
+            900,
+            5000
+          ]
+        }
+      ],
+      "lateral_output_models": [
+        {
+          "id": "multi_enemy_independent_ledgers",
+          "expectation": null,
+          "variance": null,
+          "total_formula": "每名敌i独立计算Y_i=B_i×2^N_i，总输出为ΣY_i。",
+          "reason": "各敌触发次数和生命截断不同，不能用单一倍率乘人数。"
+        }
+      ],
+      "off_field_output_models": [
+        {
+          "id": "sourced_non_duel_counter",
+          "expectation_per_event": 300,
+          "variance_per_event": 0,
+          "scope": "场下受到一项有来源非对阵攻击；无来源不反击；场下不累计翻倍。"
+        }
+      ],
+      "front_survival": {
+        "life": 4400,
+        "expected_turns": null,
+        "white_5000_hp_expected_injury": 395.68,
+        "summary": "无常规减伤；以后发先至先杀死敌人取消后续攻击。面对5000生命白人期望受伤395.68。",
+        "reason": "敌方生命、段数和死亡卡位决定截断，不能用生命除均值冒充固定回合。"
+      },
+      "side_survival": {
+        "expected_turns": null,
+        "summary": "4400生命，吸取及吸血无效，受有来源非对阵攻击反击300；不防无来源、流失、异常、杀死、清除与离场。"
+      },
+      "model_limits": [
+        "3110.4只适用于四卡完整结算的高生命目标。",
+        "5000生命模型因死亡截断降为实际损血2886.72。",
+        "特殊提前亮卡额外增加翻倍次数，未进入白人基线。",
+        "每名敌人独立维护单回合累计，回血不降低记录，敌死亡即终止链条。"
+      ],
+      "sources": {
+        "review": "data/review/cards/燕南天/README.md",
+        "details": "data/review/cards/燕南天/front-output.md",
+        "case": "docs/ai-understanding/cases/frontal-combat/yan-nantian.md"
+      },
+      "global_influence": {
+        "tier": "一般",
+        "allied_support": "没有直接治疗、强化或调度；迫使【恶】回避可能把攻击转移给其他人物。",
+        "enemy_suppression": "约70余名【恶】受即时贪心回避约束，邀月例外。",
+        "board_control": "可迫使【恶】改变当前选战或使用袭击类特技另找目标。",
+        "coverage": "约70余名【恶】，相对于五百余张全库覆盖有限",
+        "persistence": "身份描述持续存在",
+        "reliability": "对符合身份者强制即时贪心，但不进行长期计算",
+        "net_value": "稳定保护燕南天本人，但可能只是把攻击压力转移给队友"
+      }
+    },
+    "叶开": {
+      "status": "semantic_calibrated_environment_pending",
+      "function_tags": [
+        "辅助与调度",
+        "控制与规则干预",
+        "侧面输出",
+        "身份克制",
+        "复制"
+      ],
+      "front_output_models": [
+        {
+          "id": "first_entry_two_daggers_realized",
+          "label": "首次上场两把现有飞刀均兑现",
+          "scope": "双方四位置独立五行均匀、防御前；仅首次",
+          "expectation": 2680,
+          "variance": 310400,
+          "standard_deviation": 557.14,
+          "coefficient_of_variation": 0.2079,
+          "range": [
+            2000,
+            3800
+          ],
+          "penetration_expected_amount": 0,
+          "penetration_fraction": 0,
+          "confidence": "高"
+        },
+        {
+          "id": "later_entry_one_dagger_realized",
+          "label": "后续上场一把新增飞刀兑现",
+          "scope": "首次起始飞刀已消耗；每次后续上场只有一把固定新增飞刀",
+          "expectation": 1680,
+          "variance": 310400,
+          "standard_deviation": 557.14,
+          "coefficient_of_variation": 0.3316,
+          "range": [
+            1000,
+            2800
+          ],
+          "penetration_expected_amount": 0,
+          "penetration_fraction": 0,
+          "confidence": "高"
+        },
+        {
+          "id": "career_average_parameterized",
+          "label": "生涯平均当前战斗输出",
+          "expectation": null,
+          "variance": null,
+          "standard_deviation": null,
+          "coefficient_of_variation": null,
+          "range": null,
+          "formula": "1680+1000/T",
+          "reason": "真实平均生存／上场回合T未知。",
+          "confidence": "待环境回归"
+        },
+        {
+          "id": "career_total_capacity_parameterized",
+          "label": "含主动生成未来飞刀的生涯平均容量",
+          "expectation": null,
+          "formula": "1960+1000/T",
+          "first_entry": 2960,
+          "later_entry": 1960,
+          "reason": "T未知，且未来飞刀未必在同回合兑现。",
+          "confidence": "待环境回归"
+        },
+        {
+          "id": "copy_adjusted_front",
+          "label": "九月鹰飞复制修正模型",
+          "expectation": null,
+          "variance": null,
+          "standard_deviation": null,
+          "coefficient_of_variation": null,
+          "range": null,
+          "reason": "随对阵者全部技能／全部*特技二选一而变化，需要全库样本。",
+          "confidence": "待回归"
+        }
+      ],
+      "lateral_output_models": [
+        {
+          "id": "spent_dagger_event",
+          "label": "已出现合格救援／打断事件并消耗一次飞刀",
+          "expectation_per_used_opportunity": 1000,
+          "variance_per_used_opportunity": 0,
+          "range_per_used_opportunity": [
+            0,
+            1000
+          ],
+          "penetration_expected_amount": 0,
+          "penetration_fraction": 0,
+          "strategy_note": "1000是强攻选择；叶开也可选择0。"
+        }
+      ],
+      "off_field_output_models": [
+        {
+          "id": "in_field_not_fighting",
+          "expectation": null,
+          "variance": null,
+          "reason": "在场未参战可用，但无条件回合期望依合格事件率与库存策略。"
+        }
+      ],
+      "front_survival": {
+        "life": 2000,
+        "expected_turns": null,
+        "white_non_evil_pressure_turns": 5.44,
+        "full_life_one_turn_survival_probability_white": 1,
+        "summary": "真实平均生存／上场回合未知；对【恶】来源无敌，对非【恶】封一项特技。",
+        "reason": "5.44只是假设连续面对无特技非【恶】白人的压力测试，不能作为总体T。"
+      },
+      "side_survival": {
+        "expected_events_white_non_evil": null,
+        "summary": "对【恶】来源无敌；对非【恶】可封一项相关特技，但飞刀不能救自己。",
+        "white_non_evil_pressure_events": 5.44
+      },
+      "global_influence": {
+        "tier": "强",
+        "allied_support": "在场即可撤销非【恶】他人的一次致死事件。",
+        "enemy_suppression": "后发先至取消一次特技，且可附带0或1000可防御伤害。",
+        "board_control": "跨战斗改写人物死亡和关键特技结算。",
+        "coverage": "叶开在场时的全部合格事件；不要求参战",
+        "persistence": "库存跨回合积累；不在场时不能使用",
+        "reliability": "打断本身可靠，实际频率依事件与资源策略",
+        "net_value": "可救友亦可救敌，不能保护【恶】；没有顺位约束",
+        "first_entry_current_combat_expectation": 2680,
+        "first_entry_total_capacity_expectation": 2960,
+        "later_entry_current_combat_expectation": 1680,
+        "later_entry_total_capacity_expectation": 1960,
+        "career_current_output_formula": "1680+1000/T",
+        "career_total_capacity_formula": "1960+1000/T"
+      },
+      "resource_model": {
+        "first_entry": 2,
+        "after_first_combat_expectation": 2.28,
+        "after_n_entries_expectation": "1+1.28n",
+        "first_entry_fixed_damage_capacity": 2000,
+        "first_entry_current_combat_expectation": 2680,
+        "first_entry_total_capacity_expectation": 2960,
+        "later_entry_current_combat_expectation": 1680,
+        "later_entry_total_capacity_expectation": 1960,
+        "career_current_output_formula": "1680+1000/T",
+        "career_total_capacity_formula": "1960+1000/T",
+        "career_expectation": null,
+        "career_expectation_reason": "真实平均生存／上场回合T未知。"
+      },
+      "model_limits": [
+        "总体正面期望待定；2680仅首次，1680仅后续，生涯平均为1680+1000/T。",
+        "每次1000是条件输出，不是每回合自动输出。",
+        "无敌会形成击中，但伤害和不利效果无效。",
+        "所有固定伤害均可防御，确定穿透为0。"
+      ],
+      "sources": {
+        "workcard": "data/review/workcards/batch_005_049_叶开.md",
+        "details": "data/review/cards/叶开",
+        "stats": "data/review/calibrated_stats.json"
+      }
+    }
+  }
+}

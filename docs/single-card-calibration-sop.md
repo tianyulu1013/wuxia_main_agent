@@ -1,5 +1,7 @@
 # 单卡逻辑解构与机制校准标准作业程序 (SOP)
 
+> 历史兼容文档。当前规范以`docs/skills/wuxia-card-calibration-sop.md`、`.agents/skills/wuxia-card-review-calibration/SKILL.md`和`data/review/cards/README.md`为准。下文所称单篇`card_notes/<卡名>.md`已被“每人物一目录、各维度分文件、README总摘要”结构取代，不得再作为新评审写入模板。
+
 本规范为 **《五行卡牌》** 项目中每一位人物卡牌进行深度解构、人机校准及文档化归档的最高指导流程。为了防止 AI 产生公式懒惰、概念脑补与数据格式不一致，任何人（包括 AI）对单卡的研究与记录均必须**严格遵循此标准流程及规定的十级大纲模块**。
 
 ---

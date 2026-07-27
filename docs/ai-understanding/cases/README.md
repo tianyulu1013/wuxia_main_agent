@@ -15,3 +15,10 @@
 当前案例：
 
 - 正面作战：`frontal-combat/wang-chongyang.md`
+- 全局输出记录：`global-effects/feng-san.md`
+
+待重新校准、不得作为当前锚点：
+
+- `global-effects/yao-yue.md`
+- `global-effects/lian-xing.md`
+- `global-effects/yi-deng.md`

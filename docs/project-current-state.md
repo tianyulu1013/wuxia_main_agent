@@ -34,7 +34,10 @@
 
 ### 评语层
 
-- `data/review/card_evaluations.json`、`data/review/card_notes/`
+- `data/review/cards/<卡名>/`：已精评人物的完整分维度证据
+- `data/review/cards/index.json`：按人物和维度路由
+- `data/review/card_evaluations.json`：网页结构化摘要
+- `data/review/card_notes/`：历史兼容入口
 - `data/card_reviews.json`（历史兼容）
 - `docs/ai-understanding/`
 

@@ -1,5 +1,7 @@
 # 五行卡牌：卡牌理解与人机反馈校准工作流 (Card Calibration Workflow v2.0)
 
+> 历史兼容说明。当前单卡归档接口已经改为`data/review/cards/<卡名>/`：`README.md`保存总分析，完整语义、计算、生存、全局影响、风险和作者FAQ按维度分文件保存。具体执行以`docs/skills/wuxia-card-calibration-sop.md`和`.agents/skills/wuxia-card-review-calibration/SKILL.md`为准。
+
 本工作流为作者与 AI 共同沉淀的**核心工程规程**。旨在通过不厌其烦的单卡深拆与双向对齐，消除 AI 对自然语言描述的盲目臆断，建立对复杂博弈机制的精确映射，最终产生高质量、无偏误的卡牌评分与审计报告。
 
 > [!IMPORTANT]
@@ -72,4 +74,3 @@ graph TD
 1. **更新单卡人类可读笔记**：在 `data/review/card_notes/<卡名>.md` 中生成包含完整正面生存、侧面生存、优点、缺点、规则风险和电子化风险的最终报告。
 2. **更新评语层数据库**：向 `data/review/card_evaluations.json` 中写入基于最新校准结论的脱水文字与分析数值。
 3. **沉淀理解笔记**：更新 `data/review/card_understanding_notes.json`，完成对该卡的最终机制锁定。
-

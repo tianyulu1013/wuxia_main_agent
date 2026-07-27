@@ -4,8 +4,10 @@
 
 ## 文件
 
-- `data/review/card_evaluations.json`：当前结构化完整评审。
-- `data/review/card_notes/`：人类可读单卡评审。
+- `data/review/cards/<卡名>/`：当前完整单卡评审，按维度分文件。
+- `data/review/cards/index.json`：人物与维度的结构化路由。
+- `data/review/card_evaluations.json`：网页使用的结构化摘要。
+- `data/review/card_notes/`：历史兼容入口；已迁移人物只保留导航。
 - `data/review/card_understanding_notes.json`：单卡作者校准和理解。
 - `data/card_reviews.json`：历史兼容评语文件，不再作为新评审默认写入目标。
 - `data/change_candidates.json`：改卡候选、候选新版文本、更新日志草稿、确认状态。

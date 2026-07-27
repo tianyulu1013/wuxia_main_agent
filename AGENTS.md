@@ -22,7 +22,10 @@
 
 - 源数据：`data/cards.sqlite`、`data/cards_current/*.jsonl`
 - 作者裁定/覆盖：`data/card_unit_overrides.json`、`data/card_field_overrides.json`、`data/author_ability_overrides.json`
-- AI/作者评语：`data/review/card_evaluations.json`、`data/review/card_notes/`
+- 单卡完整评审：`data/review/cards/<卡名>/`（`README.md`总分析，其余文件按维度拆分）
+- 评审路由：`data/review/cards/index.json`
+- 网页评语摘要：`data/review/card_evaluations.json`
+- 历史兼容评语入口：`data/review/card_notes/`
 - 理解校准样本：`data/review/understanding_samples.json`
 - 卡牌理解笔记：`data/review/card_understanding_notes.json`
 - 术语理解层：`data/review/rule_terms.json`
@@ -76,9 +79,10 @@
 
 每一张卡牌的评审都不应是孤立存在的，AI 必须严格执行闭环反馈与自适应分析：
 
-1. **作者反馈分层记录**：当作者作出口头裁定或校准后，先判断内容性质。普遍流程进入核心规则，局部机制进入专项规则，特殊词义进入术语层，评价方法进入类别/功能模块，具体单卡计算进入案例和单卡理解，玩家意愿进入玩家动态；不得把所有反馈一律写入 `data/review/rule_terms.json`。本卡相关作者原话仍须在单卡工作卡的“作者校准完整记录”中保存。
+1. **作者反馈分层记录**：当作者作出口头裁定或校准后，先判断内容性质。普遍流程进入核心规则，局部机制进入专项规则，特殊词义进入术语层，评价方法进入类别/功能模块，具体单卡计算进入案例和单卡理解，玩家意愿进入玩家动态；不得把所有反馈一律写入 `data/review/rule_terms.json`。本卡相关作者原话仍须在`data/review/cards/<卡名>/author-calibration.md`的“作者校准完整记录”中保存。
 2. **横向自适应检索**：在分析后面的卡牌前，AI 必须检索机制相近 of已锁定卡牌锚点及“可迁移结论”，对比其爆发、生存和泛用性分值，以此修正新卡评价，严禁分值倒挂或无依据脑补。
-3. **评审模块完整性限制**：在生成任何卡牌的 `card_evaluations.json` 数据库 full_text、单卡 Markdown 人类可读笔记 `data/review/card_notes/<卡名>.md`、以及最终的批次评审报告时，必须完整包含**正面生存**、**侧面生存**、**优点**、**缺点**、**规则风险**和**电子化风险**评估模块，严禁合并、简化或漏掉任何一项。
+3. **评审模块完整性限制**：完整单卡证据必须在`data/review/cards/<卡名>/`中分文件包含**正面输出**、**侧面输出**、**正面生存**、**侧面生存**、**全局影响力**、**优点**、**缺点**、**规则风险**、**电子化风险**和**作者校准**。`README.md`与网页`card_evaluations.json`只承担摘要，但必须提供完整证据路由，严禁因摘要化而丢失任何模块。
+4. **分文件不减证据密度**：人物目录只用于按需读取，不得把详细维度文件也压缩成结论。计算文件必须保留变量定义、概率来源、期望与方差推导、离散分布、截断算法和适用边界；生存文件必须保留承伤模型与环境敏感性；玩法比较文件必须保留从机制证据到强弱结论的完整推理链和现实反制。结构化JSON不能替代Markdown推导。
 
 
 ## 详细技能文档

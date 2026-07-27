@@ -6,6 +6,8 @@ IT IS NOT A USER-FACING RULEBOOK. DO NOT PRESENT THIS DIRECTLY TO THE USER.
 
 # AI 评估方法论：正面战斗比拼评估法
 
+> 状态：历史兼容方法文件。禁止默认加载，其中具体人物案例和数值可能尚未按当前流程复核。当前入口为`card-types/combat-character.md`与`functions/frontal-combat.md`；本文件只能作为待审参考。
+
 本模块服务于 AI 对以“正面战斗比拼（Frontal Combat）”为核心定位的战斗人物进行输出期望与存活期望的量化估算。
 
 ## 1. 基础输出期望计算公式 (期待值基线)
@@ -96,5 +98,4 @@ IT IS NOT A USER-FACING RULEBOOK. DO NOT PRESENT THIS DIRECTLY TO THE USER.
 * **致命死穴**：
   * 无法规避受击事件及其附带的状态异常（冰冻、点穴等）。
   * 场下挂机时无法为队友提供任何盾牌代伤，无代防和辅助机制。
-
 

@@ -6,6 +6,8 @@ IT IS NOT A USER-FACING RULEBOOK. DO NOT PRESENT THIS DIRECTLY TO THE USER.
 
 # AI 评估方法论：全局影响与环境控制评估法
 
+> 状态：历史兼容方法文件。禁止默认加载，其中具体人物案例和结论可能尚未按当前流程复核。当前入口为对应`card-types/`类别模块及`functions/global-influence.md`；本文件只能作为待审参考。
+
 本模块服务于 AI 对以“全局机制控制（Global Effects / Environmental Control）”、“流程改写”或“规则改写”为核心功能的卡牌进行战术价值的非量化打分。
 
 ## 1. 评估原则：跳出输出陷阱

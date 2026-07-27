@@ -9,7 +9,7 @@
       "group": "规则与剧本",
       "kind": "document-json",
       "path": "data/site_documents/rulebook-refactored.json",
-      "source_path": "五行卡牌规则new.docx",
+      "source_path": "docs/rulebook-refactored.md",
       "version": "重构优化版 v1.0",
       "updated": "2026-07-11",
       "description": "重构后的新版规则书，作为当前优先阅读版本。"

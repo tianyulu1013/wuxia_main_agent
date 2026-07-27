@@ -970,6 +970,43 @@
         "actual_change_summary": "【童叟无欺】改为统一记录未结伤害，每轮总共结算200，新伤害不叠加每轮结算值。",
         "candidate_matches_actual": true
       }
+    },
+    {
+      "id": "change_20260726_俞佩玉_001",
+      "candidate_type": "revision",
+      "card_title": "俞佩玉",
+      "status": "approved",
+      "request": "作者确认“回克开始”为错字，原意是“回合开始”；本条放入改卡TODO，不进入FAQ。",
+      "design_goal": "修正疤痕中的时点错字，不改变机制。",
+      "ai_position": "support",
+      "rationale": "当前文字“回克开始”不是有效术语，作者已明确应为“回合开始”。",
+      "current_snapshot": "【疤痕】本体重生条件括号中现写“回合中按照回克开始时的血量计算”。",
+      "review": {
+        "strength_impact": "无。",
+        "flavor_fit": "无影响。",
+        "clarity": "消除不存在的“回克”时点，明确读取回合开始血量。",
+        "rules_risks": [
+          "仅修正错字；回写时需核对JSONL、SQLite、Excel和卡面保持一致。"
+        ],
+        "electronic_risks": [
+          "降低：明确本体重生读取回合开始快照。"
+        ],
+        "open_questions": []
+      },
+      "proposed_full_text": "武功：无相神功：回合中总攻击力可附加1000，可按战斗卡分配\n        先天无极：可以将任何一张卡的攻击力挪至另一张卡上\n\n*阎王债：场上所有可控变为不可控\n\n【疤痕】：同时拥有假身份俞佩玉，侧面伤害以及全部不利相关效果作用于假身份，正面受伤则己与假身份均承受；当假身份死亡时，假身份以己生命上限重生，当本体死亡时如本体与假身份血量不同（回合中按照回合开始时的血量计算），则本体以己生命上限重生；假身份重生一次后才具有阎王债\n【温柔敦厚】：可使任何特技可控（无视阎王债）",
+      "proposed_patch": [
+        "将“回合中按照回克开始时的血量计算”改为“回合中按照回合开始时的血量计算”。"
+      ],
+      "patch_notes": [
+        "俞佩玉【疤痕】错字修正：“回克开始”改为“回合开始”，机制不变。"
+      ],
+      "author_decision_needed": [],
+      "source_tasks": [
+        "修改作者卡面/PSD。",
+        "回写Excel、SQLite与当前JSONL。",
+        "重建网页卡图和发布资源后核对。"
+      ],
+      "created_at": "2026-07-26"
     }
   ]
 }

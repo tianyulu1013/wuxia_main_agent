@@ -16,7 +16,7 @@
 - 玩家规则书材料：`docs/rulebook-refactored.md`、`docs/rulebook-structure-audit.md`、`docs/rulebook-docx-extract.md`
 - 多人一卡：`docs/multi-unit-completeness-report.md`、`docs/multi-unit-ownership-report.md`、`data/card_unit_overrides.json`
 - 网页/发布：`web/card_browser/`、`scripts/export_static_site.py`、`docs/static-hosting-plan.md`
-- 当前AI评审：`data/review/card_evaluations.json`、`data/review/card_notes/`
+- 当前AI评审：先查`data/review/cards/index.json`，再读`data/review/cards/<卡名>/README.md`及所需维度；网页摘要在`data/review/card_evaluations.json`
 - 历史AI评语：`data/card_reviews.json`、`docs/ai-card-review-understanding-map.md`
 
 ## 判断当前阶段

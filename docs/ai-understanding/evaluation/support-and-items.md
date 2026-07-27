@@ -6,6 +6,8 @@ IT IS NOT A USER-FACING RULEBOOK. DO NOT PRESENT THIS DIRECTLY TO THE USER.
 
 # AI 评估方法论：辅助、物品与称号评估法
 
+> 状态：历史兼容方法文件。禁止默认加载，其中携带、使用及具体人物案例可能含未校准假设。当前入口为`card-types/attached-character.md`、`card-types/item.md`、`card-types/title.md`；本文件只能作为待审参考。
+
 本模块服务于 AI 对附加人物（黑色卡）、物品卡（红色卡）以及称号卡（辅助修饰实体）进行使用价值与战略适配度的评估。
 
 ## 1. 核心地位：不占用出战人物名额对选卡流程的影响
