@@ -1,0 +1,163 @@
+{
+  "_schema": {
+    "purpose": "第一轮正面平均击中次数横向统计；仅在受击触发、按击中追加、按攻击段数防御等机制需要时读取。",
+    "expected_hits": "人物正常正面出战时，在无目标闪避的主模型中形成的攻击击中事件期望；抵挡与无敌发生在击中后。",
+    "scope": "独立于伤害期望；附加伤害本身是独立攻击，每项正常判断命中并计数。生命流失、杀死、死亡和纯效果不计攻击击中。",
+    "uncertainty": "语义或联合模型不足时保留空值和原因，不以补齐为由脑补。"
+  },
+  "white_reference": {
+    "expected_hits": 2.0,
+    "variance": 0.64,
+    "standard_deviation": 0.8,
+    "note": "两个内功位各以1/5击中，两个招式位各以4/5击中。"
+  },
+  "summary": {
+    "recorded_characters": 23,
+    "quantified_characters": 23,
+    "reviewed_characters_total": 23,
+    "complete_sample": true,
+    "average_expected_hits": 3.6766956521739127,
+    "warning": "23张均有首轮主值；丁喜3次是作者指定的现实生命周期近似，部分人物尚无联合方差，所以均值仍不是最终全人物环境常数。"
+  },
+  "entries": {
+    "凤三": {
+      "expected_hits": 2.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "本人首次白人主模型，只计四张基础卡；行云布雨属于侧面范围攻击，不并入本人正面单目标击中数。"
+    },
+    "王重阳": {
+      "expected_hits": 7.92,
+      "variance": 12.4416,
+      "standard_deviation": 3.5273,
+      "note": "全真强攻主模型：每次成功普攻及主动全真剑法均由一炁化三清变为3次攻击；基础成功事件期望2，主动成功率0.64。"
+    },
+    "邀月": {
+      "expected_hits": 3.6,
+      "variance": 0.8,
+      "standard_deviation": 0.8944,
+      "note": "白人不储存、反射均打对阵者：自身基础攻击期望2，招式位反射攻击期望1.6；内功被克减至0不另形成反射攻击。"
+    },
+    "怜星": {
+      "expected_hits": 4.6,
+      "variance": 0.8,
+      "standard_deviation": 0.8944,
+      "note": "木夫人正面主模型：基础攻击与移花接玉反射合计3.6次，再加木夫人固定一次400附加伤害攻击；附加伤害命中计入击中次数。"
+    },
+    "俞佩玉": {
+      "expected_hits": 0.9744,
+      "variance": 0.02494464,
+      "standard_deviation": 0.1579,
+      "note": "最大归并主模型：有输出时全部归并为一次1800攻击，四张全未形成可归并输出的概率2.56%；保留多段是另一个防御针对策略。"
+    },
+    "一灯": {
+      "expected_hits": 3.64,
+      "variance": null,
+      "standard_deviation": null,
+      "note": "受伤主状态的对阵者总事件参考：基础攻击期望2，一阳指成功增加一次攻击0.64，渔樵耕读另形成一次来源独立的400攻击；三者相关方差待联合枚举。"
+    },
+    "燕南天": {
+      "expected_hits": 3.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "单敌正面主模型：四张基础卡期望2次攻击，加回合开始对该敌固定一次300攻击；倍率改变伤害，不改变这三类事件的次数。"
+    },
+    "叶开": {
+      "expected_hits": 3.28,
+      "variance": null,
+      "standard_deviation": null,
+      "note": "后续上场主模型：基础攻击期望2、上场固定新增飞刀一次、主动飞刀成功率0.28；首次上场为4.28。飞刀用于救援或打断时目标和是否造成1000由选择改变。"
+    },
+    "丁典": {
+      "expected_hits": 2.64,
+      "variance": null,
+      "standard_deviation": null,
+      "note": "基础攻击期望2，无影神拳在两个招式位均未被克时增加一次200攻击，概率0.64；与基础招式相关，方差待联合登记。"
+    },
+    "丁喜": {
+      "expected_hits": 3.0,
+      "variance": null,
+      "standard_deviation": null,
+      "estimate_type": "作者指定的首轮现实生命周期近似",
+      "note": "丁喜3100生命且缺少稳定硬防，在当前约1400输出环境中通常只有约两回合有效使用窗口，首轮横向直接取约3次；其中聪明的丁喜300附加伤害在三候选无针对模型中已知贡献13/14≈0.9286次。不是截断联合枚举的精确单回合期望。"
+    },
+    "丁春秋": {
+      "expected_hits": 4.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "自喊主模型：基础攻击期望2，化功大法固定一次400大招攻击，星宿火本回合固定一次300附加伤害攻击；毒与禁制效果不另计击中。"
+    },
+    "丁鹏": {
+      "expected_hits": 3.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "基础四卡攻击期望2，回合开始800附加伤害固定另形成一次攻击；神刀斩为彻底死亡，不形成攻击击中。魔刀只改伤害数值。"
+    },
+    "白清儿": {
+      "expected_hits": 2.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "白人输出主模型，仅四张基础卡；姹女大法改变自身受伤，不增加正面攻击次数。"
+    },
+    "燕十三": {
+      "expected_hits": 2.64,
+      "variance": null,
+      "standard_deviation": null,
+      "note": "伤害优先主模型：基础攻击期望2，夺命十三剑成功率0.64时增加一次500攻击；第十四剑路线按每名在场敌另计一次，不并入该主值。"
+    },
+    "雷卷": {
+      "expected_hits": 2.0696,
+      "variance": null,
+      "standard_deviation": null,
+      "note": "按每次被选出场计：一半小寒神成功时不战斗为0；实际交手时基础攻击期望2、失神指期望2.1392，条件合计4.1392。"
+    },
+    "谢烟客": {
+      "expected_hits": 4.0,
+      "variance": 4.64,
+      "standard_deviation": 2.1541,
+      "note": "连续两战平均主模型：首场只有基础攻击期望2，次场四张基础卡各追加一项附加伤害攻击而为期望6，两场等权平均为4；阶段混合方差4.64。"
+    },
+    "乾罗": {
+      "expected_hits": 5.0,
+      "variance": 1.28,
+      "standard_deviation": 1.1314,
+      "note": "无填空双回合集中主模型：两回合基础攻击合计期望4，加唯一一矛固定一次攻击；假定两回合基础结果独立。"
+    },
+    "浦饭幽助": {
+      "expected_hits": 12.0,
+      "variance": 23.04,
+      "standard_deviation": 4.8,
+      "note": "灵光且敌无成功大招的主样本：原始击中期望2、方差0.64，百裂拳×2与灵光×3令计数×6。"
+    },
+    "梅念笙": {
+      "expected_hits": 6.6,
+      "variance": 2.96,
+      "standard_deviation": 1.7205,
+      "note": "固定木火均匀盲打联合样本：连城剑64%、梅花拳28%、混克空招8%，保留各分支普攻击中相关性。"
+    },
+    "法明": {
+      "expected_hits": 3.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "无响应主样本：基础四卡平均2次击中，魔佛十式首击固定1次；敌响应条件分支再增加9次，条件平均12次。"
+    },
+    "薛笑人": {
+      "expected_hits": 2.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "本体或薛宝宝单目标基础四卡主样本；杀手剑是交手后普通杀死，不形成攻击击中。"
+    },
+    "月神": {
+      "expected_hits": 2.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "数值层只计基础四卡；交手后死亡是非伤害淘汰，不形成攻击击中。即使只打一张月神先死，交手仍已成立。"
+    },
+    "周威信": {
+      "expected_hits": 1.6,
+      "variance": 0.32,
+      "standard_deviation": 0.5657,
+      "note": "本人单独战斗主模型：铁鞭把克敌改平，两个内功位不再形成攻击；两个招式位各以4/5相平并攻击200。无来源400是本人打得差时受到的攻击，不计本人对敌击中。"
+    }
+  }
+}

@@ -23,7 +23,8 @@ description: Global workflow and data-layer guide for 五行卡牌. Use at the s
 - 特殊术语：`data/review/rule_terms.json`
 - 玩家动态：`data/review/player_dynamics.json`
 - 比较案例与锚点：`docs/ai-understanding/cases/`、`data/review/card_calibration_anchors.json`
-- 战斗人物量化基线：`data/review/combat_baselines.json`（用`scripts/query_combat_baselines.py`按卡名或功能查询）
+- 战斗人物极简横向基线：`data/review/comparison/`（按正面输出、侧面输出、正面生存、侧面生存、全局影响、名次保障分别读取单个文件）
+- 战斗人物详细量化归档：`data/review/combat_baselines.json`（仅在需要复核复杂分支时查询）
 - 精评进度：`data/review/calibration_progress.md`（人类可读）与`data/review/calibration_queue.json`（机器可读）
 - AI理解入口：`docs/ai-understanding/README.md`
 - 数据源与编译架构技能书：`docs/skills/wuxia-database-architecture.md`
@@ -60,13 +61,17 @@ description: Global workflow and data-layer guide for 五行卡牌. Use at the s
 4. 战斗人物的相关功能模块
 5. 牌面触发的专项规则
 6. 实际出现的特殊术语
-7. 战斗人物先查询白人参考及二至四个同功能量化基线
+7. 战斗人物只读取当前所评维度对应的一个`data/review/comparison/*.json`横向文件
 8. 少量同功能案例
 9. 本卡理解与必要玩家动态
 
 禁止整份加载全部规则、术语、案例和历史评审。
 
-战斗人物完成作者校准和定量计算后，必须把正面输出、侧面目标输出、场下输出、方差、正面生存和侧面生存同步到`data/review/combat_baselines.json`；无法计算的字段保留`null`并写明原因。这样后续评审以已校准人物为横向基线，不反复从白人或全部旧工作卡起算。
+战斗人物完成作者校准和定量计算后，必须同步`data/review/comparison/`中的六个极简横向文件，并继续逐人写入`calibrated_stats.json`和`combat_baselines.json`详细归档。正面、侧面输出横表只保留一个主输出期望、确定穿透输出、穿透率和一句条件说明；正面、侧面生存、全局影响与名次保障横表只保留当前强弱判断和一句依据。复杂公式、方差、分支和证据留在单卡目录及详细归档，不复制进横表。以后横向比较默认只读当前维度的一张横表，不遍历全部单卡或完整详细基线。
+
+每新增一名人物，输出横表同时重算全体人物主值的均值与总体标准差、确定穿透输出的均值与总体标准差、合并穿透率和最大穿透来源占比。
+
+评审分三轮推进：第一轮完成机制理解及正面／侧面输出；第二轮用全人物平均输出和平均确定穿透输出回归生存，把全局影响拆为辅助队友、削弱敌方、场面控制、谈判能力，并单独回归名次保障／败局规避；第三轮按全体分布统一打分。
 
 每张卡完成本轮精评后，还要同步`data/review/calibration_queue.json`和`data/review/calibration_progress.md`，明确区分“本轮精评完成但环境回归开放”与“只有旧评语、尚未重新精评”。
 

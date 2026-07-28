@@ -65,8 +65,11 @@ EVALUATION_DETAIL_FILES = [
     ("front_survival", "正面生存", "front-survival.md"),
     ("side_survival", "侧面生存", "side-survival.md"),
     ("global_influence", "全局影响力", "global-influence.md"),
+    ("placement_security", "名次保障／败局规避", "placement-security.md"),
+    ("lifecycle_and_realization", "整局价值与兑现", "lifecycle-and-realization.md"),
     ("gameplay_and_comparison", "玩法、反证与横向比较", "gameplay-and-comparison.md"),
     ("risks", "规则与电子化风险", "risks.md"),
+    ("wording_ambiguities", "模糊表述与修改建议", "wording-ambiguities.md"),
     ("author_calibration", "作者校准原问原答", "author-calibration.md"),
 ]
 
@@ -965,15 +968,26 @@ def load_card_image_index() -> dict[str, Path]:
 
 def image_lookup_names(card_or_title: object) -> list[str]:
     aliases = load_card_image_aliases()
+    by_card_id = aliases.get("by_card_id", {}) if isinstance(aliases.get("by_card_id"), dict) else {}
     by_title = aliases.get("by_title", {}) if isinstance(aliases.get("by_title"), dict) else {}
     by_location = aliases.get("by_location", {}) if isinstance(aliases.get("by_location"), dict) else {}
     if isinstance(card_or_title, dict):
+        card_id = str(card_or_title.get("id") or card_or_title.get("card_id") or "")
         title = str(card_or_title.get("title") or "")
         location = f"{card_or_title.get('source_sheet')}!{card_or_title.get('source_row')}"
-        names = [str(by_location.get(location) or ""), str(by_title.get(title) or ""), title]
+        names = [
+            str(by_card_id.get(card_id) or ""),
+            str(by_location.get(location) or ""),
+            str(by_title.get(title) or ""),
+            title,
+        ]
     else:
-        title = str(card_or_title or "")
-        names = [str(by_title.get(title) or ""), title]
+        val = str(card_or_title or "")
+        names = [
+            str(by_card_id.get(val) or ""),
+            str(by_title.get(val) or ""),
+            val,
+        ]
     return [name for name in names if name]
 
 

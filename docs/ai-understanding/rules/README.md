@@ -13,6 +13,7 @@
 | 结盟、阵营、本方、敌方、队友、从属、称号关系 | `alliance-faction.md` |
 | 攻击、伤害、受伤、减伤、反伤 | `attack-damage-and-injury.md` |
 | 无敌、不中、防御状态何时生效 | `defensive-states.md` |
+| 死亡、杀死、彻底死亡、基础重生 | `death-and-rebirth.md` |
 | 相关、不相关、派出、派遣、借出、召回 | `related-response-and-dispatch.md` |
 | 未注明时点的回合中攻击或一击 | `default-late-timing.md` |
 | 学会、复制、模拟、完美学会等特殊词 | 定向查询 `data/review/rule_terms.json` 中对应术语，不读取全部术语 |

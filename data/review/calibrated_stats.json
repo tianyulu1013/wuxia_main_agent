@@ -1,4 +1,67 @@
 {
+  "凤三": {
+    "title": "凤三",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_first_entry": 400,
+    "lateral_output_expectation_per_adjacent_target_white": 800,
+    "calculation": {
+      "first_front_output": "首次出战没有历史递增收益，按白人四卡E[W]=400",
+      "lateral_per_target": "凤三本回合实际受伤D时，每名距离1合格敌人受到2D；白人无防御E[D]=400，因此E[2D]=800",
+      "lateral_total": "n名合格目标时总期望800n；各目标共享同一D"
+    },
+    "output_variance": {
+      "first_front": {
+        "expectation": 400,
+        "variance": 22400,
+        "standard_deviation": 149.67,
+        "coefficient_of_variation": 0.3742,
+        "range": [
+          0,
+          800
+        ]
+      },
+      "lateral_per_target": {
+        "expectation": 800,
+        "variance": 89600,
+        "standard_deviation": 299.33,
+        "coefficient_of_variation": 0.3742,
+        "range": [
+          0,
+          1600
+        ]
+      }
+    },
+    "penetration_rate": "凤三本人首次正面与行云布雨侧面输出均为普通伤害，确定穿透0、占比0。垂天大星要求阵营人物提高输出、无法补足时转生命流失，属于全局辅助穿透，不并入凤三个人输出。",
+    "frontal_survival_turns": null,
+    "frontal_survival_model": "3333生命，无稳定硬防；敌方整回合输出未严格高于其本人上次实际输出时，攻击与不利全部无效。真实存活依赖全库人物历史输出状态转移。",
+    "side_survival_turns": null,
+    "side_defense": "无独立侧面硬防；只有敌方递增校验失败时存在条件性间接保护。",
+    "global_influence_tier": "强，接近极强",
+    "pending_regression": [
+      "后续对阵人物的历史输出分布",
+      "敌方递增失败率",
+      "垂天大星补足与生命流失的全库兑现",
+      "距离1合格敌人数与侧面防御环境"
+    ],
+    "front_hit_count": {
+      "expected_hits": 2.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "本人首次白人主模型，只计四张基础卡；行云布雨属于侧面范围攻击，不并入本人正面单目标击中数。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "中高",
+      "lifecycle_actions": "多人物、多回合递归",
+      "elimination_cost": "中等偏低",
+      "net_exchange": "阵营持续增益，个人脆弱",
+      "long_term_conversion": "持续优势，非直接终局",
+      "source": "data/review/cards/凤三/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "阵营规则辅助与间接保护不直接改写胜负、结盟或名次。"
+    }
+  },
   "王重阳": {
     "title": "王重阳",
     "status": "semantic_locked_quantitative_pending",
@@ -65,6 +128,24 @@
         },
         "formula": "O=900(X1+X2+Y1+Y2)+300Y1Y2; Xi~Bernoulli(1/5), Yi~Bernoulli(4/5)"
       }
+    },
+    "front_hit_count": {
+      "expected_hits": 7.92,
+      "variance": 12.4416,
+      "standard_deviation": 3.5273,
+      "note": "全真强攻主模型：每次成功普攻及主动全真剑法均由一炁化三清变为3次攻击；基础成功事件期望2，主动成功率0.64。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "高",
+      "lifecycle_actions": "重复强攻并累积抽卡",
+      "elimination_cost": "中等偏高",
+      "net_exchange": "高输出、回复与资源破坏",
+      "long_term_conversion": "可持续转为击杀与资源优势",
+      "source": "data/review/cards/王重阳/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "华山论剑和抽卡属于战斗资源与局势控制，不直接改变最终名次。"
     }
   },
   "邀月": {
@@ -123,6 +204,24 @@
       "effective_from": "每次成功放出回合结束后",
       "duration": "持续到本局结束",
       "stacking": "可反复单局累计"
+    },
+    "front_hit_count": {
+      "expected_hits": 3.6,
+      "variance": 0.8,
+      "standard_deviation": 0.8944,
+      "note": "白人不储存、反射均打对阵者：自身基础攻击期望2，招式位反射攻击期望1.6；内功被克减至0不另形成反射攻击。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "高",
+      "lifecycle_actions": "反复攻防转换与跨回合储存",
+      "elimination_cost": "较高",
+      "net_exchange": "通常正交换，储存有当前机会成本",
+      "long_term_conversion": "稳定正面优势",
+      "source": "data/review/cards/邀月/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "个人攻防与储存能力不等于胜负、结盟或名次操作。"
     }
   },
   "怜星": {
@@ -210,7 +309,25 @@
       "纯侧面没有对阵者时移花接玉的合法反射目标",
       "一定造成／破与明玉功减100的精确数值先后",
       "全库单项伤害、一定造成、破、即死与清除分布"
-    ]
+    ],
+    "front_hit_count": {
+      "expected_hits": 4.6,
+      "variance": 0.8,
+      "standard_deviation": 0.8944,
+      "note": "木夫人正面主模型：基础攻击与移花接玉反射合计3.6次，再加木夫人固定一次400附加伤害攻击；附加伤害命中计入击中次数。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "中高",
+      "lifecycle_actions": "反复转换加一次关键反转",
+      "elimination_cost": "中等偏高",
+      "net_exchange": "高度依赖敌方当回合投入",
+      "long_term_conversion": "关键回合转势",
+      "source": "data/review/cards/怜星/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "关键回合反转仍属于战斗能力，没有直接名次规则。"
+    }
   },
   "俞佩玉": {
     "title": "俞佩玉",
@@ -251,7 +368,25 @@
       "全库防御对单次1800与保留多次攻击的实际折损",
       "正侧面事件顺序以及清除、离场频率",
       "全场可控技能被强制发动的收益与代价分布"
-    ]
+    ],
+    "front_hit_count": {
+      "expected_hits": 0.9744,
+      "variance": 0.02494464,
+      "standard_deviation": 0.1579,
+      "note": "最大归并主模型：有输出时全部归并为一次1800攻击，四张全未形成可归并输出的概率2.56%；保留多段是另一个防御针对策略。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "中高",
+      "lifecycle_actions": "身份重生与攻击重组循环",
+      "elimination_cost": "高",
+      "net_exchange": "通常强正交换，怕本体定位",
+      "long_term_conversion": "持续资源与战局控制",
+      "source": "data/review/cards/俞佩玉/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "假身份重生提高生存，但不直接改写所属玩家名次。"
+    }
   },
   "一灯": {
     "title": "一灯",
@@ -340,6 +475,24 @@
         "900": 0.2112,
         "1000": 0.0576
       }
+    },
+    "front_hit_count": {
+      "expected_hits": 3.64,
+      "variance": null,
+      "standard_deviation": null,
+      "note": "受伤主状态的对阵者总事件参考：基础攻击期望2，一阳指成功增加一次攻击0.64，渔樵耕读另形成一次来源独立的400攻击；三者相关方差待联合枚举。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "高",
+      "lifecycle_actions": "反复恢复、减半、盟友承伤",
+      "elimination_cost": "高",
+      "net_exchange": "个人耐久转化为阵营收益",
+      "long_term_conversion": "耗死、保队友、减少有效战斗",
+      "source": "data/review/cards/一灯/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "有条件较强（结盟避战型）",
+      "note": "弟子与结盟本局持续，可减少阵营战斗；是否全方结盟受未参与人物限制，不直接判第一。"
     }
   },
   "燕南天": {
@@ -431,6 +584,24 @@
         "fraction_of_expected_output": 1
       },
       "reason": "燕南天全部伤害一定造成并同时削减等量生命上限；原目标应受部分不能被普通防御消除。"
+    },
+    "front_hit_count": {
+      "expected_hits": 3.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "单敌正面主模型：四张基础卡期望2次攻击，加回合开始对该敌固定一次300攻击；倍率改变伤害，不改变这三类事件的次数。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "中高",
+      "lifecycle_actions": "每回合重置的反多段爆发",
+      "elimination_cost": "高",
+      "net_exchange": "迫使敌改攻击结构",
+      "long_term_conversion": "换命与选战威慑",
+      "source": "data/review/cards/燕南天/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "反多段威慑和【恶】避战属于战斗外溢，不是直接名次保障。"
     }
   },
   "叶开": {
@@ -554,6 +725,1555 @@
     "attack_capacity_later_entry_including_future_generated_dagger": 1960,
     "attack_capacity_career_formula": "1960+1000/T",
     "frontal_survival_white_non_evil_pressure_turns": 5.44,
-    "side_survival_white_non_evil_pressure_events": 5.44
+    "side_survival_white_non_evil_pressure_events": 5.44,
+    "front_hit_count": {
+      "expected_hits": 3.28,
+      "variance": null,
+      "standard_deviation": null,
+      "note": "后续上场主模型：基础攻击期望2、上场固定新增飞刀一次、主动飞刀成功率0.28；首次上场为4.28。飞刀用于救援或打断时目标和是否造成1000由选择改变。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "中高",
+      "lifecycle_actions": "每次上场增飞刀，复制适配",
+      "elimination_cost": "中等偏高",
+      "net_exchange": "伤害与救援共享资源",
+      "long_term_conversion": "多次出场后稳定增值",
+      "source": "data/review/cards/叶开/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "救援与无敌提高生存；牌面已无被救者顺位限制。"
+    }
+  },
+  "丁典": {
+    "title": "丁典",
+    "status": "semantic_core_locked_quantitative_pending",
+    "attack_expectation_frontal_nominal_white_baseline": 528,
+    "calculation": {
+      "cast_probability": "(4/5)^2=16/25=64%",
+      "base_output": "2×(1/5×100)+2×(1/5×300+3/5×200)=400",
+      "shadowless_fist": "200×16/25=128",
+      "total_output": "400+128=528",
+      "variance": "内功方差3200；招式基础与大招相关部分方差51456；合计54656"
+    },
+    "output_variance": {
+      "normal": {
+        "expectation": 528,
+        "variance": 54656,
+        "standard_deviation": 233.79,
+        "coefficient_of_variation": 0.4428,
+        "range": [
+          0,
+          1000
+        ],
+        "distribution": {
+          "0": 0.0256,
+          "100": 0.0128,
+          "200": 0.1552,
+          "300": 0.128,
+          "400": 0.0352,
+          "500": 0.0032,
+          "600": 0.2304,
+          "700": 0.2688,
+          "800": 0.1168,
+          "900": 0.0224,
+          "1000": 0.0016
+        }
+      }
+    },
+    "penetration_rate": "期望确定穿透0，占总输出0%；基础普攻和无影神拳200均可正常防御。",
+    "penetration": {
+      "front": {
+        "expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "range": [
+          0,
+          0
+        ]
+      },
+      "side_target": {
+        "expected_amount": 0,
+        "fraction_of_expected_output": 0
+      }
+    },
+    "frontal_survival_turns": 556077.69,
+    "frontal_survival_one_life_turns": 278038.84,
+    "frontal_survival_model": "按100生命为状态、枚举四位置3^4种克平被克序列，逐位置执行扣血、死亡检查与相克回满，再解(I-Q)E=1。一条命从2700开始约278038.84回合；入神坐照完整复活一次后约556077.69回合。只用于白人基础四卡低压测试。",
+    "side_survival_turns": null,
+    "side_defense": "每个特技实例本局只能对丁典完整生效一次；覆盖主动、可控、被动、有利和不利，且账本跨入神坐照保留。侧面生存定性很强，但固定事件期望仍待全库分布。",
+    "revival_model": "入神坐照使丁典死亡后满生命复活一次，去除全部有利与不利并回到初始状态；当前战斗因死亡终止，但神照经已经记录的特技实例不会重置。",
+    "pending_regression": [
+      "全库不同特技实例数量与首次高额输出分布",
+      "同次多段、生命流失、杀死、清除、离场和彻底死亡分布",
+      "双方知情摆牌时固定土土的输出与回合末生命博弈",
+      "侧面特技、无来源伤害和非特技规则事件分布"
+    ],
+    "frontal_survival_tier": "很强",
+    "side_survival_tier": "很强",
+    "global_influence_tier": "基本没有",
+    "front_hit_count": {
+      "expected_hits": 2.64,
+      "variance": null,
+      "standard_deviation": null,
+      "note": "基础攻击期望2，无影神拳在两个招式位均未被克时增加一次200攻击，概率0.64；与基础招式相关，方差待联合登记。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "很高",
+      "lifecycle_actions": "两命、回满、耗尽外来实例",
+      "elimination_cost": "很高",
+      "net_exchange": "低输出但迫使敌消耗多套手段",
+      "long_term_conversion": "典型长期耗尽胜势",
+      "source": "data/review/cards/丁典/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "难以淘汰属于生存，不能自动转成名次保障。"
+    }
+  },
+  "丁喜": {
+    "title": "丁喜",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 2701.43,
+    "attack_expectation_frontal_nominal_bawang_only": 1600,
+    "lateral_output_expectation_per_target_topline": 2422.86,
+    "calculation": {
+      "bawang_only": "白人基础W满足E[W]=400，霸王枪令全部普攻与大招攻击×4，因此E[4W]=1600",
+      "three_candidates_trigger": "三张同尚存时，当战至少出现一张候选同的概率13/14",
+      "three_candidates_front": "霸王枪基础与空位克敌期望2422.86，加聪明的丁喜300×13/14=278.57，合计2701.43",
+      "three_candidates_lateral": "每名同方侧面战斗人物获得完整霸王枪共享输出2422.86，不承受额外300"
+    },
+    "output_variance": {
+      "three_candidates_front": {
+        "expectation": 2701.43,
+        "variance": 390426.53,
+        "standard_deviation": 624.84,
+        "coefficient_of_variation": 0.2313,
+        "range": [
+          0,
+          3500
+        ]
+      },
+      "bawang_only_front": {
+        "expectation": 1600,
+        "variance": 358400,
+        "standard_deviation": 598.67,
+        "coefficient_of_variation": 0.3742,
+        "range": [
+          0,
+          3200
+        ]
+      },
+      "three_candidates_lateral_per_target": {
+        "expectation": 2422.86,
+        "variance": 349191.84,
+        "standard_deviation": 590.92,
+        "coefficient_of_variation": 0.2439,
+        "range": [
+          0,
+          3200
+        ]
+      }
+    },
+    "penetration_rate": "正面与侧面期望确定穿透均为0、占比0；霸王枪普攻、大招和聪明的丁喜300附加伤害均可正常防御。",
+    "frontal_survival_turns": null,
+    "frontal_survival_model": "3100生命；四卡全部公开后可永久失去一张同，令所选敌人的同名卡之后基础卡为空，从而截断后续攻击与放招。无减伤、免疫、恢复、复活或抵挡致命。",
+    "side_survival_turns": null,
+    "side_defense": "可截断作为敌人的攻击者卡序列；讨人喜欢的波及排除权属于敌方，不能视为稳定免疫。",
+    "global_influence_tier": "较强（暂定）",
+    "pending_regression": [
+      "知情敌方减少同类卡后的真实输出",
+      "三张同跨战斗消耗策略",
+      "敌方拒战和谈判接受率",
+      "侧面目标数量与防御环境"
+    ],
+    "front_hit_count": {
+      "expected_hits": 3.0,
+      "variance": null,
+      "standard_deviation": null,
+      "estimate_type": "作者指定的首轮现实生命周期近似",
+      "note": "丁喜3100生命且缺少稳定硬防，在当前约1400输出环境中通常只有约两回合有效使用窗口，首轮横向直接取约3次；其中聪明的丁喜300附加伤害在三候选无针对模型中已知贡献13/14≈0.9286次。不是截断联合枚举的精确单回合期望。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "知情环境中待定",
+      "lifecycle_actions": "约三次递减截断资源",
+      "elimination_cost": "中等",
+      "net_exchange": "理论爆发高，兑现权受敌控制",
+      "long_term_conversion": "主要靠谈判，胜势不稳定",
+      "source": "data/review/cards/丁喜/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "无直接保障",
+      "note": "可谈判避战或移出波及，但对方可拒绝，牌面不直接改写名次。"
+    }
+  },
+  "丁春秋": {
+    "title": "丁春秋",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 1100,
+    "calculation": {
+      "fixed_cards": "内功土火、招式木火；面对均匀敌方时基础四卡W仍为期望400、方差22400",
+      "flattery_override": "丁春秋自喊后，化功大法400与星宿火当前300均不看平克结果固定放出",
+      "topline": "D=W+400+300=W+700；E[D]=1100",
+      "persistent_capacity": "星宿火维持T回合时，累计容量C_T=W+400+300T；E[C_T]=800+300T",
+      "default_without_shout": "每项两卡大招默认成功率(4/5)^2-(3/5)^2=7/25=28%；保留与基础输出相关性枚举后E=596"
+    },
+    "output_variance": {
+      "flattery_forced_double_major": {
+        "expectation": 1100,
+        "variance": 22400,
+        "standard_deviation": 149.67,
+        "coefficient_of_variation": 0.1361,
+        "range": [
+          700,
+          1500
+        ],
+        "distribution": {
+          "700": 0.0256,
+          "800": 0.0128,
+          "900": 0.1552,
+          "1000": 0.128,
+          "1100": 0.2656,
+          "1200": 0.272,
+          "1300": 0.1168,
+          "1400": 0.0224,
+          "1500": 0.0016
+        }
+      },
+      "no_shout_default_release": {
+        "expectation": 596,
+        "variance": 115360,
+        "standard_deviation": 339.65,
+        "coefficient_of_variation": 0.5699,
+        "range": [
+          0,
+          1500
+        ]
+      }
+    },
+    "penetration_rate": "期望确定穿透0，占总输出0%；化功、星宿火、腐尸毒和普攻均可正常防御。毒判死和三笑死亡另作控制结果，不冒充穿透伤害。",
+    "penetration": {
+      "front": {
+        "expected_amount": 0,
+        "fraction_of_expected_output": 0
+      },
+      "side_target": {
+        "expected_amount": 0,
+        "fraction_of_expected_output": 0
+      }
+    },
+    "off_field_output_per_star_fire_target_per_turn": 300,
+    "corpse_poison_first_link": 500,
+    "corpse_poison_chain_formula": "第j环500×2^(j-1)；m环总量500(2^m-1)；每环必须实际杀死并使用新尸体，否则中断。",
+    "three_smiles_total_uses_expectation": 2,
+    "three_smiles_hidden_targets_expectation": 1,
+    "three_smiles_white_one_combat_three_wins_probability": 0.0272,
+    "three_smiles_white_expected_combats_to_three_wins": 4.124732559,
+    "three_smiles_white_combats_variance_to_three_wins": 3.831122089,
+    "three_smiles_white_combats_standard_deviation_to_three_wins": 1.957325238,
+    "three_smiles_single_use_eventual_death_probability_with_discovery": 0.5136,
+    "three_smiles_conditional_expected_combats_given_death": 4.04199042,
+    "three_smiles_unconditional_expected_combats_to_death": null,
+    "three_smiles_unconditional_expectation_note": "纳入二分之一被发现并在一个回合后解除时，有48.64%不会被该次三笑杀死；若不死等待记为无穷，则无条件死亡回合期望不是有限数。",
+    "frontal_survival_turns": null,
+    "frontal_survival_white_without_shout": 6.69495,
+    "frontal_survival_model": "2500生命、无治疗；按白人输出0至800离散分布和100生命状态递推，到死亡约6.69495回合。法螺无敌由其他阵营人类真实喊话，不建立伪混合概率。",
+    "side_survival_turns": null,
+    "side_defense": "自主无防指定、波及、生命流失、异常或复活；他方人类可在回合间喊话令其无敌，但发动权与真人执行率未知。",
+    "pending_regression": [
+      "其他阵营人类为丁春秋喊话的真实频率",
+      "以星宿老仙给他方无敌换取他方高喊的谈判接受率、信用与窗口缝隙",
+      "星宿火每回合300面对防御及移除不利的平均持续",
+      "尸体、残血敌人、附加伤害防御与腐尸毒连环长度分布",
+      "三笑暗中记录、毒免疫、移除不利和真实选牌下的三克速度",
+      "星宿老仙无敌与实际受伤加倍的真实目标价值"
+    ],
+    "frontal_survival_tier": "自主偏弱；协作无敌",
+    "side_survival_tier": "自主偏弱；协作无敌",
+    "global_influence_tier": "强（暂定）",
+    "front_hit_count": {
+      "expected_hits": 4.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "自喊主模型：基础攻击期望2，化功大法固定一次400大招攻击，星宿火本回合固定一次300附加伤害攻击；毒与禁制效果不另计击中。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "中高",
+      "lifecycle_actions": "持续火毒、隐藏死亡与交易",
+      "elimination_cost": "协作时高；自主偏低",
+      "net_exchange": "交易可避战但要让利",
+      "long_term_conversion": "多人谈判或双人和局",
+      "source": "data/review/cards/丁春秋/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "有条件一般（互保／保和型）",
+      "note": "合作互开无敌可减少战斗；双人局双方都愿意时导向和局，但需要持续让利与合作。"
+    }
+  },
+  "丁鹏": {
+    "title": "丁鹏",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 2400,
+    "calculation": {
+      "known_highest_damage": "令H为丁鹏回合开始前本局已知最高单项实际伤害，B=max(H,800)。",
+      "turn_start": "对阵敌先-800在回合开始自动结算；【魔刀】使该项实际伤害成为B。",
+      "basic_cards": "两张内功各以1/5概率造成B，两张招式各以4/5概率造成B。",
+      "topline": "D=B(1+X1+X2+Y1+Y2)，E[D]=3B；第一轮H≤800主值为2400。",
+      "divine_blade": "神刀斩可用土-或-土；默认放出率(4/5)^2-(3/5)^2=7/25=28%，造成彻底死亡而非伤害。"
+    },
+    "output_variance": {
+      "h_at_most_800": {
+        "expectation": 2400,
+        "variance": 409600,
+        "standard_deviation": 640,
+        "coefficient_of_variation": 0.2667,
+        "range": [
+          800,
+          4000
+        ],
+        "distribution": {
+          "800": 0.0256,
+          "1600": 0.2176,
+          "2400": 0.5136,
+          "3200": 0.2176,
+          "4000": 0.0256
+        }
+      },
+      "general_formula": {
+        "expectation": "3×max(H,800)",
+        "variance": "0.64×max(H,800)^2",
+        "standard_deviation": "0.8×max(H,800)"
+      }
+    },
+    "penetration_rate": "期望确定穿透0，占总输出0%；【魔刀】只提高已经实际形成的伤害，完全防成0时不重新产生伤害。神刀斩的彻底死亡单独登记，不换算为穿透伤害。",
+    "penetration": {
+      "front": {
+        "expected_amount": 0,
+        "fraction_of_expected_output": 0
+      },
+      "side_target": {
+        "expected_amount": 0,
+        "fraction_of_expected_output": 0
+      }
+    },
+    "divine_blade_complete_death_probability": 0.28,
+    "side_output": 0,
+    "frontal_survival_turns": null,
+    "frontal_survival_model": "3200生命，无减伤、恢复或复活；木刀令普通特技失灵、己方抢先攻击和神刀斩可通过先制压制间接减少承伤。",
+    "side_survival_turns": null,
+    "side_defense": "没有对侧面攻击、效果、生命流失、杀死或清除的独立防线。",
+    "pending_regression": [
+      "全库本局已知最高单项实际伤害H的分布",
+      "木刀失灵后仍保留的身份描述和外部防御比例",
+      "神刀斩面对防死亡、抢先结算和目标提前死亡的兑现率",
+      "非神兵武器的使用率、价值和永久破坏收益",
+      "先制击杀对敌方后续输出的平均取消量"
+    ],
+    "frontal_survival_tier": "一般",
+    "side_survival_tier": "一般偏弱",
+    "global_influence_tier": "较弱（暂定）",
+    "front_hit_count": {
+      "expected_hits": 3.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "基础四卡攻击期望2，回合开始800附加伤害固定另形成一次攻击；神刀斩为彻底死亡，不形成攻击击中。魔刀只改伤害数值。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "高",
+      "lifecycle_actions": "重复800、全局伤害保底与终结",
+      "elimination_cost": "中等",
+      "net_exchange": "稳定正交换并可永久破坏资源",
+      "long_term_conversion": "稳定击杀推进",
+      "source": "data/review/cards/丁鹏/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "高伤、失灵、武器破坏和彻底死亡均属于战斗资源压制。"
+    }
+  },
+  "白清儿": {
+    "title": "白清儿",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 400,
+    "calculation": {
+      "front_output": "无攻击增益，采用白人四卡：两内功各1/5造成100，两招式各1/5造成300、3/5造成200；E[W]=400。",
+      "damage_reduction_function": "完成此前减伤后，正面以回合合计D、侧面以单次D为输入；在ab=D的正整数对中选择|a-b|最小者，g(D)=min(D,a+b)。",
+      "white_reduced_damage": "D为0/100/200/300/400/500/600/700/800时，g(D)为0/20/30/35/40/45/49/53/57。",
+      "delayed_death": "一次性令当前所属玩家一名男子从施加后参加第二个战斗回合结束时死亡；不是伤害。"
+    },
+    "output_variance": {
+      "white_basic": {
+        "expectation": 400,
+        "variance": 22400,
+        "standard_deviation": 149.6663,
+        "coefficient_of_variation": 0.3742,
+        "range": [
+          0,
+          800
+        ],
+        "distribution": {
+          "0": 0.0256,
+          "100": 0.0128,
+          "200": 0.1552,
+          "300": 0.128,
+          "400": 0.2656,
+          "500": 0.272,
+          "600": 0.1168,
+          "700": 0.0224,
+          "800": 0.0016
+        }
+      }
+    },
+    "penetration_rate": "期望确定穿透0，占总输出0%；基础攻击可正常防御。两战后死亡是控制结果，不换算为穿透伤害。",
+    "penetration": {
+      "front": {
+        "expected_amount": 0,
+        "fraction_of_expected_output": 0
+      },
+      "side_target": {
+        "expected_amount": 0,
+        "fraction_of_expected_output": 0
+      }
+    },
+    "side_output": 0,
+    "white_reduced_injury": {
+      "expectation": 39.2576,
+      "variance": 84.75764224,
+      "standard_deviation": 9.20639138,
+      "range": [
+        0,
+        57
+      ],
+      "distribution": {
+        "0": 0.0256,
+        "20": 0.0128,
+        "30": 0.1552,
+        "35": 0.128,
+        "40": 0.2656,
+        "45": 0.272,
+        "49": 0.1168,
+        "53": 0.0224,
+        "57": 0.0016
+      }
+    },
+    "frontal_survival_turns": 15.8053800193,
+    "frontal_survival_model": "600生命；白人一回合合计伤害先减伤后按最接近平方根的整数因数对改和；逐生命递推并处理0伤害自环，期望包含最终致死回合。该值只是机制压力测试，不能将已评人物平均输出直接代入非线性函数。",
+    "side_survival_turns": null,
+    "side_defense": "每次侧面伤害独立分解；常见整百及复合数高伤可压至平方根量级，但不防流失、死亡、清除和控制。",
+    "pending_regression": [
+      "全库逐人物正面回合总受伤与侧面单项伤害分布，不能用总体平均输出替代",
+      "生命流失、直接死亡、杀死、清除及异常的环境占比",
+      "各阵营男性人物比例和关键男子实际参战频率",
+      "会长生诀男子的覆盖率",
+      "慈航静斋、净念禅院、魔门及无男子玩家的出现率",
+      "强制投靠、派出、转投回避、谈判接受率及背刺信用成本"
+    ],
+    "frontal_survival_tier": "伤害型生存很强；综合待回归",
+    "side_survival_tier": "伤害型生存很强；综合待回归",
+    "global_influence_tier": "一般（暂定）",
+    "placement_security_tier": "很强（大混战）",
+    "placement_security": {
+      "tier": "很强（大混战）",
+      "note": "可反复投靠当前第一名，以宿主死亡威胁换取不出战；接近保住前二但不保证第一。"
+    },
+    "front_hit_count": {
+      "expected_hits": 2.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "白人输出主模型，仅四张基础卡；姹女大法改变自身受伤，不增加正面攻击次数。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "高",
+      "lifecycle_actions": "反复投靠与长期伤害压缩",
+      "elimination_cost": "伤害型很高",
+      "net_exchange": "以宿主死亡威胁换取不出战",
+      "long_term_conversion": "强败局规避，未必夺冠",
+      "source": "data/review/cards/白清儿/lifecycle-and-realization.md"
+    }
+  },
+  "燕十三": {
+    "title": "燕十三",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 720,
+    "calculation": {
+      "front_output": "伤害优先使用夺命十三剑：白人基础400，加16/25放出率乘500，得720。",
+      "thirteenth_sword_release": "通用成功7/25加两平9/25，合计16/25。",
+      "fourteenth_sword_release": "通用成功7/25加混克2/25，合计9/25。",
+      "fifteenth_sword_release": "初始7/25；解锁两平后16/25；两平与混克均解锁后18/25。",
+      "victory": "燕十三成功放出第十五剑即触发最高顺位第一名；不杀敌，燕十三改为普通死亡，最终是否死亡不撤销胜利。"
+    },
+    "output_variance": {
+      "thirteenth_sword_main": {
+        "expectation": 720,
+        "variance": 137600,
+        "standard_deviation": 370.9447,
+        "coefficient_of_variation": 0.5152,
+        "range": [
+          0,
+          1300
+        ],
+        "distribution": {
+          "0": 0.0256,
+          "100": 0.0128,
+          "200": 0.1552,
+          "300": 0.128,
+          "400": 0.0352,
+          "500": 0.0032,
+          "900": 0.2304,
+          "1000": 0.2688,
+          "1100": 0.1168,
+          "1200": 0.0224,
+          "1300": 0.0016
+        }
+      },
+      "fourteenth_sword_front": {
+        "expectation": 436,
+        "variance": 32384,
+        "standard_deviation": 179.9556,
+        "coefficient_of_variation": 0.4127,
+        "range": [
+          0,
+          900
+        ]
+      },
+      "direct_fifteenth_sword": {
+        "expectation": 400,
+        "variance": 22400,
+        "standard_deviation": 149.6663,
+        "coefficient_of_variation": 0.3742,
+        "range": [
+          0,
+          800
+        ]
+      }
+    },
+    "penetration_rate": "期望确定穿透0，占数值输出0%；第一名胜利不是伤害或穿透。",
+    "penetration": {
+      "front": {
+        "expected_amount": 0,
+        "fraction_of_expected_output": 0
+      },
+      "side_target": {
+        "expected_amount": 0,
+        "fraction_of_expected_output": 0
+      }
+    },
+    "side_output": {
+      "expected_per_target": 36,
+      "variance_per_target": 2304,
+      "standard_deviation_per_target": 48,
+      "formula_for_m_side_enemies": "36m",
+      "condition": "主动选择第十四剑；各目标共享同一9/25放出事件，命中后附狂。"
+    },
+    "victory_probability": {
+      "ordinary_first_attempt": 0.28,
+      "after_two_flat_unlock": 0.64,
+      "after_both_unlocks": 0.72,
+      "versus_xie_xiaofeng_first_combat": 0.64,
+      "optimal_with_fixed_opportunities": {
+        "1": 0.28,
+        "2": 0.5104,
+        "3": 0.7408,
+        "4": 0.87682816,
+        "5": 0.9449086,
+        "6": 0.97629726
+      },
+      "white_pressure_before_death": 0.9639598114,
+      "warning": "白人联合压力值不是实际多人局胜率；未包含集火、侧面事件、混、迟、惊、点、禁招和游戏提前结束。"
+    },
+    "frontal_survival_turns": 6.6949498548,
+    "frontal_survival_model": "2500生命、无常规防御；按白人一回合伤害分布逐生命递推，包含最终致死回合。",
+    "side_survival_turns": null,
+    "side_defense": "仅不中封；不防侧面伤害、生命流失、混、迟、惊、点、禁招、杀死与清除。",
+    "pending_regression": [
+      "多人局实际可出战次数和游戏提前结束分布",
+      "燕十三公开后遭集火、抢先杀死和侧面处理的频率",
+      "混、迟、惊、点、禁招等夺冠前反制覆盖率",
+      "外来剑法的获得率和实际放出价值",
+      "一位胜利与一位失败同时出现的抵消环境"
+    ],
+    "frontal_survival_tier": "一般偏弱",
+    "side_survival_tier": "偏弱",
+    "global_influence_tier": "有条件较强（暂定）",
+    "placement_security_tier": "很强（夺冠型）",
+    "front_hit_count": {
+      "expected_hits": 2.64,
+      "variance": null,
+      "standard_deviation": null,
+      "note": "伤害优先主模型：基础攻击期望2，夺命十三剑成功率0.64时增加一次500攻击；第十四剑路线按每名在场敌另计一次，不并入该主值。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "中低至高波动",
+      "lifecycle_actions": "跨回合解锁直到第十五剑",
+      "elimination_cost": "中等偏低",
+      "net_exchange": "全场异常伴随集火成本",
+      "long_term_conversion": "成功直接第一，常态受强折损",
+      "source": "data/review/cards/燕十三/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "很强（夺冠型）",
+      "note": "第十五剑成功即取得最高顺位第一名；实际夺冠率受出战、集火和控制折损。"
+    }
+  },
+  "雷卷": {
+    "title": "雷卷",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 734.8,
+    "calculation": {
+      "selected_appearance": "小寒神1/2避战输出0，1/2正常交手；正常交手白人联合模型期望1469.6，因此主值734.8。",
+      "conditional_combat": "白人基础输出B与大氅后受伤事件H联合枚举，X=B+500(1+H)，E[X]=1469.6。",
+      "mine": "第i个雷为独立100i附加伤害；集中单敌四卡模型用于计算雷区库存，横向主值再按作者给出的约5名实际触发者摊薄。"
+    },
+    "output_variance": {
+      "selected_appearance_main": {
+        "expectation": 734.8,
+        "variance": 578988.96,
+        "standard_deviation": 760.9132,
+        "coefficient_of_variation": 1.0355,
+        "range": [
+          0,
+          2000
+        ]
+      },
+      "conditional_combat_fresh_hand": {
+        "expectation": 1469.6,
+        "variance": 78115.84,
+        "standard_deviation": 279.4921,
+        "coefficient_of_variation": 0.1902,
+        "range": [
+          1000,
+          2000
+        ],
+        "distribution": {
+          "1000": 0.0864,
+          "1100": 0.0832,
+          "1200": 0.0656,
+          "1300": 0.0816,
+          "1400": 0.16,
+          "1500": 0.1824,
+          "1600": 0.0464,
+          "1700": 0.112,
+          "1800": 0.048,
+          "1900": 0.1056,
+          "2000": 0.0288
+        }
+      }
+    },
+    "reaction_count_white": {
+      "0": 0.1936,
+      "1": 0.4736,
+      "2": 0.3328
+    },
+    "penetration_rate": "每次被选出场实战穿透534.8/734.8≈72.78%；实际交手条件为1069.6/1469.6≈72.78%。失神指无视防御但不是一定造成，无敌仍可令其无效；严格一定造成输出为0。埋雷实战穿透为0。",
+    "penetration": {
+      "front_selected_appearance": {
+        "practical_expected_amount": 534.8,
+        "fraction_of_expected_output": 0.7278,
+        "strict_guaranteed_amount": 0,
+        "boundary": "无视防御可绕过大部分普通防御，但不能穿过无敌。"
+      },
+      "front_conditional_combat": {
+        "practical_expected_amount": 1069.6,
+        "fraction_of_expected_output": 0.7278,
+        "strict_guaranteed_amount": 0
+      },
+      "side_mine_main": {
+        "practical_expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "strict_guaranteed_amount": 0
+      }
+    },
+    "side_output": {
+      "main_expected_per_actual_triggerer": 360,
+      "equal_split_approximation_standard_deviation": 69.282,
+      "equal_split_approximation_range": [
+        200,
+        520
+      ],
+      "condition": "首个完整八雷波次，集中单敌四卡期望1800，再按作者给出的约5名实际触发者摊薄；真实出战不平均，目标间方差高于均分近似。无埋雷时为0。",
+      "single_enemy_concentration_reference": {
+        "expectation": 1800,
+        "variance": 120000,
+        "standard_deviation": 346.4102,
+        "range": [
+          1000,
+          2600
+        ],
+        "status": "只作集中上限证据，不作横向主值"
+      },
+      "two_wave_balanced": {
+        "single_enemy_concentration": 6800,
+        "per_triggerer_five_way_approximation": 1360,
+        "status": "高条件参考"
+      },
+      "three_wave_balanced": {
+        "single_enemy_expectation": 15000,
+        "single_enemy_range": [
+          14200,
+          15800
+        ],
+        "per_triggerer_five_way_expectation": 3000,
+        "per_triggerer_five_way_range": [
+          2840,
+          3160
+        ],
+        "status": "很难存活并保持三波完整雷区，只作理想上限参考"
+      },
+      "avoidance": "雷区扣放；玩家踩雷后逐步推断。某卡名雷已爆后，后续玩家可重复使用已确认安全的同名卡规避未知雷。"
+    },
+    "frontal_survival_turns": null,
+    "frontal_survival_model": "2400生命、整回合抵挡200；白人承伤模型仅作低压测试。当前已评人物平均输出约1400，身板综合只属一般。小寒神1/2避战虽自伤200，但能削去一次爆发尾部风险。",
+    "side_survival_turns": null,
+    "side_defense": "普通侧面攻击及附带效果不中；一定造成、破、无视防御可突破；不防非攻击流失、杀死、清除和离场。",
+    "pending_regression": [
+      "多人局雷卷实际出场与小寒神恢复次数",
+      "雷区在4至5名实际触发者间的真实分配和出战不均",
+      "踩雷后的安全同名卡规避率",
+      "埋雷被提前消耗和多波次完整存续概率",
+      "无敌对失神指实战穿透的实际折损",
+      "附加伤害免疫、逐项减伤和非攻击淘汰分布"
+    ],
+    "frontal_survival_tier": "一般",
+    "side_survival_tier": "强但不全面",
+    "global_influence_tier": "一般",
+    "placement_security_tier": "一般偏弱",
+    "front_hit_count": {
+      "expected_hits": 2.0696,
+      "variance": null,
+      "standard_deviation": null,
+      "note": "按每次被选出场计：一半小寒神成功时不战斗为0；实际交手时基础攻击期望2、失神指期望2.1392，条件合计4.1392。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "中等",
+      "lifecycle_actions": "概率避战、手牌恢复、雷区消耗",
+      "elimination_cost": "中等",
+      "net_exchange": "200生命换避战，雷伤分散",
+      "long_term_conversion": "有限封攻与雷区控制",
+      "source": "data/review/cards/雷卷/lifecycle-and-realization.md"
+    },
+    "placement_security": {
+      "tier": "一般偏弱",
+      "note": "概率避战与封攻间接保命，但不直接改变名次，雷区威慑有限。"
+    }
+  },
+  "谢烟客": {
+    "title": "谢烟客",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 1400,
+    "calculation": {
+      "white_base": "四张基础卡输出B：E[B]=400，Var(B)=22400，SD=149.6663。",
+      "needle_chain": "连续第t场进入层数t-1；四张完整结算时O_t=B+2000(t-1)，故E[O_t]=400+2000(t-1)。前T场每场平均为1000T-600。",
+      "topline": "取最短两场铺垫—兑现样本：第一场400、第二场2400。随机抽一场的混合期望1400，方差1022400，标准差1011.138；完整两场周期平均的标准差为105.8301。",
+      "finger": "弹指成功率7/25；联合枚举基础卡比较后，正面B+200I的期望456、方差47744、标准差218.504。指定侧面目标时仅弹指伤害期望56、方差8064。"
+    },
+    "output_variance": {
+      "two_combat_position_mixture_main": {
+        "expectation": 1400,
+        "variance": 1022400,
+        "standard_deviation": 1011.138,
+        "coefficient_of_variation": 0.7222,
+        "range": [
+          0,
+          2800
+        ]
+      },
+      "two_combat_cycle_average": {
+        "expectation": 1400,
+        "variance": 11200,
+        "standard_deviation": 105.8301
+      },
+      "needle_combat_t": {
+        "formula": "400+2000(t-1)",
+        "variance": 22400,
+        "standard_deviation": 149.6663
+      },
+      "finger_front": {
+        "expectation": 456,
+        "variance": 47744,
+        "standard_deviation": 218.504
+      }
+    },
+    "penetration_rate": "正面与侧面实战穿透均为0。碧针是逐卡分项附加伤害，弹指是普通大招伤害，两者均可正常防御；异常“点”不折算为穿透输出。",
+    "penetration": {
+      "front_main": {
+        "practical_expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "strict_guaranteed_amount": 0
+      },
+      "side_main": {
+        "practical_expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "strict_guaranteed_amount": 0
+      }
+    },
+    "side_output": {
+      "main_expected_output": 56,
+      "variance": 8064,
+      "standard_deviation": 89.7998,
+      "condition": "弹指以7/25成功率指定任意在场敌，成功造成200并附加异常“点”；基础卡仍攻击当前对阵者，且选择弹指会放弃本场续碧针。"
+    },
+    "frontal_survival_turns": null,
+    "frontal_survival_model": "5500生命，高于当前裸生命中位数2900和75分位3800；每个自身战斗回合可令一个只针对谢烟客的敌方特技无效。但高裸生命只是承伤池，不自动构成强防御；无固定减伤、回血、重生和免死，暂评较强。",
+    "side_survival_turns": null,
+    "side_defense": "非当前战斗人物时真实不在场；普通场上侧击与波及难以选中。他方挑战本方时摩天居士不提供拒战。",
+    "global_influence": {
+      "tier": "一般",
+      "token_probability": "无石破天、除谢烟客外N人独立掷骰时，玄铁令存世概率为1-(5/6)^N；谢烟客指定掷骰顺序。",
+      "allied_support": "请求控制权通常在持令人，谢烟客缺乏可靠谈判筹码；只能条件性地从帮助持令人攻击第三方中取得友好度或间接收益。",
+      "enemy_suppression": "弹指可跨战附加点；玄铁令请求可迫使谢烟客攻击第三方，也可被用来反向损害谢烟客。",
+      "board_control": "一次两转轮延迟的广泛行动强制确实会改变场面，但主要属于持令人的控制能力。",
+      "reliability": "无石破天时令未必出现；提出即消耗，只有一个请求；谢烟客缺乏把场面影响转为自身稳定收益的手段。"
+    },
+    "placement_security": {
+      "tier": "一般",
+      "note": "玄铁令可回避本方主动普通挑战，但控制权在持令人且不能回避他方挑战。"
+    },
+    "pending_regression": [
+      "谢烟客真实连续作战场数T的分布",
+      "碧针被提前死亡、禁制和逐项减伤截断的比例",
+      "弹指异常点的实际控制收益",
+      "不同玩家数下玄铁令出现、转移和请求落空率",
+      "持令人请求对谢烟客净收益的正负分布",
+      "石破天同场率及摩天居士实际减少出战次数"
+    ],
+    "frontal_survival_tier": "较强",
+    "side_survival_tier": "强",
+    "global_influence_tier": "一般",
+    "placement_security_tier": "一般",
+    "front_hit_count": {
+      "expected_hits": 4.0,
+      "variance": 4.64,
+      "standard_deviation": 2.1541,
+      "note": "连续两战平均主模型：首场只有基础攻击期望2，次场四张基础卡各追加一项附加伤害攻击而为期望6，两场等权平均为4；阶段混合方差4.64。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "中等",
+      "lifecycle_actions": "连续碧针递增，玄铁令外部控制",
+      "elimination_cost": "较高",
+      "net_exchange": "令的控制权主要在他人",
+      "long_term_conversion": "输出可成长，谈判与名次一般",
+      "source": "data/review/cards/谢烟客/lifecycle-and-realization.md"
+    }
+  },
+  "乾罗": {
+    "title": "乾罗",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 1800,
+    "calculation": {
+      "white_base": "每个完整回合基础输出B：E[B]=400，Var(B)=22400，SD=149.6663。",
+      "no_fill_focus": "正常与追加行动集中同一敌且唯一一矛进攻：O=B1+B2+1000，E=1800，Var=44800，SD=211.6601。",
+      "growth": "成功填空累计k次后，唯一一矛S_k=1000×2^k，集中输出E=800+1000×2^k；作者确认填空通常非常罕见，只作上限。",
+      "dynamic_growth": "从k0层开始，真正使用唯一一矛前又填f次：O=B1+B2+1000×2^(k0+f)。",
+      "attack_defense_tradeoff": "无填空时唯一一矛进攻/防御的输出期望分别为1800/800。"
+    },
+    "output_variance": {
+      "no_fill_two_round_focus": {
+        "expectation": 1800,
+        "variance": 44800,
+        "standard_deviation": 211.6601,
+        "coefficient_of_variation": 0.1176,
+        "range": [
+          1000,
+          2600
+        ]
+      },
+      "one_round_selected_target": {
+        "expectation": 1400,
+        "variance": 22400,
+        "standard_deviation": 149.6663,
+        "range": [
+          1000,
+          1800
+        ]
+      }
+    },
+    "penetration_rate": "无填空集中主值含唯一一次1000破，名义实战穿透能力占55.56%；破仍受自身降命中、降输出影响，一定造成还突破闪避并无视这些负面，二者都不能破无敌。严格一定造成输出0。",
+    "penetration": {
+      "front_main": {
+        "practical_expected_amount": 1000,
+        "fraction_of_expected_output": 0.5556,
+        "strict_guaranteed_amount": 0,
+        "type": "破"
+      },
+      "side_main": {
+        "practical_expected_amount": 1000,
+        "fraction_of_expected_output": 0.7143,
+        "strict_guaranteed_amount": 0,
+        "type": "破"
+      }
+    },
+    "side_output": {
+      "main_expected_output": 1400,
+      "variance": 22400,
+      "standard_deviation": 149.6663,
+      "condition": "追加行动改打一名不同敌人且把唯一一矛用于该目标；与正面两回合1800总量共用。"
+    },
+    "frontal_survival_turns": null,
+    "frontal_survival_model": "3100生命接近裸生命均值；正常回合与追加行动共享唯一一矛，可牺牲1000破抵挡一次攻击。追加行动敌方普攻及其加成为0，但大招、附加伤害和效果有效。",
+    "side_survival_turns": null,
+    "side_defense": "不出战时不中不利效果，但普通攻击与攻击伤害有效；出现侧面伤害趋势可抵挡或反击一次，无来源反击落空。",
+    "global_influence": {
+      "tier": "较弱",
+      "allied_support": "无直接队友增益。",
+      "enemy_suppression": "额外回合令选定敌人的普攻及其加成归零。",
+      "board_control": "任意处选敌主要是个人侧面输出和目标选择，不重复计作全局控制。",
+      "reliability": "没有队友辅助、跨他人战斗干预或持续场面改写。"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "个人战斗与侧面攻击不属于直接名次操纵。"
+    },
+    "pending_regression": [
+      "极罕见填空的实际出现率与首次填空回合",
+      "额外回合集中与拆分目标的真实选择率",
+      "矛进攻和防御的实际分配率",
+      "敌方输出中普攻、大招、附加伤害与非攻击淘汰占比"
+    ],
+    "frontal_survival_tier": "一般偏强",
+    "side_survival_tier": "较强",
+    "global_influence_tier": "较弱",
+    "placement_security_tier": "无",
+    "front_hit_count": {
+      "expected_hits": 5.0,
+      "variance": 1.28,
+      "standard_deviation": 1.1314,
+      "note": "无填空双回合集中主模型：两回合基础攻击合计期望4，加唯一一矛固定一次攻击；假定两回合基础结果独立。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "高",
+      "lifecycle_actions": "稳定双回合与唯一破矛",
+      "elimination_cost": "中等偏高",
+      "net_exchange": "矛攻防存在明确机会成本",
+      "long_term_conversion": "个人正面压制",
+      "source": "data/review/cards/乾罗/lifecycle-and-realization.md"
+    }
+  },
+  "浦饭幽助": {
+    "title": "浦饭幽助",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 1600,
+    "calculation": {
+      "hit_count": "H=两个Bernoulli(1/5)内功击中+两个Bernoulli(4/5)招式击中；E[H]=2，Var(H)=0.64。",
+      "white_base": "基础输出B保持E[B]=400、Var(B)=22400；击中倍率不复制原攻击伤害。",
+      "sixfold_main": "敌无成功大招且发动灵光：O6=B+600H，E=1600，Var=377600，SD=614.4917。",
+      "threefold_failure": "敌成功使用大招：O3=B+300H，E=1000，Var=142400，SD=377.3592。",
+      "resource": "每回合最多两发；灵光占一发且每回合一次。重生前总计6发，重生后总量无限。",
+      "ability_environment": "423张人物有753条牌面大招，平均1.7801条。按每条独立标准两卡大招成功率7/25并依真实数量分布加权，敌无成功大招约63.44%，至少一项约36.56%。",
+      "ammo_environment": "普通人物通常只能选一项主动大招；灵光占1发，若敌有成功大招再用1发打断，平均每爆发回合消耗约1.3656发。按0至6发递推，6发约支持4.59个灵光爆发回合。"
+    },
+    "output_variance": {
+      "sixfold_main": {
+        "expectation": 1600,
+        "variance": 377600,
+        "standard_deviation": 614.4917,
+        "coefficient_of_variation": 0.3841,
+        "range": [
+          0,
+          3200
+        ]
+      },
+      "threefold_failure": {
+        "expectation": 1000,
+        "variance": 142400,
+        "standard_deviation": 377.3592,
+        "coefficient_of_variation": 0.3774,
+        "range": [
+          0,
+          2000
+        ]
+      }
+    },
+    "penetration_rate": "六倍击中计数主值中一定造成期望1200，占75%；敌成功使用大招分支为600，占60%。一定造成不能穿无敌。",
+    "penetration": {
+      "front_main": {
+        "practical_expected_amount": 1200,
+        "fraction_of_expected_output": 0.75,
+        "strict_guaranteed_amount": 1200,
+        "type": "附加伤害·一定造成",
+        "variance": 230400,
+        "standard_deviation": 480
+      },
+      "front_failure": {
+        "practical_expected_amount": 600,
+        "fraction_of_expected_output": 0.6,
+        "strict_guaranteed_amount": 600,
+        "type": "附加伤害·一定造成"
+      }
+    },
+    "side_output": {
+      "main_expected_output": 0,
+      "variance": 0,
+      "standard_deviation": 0,
+      "condition": "灵丸只能处理当前对阵者，且打断没有伤害。"
+    },
+    "frontal_survival_turns": null,
+    "frontal_survival_model": "两条独立3000生命。第一次死亡后满3000重生并清有利、不利；致死攻击不把溢出带入第二条命。无减伤，清除和彻底死亡可绕过。",
+    "side_survival_turns": null,
+    "side_defense": "没有侧面打断、减伤或防波及；主要以两条独立3000生命硬吃，近似6000裸生命。清除和彻底死亡可绕过。",
+    "global_influence": {
+      "tier": "基本没有",
+      "allied_support": "无。",
+      "enemy_suppression": "仅限当前对阵者，一回合最多两次主动打断。",
+      "board_control": "不能介入其他人物战斗。",
+      "reliability": "正面对阵时高，跨战为0。"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "没有直接胜利、免失败、结盟、投靠、从属或顺位操作。"
+    },
+    "pending_regression": [
+      "逐人物区分主动／可控／被动大招、实际放法与位置竞争，替换63.44%的简化估计",
+      "重生前每回合灵光与打断的真实弹药分配",
+      "无敌、清除、彻底死亡及跨回合持续伤害环境",
+      "击中次数分布在特殊放卡和异常环境中的变化"
+    ],
+    "frontal_survival_tier": "强",
+    "side_survival_tier": "较强",
+    "global_influence_tier": "基本没有",
+    "placement_security_tier": "无",
+    "front_hit_count": {
+      "expected_hits": 12.0,
+      "variance": 23.04,
+      "standard_deviation": 4.8,
+      "note": "灵光且敌无成功大招的主样本：原始击中期望2、方差0.64，百裂拳×2与灵光×3令计数×6。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "高",
+      "lifecycle_actions": "六发资源加两条生命",
+      "elimination_cost": "高",
+      "net_exchange": "伤害与打断共同消耗灵丸",
+      "long_term_conversion": "稳定正面胜势",
+      "source": "data/review/cards/浦饭幽助/lifecycle-and-realization.md"
+    }
+  },
+  "梅念笙": {
+    "title": "梅念笙",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 1308,
+    "calculation": {
+      "model": "单名均匀五行盲选白人、固定木火牌形、梅念笙存活到相应攻击结算；联合枚举连城剑、梅花拳和混克空招及各自相关普攻，不是身份暴露后的知情博弈均衡。",
+      "base": "无条件基础卡期望400，但基础输出与拳剑路线相关，不能先固定加400再独立附加主动特技。",
+      "cast": "连城剑：两个招式位均未克敌，概率16/25=64%；梅花拳：至少一个招式位克敌且没有被克，概率7/25=28%；一克一被克时两招均关闭，概率2/25=8%。",
+      "incoming_hits": "成功放出时两个招式位各保证一次敌方击中，两个内功位各以1/5增加一次，E[N|R]=2.4。",
+      "liancheng": "L=500NR，E[L]=16/25×500×2.4=768。",
+      "total": "三分支联合枚举：连城剑条件期望1540、梅花拳条件期望1054.2857、混克空招条件期望340；加权E[O]=1308。",
+      "own_hits": "联合路线下自身击中期望6.6，方差2.96，标准差1.7205。",
+      "plum_fist": "梅花拳不受铁骨墨萼影响；固定木火牌形下与连城剑及混克空招互斥，不能另用无条件540叠加。",
+      "route_control": "身份暴露后双方可继续换牌：例如对手金金使木位被克、火位克敌，梅念笙又可火火追求普攻。当前不假定简单纯策略均衡，以完整盲打联合分布作为主统计。",
+      "multi_enemy": "完整多人拳剑联合总量尚待重算。只保留连城剑理想组件640m²+128m作为结构上限证据；梅花拳可能更早成为首次自身攻击并冻结后续蓄力，不能沿用旧完整总量。"
+    },
+    "output_variance": {
+      "front_main": {
+        "expectation": 1308,
+        "variance": 186656,
+        "standard_deviation": 432.037,
+        "coefficient_of_variation": 0.3303,
+        "range": [
+          300,
+          2400
+        ],
+        "enumeration": "两个内功与两个招式的5^4=625种均匀五行结果精确合并；输出分布见front-output.md。"
+      },
+      "side_reallocated": {
+        "expectation": 908,
+        "variance": 218336,
+        "standard_deviation": 467.2644,
+        "range": [
+          0,
+          2000
+        ],
+        "resource_boundary": "把当回合连城剑或梅花拳的全部五击改投一名侧面目标；改投后正面对阵者仅承担该分支实际普攻，普攻无条件期望400。"
+      },
+      "hit_count": {
+        "expectation": 6.6,
+        "variance": 2.96,
+        "standard_deviation": 1.7205
+      }
+    },
+    "penetration_rate": "0：基础攻击、连城剑法和梅花拳均为普通攻击；多段会消耗次数型防御，但没有可确定登记的一定造成、破或无视防御点数。",
+    "penetration": {
+      "front_main": {
+        "practical_expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "strict_guaranteed_amount": 0
+      },
+      "side_reallocated": {
+        "practical_expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "strict_guaranteed_amount": 0
+      }
+    },
+    "side_output": {
+      "main_expected_output": 908,
+      "variance": 218336,
+      "standard_deviation": 467.2644,
+      "condition": "本人出战，固定木火盲打中把连城剑或梅花拳的全部五击改投一名场上侧面目标；与正面共用。",
+      "off_field_output": 0
+    },
+    "frontal_survival_turns": null,
+    "frontal_survival_model": "2800生命；每个外来特技实例只能完整使用一次，任一方向相克后先承伤、存活则回满。无减伤、免死或复活，铁骨墨萼还令攻击延后；首次高爆发或多个不同实例可在反击前击杀。",
+    "side_survival_turns": null,
+    "side_defense": "外来特技实例限次仍有效；场下通常没有相克回满，且无防指定、波及、生命流失、异常、杀死或清除的独立保护。",
+    "global_influence": {
+      "tier": "一般偏弱且带负面",
+      "allied_support": "无主动辅助；仅与丁典固定结盟。",
+      "enemy_suppression": "多套连城剑可改投任意场上人物形成反威慑。",
+      "board_control": "【恶】取得一次集体偷袭入口，发动权不在梅念笙。",
+      "reliability": "多人越多理论反击越大，但知情双方可循环换牌，且2800生命和延后攻击使先死截断显著；三恶共同偷袭后死亡。"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "固定关系与强生存不直接给所属玩家稳定名次保护。"
+    },
+    "pending_regression": [
+      "既往人物与全体人物的正面平均击中次数",
+      "闪避、抵挡、无敌和多段攻击在真实环境中的分布",
+      "多人偷袭人数、梅念笙活到延后结算的概率",
+      "【恶】发动偷袭的意愿与三恶共同出现频率",
+      "身份暴露后双方在连城剑、梅花拳与普攻之间的混合选牌策略"
+    ],
+    "frontal_survival_tier": "强",
+    "side_survival_tier": "较强",
+    "global_influence_tier": "一般偏弱且带负面",
+    "placement_security_tier": "无",
+    "front_hit_count": {
+      "expected_hits": 6.6,
+      "variance": 2.96,
+      "standard_deviation": 1.7205,
+      "note": "固定木火均匀盲打联合样本：连城剑64%、梅花拳28%、混克空招8%，保留各分支普攻击中相关性。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "中高",
+      "lifecycle_actions": "实例耗尽、回满与受击反击",
+      "elimination_cost": "高但怕首轮爆发",
+      "net_exchange": "延后时序换高段自由目标",
+      "long_term_conversion": "越长局越有利",
+      "source": "data/review/cards/梅念笙/lifecycle-and-realization.md"
+    }
+  },
+  "法明": {
+    "title": "法明",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 1400,
+    "calculation": {
+      "main_model": "当前对阵者无能力、无防御且不响应；每回合使用一次魔佛十式。",
+      "base": "基础四卡E[B]=400，Var(B)=22400。",
+      "no_response": "O0=B+1000，E[O0]=1400。",
+      "response": "九击900至100合计4500；O1=B+5500，防御前名义条件期望5900。",
+      "response_variable": "若响应比例为q且只统计名义攻击，E[O]=1400+4500q，Var(O)=22400+20250000q(1-q)。",
+      "response_boundary": "响应本身可能是无敌、闪避、抵挡或转移；5900不代表实际造成量。",
+      "vajra_cast": "四位净克制分数S>0，均匀盲打P=34.4%。",
+      "vajra_state": "非无敌到无敌0.344；无敌到非无敌0.328；简化稳态无敌比例0.5119。"
+    },
+    "output_variance": {
+      "front_no_response": {
+        "expectation": 1400,
+        "variance": 22400,
+        "standard_deviation": 149.6663,
+        "coefficient_of_variation": 0.1069,
+        "range": [
+          1000,
+          1800
+        ]
+      },
+      "front_response_nominal": {
+        "expectation": 5900,
+        "variance": 22400,
+        "standard_deviation": 149.6663,
+        "range": [
+          5500,
+          6300
+        ],
+        "boundary": "只统计法明发出的防御前名义攻击；实际伤害取决于响应防御。"
+      },
+      "hit_count": {
+        "main_expectation": 3,
+        "response_branch_expectation": 12,
+        "variance": 0.64,
+        "standard_deviation": 0.8
+      }
+    },
+    "penetration_rate": "0：魔佛十式、追加九击和基础攻击均没有一定造成、破、无视防御或破除无敌。",
+    "penetration": {
+      "front_main": {
+        "practical_expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "strict_guaranteed_amount": 0
+      },
+      "side": {
+        "practical_expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "strict_guaranteed_amount": 0
+      }
+    },
+    "side_output": {
+      "main_expected_output": 0,
+      "variance": 0,
+      "standard_deviation": 0,
+      "condition": "魔佛十式及追加九击只能攻击当前对阵者。",
+      "off_field_output": 0
+    },
+    "frontal_survival_turns": null,
+    "frontal_survival_model": "2689生命；不碎金刚四卡后34.4%放出，建立后跨回合无敌，简化长期回合开始无敌稳态约51.19%；首次四卡前仍可被高爆发击杀。",
+    "side_survival_turns": null,
+    "side_defense": "已有无敌时有效；任一人类非死亡离场触发后永久不在场且不出战，触发前无独立侧面硬防。",
+    "global_influence": {
+      "tier": "较弱",
+      "allied_support": "无主动辅助。",
+      "enemy_suppression": "当前对阵响应威慑归正面，不作跨战削弱。",
+      "board_control": "无主动第三方调度；佛门结盟与永久不出战的主要价值归名次保障。",
+      "reliability": "全局贡献较低，不重复计算个人保位。"
+    },
+    "placement_security": {
+      "tier": "有条件很强（不败／保和型）",
+      "note": "触发永久不在场且不出战后不会输，并可能与第一名和局。"
+    },
+    "pending_regression": [
+      "全库特技或能力对1000狂攻击的实际响应比例",
+      "响应类型中持续无敌、单次闪避、抵挡、转移与其他防御的分布",
+      "全局人类非死亡离场的发生率与发生回合",
+      "佛门且非【恶】人物的语义名单与实际出战率"
+    ],
+    "frontal_survival_tier": "有条件强",
+    "side_survival_tier": "条件分化",
+    "global_influence_tier": "较弱",
+    "placement_security_tier": "有条件很强",
+    "front_hit_count": {
+      "expected_hits": 3.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "无响应主样本：基础四卡平均2次击中，魔佛十式首击固定1次；敌响应条件分支再增加9次，条件平均12次。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "中等",
+      "lifecycle_actions": "无敌窗口直到永久不在场",
+      "elimination_cost": "触发后无需淘汰",
+      "net_exchange": "响应高伤常由对手规避",
+      "long_term_conversion": "明确不败／保和转化",
+      "source": "data/review/cards/法明/lifecycle-and-realization.md"
+    }
+  },
+  "薛笑人": {
+    "title": "薛笑人",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 400,
+    "calculation": {
+      "main_model": "薛笑人本体首次与单名无能力、无防御敌人交手；四位置独立均匀盲打；数值输出与普通杀死分账。",
+      "base": "B为基础四卡输出，E[B]=400，Var(B)=22400，SD=149.6663。",
+      "first_kill": "K~Binomial(4,0.2)，判定概率p=min(1,(1+K)/3)，E[p]=0.5904。",
+      "one_prior_growth": "已有一次永久增长时，单目标交手后杀死概率0.8634667。",
+      "two_prior_growth": "已有两次永久增长时，交手后杀死概率1。",
+      "second_fight_state_model": "忽略死亡截断，首次交手后状态分布为(1/3,2/3,必杀)=(0.2730667,0.2730667,0.4538667)，第二次交手混合杀死概率0.8508692。",
+      "double_target_cut_in": "八次比对后每名敌边际杀死概率0.7763038；两敌同时分别判定，至少杀死一人0.8881519，两人都被杀死0.66445568。"
+    },
+    "output_variance": {
+      "front_numeric": {
+        "expectation": 400,
+        "variance": 22400,
+        "standard_deviation": 149.6663,
+        "coefficient_of_variation": 0.3742,
+        "range": [
+          0,
+          800
+        ]
+      },
+      "front_hit_count": {
+        "expectation": 2,
+        "variance": 0.64,
+        "standard_deviation": 0.8
+      },
+      "double_target_cut_in_numeric_total": {
+        "expectation": 800,
+        "variance": 44800,
+        "standard_deviation": 211.6601
+      }
+    },
+    "non_damage_elimination": {
+      "type": "普通杀死",
+      "front_first_encounter_probability": 0.5904,
+      "front_after_one_growth_probability": 0.8634667,
+      "front_after_two_growth_probability": 1,
+      "double_target_each_probability": 0.7763038,
+      "double_target_at_least_one_probability": 0.8881519,
+      "double_target_both_probability": 0.66445568,
+      "boundary": "不是伤害或穿透；薛笑人必须活到交手后，普通杀死允许复活。",
+      "nominal_front_attempt_window": 2,
+      "front_at_least_one_over_window": 0.8695105,
+      "front_expected_eliminations_over_window": 1.4412692,
+      "window_basis": "2700生命按当前约1400暂定平均取ceil(2700/1400)=2；忽略先死截断。",
+      "evaluation_boundary": "非伤害淘汰独立于输出和穿透，未来与正面输出、正面生存共同进入正面战斗评分。"
+    },
+    "penetration_rate": "0：基础普攻、快剑和刺客普攻均可正常防御；杀手剑是非伤害普通杀死，另行统计。",
+    "penetration": {
+      "front_main": {
+        "practical_expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "strict_guaranteed_amount": 0
+      },
+      "side": {
+        "practical_expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "strict_guaranteed_amount": 0
+      }
+    },
+    "side_output": {
+      "main_expected_output": 600,
+      "variance": 29066.6667,
+      "standard_deviation": 170.4895,
+      "condition": "薛宝宝按作者当前估计可形成约三名刺客；横向主值取前三名500、600、700的单次等权平均。",
+      "assassin_formula": "第j次刺客出场E[A_j]=400+100j；此前a次后连续消耗s名，E[T]=400s+50s(2a+s+1)。",
+      "cut_in_single_target": "数值期望400，初始状态交手后普通杀死概率59.04%。",
+      "cut_in_two_targets": "总数值期望800；每目标初始状态杀死概率77.63%，至少杀死一人88.82%。",
+      "first_three_total": 1800,
+      "main_window": [
+        1,
+        2,
+        3
+      ]
+    },
+    "frontal_survival_turns": null,
+    "frontal_survival_model": "薛宝宝1800与薛笑人2700分别记录；常规生命中位数3000在固定1400压力下名义窗口约3回合。本体名义约2次交手；薛宝宝因定向特技限制由作者估计约可形成3个资源回合。",
+    "side_survival_turns": null,
+    "side_defense": "未出战默认薛宝宝，定向主动与可控特技不能对其使用；被动、全体与波及仍可生效。假身份死亡不伤本体。",
+    "global_influence": {
+      "tier": "较强",
+      "allied_support": "无直接治疗或强化；条件满足时可控制仍属于原阵营的中原一点红。",
+      "enemy_suppression": "刺客连续袭击和本体切入可干预已经登记的目标。",
+      "board_control": "永久追杀名单与无限次切入能改变他人战斗的参与者和风险。",
+      "reliability": "名单需由薛宝宝逐个建立；切入本体会承受所攻击各方的结算。"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "假身份、刺客和淘汰能力属于生存、战斗与全局影响。"
+    },
+    "pending_regression": [
+      "薛宝宝平均建立的永久追杀目标数",
+      "刺客平均库存、实际连续派出数和目标死亡截断",
+      "本体切入单方／双方比例及先死截断",
+      "普通杀死对重生人物的实际折损",
+      "中原一点红与楚留香同场关系出现率",
+      "正面非伤害淘汰横向分布与反制环境"
+    ],
+    "frontal_survival_tier": "较强",
+    "side_survival_tier": "较强",
+    "global_influence_tier": "较强",
+    "placement_security_tier": "无",
+    "front_hit_count": {
+      "expected_hits": 2.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "本体或薛宝宝单目标基础四卡主样本；杀手剑是交手后普通杀死，不形成攻击击中。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "中高",
+      "lifecycle_actions": "双本体窗口加刺客库存",
+      "elimination_cost": "较高",
+      "net_exchange": "低伤害但高非伤害淘汰收益",
+      "long_term_conversion": "把存活回合转为敌方减员",
+      "source": "data/review/cards/薛笑人/lifecycle-and-realization.md"
+    }
+  },
+  "月神": {
+    "title": "月神",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 400,
+    "calculation": {
+      "main_model": "单名无能力、无防御、无生命封顶敌人；四位置独立均匀盲打；假设月神完成四卡，数值输出与普通死亡分账。",
+      "base": "E[B]=400，Var(B)=22400，SD=149.6663，范围0至800。",
+      "death_truncation": "月神中途死亡会截断后续数值攻击，但不会取消已经形成交手后的普通死亡。"
+    },
+    "output_variance": {
+      "front_numeric": {
+        "expectation": 400,
+        "variance": 22400,
+        "standard_deviation": 149.6663,
+        "coefficient_of_variation": 0.3742,
+        "range": [
+          0,
+          800
+        ]
+      },
+      "front_hit_count": {
+        "expectation": 2,
+        "variance": 0.64,
+        "standard_deviation": 0.8
+      }
+    },
+    "non_damage_elimination": {
+      "type": "普通死亡／普通杀死",
+      "front_first_encounter_probability": 1.0,
+      "all_engaged_enemies": true,
+      "survival_required_after_encounter": false,
+      "nominal_damage_pressure_window": 2,
+      "nominal_front_attempt_window": 1,
+      "front_at_least_one_over_window": 1.0,
+      "front_expected_eliminations_over_window": 1.0,
+      "boundary": "不计入伤害或穿透；月神持有【暗】并满足（暗）兵器条件；暗器免疫可以抵消死亡；未免疫而普通死亡者仍可重生。",
+      "window_basis": "ceil(1600/1400)=2仅为无防御名义承伤段；可靠淘汰模型只登记第一次实际交手，因为死亡也会完成该次换命。"
+    },
+    "penetration_rate": "0：基础普攻可正常防御；交手后死亡是非伤害淘汰，不折算为穿透。",
+    "penetration": {
+      "front_main": {
+        "practical_expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "strict_guaranteed_amount": 0
+      },
+      "side": {
+        "practical_expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "strict_guaranteed_amount": 0
+      }
+    },
+    "side_output": {
+      "main_expected_output": 0,
+      "variance": 0,
+      "standard_deviation": 0,
+      "condition": "点名挑战是本人出战后的正面目标捕捉，不是侧面伤害。"
+    },
+    "frontal_survival_turns": null,
+    "frontal_survival_model": "1600生命无防御；约1400环境下1600/1400≈1.14，ceil为2，但不能当作两次稳定出战。",
+    "side_survival_turns": null,
+    "side_defense": "无场下防指定、防波及、防伤害、防流失或离场保护。",
+    "global_influence": {
+      "tier": "强",
+      "allied_support": "无直接强化；通过定点淘汰关键敌间接保护队友。",
+      "enemy_suppression": "强制指定未亮出／不在场人物交手并制造普通死亡。",
+      "board_control": "建立只有月神与目标在场的隔离战斗，排除第三方与雷区。",
+      "reliability": "点名须正确；形成交手后月神死亡也不取消；暗器免疫可抵消死亡，普通重生或明确抵挡死亡的能力仍会折损。"
+    },
+    "placement_security": {
+      "tier": "无",
+      "note": "点名换命属于战斗与控制，没有直接名次规则。"
+    },
+    "pending_regression": [
+      "暗器免疫在已评人物中的实际覆盖率",
+      "普通死亡遇重生、免死的折损",
+      "点名猜中隐藏人物的实际信息条件",
+      "第一次点名后月神自身存活或复活率",
+      "多人交手实际出现率与全部敌死亡的目标数分布"
+    ],
+    "frontal_survival_tier": "弱",
+    "side_survival_tier": "弱",
+    "global_influence_tier": "强",
+    "placement_security_tier": "无",
+    "front_hit_count": {
+      "expected_hits": 2.0,
+      "variance": 0.64,
+      "standard_deviation": 0.8,
+      "note": "数值层只计基础四卡；交手后死亡是非伤害淘汰，不形成攻击击中。即使只打一张月神先死，交手仍已成立。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "高（形成交手后）",
+      "lifecycle_actions": "通常一次关键目标交换",
+      "elimination_cost": "低",
+      "net_exchange": "一换一净值取决于目标",
+      "long_term_conversion": "稳定捕捉关键人物",
+      "source": "data/review/cards/月神/lifecycle-and-realization.md"
+    }
+  },
+  "周威信": {
+    "title": "周威信",
+    "status": "semantic_calibrated_environment_pending",
+    "attack_expectation_frontal_nominal_topline": 320,
+    "calculation": {
+      "main_model": "周威信单独对无能力、无防御白人；四位置独立均匀盲打；铁鞭将自身克敌改为相平。",
+      "front_output": "B=200×Binomial(2,4/5)，E=320，Var=12800，SD=113.1371，范围0至400。",
+      "front_incoming": "敌方基础O=400+100L，L~Binomial(4,1/5)；L>0时周威信打得差并另受400。",
+      "side_two_evil": "固定一名【恶】承受800+400×Bernoulli(0.4032)，E=961.28，SD=196.2161。"
+    },
+    "output_variance": {
+      "front_numeric": {
+        "expectation": 320,
+        "variance": 12800,
+        "standard_deviation": 113.1371,
+        "coefficient_of_variation": 0.3536,
+        "range": [
+          0,
+          400
+        ]
+      },
+      "front_hit_count": {
+        "expectation": 1.6,
+        "variance": 0.32,
+        "standard_deviation": 0.5657
+      },
+      "side_two_evil_per_person": {
+        "expectation": 961.28,
+        "variance": 38500.7616,
+        "standard_deviation": 196.2161,
+        "condition": "两【恶】均为无能力均匀白人；固定参与者。"
+      }
+    },
+    "penetration_rate": "0：基础攻击及无来源400／800均可正常防御；无来源不等于破或一定造成。",
+    "penetration": {
+      "front_main": {
+        "practical_expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "strict_guaranteed_amount": 0
+      },
+      "side": {
+        "practical_expected_amount": 0,
+        "fraction_of_expected_output": 0,
+        "strict_guaranteed_amount": 0
+      }
+    },
+    "side_output": {
+      "main_expected_output": 161.28,
+      "variance": 38500.7616,
+      "standard_deviation": 196.2161,
+      "condition": "普通两白人战中固定参与者受到打得差400；敌我归属不固定。",
+      "generic_two_white_total_expected": 322.56,
+      "two_evil_conditional_per_person": {
+        "expectation": 961.28,
+        "variance": 38500.7616,
+        "standard_deviation": 196.2161,
+        "native_pair_frequency_reference": "536张卡中【恶】约70余，随机两恶约1.7%-2%；周威信永久改恶会动态提高。"
+      }
+    },
+    "frontal_survival_turns": 3.9282,
+    "frontal_survival_model": "仅白人独立回合压力测试：总承伤分布400/900/1000/1100/1200，对应概率0.4096/0.4096/0.1536/0.0256/0.0016；现实约1400环境及强制即时不利会更危险。",
+    "side_survival_turns": null,
+    "side_defense": "他人战斗无法影响周威信，并且不参与非正常战斗；本人参战与非战斗事件不受该保护。",
+    "global_influence": {
+      "tier": "很强但高双刃",
+      "allied_support": "本方全部人头领先时，可任选任意多名本方人物叠加出场，周威信本人无需参加，也可不发动。",
+      "enemy_suppression": "实际对阵者不能使用内容含自己姓名的非被动特技，并永久变【恶】；周威信参战成为非对阵时两项关闭。",
+      "board_control": "所有不在场人物持续视为在场；双方强制即时尽量不利；打得差与两恶战产生全局无来源附加伤害。",
+      "coverage": "全场持续；禁名与改恶只覆盖周威信未参战时的本方实际对阵者。",
+      "persistence": "大部分为被动持续本局；永久改恶跨战斗保留；叠加权在每次满足人头优势时可重新选择。",
+      "reliability": "高；核心被动不依赖放卡。叠加要求严格人头优势，净收益受阵容与失败惩罚影响。",
+      "net_value": "影响幅度很强，但全场在场、强制不利、400与800均可能伤害己方，必须与双刃风险分账。"
+    },
+    "placement_security": {
+      "tier": "无直接保障",
+      "note": "侧面隔离和不参加非正常战斗属于生存；没有直接胜利、结盟、免失败、投靠或名次改写。"
+    },
+    "pending_regression": [
+      "含人物自己姓名的非被动特技全库比例",
+      "严格人头优势形成频率与实际叠加人数",
+      "多人打得差每人400的现实损失",
+      "约70余【恶】／536张的原生两恶低频与永久改恶后的动态增长",
+      "全场在场对敌我不在场防线的净收益",
+      "非对阵攻击与无来源附加伤害的防御环境"
+    ],
+    "frontal_survival_tier": "弱",
+    "side_survival_tier": "较强",
+    "global_influence_tier": "很强但高双刃",
+    "placement_security_tier": "无直接保障",
+    "front_hit_count": {
+      "expected_hits": 1.6,
+      "variance": 0.32,
+      "standard_deviation": 0.5657,
+      "note": "本人单独战斗主模型：铁鞭把克敌改平，两个内功位不再形成攻击；两个招式位各以4/5相平并攻击200。无来源400是本人打得差时受到的攻击，不计本人对敌击中。"
+    },
+    "lifecycle_and_realization": {
+      "realization": "高",
+      "lifecycle_actions": "持续在场改写、身份污染、结果处罚与条件叠加",
+      "elimination_cost": "侧面高、正面低",
+      "net_exchange": "人头优势时高；多人打得差会线性反噬",
+      "long_term_conversion": "把人头优势放大为集中出战并持续提高【恶】密度",
+      "source": "data/review/cards/周威信/lifecycle-and-realization.md"
+    },
+    "frontal_survival_condition": "接近很弱；叠加或不上场改善整卡兑现，不改变本人基础正面档位。",
+    "side_survival_condition": "他人战斗与非正常战斗保护稳定；本人正常出战和非战斗事件仍可处理。"
   }
 }

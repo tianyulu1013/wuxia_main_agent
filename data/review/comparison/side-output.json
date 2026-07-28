@@ -1,0 +1,207 @@
+{
+  "_schema": {
+    "purpose": "第一轮侧面与场下输出横向统计；以后比较该维度时默认只读本文件。",
+    "expected_output": "牌面最主要的单目标侧面／场下条件输出期望；累积型能力取预计生存／资源窗口内的通常阶段或单次平均，不机械取第一次最低暂态。",
+    "guaranteed_penetration_output": "兼容字段：仅记录规则类型上严格能够一定造成的输出期望。",
+    "penetration_rate": "实战穿透输出期望除以主值。",
+    "note": "一句话说明触发条件或与正面输出共用资源的边界。",
+    "penetration_output": "实战穿透输出：在大部分常见防御环境中仍可兑现的侧面／场下输出。"
+  },
+  "summary": {
+    "reviewed_characters": 23,
+    "average_expected_output": 403.28,
+    "expected_output_population_standard_deviation": 579.97,
+    "average_penetration_output": 56.52,
+    "penetration_output_population_standard_deviation": 210.23,
+    "pooled_penetration_rate": 0.1402,
+    "average_guaranteed_penetration_output": 13.04,
+    "strict_pooled_penetration_rate": 0.0323,
+    "calculation": "按当前全部人物的侧面／场下单目标横向主值计算；0同样作为已评实体人物样本计入。累积型能力取预计生存／资源窗口内常态单次平均；杀死不折算为穿透。"
+  },
+  "entries": {
+    "凤三": {
+      "expected_output": 800,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "凤三正面受白人期望400伤害后，每名距离1合格敌人承受2D。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "王重阳": {
+      "expected_output": 0,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "没有个人侧面或场下伤害。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "邀月": {
+      "expected_output": 200,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "把白人模型中的反射改投一名侧面目标；与正面输出共用。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "怜星": {
+      "expected_output": 0,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "没有常态侧面伤害；场下单次反噬取决于来袭事件。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "俞佩玉": {
+      "expected_output": 0,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "场下价值来自控制，不是个人伤害。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "一灯": {
+      "expected_output": 531.2,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "一阳指改打一名侧面人物；与对阵者分支共用。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "燕南天": {
+      "expected_output": 300,
+      "guaranteed_penetration_output": 300,
+      "penetration_rate": 1,
+      "note": "每次受到有来源非对阵攻击的场下反击；无来源不反击。",
+      "penetration_output": 300,
+      "strict_guaranteed_penetration_output": 300
+    },
+    "叶开": {
+      "expected_output": 1000,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "每次实际消耗飞刀机会并选择强攻；真实频率待回归。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "丁典": {
+      "expected_output": 0,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "没有个人侧面或场下伤害。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "丁喜": {
+      "expected_output": 2422.86,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "三张同尚存时，每名同方侧面战斗人物承受一次共享霸王枪输出。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "丁春秋": {
+      "expected_output": 500,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "已有可用尸体时的腐尸毒第一环；星宿火另为每目标每回合300。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "丁鹏": {
+      "expected_output": 0,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "没有侧面或场下伤害；永久破坏武器属于控制。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "白清儿": {
+      "expected_output": 0,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "没有侧面伤害；延迟死亡不折算为伤害。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "燕十三": {
+      "expected_output": 36,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "主动选择第十四剑时每名在场侧面敌的期望；与夺冠主线共用招式位。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "雷卷": {
+      "expected_output": 360,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "首个完整八雷波次按约5名实际触发者摊薄的每人条件主值；集中单敌值1800仅作上限证据，三波理想摊薄约3000且很难兑现。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "谢烟客": {
+      "expected_output": 56,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "弹指以7/25成功率指定任意在场敌，成功造成200并附加异常“点”；伤害期望56、标准差89.80，点的控制价值不折算为伤害。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "乾罗": {
+      "expected_output": 1400,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0.7143,
+      "note": "额外回合改打一名不同敌人的单目标主值；与正面两回合总量共用，不额外叠加。无填空时含1000破。",
+      "penetration_output": 1000,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "浦饭幽助": {
+      "expected_output": 0,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "灵丸只能针对当前与浦饭幽助对阵的敌人，且打断本身无伤害；没有侧面目标或场下输出。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "梅念笙": {
+      "expected_output": 908,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "固定木火盲打中，将连城剑或梅花拳全部五击改投一名侧面目标；联合期望908、标准差467.26，与正面1308共用，改投后正面对阵者仅承受普攻。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "法明": {
+      "expected_output": 0,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "魔佛十式和追加九击只能攻击当前对阵者；不在场后不能使用。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "薛笑人": {
+      "expected_output": 600,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "薛宝宝预计形成约3名刺客，取500、600、700的单次平均600，混合标准差170.49；前三名累计1800。第j名为400+100j。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "月神": {
+      "expected_output": 0,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "点名挑战发生在月神自己出战时，是正面目标捕捉与隔离，不是场下伤害；侧面数值主值为0。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "周威信": {
+      "expected_output": 161.28,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "普通两白人战中固定参与者受打得差400的期望。两【恶】时每名参与者961.28仅为低频条件分支；全库原生两恶约1.7%-2%，永久改恶会随对阵次数提高。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    }
+  }
+}

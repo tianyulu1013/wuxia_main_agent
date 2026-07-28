@@ -1,0 +1,73 @@
+{
+  "_schema": {
+    "purpose": "战斗人物非伤害淘汰横向统计；杀死、彻底死亡、清除、离场等不加入输出或穿透。",
+    "type": "主要淘汰类型及规则后果。",
+    "conditional_probability": "已经取得合法机会并活到触发时点后的单次成功率。",
+    "attempt_window": "基于当前约1400环境与人物生存能力估计的常态合法尝试次数；不是严格生存期望。",
+    "career_probability": "在明确模型内至少成功一次的概率；必须说明是否忽略先死截断。",
+    "expected_eliminations": "明确模型内期望淘汰人数；不同淘汰类型不得无说明合并。",
+    "backfill_policy": "本表从薛笑人开始建立；既往人物在后续回归或已有完整推导可直接复用时补写，不为回填批量重读。"
+  },
+  "summary": {
+    "recorded_characters": 5,
+    "reviewed_characters_total": 22,
+    "complete_relevant_backfill": true,
+    "warning": "只登记已评人物中明确的杀死、死亡、彻底死亡等淘汰路径；条件空值表示缺少统一尝试窗口，不代表概率为0。"
+  },
+  "entries": {
+    "薛笑人": {
+      "type": "普通杀死",
+      "front_first_eligible_encounter_probability": 0.5904,
+      "front_after_one_growth_probability": 0.8634667,
+      "front_after_two_growth_probability": 1.0,
+      "nominal_front_attempt_window": 2,
+      "front_at_least_one_over_window": 0.8695105,
+      "front_expected_eliminations_over_window": 1.4412692,
+      "trigger_timing": "交手后；必须以薛笑人本体出现并存活到交手后。",
+      "counter_boundary": "普通杀死允许复活；实际值还要扣除本体先死、目标提前死亡、身份选择及无法取得第二次交手。",
+      "lateral_note": "初始状态切入同时攻击两方时，每目标杀死概率77.63%，至少杀死一人88.82%；本体承受双方结算。"
+    },
+    "月神": {
+      "type": "普通死亡／普通杀死",
+      "front_first_eligible_encounter_probability": 1.0,
+      "nominal_damage_pressure_window": 2,
+      "nominal_front_attempt_window": 1,
+      "front_at_least_one_over_window": 1.0,
+      "front_expected_eliminations_over_window": 1.0,
+      "trigger_timing": "交手后；形成交手后不要求月神存活，一张基础卡后中途死亡也仍结算。",
+      "targeting": "点名正确可强制指定的未亮出／不在场人物出战；多敌交手时全部敌同时死亡。",
+      "counter_boundary": "月神持有【暗】并满足（暗）兵器条件；暗器免疫可以抵消死亡；未免疫而普通死亡者仍可重生。点名隔离排除第三方与全局雷区。",
+      "lateral_note": "无侧面淘汰；点名挑战是月神本人出战后的正面目标捕捉。"
+    },
+    "丁鹏": {
+      "type": "彻底死亡",
+      "front_first_eligible_encounter_probability": 0.28,
+      "nominal_front_attempt_window": null,
+      "front_at_least_one_over_window": null,
+      "front_expected_eliminations_over_window": null,
+      "trigger_timing": "招式阶段成功放出神刀斩后；必须存活到结算。",
+      "counter_boundary": "不计伤害与穿透；第二轮加入知情选牌、抢先处理、实际出战次数与彻底死亡免疫。",
+      "lateral_note": "只处理当前对阵敌，无侧面淘汰。"
+    },
+    "丁春秋": {
+      "type": "普通死亡／伤害击杀连锁",
+      "front_first_eligible_encounter_probability": 0.5136,
+      "nominal_front_attempt_window": null,
+      "front_at_least_one_over_window": null,
+      "front_expected_eliminations_over_window": null,
+      "trigger_timing": "三笑依赖未被得知的隐藏计数；腐尸毒每环必须用本次伤害杀死当前目标后才继续。",
+      "counter_boundary": "三笑被得知后本局不能再用，普通死亡可被复活／免死；腐尸毒受残血、生命、防御、尸体和断链限制。",
+      "lateral_note": "腐尸毒可连续换目标，但不能把理论翻倍链当成稳定淘汰人数。"
+    },
+    "白清儿": {
+      "type": "普通死亡（所属玩家男子）",
+      "front_first_eligible_encounter_probability": null,
+      "nominal_front_attempt_window": 1,
+      "front_at_least_one_over_window": null,
+      "front_expected_eliminations_over_window": null,
+      "trigger_timing": "一次性施加后，目标本局发生两次战斗再死亡；不是默认当前对阵敌。",
+      "counter_boundary": "会长生诀者可祛除；常态多作为谈判威胁，实际发动损害宿主关系和信用。",
+      "lateral_note": "属于全局／谈判型非伤害淘汰，不进入正面战斗输出。"
+    }
+  }
+}

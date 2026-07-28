@@ -1,0 +1,250 @@
+{
+  "_schema": {
+    "purpose": "第一轮正面输出横向统计；以后比较正面输出时默认只读本文件。",
+    "expected_output": "人物正常正面出战时，对当前对阵者造成的防御前名义输出期望。",
+    "guaranteed_penetration_output": "兼容字段：仅记录规则类型上严格能够一定造成的输出期望。",
+    "penetration_rate": "实战穿透输出期望除以总输出期望。",
+    "note": "只保留解释主值所需的最少条件；完整计算见单卡front-output.md。",
+    "penetration_output": "实战穿透输出：在大部分常见防御环境中仍可兑现的输出；包括严格一定造成，也包括无视防御等高覆盖防御绕过，但后者必须注明仍会被何种上位防御挡住。"
+  },
+  "white_reference": {
+    "expected_output": 400,
+    "guaranteed_penetration_output": 0,
+    "penetration_rate": 0,
+    "penetration_output": 0,
+    "strict_guaranteed_penetration_output": 0
+  },
+  "summary": {
+    "reviewed_characters": 23,
+    "average_expected_output": 1314.42,
+    "expected_output_population_standard_deviation": 777.82,
+    "average_guaranteed_penetration_output": 210.5,
+    "guaranteed_penetration_output_population_standard_deviation": 671.71,
+    "pooled_penetration_rate": 0.2109,
+    "penetration_source_concentration": {
+      "nonzero_characters": 5,
+      "sources": [
+        {
+          "title": "燕南天",
+          "expected_penetration_output": 3110.4,
+          "share": 0.4878
+        },
+        {
+          "title": "浦饭幽助",
+          "expected_penetration_output": 1200.0,
+          "share": 0.1882
+        },
+        {
+          "title": "乾罗",
+          "expected_penetration_output": 1000.0,
+          "share": 0.1568
+        },
+        {
+          "title": "雷卷",
+          "expected_penetration_output": 534.8,
+          "share": 0.0839
+        },
+        {
+          "title": "一灯",
+          "expected_penetration_output": 531.2,
+          "share": 0.0833
+        }
+      ]
+    },
+    "calculation": "均值与总体标准差按当前全部人物主值计算；合并穿透率按实战穿透输出之和除以全部输出期望之和。严格一定造成另以兼容字段统计。杀死不折算为穿透。",
+    "average_penetration_output": 277.23,
+    "penetration_output_population_standard_deviation": 688.89,
+    "strict_pooled_penetration_rate": 0.1601
+  },
+  "entries": {
+    "凤三": {
+      "expected_output": 400,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "首次出战；后续输出依赖全库历史输出分布。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "王重阳": {
+      "expected_output": 2376,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "极致全真强攻；一阳指路线期望1992。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "邀月": {
+      "expected_output": 984,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "白人反射全部打当前对阵者；牌面没有一定造成。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "怜星": {
+      "expected_output": 1384,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "木夫人形态；含固定400附加伤害。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "俞佩玉": {
+      "expected_output": 1753.92,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "最大名义攻击力归并模型。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "一灯": {
+      "expected_output": 1331.2,
+      "guaranteed_penetration_output": 531.2,
+      "penetration_rate": 0.399,
+      "note": "采用更常见的受伤后模型。",
+      "penetration_output": 531.2,
+      "strict_guaranteed_penetration_output": 531.2
+    },
+    "燕南天": {
+      "expected_output": 3110.4,
+      "guaranteed_penetration_output": 3110.4,
+      "penetration_rate": 1,
+      "note": "无目标生命上限截断，允许四卡完整结算。",
+      "penetration_output": 3110.4,
+      "strict_guaranteed_penetration_output": 3110.4
+    },
+    "叶开": {
+      "expected_output": 1680,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "采用后续上场主值；首次上场2680，生涯均值为1680+1000/T。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "丁典": {
+      "expected_output": 528,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "白人无影神拳模型。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "丁喜": {
+      "expected_output": 2701.43,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "三张同尚存的看牌截断模型。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "丁春秋": {
+      "expected_output": 1100,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "自喊固定双大招。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "丁鹏": {
+      "expected_output": 2400,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "H≤800主值；一般公式3×max(H,800)；另有28%彻底死亡，不计伤害。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "白清儿": {
+      "expected_output": 400,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "无攻击增益的白人四卡；两战后死亡属于控制，不计输出。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "燕十三": {
+      "expected_output": 720,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "伤害优先使用夺命十三剑；直接第十五剑为400并有28%第一名，不折算为输出。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "雷卷": {
+      "expected_output": 734.8,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0.7278,
+      "note": "计入小寒神1/2避战的每次被选出场主值；失神指无视防御贡献534.8实战穿透，严格一定造成仍为0；实际交手为1469.6，其中穿透1069.6。",
+      "penetration_output": 534.8,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "谢烟客": {
+      "expected_output": 1400,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "连续两次维持碧针的最短铺垫—兑现样本：两场分别约400与2400，按单次出场混合主值1400、标准差1011.14；第t场期望400+2000(t-1)，连续长度待回归。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "乾罗": {
+      "expected_output": 1800,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0.5556,
+      "note": "无填空、正常与追加行动集中同一敌且唯一一矛用于进攻。1000破无视普通防御和抵挡，但仍受自身降命中、降输出影响，且不能破无敌。填空极罕见，只作上限。",
+      "penetration_output": 1000,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "浦饭幽助": {
+      "expected_output": 1600,
+      "guaranteed_penetration_output": 1200,
+      "penetration_rate": 0.75,
+      "note": "灵丸充足、发动灵光且敌无成功大招。击中计数×6但原攻击不增加；每个最终计数附加100一定造成。敌成功使用大招时降为期望1000、一定造成600。",
+      "penetration_output": 1200,
+      "strict_guaranteed_penetration_output": 1200
+    },
+    "梅念笙": {
+      "expected_output": 1308,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "固定木火、均匀盲选单挑且存活到结算；联合计入连城剑64%、梅花拳28%和混克空招8%及各自普攻，期望1308、标准差432.04、平均6.6次击中。知情换牌存在循环，不冒充博弈均衡。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "法明": {
+      "expected_output": 1400,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "无能力对阵者不响应主样本；基础四卡加魔佛十式1000，标准差149.67。敌响应时名义条件期望5900，但响应防御会改变实际造成量。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "薛笑人": {
+      "expected_output": 400,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "本体与薛宝宝数值主值均为基础400、标准差149.67；本体首次单目标交手后另有59.04%普通杀死概率，不计入伤害或穿透。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "月神": {
+      "expected_output": 400,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "四卡完整数值期望400、标准差149.67；交手后全部敌普通死亡另入非伤害淘汰，月神中途死亡也不取消。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    },
+    "周威信": {
+      "expected_output": 320,
+      "guaranteed_penetration_output": 0,
+      "penetration_rate": 0,
+      "note": "本人单独盲打：铁鞭将克敌改平，只有两个招式位各以4/5输出200；标准差113.14。无上限叠加属于调度，不冒充本人输出。",
+      "penetration_output": 0,
+      "strict_guaranteed_penetration_output": 0
+    }
+  },
+  "provisional_environment_reference": {
+    "current_exact_mean": 1314.42,
+    "working_rounded_value": 1400,
+    "note": "当前精评样本均值随新增人物更新；日常承伤分析仍暂取约1400，不作为规则常数。"
+  }
+}

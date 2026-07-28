@@ -1,0 +1,197 @@
+{
+  "_schema": {
+    "purpose": "第一轮整局价值中间层横向速览；详细证据读取各人物lifecycle-and-realization.md。",
+    "realization": "常态取得合法窗口、目标并活到结算的难易。",
+    "actions": "生命周期内收益怎样重复、递增或受资源限制。",
+    "elimination_cost": "敌方处理该人物所需资源与特殊路径的当前定性。",
+    "net_exchange": "所属玩家收益扣除本人、队友、机会成本和第三方收益后的方向。",
+    "conversion": "优势最终转化为击杀、耗尽、避战、和局、名次或胜利的路径。",
+    "status": "第一轮定性，不是分数；第二轮结合全体环境回归。"
+  },
+  "entries": {
+    "凤三": {
+      "realization": "中高",
+      "lifecycle_actions": "多人物、多回合递归",
+      "elimination_cost": "中等偏低",
+      "net_exchange": "阵营持续增益，个人脆弱",
+      "long_term_conversion": "持续优势，非直接终局",
+      "source": "data/review/cards/凤三/lifecycle-and-realization.md"
+    },
+    "王重阳": {
+      "realization": "高",
+      "lifecycle_actions": "重复强攻并累积抽卡",
+      "elimination_cost": "中等偏高",
+      "net_exchange": "高输出、回复与资源破坏",
+      "long_term_conversion": "可持续转为击杀与资源优势",
+      "source": "data/review/cards/王重阳/lifecycle-and-realization.md"
+    },
+    "邀月": {
+      "realization": "高",
+      "lifecycle_actions": "反复攻防转换与跨回合储存",
+      "elimination_cost": "较高",
+      "net_exchange": "通常正交换，储存有当前机会成本",
+      "long_term_conversion": "稳定正面优势",
+      "source": "data/review/cards/邀月/lifecycle-and-realization.md"
+    },
+    "怜星": {
+      "realization": "中高",
+      "lifecycle_actions": "反复转换加一次关键反转",
+      "elimination_cost": "中等偏高",
+      "net_exchange": "高度依赖敌方当回合投入",
+      "long_term_conversion": "关键回合转势",
+      "source": "data/review/cards/怜星/lifecycle-and-realization.md"
+    },
+    "俞佩玉": {
+      "realization": "中高",
+      "lifecycle_actions": "身份重生与攻击重组循环",
+      "elimination_cost": "高",
+      "net_exchange": "通常强正交换，怕本体定位",
+      "long_term_conversion": "持续资源与战局控制",
+      "source": "data/review/cards/俞佩玉/lifecycle-and-realization.md"
+    },
+    "一灯": {
+      "realization": "高",
+      "lifecycle_actions": "反复恢复、减半、盟友承伤",
+      "elimination_cost": "高",
+      "net_exchange": "个人耐久转化为阵营收益",
+      "long_term_conversion": "耗死、保队友、减少有效战斗",
+      "source": "data/review/cards/一灯/lifecycle-and-realization.md"
+    },
+    "燕南天": {
+      "realization": "中高",
+      "lifecycle_actions": "每回合重置的反多段爆发",
+      "elimination_cost": "高",
+      "net_exchange": "迫使敌改攻击结构",
+      "long_term_conversion": "换命与选战威慑",
+      "source": "data/review/cards/燕南天/lifecycle-and-realization.md"
+    },
+    "叶开": {
+      "realization": "中高",
+      "lifecycle_actions": "每次上场增飞刀，复制适配",
+      "elimination_cost": "中等偏高",
+      "net_exchange": "伤害与救援共享资源",
+      "long_term_conversion": "多次出场后稳定增值",
+      "source": "data/review/cards/叶开/lifecycle-and-realization.md"
+    },
+    "丁典": {
+      "realization": "很高",
+      "lifecycle_actions": "两命、回满、耗尽外来实例",
+      "elimination_cost": "很高",
+      "net_exchange": "低输出但迫使敌消耗多套手段",
+      "long_term_conversion": "典型长期耗尽胜势",
+      "source": "data/review/cards/丁典/lifecycle-and-realization.md"
+    },
+    "丁喜": {
+      "realization": "知情环境中待定",
+      "lifecycle_actions": "约三次递减截断资源",
+      "elimination_cost": "中等",
+      "net_exchange": "理论爆发高，兑现权受敌控制",
+      "long_term_conversion": "主要靠谈判，胜势不稳定",
+      "source": "data/review/cards/丁喜/lifecycle-and-realization.md"
+    },
+    "丁春秋": {
+      "realization": "中高",
+      "lifecycle_actions": "持续火毒、隐藏死亡与交易",
+      "elimination_cost": "协作时高；自主偏低",
+      "net_exchange": "交易可避战但要让利",
+      "long_term_conversion": "多人谈判或双人和局",
+      "source": "data/review/cards/丁春秋/lifecycle-and-realization.md"
+    },
+    "丁鹏": {
+      "realization": "高",
+      "lifecycle_actions": "重复800、全局伤害保底与终结",
+      "elimination_cost": "中等",
+      "net_exchange": "稳定正交换并可永久破坏资源",
+      "long_term_conversion": "稳定击杀推进",
+      "source": "data/review/cards/丁鹏/lifecycle-and-realization.md"
+    },
+    "白清儿": {
+      "realization": "高",
+      "lifecycle_actions": "反复投靠与长期伤害压缩",
+      "elimination_cost": "伤害型很高",
+      "net_exchange": "以宿主死亡威胁换取不出战",
+      "long_term_conversion": "强败局规避，未必夺冠",
+      "source": "data/review/cards/白清儿/lifecycle-and-realization.md"
+    },
+    "燕十三": {
+      "realization": "中低至高波动",
+      "lifecycle_actions": "跨回合解锁直到第十五剑",
+      "elimination_cost": "中等偏低",
+      "net_exchange": "全场异常伴随集火成本",
+      "long_term_conversion": "成功直接第一，常态受强折损",
+      "source": "data/review/cards/燕十三/lifecycle-and-realization.md"
+    },
+    "雷卷": {
+      "realization": "中等",
+      "lifecycle_actions": "概率避战、手牌恢复、雷区消耗",
+      "elimination_cost": "中等",
+      "net_exchange": "200生命换避战，雷伤分散",
+      "long_term_conversion": "有限封攻与雷区控制",
+      "source": "data/review/cards/雷卷/lifecycle-and-realization.md"
+    },
+    "谢烟客": {
+      "realization": "中等",
+      "lifecycle_actions": "连续碧针递增，玄铁令外部控制",
+      "elimination_cost": "较高",
+      "net_exchange": "令的控制权主要在他人",
+      "long_term_conversion": "输出可成长，谈判与名次一般",
+      "source": "data/review/cards/谢烟客/lifecycle-and-realization.md"
+    },
+    "乾罗": {
+      "realization": "高",
+      "lifecycle_actions": "稳定双回合与唯一破矛",
+      "elimination_cost": "中等偏高",
+      "net_exchange": "矛攻防存在明确机会成本",
+      "long_term_conversion": "个人正面压制",
+      "source": "data/review/cards/乾罗/lifecycle-and-realization.md"
+    },
+    "浦饭幽助": {
+      "realization": "高",
+      "lifecycle_actions": "六发资源加两条生命",
+      "elimination_cost": "高",
+      "net_exchange": "伤害与打断共同消耗灵丸",
+      "long_term_conversion": "稳定正面胜势",
+      "source": "data/review/cards/浦饭幽助/lifecycle-and-realization.md"
+    },
+    "梅念笙": {
+      "realization": "中高",
+      "lifecycle_actions": "实例耗尽、回满与受击反击",
+      "elimination_cost": "高但怕首轮爆发",
+      "net_exchange": "延后时序换高段自由目标",
+      "long_term_conversion": "越长局越有利",
+      "source": "data/review/cards/梅念笙/lifecycle-and-realization.md"
+    },
+    "法明": {
+      "realization": "中等",
+      "lifecycle_actions": "无敌窗口直到永久不在场",
+      "elimination_cost": "触发后无需淘汰",
+      "net_exchange": "响应高伤常由对手规避",
+      "long_term_conversion": "明确不败／保和转化",
+      "source": "data/review/cards/法明/lifecycle-and-realization.md"
+    },
+    "薛笑人": {
+      "realization": "中高",
+      "lifecycle_actions": "双本体窗口加刺客库存",
+      "elimination_cost": "较高",
+      "net_exchange": "低伤害但高非伤害淘汰收益",
+      "long_term_conversion": "把存活回合转为敌方减员",
+      "source": "data/review/cards/薛笑人/lifecycle-and-realization.md"
+    },
+    "月神": {
+      "realization": "高（形成交手后）",
+      "lifecycle_actions": "通常一次关键目标交换",
+      "elimination_cost": "低",
+      "net_exchange": "一换一净值取决于目标",
+      "long_term_conversion": "稳定捕捉关键人物",
+      "source": "data/review/cards/月神/lifecycle-and-realization.md"
+    },
+    "周威信": {
+      "realization": "高",
+      "lifecycle_actions": "持续在场改写、身份污染、结果处罚与条件叠加",
+      "elimination_cost": "侧面高、正面低",
+      "net_exchange": "人头优势时高；多人打得差会线性反噬",
+      "long_term_conversion": "把人头优势放大为集中出战并持续提高【恶】密度",
+      "source": "data/review/cards/周威信/lifecycle-and-realization.md"
+    }
+  }
+}

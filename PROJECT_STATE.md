@@ -39,11 +39,13 @@
 - `data/card_unit_overrides.json`：多人一卡、unit、特技所属等作者裁定。
 - `data/card_field_overrides.json`：字段修正。
 - `data/author_ability_overrides.json`：特技结构修正。
-- `data/review/cards/<卡名>/`：已精评人物的完整证据目录；`README.md`为总分析，其余文件按输出、生存、全局影响、风险、作者校准等维度拆分。
+- `data/review/cards/<卡名>/`：已精评人物的完整证据目录；`README.md`为总分析，其余文件按输出、生存、全局影响、名次保障／败局规避、风险、作者校准等维度拆分。
 - `data/review/cards/index.json`：单卡评价目录的机器可读路由索引。
 - `data/review/card_evaluations.json`：网页使用的结构化摘要；不再承载整篇完整证据。
 - `data/review/card_notes/`：历史兼容入口；已迁移人物只保留指向新目录的导航。
 - `data/review/calibration_progress.md`、`data/review/calibration_queue.json`：本轮逐卡精评的人类可读进度与机器可读状态。
+- `data/review/comparison/`：战斗人物六个常规极简横向维度表，以及按机制读取的`front-hit-count.json`、`non-damage-elimination.json`、`lifecycle-value.json`、`mechanism-frequency.md`和`ability-type-frequency.md`；以后按维度单文件读取，只有人物机制确实依赖击中次数、防御、大招或整局兑现环境时才读取对应统计。
+- `data/review/calibrated_stats.json`、`data/review/combat_baselines.json`：逐人持续写入的详细统计归档；需要复算时读取，不作为日常横向比较入口。
 - `data/card_reviews.json`：历史兼容评语文件，不再作为新评审默认写入目标。
 - `docs/ai-understanding/`：AI内部使用的核心流程、类别、功能、专项规则路由和案例体系。
 - `data/change_candidates.json`：改卡候选。
@@ -97,6 +99,7 @@ python scripts/serve_card_browser.py
 - 招式区、内功区、武功、连绵、五行打卡等规则很复杂，不要简单类比普通卡牌游戏。
 - 有些牌会破坏规则，例如删字、只剩某行文字等，未来可能需要人工裁定或外挂式处理。
 - `攻击`、`伤害`、`扣血`、`生命流失`、`杀死`、`死亡`、`离场`、`清除` 是不同概念。
+- 闪避表示攻击没有击中；抵挡和无敌处理的是已经击中的攻击。形如`x*y`的主动特技形成`y`次击中，每一击可分别指定场上任意一人。
 - `不在场无此人` 不是离场；破空是一种离场但可胜利。
 - 回合与轮不同：回合通常是某人自己出战一次；轮是己方有人出战一次。
 

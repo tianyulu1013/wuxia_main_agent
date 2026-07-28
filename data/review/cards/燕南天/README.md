@@ -21,6 +21,8 @@
 - [正面生存](front-survival.md)
 - [侧面生存](side-survival.md)
 - [全局影响](global-influence.md)
+- [名次保障与败局规避](placement-security.md)
 - [玩法与比较](gameplay-and-comparison.md)
+- [整局价值与兑现](lifecycle-and-realization.md)
 - [风险](risks.md)
 - [作者校准](author-calibration.md)

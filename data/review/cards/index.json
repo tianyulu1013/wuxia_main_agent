@@ -20,7 +20,9 @@
         "global_influence": "data/review/cards/凤三/global-influence.md",
         "gameplay_and_comparison": "data/review/cards/凤三/gameplay-and-comparison.md",
         "risks": "data/review/cards/凤三/risks.md",
-        "author_calibration": "data/review/cards/凤三/author-calibration.md"
+        "author_calibration": "data/review/cards/凤三/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/凤三/lifecycle-and-realization.md",
+        "placement_security": "data/review/cards/凤三/placement-security.md"
       },
       "global_influence_tier": "强，接近极强"
     },
@@ -38,7 +40,9 @@
         "global_influence": "data/review/cards/王重阳/global-influence.md",
         "gameplay_and_comparison": "data/review/cards/王重阳/gameplay-and-comparison.md",
         "risks": "data/review/cards/王重阳/risks.md",
-        "author_calibration": "data/review/cards/王重阳/author-calibration.md"
+        "author_calibration": "data/review/cards/王重阳/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/王重阳/lifecycle-and-realization.md",
+        "placement_security": "data/review/cards/王重阳/placement-security.md"
       },
       "global_influence_tier": "一般"
     },
@@ -56,7 +60,9 @@
         "global_influence": "data/review/cards/邀月/global-influence.md",
         "gameplay_and_comparison": "data/review/cards/邀月/gameplay-and-comparison.md",
         "risks": "data/review/cards/邀月/risks.md",
-        "author_calibration": "data/review/cards/邀月/author-calibration.md"
+        "author_calibration": "data/review/cards/邀月/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/邀月/lifecycle-and-realization.md",
+        "placement_security": "data/review/cards/邀月/placement-security.md"
       },
       "global_influence_tier": "较弱"
     },
@@ -74,7 +80,9 @@
         "global_influence": "data/review/cards/怜星/global-influence.md",
         "gameplay_and_comparison": "data/review/cards/怜星/gameplay-and-comparison.md",
         "risks": "data/review/cards/怜星/risks.md",
-        "author_calibration": "data/review/cards/怜星/author-calibration.md"
+        "author_calibration": "data/review/cards/怜星/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/怜星/lifecycle-and-realization.md",
+        "placement_security": "data/review/cards/怜星/placement-security.md"
       },
       "global_influence_tier": "较弱"
     },
@@ -92,7 +100,9 @@
         "global_influence": "data/review/cards/俞佩玉/global-influence.md",
         "gameplay_and_comparison": "data/review/cards/俞佩玉/gameplay-and-comparison.md",
         "risks": "data/review/cards/俞佩玉/risks.md",
-        "author_calibration": "data/review/cards/俞佩玉/author-calibration.md"
+        "author_calibration": "data/review/cards/俞佩玉/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/俞佩玉/lifecycle-and-realization.md",
+        "placement_security": "data/review/cards/俞佩玉/placement-security.md"
       },
       "global_influence_tier": "强"
     },
@@ -110,7 +120,9 @@
         "global_influence": "data/review/cards/一灯/global-influence.md",
         "gameplay_and_comparison": "data/review/cards/一灯/gameplay-and-comparison.md",
         "risks": "data/review/cards/一灯/risks.md",
-        "author_calibration": "data/review/cards/一灯/author-calibration.md"
+        "author_calibration": "data/review/cards/一灯/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/一灯/lifecycle-and-realization.md",
+        "placement_security": "data/review/cards/一灯/placement-security.md"
       },
       "global_influence_tier": "强"
     },
@@ -128,7 +140,9 @@
         "global_influence": "data/review/cards/燕南天/global-influence.md",
         "gameplay_and_comparison": "data/review/cards/燕南天/gameplay-and-comparison.md",
         "risks": "data/review/cards/燕南天/risks.md",
-        "author_calibration": "data/review/cards/燕南天/author-calibration.md"
+        "author_calibration": "data/review/cards/燕南天/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/燕南天/lifecycle-and-realization.md",
+        "placement_security": "data/review/cards/燕南天/placement-security.md"
       },
       "global_influence_tier": "一般"
     },
@@ -146,9 +160,372 @@
         "global_influence": "data/review/cards/叶开/global-influence.md",
         "gameplay_and_comparison": "data/review/cards/叶开/gameplay-and-comparison.md",
         "risks": "data/review/cards/叶开/risks.md",
-        "author_calibration": "data/review/cards/叶开/author-calibration.md"
+        "author_calibration": "data/review/cards/叶开/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/叶开/lifecycle-and-realization.md",
+        "placement_security": "data/review/cards/叶开/placement-security.md"
       },
       "global_influence_tier": "强"
+    },
+    "丁典": {
+      "title": "丁典",
+      "status": "semantic_core_locked_quantitative_pending",
+      "folder": "data/review/cards/丁典",
+      "summary": "data/review/cards/丁典/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/丁典/mechanics.md",
+        "front_output": "data/review/cards/丁典/front-output.md",
+        "side_output": "data/review/cards/丁典/side-output.md",
+        "front_survival": "data/review/cards/丁典/front-survival.md",
+        "side_survival": "data/review/cards/丁典/side-survival.md",
+        "global_influence": "data/review/cards/丁典/global-influence.md",
+        "gameplay_and_comparison": "data/review/cards/丁典/gameplay-and-comparison.md",
+        "risks": "data/review/cards/丁典/risks.md",
+        "author_calibration": "data/review/cards/丁典/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/丁典/lifecycle-and-realization.md",
+        "placement_security": "data/review/cards/丁典/placement-security.md"
+      },
+      "global_influence_tier": "基本没有",
+      "frontal_survival_tier": "很强",
+      "side_survival_tier": "很强"
+    },
+    "丁喜": {
+      "title": "丁喜",
+      "status": "semantic_core_calibrating_full_dimensions_drafted",
+      "folder": "data/review/cards/丁喜",
+      "summary": "data/review/cards/丁喜/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/丁喜/mechanics.md",
+        "front_output": "data/review/cards/丁喜/front-output.md",
+        "side_output": "data/review/cards/丁喜/side-output.md",
+        "front_survival": "data/review/cards/丁喜/front-survival.md",
+        "side_survival": "data/review/cards/丁喜/side-survival.md",
+        "global_influence": "data/review/cards/丁喜/global-influence.md",
+        "gameplay_and_comparison": "data/review/cards/丁喜/gameplay-and-comparison.md",
+        "risks": "data/review/cards/丁喜/risks.md",
+        "wording_ambiguities": "data/review/cards/丁喜/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/丁喜/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/丁喜/lifecycle-and-realization.md",
+        "placement_security": "data/review/cards/丁喜/placement-security.md"
+      },
+      "global_influence_tier": "较强（暂定）",
+      "frontal_survival_tier": "有条件较强",
+      "side_survival_tier": "有条件改善"
+    },
+    "丁春秋": {
+      "title": "丁春秋",
+      "status": "semantic_calibrated_environment_pending",
+      "folder": "data/review/cards/丁春秋",
+      "summary": "data/review/cards/丁春秋/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/丁春秋/mechanics.md",
+        "front_output": "data/review/cards/丁春秋/front-output.md",
+        "side_output": "data/review/cards/丁春秋/side-output.md",
+        "front_survival": "data/review/cards/丁春秋/front-survival.md",
+        "side_survival": "data/review/cards/丁春秋/side-survival.md",
+        "global_influence": "data/review/cards/丁春秋/global-influence.md",
+        "gameplay_and_comparison": "data/review/cards/丁春秋/gameplay-and-comparison.md",
+        "risks": "data/review/cards/丁春秋/risks.md",
+        "wording_ambiguities": "data/review/cards/丁春秋/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/丁春秋/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/丁春秋/lifecycle-and-realization.md",
+        "placement_security": "data/review/cards/丁春秋/placement-security.md",
+        "non_damage_elimination": "data/review/cards/丁春秋/non-damage-elimination.md"
+      },
+      "global_influence_tier": "强（暂定）",
+      "frontal_survival_tier": "自主偏弱；协作无敌",
+      "side_survival_tier": "自主偏弱；协作无敌"
+    },
+    "丁鹏": {
+      "title": "丁鹏",
+      "status": "semantic_calibrated_environment_pending",
+      "folder": "data/review/cards/丁鹏",
+      "summary": "data/review/cards/丁鹏/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/丁鹏/mechanics.md",
+        "front_output": "data/review/cards/丁鹏/front-output.md",
+        "side_output": "data/review/cards/丁鹏/side-output.md",
+        "front_survival": "data/review/cards/丁鹏/front-survival.md",
+        "side_survival": "data/review/cards/丁鹏/side-survival.md",
+        "global_influence": "data/review/cards/丁鹏/global-influence.md",
+        "gameplay_and_comparison": "data/review/cards/丁鹏/gameplay-and-comparison.md",
+        "risks": "data/review/cards/丁鹏/risks.md",
+        "wording_ambiguities": "data/review/cards/丁鹏/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/丁鹏/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/丁鹏/lifecycle-and-realization.md",
+        "placement_security": "data/review/cards/丁鹏/placement-security.md",
+        "non_damage_elimination": "data/review/cards/丁鹏/non-damage-elimination.md"
+      },
+      "global_influence_tier": "较弱（暂定）",
+      "frontal_survival_tier": "一般",
+      "side_survival_tier": "一般偏弱"
+    },
+    "白清儿": {
+      "title": "白清儿",
+      "status": "semantic_calibrated_environment_pending",
+      "folder": "data/review/cards/白清儿",
+      "summary": "data/review/cards/白清儿/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/白清儿/mechanics.md",
+        "front_output": "data/review/cards/白清儿/front-output.md",
+        "side_output": "data/review/cards/白清儿/side-output.md",
+        "front_survival": "data/review/cards/白清儿/front-survival.md",
+        "side_survival": "data/review/cards/白清儿/side-survival.md",
+        "global_influence": "data/review/cards/白清儿/global-influence.md",
+        "placement_security": "data/review/cards/白清儿/placement-security.md",
+        "gameplay_and_comparison": "data/review/cards/白清儿/gameplay-and-comparison.md",
+        "risks": "data/review/cards/白清儿/risks.md",
+        "wording_ambiguities": "data/review/cards/白清儿/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/白清儿/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/白清儿/lifecycle-and-realization.md",
+        "non_damage_elimination": "data/review/cards/白清儿/non-damage-elimination.md"
+      },
+      "global_influence_tier": "一般（暂定）",
+      "placement_security_tier": "很强（大混战）",
+      "frontal_survival_tier": "伤害型生存很强；综合待回归",
+      "side_survival_tier": "伤害型生存很强；综合待回归"
+    },
+    "燕十三": {
+      "title": "燕十三",
+      "status": "semantic_calibrated_environment_pending",
+      "folder": "data/review/cards/燕十三",
+      "summary": "data/review/cards/燕十三/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/燕十三/mechanics.md",
+        "front_output": "data/review/cards/燕十三/front-output.md",
+        "side_output": "data/review/cards/燕十三/side-output.md",
+        "front_survival": "data/review/cards/燕十三/front-survival.md",
+        "side_survival": "data/review/cards/燕十三/side-survival.md",
+        "global_influence": "data/review/cards/燕十三/global-influence.md",
+        "placement_security": "data/review/cards/燕十三/placement-security.md",
+        "gameplay_and_comparison": "data/review/cards/燕十三/gameplay-and-comparison.md",
+        "risks": "data/review/cards/燕十三/risks.md",
+        "wording_ambiguities": "data/review/cards/燕十三/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/燕十三/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/燕十三/lifecycle-and-realization.md"
+      },
+      "global_influence_tier": "有条件较强（暂定）",
+      "placement_security_tier": "很强（夺冠型）",
+      "frontal_survival_tier": "一般偏弱",
+      "side_survival_tier": "偏弱"
+    },
+    "雷卷": {
+      "title": "雷卷",
+      "status": "semantic_calibrated_environment_pending",
+      "folder": "data/review/cards/雷卷",
+      "summary": "data/review/cards/雷卷/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/雷卷/mechanics.md",
+        "front_output": "data/review/cards/雷卷/front-output.md",
+        "side_output": "data/review/cards/雷卷/side-output.md",
+        "front_survival": "data/review/cards/雷卷/front-survival.md",
+        "side_survival": "data/review/cards/雷卷/side-survival.md",
+        "global_influence": "data/review/cards/雷卷/global-influence.md",
+        "placement_security": "data/review/cards/雷卷/placement-security.md",
+        "gameplay_and_comparison": "data/review/cards/雷卷/gameplay-and-comparison.md",
+        "risks": "data/review/cards/雷卷/risks.md",
+        "wording_ambiguities": "data/review/cards/雷卷/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/雷卷/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/雷卷/lifecycle-and-realization.md"
+      },
+      "global_influence_tier": "一般",
+      "placement_security_tier": "一般偏弱",
+      "frontal_survival_tier": "一般",
+      "side_survival_tier": "强但不全面"
+    },
+    "谢烟客": {
+      "title": "谢烟客",
+      "status": "semantic_calibrated_environment_pending",
+      "folder": "data/review/cards/谢烟客",
+      "summary": "data/review/cards/谢烟客/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/谢烟客/mechanics.md",
+        "front_output": "data/review/cards/谢烟客/front-output.md",
+        "side_output": "data/review/cards/谢烟客/side-output.md",
+        "front_survival": "data/review/cards/谢烟客/front-survival.md",
+        "side_survival": "data/review/cards/谢烟客/side-survival.md",
+        "global_influence": "data/review/cards/谢烟客/global-influence.md",
+        "placement_security": "data/review/cards/谢烟客/placement-security.md",
+        "gameplay_and_comparison": "data/review/cards/谢烟客/gameplay-and-comparison.md",
+        "risks": "data/review/cards/谢烟客/risks.md",
+        "wording_ambiguities": "data/review/cards/谢烟客/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/谢烟客/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/谢烟客/lifecycle-and-realization.md"
+      },
+      "global_influence_tier": "一般",
+      "placement_security_tier": "一般",
+      "frontal_survival_tier": "较强",
+      "side_survival_tier": "强"
+    },
+    "乾罗": {
+      "title": "乾罗",
+      "status": "semantic_calibrated_environment_pending",
+      "folder": "data/review/cards/乾罗",
+      "summary": "data/review/cards/乾罗/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/乾罗/mechanics.md",
+        "front_output": "data/review/cards/乾罗/front-output.md",
+        "side_output": "data/review/cards/乾罗/side-output.md",
+        "front_survival": "data/review/cards/乾罗/front-survival.md",
+        "side_survival": "data/review/cards/乾罗/side-survival.md",
+        "global_influence": "data/review/cards/乾罗/global-influence.md",
+        "placement_security": "data/review/cards/乾罗/placement-security.md",
+        "gameplay_and_comparison": "data/review/cards/乾罗/gameplay-and-comparison.md",
+        "risks": "data/review/cards/乾罗/risks.md",
+        "wording_ambiguities": "data/review/cards/乾罗/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/乾罗/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/乾罗/lifecycle-and-realization.md"
+      },
+      "global_influence_tier": "较弱",
+      "placement_security_tier": "无",
+      "frontal_survival_tier": "一般偏强",
+      "side_survival_tier": "较强"
+    },
+    "浦饭幽助": {
+      "title": "浦饭幽助",
+      "status": "semantic_calibrated_environment_pending",
+      "folder": "data/review/cards/浦饭幽助",
+      "summary": "data/review/cards/浦饭幽助/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/浦饭幽助/mechanics.md",
+        "front_output": "data/review/cards/浦饭幽助/front-output.md",
+        "side_output": "data/review/cards/浦饭幽助/side-output.md",
+        "front_survival": "data/review/cards/浦饭幽助/front-survival.md",
+        "side_survival": "data/review/cards/浦饭幽助/side-survival.md",
+        "global_influence": "data/review/cards/浦饭幽助/global-influence.md",
+        "placement_security": "data/review/cards/浦饭幽助/placement-security.md",
+        "gameplay_and_comparison": "data/review/cards/浦饭幽助/gameplay-and-comparison.md",
+        "risks": "data/review/cards/浦饭幽助/risks.md",
+        "wording_ambiguities": "data/review/cards/浦饭幽助/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/浦饭幽助/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/浦饭幽助/lifecycle-and-realization.md"
+      },
+      "global_influence_tier": "基本没有",
+      "placement_security_tier": "无",
+      "frontal_survival_tier": "强",
+      "side_survival_tier": "较强"
+    },
+    "梅念笙": {
+      "title": "梅念笙",
+      "status": "semantic_calibrated_environment_pending",
+      "folder": "data/review/cards/梅念笙",
+      "summary": "data/review/cards/梅念笙/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/梅念笙/mechanics.md",
+        "front_output": "data/review/cards/梅念笙/front-output.md",
+        "side_output": "data/review/cards/梅念笙/side-output.md",
+        "front_survival": "data/review/cards/梅念笙/front-survival.md",
+        "side_survival": "data/review/cards/梅念笙/side-survival.md",
+        "global_influence": "data/review/cards/梅念笙/global-influence.md",
+        "placement_security": "data/review/cards/梅念笙/placement-security.md",
+        "gameplay_and_comparison": "data/review/cards/梅念笙/gameplay-and-comparison.md",
+        "risks": "data/review/cards/梅念笙/risks.md",
+        "wording_ambiguities": "data/review/cards/梅念笙/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/梅念笙/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/梅念笙/lifecycle-and-realization.md"
+      },
+      "global_influence_tier": "一般偏弱且带负面",
+      "placement_security_tier": "无",
+      "frontal_survival_tier": "强",
+      "side_survival_tier": "较强"
+    },
+    "法明": {
+      "title": "法明",
+      "status": "semantic_calibrated_environment_pending",
+      "folder": "data/review/cards/法明",
+      "summary": "data/review/cards/法明/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/法明/mechanics.md",
+        "front_output": "data/review/cards/法明/front-output.md",
+        "side_output": "data/review/cards/法明/side-output.md",
+        "front_survival": "data/review/cards/法明/front-survival.md",
+        "side_survival": "data/review/cards/法明/side-survival.md",
+        "global_influence": "data/review/cards/法明/global-influence.md",
+        "placement_security": "data/review/cards/法明/placement-security.md",
+        "gameplay_and_comparison": "data/review/cards/法明/gameplay-and-comparison.md",
+        "risks": "data/review/cards/法明/risks.md",
+        "wording_ambiguities": "data/review/cards/法明/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/法明/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/法明/lifecycle-and-realization.md"
+      },
+      "global_influence_tier": "较弱",
+      "placement_security_tier": "有条件很强",
+      "frontal_survival_tier": "有条件强",
+      "side_survival_tier": "条件分化"
+    },
+    "薛笑人": {
+      "title": "薛笑人",
+      "status": "semantic_calibrated_environment_pending",
+      "folder": "data/review/cards/薛笑人",
+      "summary": "data/review/cards/薛笑人/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/薛笑人/mechanics.md",
+        "front_output": "data/review/cards/薛笑人/front-output.md",
+        "side_output": "data/review/cards/薛笑人/side-output.md",
+        "front_survival": "data/review/cards/薛笑人/front-survival.md",
+        "side_survival": "data/review/cards/薛笑人/side-survival.md",
+        "global_influence": "data/review/cards/薛笑人/global-influence.md",
+        "placement_security": "data/review/cards/薛笑人/placement-security.md",
+        "gameplay_and_comparison": "data/review/cards/薛笑人/gameplay-and-comparison.md",
+        "risks": "data/review/cards/薛笑人/risks.md",
+        "wording_ambiguities": "data/review/cards/薛笑人/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/薛笑人/author-calibration.md",
+        "non_damage_elimination": "data/review/cards/薛笑人/non-damage-elimination.md",
+        "lifecycle_and_realization": "data/review/cards/薛笑人/lifecycle-and-realization.md"
+      },
+      "global_influence_tier": "较强",
+      "placement_security_tier": "无",
+      "frontal_survival_tier": "较强",
+      "side_survival_tier": "较强"
+    },
+    "月神": {
+      "title": "月神",
+      "status": "semantic_calibrated_environment_pending",
+      "folder": "data/review/cards/月神",
+      "summary": "data/review/cards/月神/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/月神/mechanics.md",
+        "front_output": "data/review/cards/月神/front-output.md",
+        "side_output": "data/review/cards/月神/side-output.md",
+        "front_survival": "data/review/cards/月神/front-survival.md",
+        "side_survival": "data/review/cards/月神/side-survival.md",
+        "global_influence": "data/review/cards/月神/global-influence.md",
+        "placement_security": "data/review/cards/月神/placement-security.md",
+        "gameplay_and_comparison": "data/review/cards/月神/gameplay-and-comparison.md",
+        "risks": "data/review/cards/月神/risks.md",
+        "wording_ambiguities": "data/review/cards/月神/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/月神/author-calibration.md",
+        "non_damage_elimination": "data/review/cards/月神/non-damage-elimination.md",
+        "lifecycle_and_realization": "data/review/cards/月神/lifecycle-and-realization.md"
+      },
+      "global_influence_tier": "强",
+      "placement_security_tier": "无",
+      "frontal_survival_tier": "弱",
+      "side_survival_tier": "弱"
+    },
+    "周威信": {
+      "title": "周威信",
+      "status": "semantic_calibrated_environment_pending",
+      "folder": "data/review/cards/周威信",
+      "summary": "data/review/cards/周威信/README.md",
+      "dimensions": {
+        "mechanics": "data/review/cards/周威信/mechanics.md",
+        "front_output": "data/review/cards/周威信/front-output.md",
+        "side_output": "data/review/cards/周威信/side-output.md",
+        "front_survival": "data/review/cards/周威信/front-survival.md",
+        "side_survival": "data/review/cards/周威信/side-survival.md",
+        "global_influence": "data/review/cards/周威信/global-influence.md",
+        "placement_security": "data/review/cards/周威信/placement-security.md",
+        "gameplay_and_comparison": "data/review/cards/周威信/gameplay-and-comparison.md",
+        "risks": "data/review/cards/周威信/risks.md",
+        "wording_ambiguities": "data/review/cards/周威信/wording-ambiguities.md",
+        "author_calibration": "data/review/cards/周威信/author-calibration.md",
+        "lifecycle_and_realization": "data/review/cards/周威信/lifecycle-and-realization.md"
+      },
+      "global_influence_tier": "很强但高双刃",
+      "placement_security_tier": "无直接保障",
+      "frontal_survival_tier": "弱",
+      "side_survival_tier": "较强",
+      "survival_condition": "正面接近很弱；叠加／不上场改善兑现。侧面保护不覆盖本人正常出战与非战斗事件。"
     }
   }
 }
